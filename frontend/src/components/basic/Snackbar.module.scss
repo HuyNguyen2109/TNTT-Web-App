@@ -1,10 +1,28 @@
 @import '../../base.module.scss';
 
 .Snackbar {
-  background-color: black;
-  min-width: 400px;
-  min-height: 60px;
-  padding: 0 10px;
+  border-radius: 7px !important;
+}
+
+.content {
+  background-color: #fff !important;
+  color: #000 !important;
+  min-width: 350px !important;
+  border-radius: 10px !important;
+
+  & .message {
+    padding: 0 !important;
+  }
+
+  & .close {
+    transition: .2s ease;
+    color: #000;
+
+    &:hover {
+      transform: rotate(90deg);
+      transition-duration: .2s;
+    }
+  }
 }
 
 .icon {

@@ -27,7 +27,18 @@ class Test extends React.Component {
             this.setState({ open: !open });
           }}
         />
-        <Snackbar open={open} message={"Test message"} type="info" onClose={() => {this.setState({open: false})}} />
+        <Snackbar
+          open={open}
+          message="Test message"
+          type="warning"
+          onClose={() => {
+            this.setState({ open: false });
+          }}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        />
       </div>
     );
   };
