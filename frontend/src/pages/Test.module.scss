@@ -1,0 +1,18 @@
+@import '../base.module.scss';
+
+.root {
+  margin: 10px;
+  min-height: 100px;
+  text-align: left;
+
+  & .button {
+    border: 2px solid $primaryColor !important;
+    background-color: transparent;
+
+    &:hover {
+      border: 2px solid $secondaryColor !important;
+      background-color: $secondaryColor;
+    }
+  }
+}
+
