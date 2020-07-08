@@ -1,15 +1,18 @@
+@import "../base.module.scss";
+
 .container {
   min-height: 100vh;
   .img {
-
   }
 
   .loginContainer {
     background-color: #ffffff;
+    display: flex;
+    align-items: center;
 
     & .loginForm {
       margin: 40px;
-      padding: 50% 0;
+      width: 100%;
 
       & h4 {
         margin-bottom: 20px;
@@ -18,6 +21,68 @@
       & .inputField {
         margin-bottom: 10px;
         font-size: 9px;
+
+        & .underline {
+          &::after {
+            border-bottom: 2px solid $primaryColor;
+          }
+        }
+
+        & .error {
+          &::after {
+            border-bottom: 2px solid red;
+          }
+        }
+
+        & .title {
+          color: $primaryColor;
+        }
+      }
+
+      & .errorMessage {
+        color: red;
+        font-style: italic;
+        text-align: left;
+        margin: 10px 0;
+      }
+
+      & .saveCredential {
+        display: flex;
+        justify-content: left;
+        margin: 10px 0 10px -10px;
+      }
+
+      & .savedCredential {
+        color: $primaryColor;
+      }
+
+      & .loginAction {
+        display: flex;
+        justify-content: center;
+
+        & .signinButton {
+          background-color: $primaryColor;
+          color: #ffffff;
+          &:hover {
+            background-color: $secondaryColor;
+            color: #000000;
+          }
+        }
+
+        & .signinButtonWithoutCredential {
+          border: 1px solid $primaryColor !important;
+          background-color: transparent;
+          color: $primaryColor;
+          &:hover {
+            border: 1px solid $secondaryColor !important;
+            background-color: $secondaryColor;
+            color: #000000;
+          }
+        }
+
+        & .or {
+          margin: 0 40px;
+        }
       }
 
       @media (max-width: 450px) {

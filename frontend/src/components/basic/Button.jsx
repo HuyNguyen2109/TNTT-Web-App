@@ -6,7 +6,7 @@ import Loading from './Loading';
 
 export default class CustomizeButton extends React.Component {
   render = () => {
-    const { label, className, loading, ...props } = this.props;
+    const { label, className, loading, loadingStyle, ...props } = this.props;
     const cn = classNames(styles.Button, className);
 
     return (

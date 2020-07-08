@@ -1,3 +1,5 @@
+@import "../../base.module.scss";
+
 .Button {
   font-size: 14px !important;
   border: 2px solid transparent !important;
@@ -13,7 +15,7 @@
 
   .loading {
     & > div {
-      background-color: black;
+      background-color: darken($color: $primaryColor, $amount: 10)
     }
   }
 }
