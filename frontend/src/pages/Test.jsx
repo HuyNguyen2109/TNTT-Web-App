@@ -1,8 +1,7 @@
 import React from "react";
-import classNames from "classnames";
 
 import styles from "./Test.module.scss";
-import { Button, Snackbar } from "../components/basic";
+import { Button, Snackbar, Paper } from "../components/basic";
 
 class Test extends React.Component {
   constructor(props) {
@@ -10,11 +9,12 @@ class Test extends React.Component {
 
     this.state = {
       open: false,
+      loading: false
     };
   }
 
   render = () => {
-    const { open } = this.state;
+    const { open, loading } = this.state;
 
     return (
       <div className={styles.root}>
@@ -22,22 +22,28 @@ class Test extends React.Component {
           label={"Test"}
           variant="contained"
           className={styles.button}
+          loading={this.state.loading}
+          disabled={this.state.loading}
           size="medium"
           onClick={() => {
-            this.setState({ open: !open });
+            this.setState({ open: !open, loading: !loading});
           }}
         />
         <Snackbar
           open={open}
-          message="Test message"
+          message="Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message "
           type="warning"
           onClose={() => {
-            this.setState({ open: false });
+            this.setState({ open: false, loading: false });
           }}
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "left",
           }}
+        />
+        <Paper 
+          className={styles.paper}
+          content={'Test'}
         />
       </div>
     );

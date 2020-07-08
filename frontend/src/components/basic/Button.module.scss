@@ -1,13 +1,19 @@
 .Button {
   font-size: 14px !important;
   border: 2px solid transparent !important;
-  transition: .15s ease !important;
+  transition: 0.15s ease !important;
   border-radius: 7px !important;
 
   &:hover {
     transform: scale(1.2);
     @media (pointer: coarse) {
       transform: scale(1);
+    }
+  }
+
+  .loading {
+    & > div {
+      background-color: black;
     }
   }
 }

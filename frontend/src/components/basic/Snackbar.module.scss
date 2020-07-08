@@ -1,26 +1,36 @@
-@import '../../base.module.scss';
+@import "../../base.module.scss";
 
 .Snackbar {
-  border-radius: 7px !important;
+  @media (min-width: 600px) {
+    right: 24px !important;
+  }
 }
 
 .content {
   background-color: #fff !important;
   color: #000 !important;
-  min-width: 350px !important;
   border-radius: 10px !important;
 
   & .message {
     padding: 0 !important;
+    display: inline-flex;
   }
 
   & .close {
-    transition: .2s ease;
+    transition: 0.2s ease;
     color: #000;
 
     &:hover {
       transform: rotate(90deg);
-      transition-duration: .2s;
+      transition-duration: 0.2s;
+
+      @media (pointer: coarse) {
+        transform: unset;
+      }
+    }
+
+    @media (max-width: 600px) {
+      display: none;
     }
   }
 }

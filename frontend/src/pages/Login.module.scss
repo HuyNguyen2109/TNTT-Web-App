@@ -1,0 +1,28 @@
+.container {
+  min-height: 100vh;
+  .img {
+
+  }
+
+  .loginContainer {
+    background-color: #ffffff;
+
+    & .loginForm {
+      margin: 40px;
+      padding: 50% 0;
+
+      & h4 {
+        margin-bottom: 20px;
+      }
+
+      & .inputField {
+        margin-bottom: 10px;
+        font-size: 9px;
+      }
+
+      @media (max-width: 450px) {
+        margin: 20px;
+      }
+    }
+  }
+}

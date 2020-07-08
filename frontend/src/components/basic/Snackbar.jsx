@@ -63,6 +63,7 @@ export default class CustomizedSnackbar extends React.Component {
             <CloseOutlined fontSize="medium" />
           </IconButton>
         }
+        transitionDuration={250}
       />
     );
   };
