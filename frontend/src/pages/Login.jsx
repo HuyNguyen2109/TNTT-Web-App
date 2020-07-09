@@ -210,15 +210,23 @@ class SignupForm extends React.Component {
 
   render = () => {
     const {
+      signupData,
       isAgreeTermAndCondition,
       agreeTermAndCondition,
       showTermAndCondition,
+      loading,
+      isError,
+      errorMessage,
+      returnToLogin,
+      handleChangeState,
+      handleChangeStateArray,
+      submitForm,
     } = this.props;
 
     return (
       <div className={styles.signupForm}>
         <Grid container spacing={2}>
-          {signupFields().map((data, index) => (
+          {signupData.map((data, index) => (
             <Grid
               item
               key={index}
@@ -231,6 +239,7 @@ class SignupForm extends React.Component {
                 label={data.label}
                 value={data.value}
                 fullWidth
+                error={data.error}
                 type={data.type === "date" ? "text" : data.type}
                 size="medium"
                 margin="normal"
@@ -241,7 +250,7 @@ class SignupForm extends React.Component {
                     </InputAdornment>
                   ),
                   classes: {
-                    underline: styles.underline,
+                    underline: data.error? styles.error : styles.underline,
                   },
                 }}
                 InputLabelProps={{
@@ -249,10 +258,22 @@ class SignupForm extends React.Component {
                     focused: styles.title,
                   },
                 }}
+                onChange={(value) =>
+                  handleChangeStateArray("signupData", "value", value.target.value, index)
+                }
+                onFocus={() => {
+                  handleChangeState("isError", false)
+                  handleChangeStateArray("signupData", "error", false, index)
+                }}
               />
             </Grid>
           ))}
         </Grid>
+        {isError && (
+          <Typography variant="subtitle2" className={styles.errorMessage}>
+            {errorMessage}
+          </Typography>
+        )}
         <FormControlLabel
           className={styles.saveCredential}
           disabled={false}
@@ -271,7 +292,10 @@ class SignupForm extends React.Component {
               {
                 <Link
                   classes={{ root: styles.link }}
-                  onClick={() => showTermAndCondition(true)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    showTermAndCondition();
+                  }}
                 >
                   Điều khoản
                 </Link>
@@ -280,6 +304,27 @@ class SignupForm extends React.Component {
             </Typography>
           }
         />
+        <Toolbar className={styles.loginAction} disableGutters>
+          <Button
+            className={styles.signinButtonWithoutCredential}
+            label="Hủy"
+            variant="contained"
+            size="large"
+            loading={loading}
+            disabled={loading}
+            onClick={() => returnToLogin(0)}
+          />
+          <div className={styles.or} />
+          <Button
+            className={styles.signinButton}
+            label="Đăng ký"
+            variant="contained"
+            size="large"
+            loading={loading}
+            disabled={loading || !isAgreeTermAndCondition}
+            onClick={() => submitForm()}
+          />
+        </Toolbar>
       </div>
     );
   };
@@ -307,7 +352,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.initialState = {
       isPasswordRevealed: false,
       username: "",
       password: "",
@@ -316,10 +361,13 @@ class Login extends React.Component {
       isSaveCredential: false,
       loading: false,
       anonymousLoading: false,
-      tabIndex: 1,
+      tabIndex: 0,
       isAgreeTermAndCondition: false,
       isShowTermAndCondition: false,
+      signupData: signupFields,
     };
+
+    this.state = {...this.initialState};
   }
 
   // Life cycles
@@ -330,8 +378,24 @@ class Login extends React.Component {
     if (typeof value === "object" && value.hasOwnProperty("target")) {
       value.preventDefault();
       result[state] = value.target.value;
+      console.log("this?");
     } else {
       result[state] = value;
+    }
+    this.setState(result);
+  };
+
+  handleChangeStateArray = (state, field, value, index) => {
+    let result = {};
+    let array = [...this.state[state]];
+    if (typeof this.state[state] === "object") {
+      array[index][field] = value;
+      result[state] = array;
+    }
+    if (field === 'error') {
+      array.forEach(el => {
+        el[field] = value
+      })
     }
     this.setState(result);
   };
@@ -342,6 +406,16 @@ class Login extends React.Component {
       "aria-controls": `full-width-tabpanel-${index}`,
     };
   };
+
+  clearState = () => {
+    this.setState(this.initialState);
+    let array = [...this.state.signupData];
+    array.forEach(el => {
+      el.value = '';
+      el.error = false
+    })
+    this.setState({signupData: array})
+  }
   // Methods
   login = (username, password) => {
     this.setState({ loading: true });
@@ -361,6 +435,18 @@ class Login extends React.Component {
     this.setState({ anonymousLoading: true });
     console.log(`anonymous-${uuidv4().replace(/-/g, "")}`);
   };
+
+  signUp = (data) => {
+    data.forEach((el) => {
+      if(el.value === '') {
+        el.error = true;
+        this.setState({
+          isError: true,
+          errorMessage: 'Một số trường bị trống, Xin nhập đầy đủ'
+        })
+      }
+    });
+  };
   //Render
   render = () => {
     const {
@@ -375,6 +461,7 @@ class Login extends React.Component {
       tabIndex,
       isAgreeTermAndCondition,
       isShowTermAndCondition,
+      signupData,
     } = this.state;
 
     return (
@@ -424,7 +511,7 @@ class Login extends React.Component {
                 this.handleChangeState("tabIndex", index)
               }
             >
-              <TabPanel value={tabIndex} index={0}>
+              <TabPanel value={tabIndex} index={0} dir="right">
                 <LoginForm
                   isError={isError}
                   isPasswordRevealed={isPasswordRevealed}
@@ -446,12 +533,34 @@ class Login extends React.Component {
                   }
                 />
               </TabPanel>
-              <TabPanel value={tabIndex} index={1}>
-                <SignupForm 
+              <TabPanel value={tabIndex} index={1} dir="left">
+                <SignupForm
+                  signupData={signupData}
                   isAgreeTermAndCondition={isAgreeTermAndCondition}
                   isShowTermAndCondition={isShowTermAndCondition}
-                  showTermAndCondition={(value) => this.handleChangeState('isShowTermAndCondition', value)}
-                  agreeTermAndCondition={(value) => this.handleChangeState('isAgreeTermAndCondition', value)}
+                  showTermAndCondition={() =>
+                    this.handleChangeState(
+                      "isShowTermAndCondition",
+                      !isShowTermAndCondition
+                    )
+                  }
+                  agreeTermAndCondition={(value) =>
+                    this.handleChangeState("isAgreeTermAndCondition", value)
+                  }
+                  loading={loading}
+                  isError={isError}
+                  errorMessage={errorMessage}
+                  returnToLogin={(value) =>
+                    {
+                      this.handleChangeState("tabIndex", value)
+                      this.clearState()
+                    }
+                  }
+                  handleChangeState={(state, value) => this.handleChangeState(state, value)}
+                  handleChangeStateArray={(state, field, value, index) =>
+                    this.handleChangeStateArray(state, field, value, index)
+                  }
+                  submitForm={() => this.signUp(signupData)}
                 />
               </TabPanel>
             </SwipeableViews>

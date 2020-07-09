@@ -1,4 +1,4 @@
-export const signupFields = () => [
+export const signupFields = [
   {
     label: "Tên thánh",
     value: "",
@@ -10,6 +10,7 @@ export const signupFields = () => [
     },
     icon: "name",
     type: "text",
+    error: false,
   },
   {
     label: "Họ",
@@ -22,6 +23,7 @@ export const signupFields = () => [
     },
     icon: "name",
     type: "text",
+    error: false,
   },
   {
     label: "Tên",
@@ -34,6 +36,7 @@ export const signupFields = () => [
     },
     icon: "name",
     type: "text",
+    error: false,
   },
   {
     label: "Địa chỉ",
@@ -46,6 +49,7 @@ export const signupFields = () => [
     },
     icon: "address",
     type: "text",
+    error: false,
   },
   {
     label: "Điện thoại",
@@ -58,6 +62,7 @@ export const signupFields = () => [
     },
     icon: "phone",
     type: "tel",
+    error: false,
   },
   {
     label: "Email",
@@ -70,6 +75,7 @@ export const signupFields = () => [
     },
     icon: "email",
     type: "email",
+    error: false,
   },
   {
     label: "Sinh Nhật",
@@ -82,6 +88,7 @@ export const signupFields = () => [
     },
     icon: "date",
     type: "date",
+    error: false,
   },
   {
     label: "Bổn mạng",
@@ -94,6 +101,7 @@ export const signupFields = () => [
     },
     icon: "date",
     type: "date",
+    error: false,
   },
 ];
 

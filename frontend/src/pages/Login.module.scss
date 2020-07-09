@@ -64,6 +64,8 @@
           justify-content: left;
           margin: 10px 0 10px -10px;
           text-align: left;
+          width: fit-content;
+          height: fit-content;
         }
   
         & .savedCredential {
@@ -73,6 +75,7 @@
         & .link {
           color: $primaryColor;
           margin: 0 5px;
+          padding: 15px 0;
         }
   
         & .loginAction {
