@@ -10,78 +10,122 @@
     display: flex;
     align-items: center;
 
-    & .loginForm {
+    & .tabContainer {
       margin: 40px;
       width: 100%;
 
-      & h4 {
-        margin-bottom: 20px;
+      & .indicator {
+        background-color: $primaryColor;
       }
 
-      & .inputField {
-        margin-bottom: 10px;
-        font-size: 9px;
-
-        & .underline {
-          &::after {
-            border-bottom: 2px solid $primaryColor;
-          }
-        }
-
-        & .error {
-          &::after {
-            border-bottom: 2px solid red;
-          }
-        }
-
-        & .title {
-          color: $primaryColor;
-        }
-      }
-
-      & .errorMessage {
-        color: red;
-        font-style: italic;
-        text-align: left;
-        margin: 10px 0;
-      }
-
-      & .saveCredential {
-        display: flex;
-        justify-content: left;
-        margin: 10px 0 10px -10px;
-      }
-
-      & .savedCredential {
+      & .selected {
         color: $primaryColor;
       }
 
-      & .loginAction {
-        display: flex;
-        justify-content: center;
+      & h4 {
+        margin-bottom: 30px;
+      }
 
-        & .signinButton {
-          background-color: $primaryColor;
-          color: #ffffff;
-          &:hover {
-            background-color: $secondaryColor;
-            color: #000000;
+      & header {
+        box-shadow: none !important;
+      }
+
+      & .loginForm, & .signupForm {
+        & .inputField {
+          margin-bottom: 10px;
+          font-size: 9px;
+  
+          & .underline {
+            &::after {
+              border-bottom: 2px solid $primaryColor;
+            }
+          }
+  
+          & .error {
+            &::after {
+              border-bottom: 2px solid red;
+            }
+          }
+  
+          & .title {
+            color: $primaryColor;
           }
         }
-
-        & .signinButtonWithoutCredential {
-          border: 1px solid $primaryColor !important;
-          background-color: transparent;
+  
+        & .errorMessage {
+          color: red;
+          font-style: italic;
+          text-align: left;
+          margin: 10px 0;
+        }
+  
+        & .saveCredential {
+          display: flex;
+          justify-content: left;
+          margin: 10px 0 10px -10px;
+          text-align: left;
+        }
+  
+        & .savedCredential {
           color: $primaryColor;
-          &:hover {
-            border: 1px solid $secondaryColor !important;
-            background-color: $secondaryColor;
-            color: #000000;
+        }
+
+        & .link {
+          color: $primaryColor;
+          margin: 0 5px;
+        }
+  
+        & .loginAction {
+          display: flex;
+          justify-content: center;
+  
+          & .signinButton {
+            background-color: $primaryColor;
+            color: #ffffff;
+            &:hover {
+              background-color: $secondaryColor;
+              color: #000000;
+            }
+          }
+  
+          & .signinButtonWithoutCredential {
+            border: 1px solid $primaryColor !important;
+            background-color: transparent;
+            color: $primaryColor;
+            &:hover {
+              border: 1px solid $secondaryColor !important;
+              background-color: $secondaryColor;
+              color: #000000;
+            }
+          }
+  
+          & .or {
+            margin: 0 40px;
+          }
+
+          @media (max-width: 500px) {
+            display: block;
+
+            & .signinButton,
+            & .signinButtonWithoutCredential {
+              margin: 5px 0;
+              width: 100%;
+            }
+
+            & .or {
+              display: none;
+            }
           }
         }
 
-        & .or {
-          margin: 0 40px;
+        & .signupLink {
+          font-style: italic;
+
+          & .link {
+            padding-left: 5px;
+            cursor: pointer;
+            color: $primaryColor;
+          }
         }
       }
 
