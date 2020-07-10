@@ -1,352 +1,16 @@
 import React from "react";
-import classNames from "classnames";
 import { v4 as uuidv4 } from "uuid";
 import SwipeableViews from "react-swipeable-views";
-import { signupFields } from "../helpers/constant";
+import { signupFields, TermAnConditions } from "../helpers/constant";
 import {
-  Card,
   Grid,
-  TextField,
   Typography,
-  InputAdornment,
-  IconButton,
-  Tooltip,
-  Checkbox,
-  FormControlLabel,
-  Toolbar,
   AppBar,
   Tabs,
   Tab,
-  Box,
-  Link,
 } from "@material-ui/core";
-import { Snackbar, Button } from "../components/basic";
-import {
-  AccountCircleOutlined,
-  VpnKeyOutlined,
-  VisibilityOutlined,
-  VisibilityOffOutlined,
-  TextFieldsOutlined,
-  PhoneOutlined,
-  MailOutline,
-  CalendarTodayOutlined,
-  LocationOnOutlined,
-} from "@material-ui/icons";
+import { LoginForm, SignupForm, TabPanel } from '../components/complex';
 import styles from "./Login.module.scss";
-
-class LoginForm extends React.Component {
-  // Render
-  render = () => {
-    const {
-      isError,
-      isPasswordRevealed,
-      errorMessage,
-      username,
-      password,
-      isSaveCredential,
-      loading,
-      anonymousLoading,
-      handleChangeState,
-      submit,
-      submitWithoutCredential,
-      navigateToSignup,
-    } = this.props;
-
-    return (
-      <div className={styles.loginForm}>
-        <TextField
-          classes={{ root: styles.inputField }}
-          label="Tài khoản/Email"
-          type="text"
-          fullWidth
-          disabled={loading || anonymousLoading}
-          error={isError}
-          size="medium"
-          margin="normal"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircleOutlined />
-              </InputAdornment>
-            ),
-            classes: {
-              underline: isError ? styles.error : styles.underline,
-            },
-          }}
-          InputLabelProps={{
-            classes: {
-              focused: styles.title,
-            },
-          }}
-          value={username}
-          onChange={(user) => handleChangeState("username", user)}
-          onFocus={() => handleChangeState("isError", false)}
-        />
-        <TextField
-          classes={{ root: styles.inputField }}
-          label="Mật khẩu"
-          type={isPasswordRevealed ? "text" : "password"}
-          fullWidth
-          disabled={loading || anonymousLoading}
-          error={isError}
-          size="medium"
-          margin="normal"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <VpnKeyOutlined />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <Tooltip
-                  title={isPasswordRevealed ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
-                >
-                  <IconButton
-                    onClick={() => {
-                      handleChangeState(
-                        "isPasswordRevealed",
-                        !isPasswordRevealed
-                      );
-                    }}
-                  >
-                    {!isPasswordRevealed ? (
-                      <VisibilityOffOutlined />
-                    ) : (
-                      <VisibilityOutlined />
-                    )}
-                  </IconButton>
-                </Tooltip>
-              </InputAdornment>
-            ),
-            classes: {
-              underline: isError ? styles.error : styles.underline,
-            },
-          }}
-          InputLabelProps={{
-            classes: {
-              focused: styles.title,
-            },
-          }}
-          value={password}
-          onChange={(pass) => handleChangeState("password", pass)}
-          onFocus={() => handleChangeState("isError", false)}
-        />
-        {isError && (
-          <Typography variant="subtitle2" className={styles.errorMessage}>
-            {errorMessage}
-          </Typography>
-        )}
-        <FormControlLabel
-          className={styles.saveCredential}
-          disabled={loading || anonymousLoading}
-          control={
-            <Checkbox
-              value={isSaveCredential}
-              onChange={(e) =>
-                handleChangeState("isSaveCredential", e.target.checked)
-              }
-              classes={{
-                checked: styles.savedCredential,
-              }}
-            />
-          }
-          label="Lưu mật khẩu cho lần đăng nhập tiếp theo"
-        />
-        <Toolbar className={styles.loginAction} disableGutters>
-          <Button
-            className={styles.signinButton}
-            label="Đăng nhập"
-            variant="contained"
-            size="large"
-            loading={loading}
-            disabled={loading || anonymousLoading}
-            onClick={() => submit(username, password)}
-          />
-          <Typography variant="subtitle2" className={styles.or}>
-            hoặc
-          </Typography>
-          <Button
-            className={styles.signinButtonWithoutCredential}
-            label="Đăng nhập với tư cách khách"
-            variant="contained"
-            size="large"
-            loading={anonymousLoading}
-            disabled={loading || anonymousLoading}
-            onClick={() => submitWithoutCredential()}
-          />
-        </Toolbar>
-        <Typography variant="caption" className={styles.signupLink}>
-          Chưa có tài khoản?
-          <Link
-            classes={{ root: styles.link }}
-            onClick={() => navigateToSignup(1)}
-          >
-            Đăng ký ngay
-          </Link>
-        </Typography>
-      </div>
-    );
-  };
-}
-
-class SignupForm extends React.Component {
-  customRenderIcon = (iconType) => {
-    switch (iconType) {
-      case "name":
-        return <TextFieldsOutlined />;
-      case "phone":
-        return <PhoneOutlined />;
-      case "email":
-        return <MailOutline />;
-      case "address":
-        return <LocationOnOutlined />;
-      case "date":
-        return <CalendarTodayOutlined />;
-      default:
-        return;
-    }
-  };
-
-  render = () => {
-    const {
-      signupData,
-      isAgreeTermAndCondition,
-      agreeTermAndCondition,
-      showTermAndCondition,
-      loading,
-      isError,
-      errorMessage,
-      returnToLogin,
-      handleChangeState,
-      handleChangeStateArray,
-      submitForm,
-    } = this.props;
-
-    return (
-      <div className={styles.signupForm}>
-        <Grid container spacing={2}>
-          {signupData.map((data, index) => (
-            <Grid
-              item
-              key={index}
-              md={data.size.colMd}
-              sm={data.size.colSM}
-              xs={data.size.colXs}
-            >
-              <TextField
-                classes={{ root: styles.inputField }}
-                label={data.label}
-                value={data.value}
-                fullWidth
-                error={data.error}
-                type={data.type === "date" ? "text" : data.type}
-                size="medium"
-                margin="normal"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      {this.customRenderIcon(data.icon)}
-                    </InputAdornment>
-                  ),
-                  classes: {
-                    underline: data.error? styles.error : styles.underline,
-                  },
-                }}
-                InputLabelProps={{
-                  classes: {
-                    focused: styles.title,
-                  },
-                }}
-                onChange={(value) =>
-                  handleChangeStateArray("signupData", "value", value.target.value, index)
-                }
-                onFocus={() => {
-                  handleChangeState("isError", false)
-                  handleChangeStateArray("signupData", "error", false, index)
-                }}
-              />
-            </Grid>
-          ))}
-        </Grid>
-        {isError && (
-          <Typography variant="subtitle2" className={styles.errorMessage}>
-            {errorMessage}
-          </Typography>
-        )}
-        <FormControlLabel
-          className={styles.saveCredential}
-          disabled={false}
-          control={
-            <Checkbox
-              value={isAgreeTermAndCondition}
-              classes={{
-                checked: styles.savedCredential,
-              }}
-              onChange={(e) => agreeTermAndCondition(e.target.checked)}
-            />
-          }
-          label={
-            <Typography variant="subtitle2">
-              Tôi đồng ý với các
-              {
-                <Link
-                  classes={{ root: styles.link }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    showTermAndCondition();
-                  }}
-                >
-                  Điều khoản
-                </Link>
-              }
-              của Xứ đoàn
-            </Typography>
-          }
-        />
-        <Toolbar className={styles.loginAction} disableGutters>
-          <Button
-            className={styles.signinButtonWithoutCredential}
-            label="Hủy"
-            variant="contained"
-            size="large"
-            loading={loading}
-            disabled={loading}
-            onClick={() => returnToLogin(0)}
-          />
-          <div className={styles.or} />
-          <Button
-            className={styles.signinButton}
-            label="Đăng ký"
-            variant="contained"
-            size="large"
-            loading={loading}
-            disabled={loading || !isAgreeTermAndCondition}
-            onClick={() => submitForm()}
-          />
-        </Toolbar>
-      </div>
-    );
-  };
-}
-
-class TabPanel extends React.Component {
-  render = () => {
-    const { children, value, index, ...props } = this.props;
-
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`full-width-tabpanel-${index}`}
-        aria-labelledby={`full-width-tabpanel-${index}`}
-        {...props}
-      >
-        {value === index && <Box p={1}>{children}</Box>}
-      </div>
-    );
-  };
-}
 
 class Login extends React.Component {
   constructor(props) {
@@ -363,8 +27,9 @@ class Login extends React.Component {
       anonymousLoading: false,
       tabIndex: 0,
       isAgreeTermAndCondition: false,
-      isShowTermAndCondition: false,
+      isShowTermAndCondition: null,
       signupData: signupFields,
+      term: TermAnConditions,
     };
 
     this.state = {...this.initialState};
@@ -375,12 +40,14 @@ class Login extends React.Component {
   // Sub methods
   handleChangeState = (state, value) => {
     const result = {};
-    if (typeof value === "object" && value.hasOwnProperty("target")) {
+    if (typeof value === "object" && value.hasOwnProperty("target") && value.target !== null) {
       value.preventDefault();
       result[state] = value.target.value;
-      console.log("this?");
+    } else if (typeof value === "object" && value.hasOwnProperty("currentTarget") && value.currentTarget !== null) {
+      value.event.preventDefault();
+      result[state] = value.currentTarget;
     } else {
-      result[state] = value;
+      result[state] = value === 'null'? null : value;
     }
     this.setState(result);
   };
@@ -462,6 +129,7 @@ class Login extends React.Component {
       isAgreeTermAndCondition,
       isShowTermAndCondition,
       signupData,
+      term,
     } = this.state;
 
     return (
@@ -510,6 +178,7 @@ class Login extends React.Component {
               onChangeIndex={(e, index) =>
                 this.handleChangeState("tabIndex", index)
               }
+              animateHeight
             >
               <TabPanel value={tabIndex} index={0} dir="right">
                 <LoginForm
@@ -538,15 +207,6 @@ class Login extends React.Component {
                   signupData={signupData}
                   isAgreeTermAndCondition={isAgreeTermAndCondition}
                   isShowTermAndCondition={isShowTermAndCondition}
-                  showTermAndCondition={() =>
-                    this.handleChangeState(
-                      "isShowTermAndCondition",
-                      !isShowTermAndCondition
-                    )
-                  }
-                  agreeTermAndCondition={(value) =>
-                    this.handleChangeState("isAgreeTermAndCondition", value)
-                  }
                   loading={loading}
                   isError={isError}
                   errorMessage={errorMessage}
@@ -561,6 +221,7 @@ class Login extends React.Component {
                     this.handleChangeStateArray(state, field, value, index)
                   }
                   submitForm={() => this.signUp(signupData)}
+                  termAndCondition={term}
                 />
               </TabPanel>
             </SwipeableViews>

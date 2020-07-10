@@ -100,11 +100,16 @@ export const signupFields = [
       colXs: 12,
     },
     icon: "date",
-    type: "date",
+    type: "text",
     error: false,
   },
 ];
 
-export default {
-  signupFields,
-};
+export const TermAnConditions = [
+  'Xứ Đoàn là một tổ chức Công Giáo phi lợi nhuận, vì thế:',
+  '1. Xin không dùng trang web này vì mục đích lợi nhuận',
+  '2. Các anh/chị là thành viên Xứ Đoàn khi được cấp tài khoản vui lòng không chia sẻ thông tin',
+  '3. Khi tài khoản không truy cập được, vui lòng báo cho Ban Quản trị để được giải quyết',
+  '4. Vì lí do nào đó, khi các anh/chị không còn phục vụ trong Xứ Đoàn, xin báo Ban Quản trị để xóa tài khoản'
+]
+
