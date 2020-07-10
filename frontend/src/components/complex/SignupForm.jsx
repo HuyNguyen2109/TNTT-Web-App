@@ -11,7 +11,7 @@ import {
   Link,
 } from "@material-ui/core";
 import { Button } from "../basic";
-import { TermAndCondition, DatePicker } from "../complex";
+import { TermAndCondition, DatePicker, CustomToolbarDatePicker } from "../complex";
 import {
   TextFieldsOutlined,
   PhoneOutlined,
@@ -104,7 +104,7 @@ export default class SignupForm extends React.Component {
                     handleChangeStateArray("signupData", "error", false, index);
                   }}
                 />
-              ) : (
+              ) : data.label === 'Bổn mạng' ? (
                 <DatePicker
                   classes={{ root: styles.inputField }}
                   label={data.label}
@@ -113,7 +113,7 @@ export default class SignupForm extends React.Component {
                   value={
                     data.value !== ""
                       ? data.value
-                      : moment().format("YYYY-DD-MM")
+                      : moment().format("YYYY-MM-DD")
                   }
                   InputProps={{
                     startAdornment: (
@@ -135,10 +135,49 @@ export default class SignupForm extends React.Component {
                     handleChangeStateArray(
                       "signupData",
                       "value",
-                      moment(date).format("YYYY-DD-MM").toString(),
+                      moment(date).format("MM-DD").toString(),
                       index
                     )
                   }
+                  format='DD/MM'
+                  ToolbarComponent={CustomToolbarDatePicker}
+                />
+              ) : (
+                <DatePicker
+                  classes={{ root: styles.inputField }}
+                  label={data.label}
+                  margin="normal"
+                  size="medium"
+                  value={
+                    data.value !== ""
+                      ? data.value
+                      : moment().format("YYYY-MM-DD")
+                  }
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        {this.customRenderIcon(data.icon)}
+                      </InputAdornment>
+                    ),
+                    classes: {
+                      input: styles.input,
+                      underline: data.error ? styles.error : styles.underline,
+                    },
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      focused: styles.title,
+                    },
+                  }}
+                  handleChangeState={(date) =>
+                    handleChangeStateArray(
+                      "signupData",
+                      "value",
+                      moment(date).format("YYYY-MM-DD").toString(),
+                      index
+                    )
+                  }
+                  format="DD/MM/YYYY"
                 />
               )}
             </Grid>
@@ -164,7 +203,7 @@ export default class SignupForm extends React.Component {
             />
           }
           label={
-            <Typography variant="subtitle2">
+            <Typography variant="body1">
               Tôi đồng ý với các
               {
                 <Link

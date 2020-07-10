@@ -113,6 +113,7 @@ class Login extends React.Component {
         })
       }
     });
+    console.log(data)
   };
   //Render
   render = () => {

@@ -6,12 +6,6 @@ import classNames from "classnames";
 import styles from "./TermAndCondition.module.scss";
 
 export default class TermAndCondition extends React.Component {
-  componentDidUpdate = (prevProps) => {
-    if (this.props.anchorEl !== prevProps.anchorEl) {
-      console.log(this.props.anchorEl);
-    }
-  };
-
   render = () => {
     const { anchorEl, title, data, className, onHandleClose } = this.props;
     const open = Boolean(anchorEl);
