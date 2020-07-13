@@ -20,6 +20,12 @@
     & .input {
       font-size: 17px;
       margin: 10px 0;
+      caret-color: $primaryColor;
+    }
+    
+    & .password {
+      font-size: 34px;
+      caret-color: transparent;
     }
 
     & .title {
@@ -106,5 +112,9 @@
       cursor: pointer;
       color: $primaryColor;
     }
+  }
+  & .displayBlock {
+    display: block;
+    margin: 8px 0;
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Popover, Divider, Typography } from "@material-ui/core";
+import { InfoOutlined } from '@material-ui/icons';
 import { Button } from "../basic";
 import classNames from "classnames";
 
@@ -31,6 +32,7 @@ export default class TermAndCondition extends React.Component {
         }}
       >
         <Typography variant="h6" className={styles.title}>
+          <InfoOutlined fontSize='large' className={styles.iconTitle} />
           {title}
         </Typography>
         <Divider />

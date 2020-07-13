@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from 'classnames';
 import {
   TextField,
   Typography,
@@ -106,7 +107,7 @@ export default class LoginForm extends React.Component {
               </InputAdornment>
             ),
             classes: {
-              input: styles.input,
+              input: isPasswordRevealed ? styles.input : styles.password,
               underline: isError ? styles.error : styles.underline,
             },
           }}
@@ -170,6 +171,14 @@ export default class LoginForm extends React.Component {
             onClick={() => navigateToSignup(1)}
           >
             Đăng ký ngay
+          </Link>
+        </Typography>
+        <Typography variant="caption" className={classNames(styles.signupLink, styles.displayBlock)}>
+          <Link
+            classes={{ root: styles.link }}
+            onClick={() => handleChangeState("isforgotDialogOpen", true)}
+          >
+            Quên mật khẩu?
           </Link>
         </Typography>
       </div>

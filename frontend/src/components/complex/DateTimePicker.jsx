@@ -22,14 +22,27 @@ const materialTheme = createMuiTheme({
     MuiButton: {
       textPrimary: {
         marginRight: "5px !important",
-        backgroundColor: primaryColor,
-        color: "#fff",
         transition: "0.15s ease",
         borderRadius: "7px",
-        "&:hover": {
-          backgroundColor: secondaryColor,
-          transform: "scale(1.2)",
-          color: "#000",
+        "&:first-child": {
+          backgroundColor: 'transparent',
+          border: `1px solid ${primaryColor}`,
+          color: primaryColor,
+          "&:hover": {
+            backgroundColor: secondaryColor,
+            border: `1px solid ${secondaryColor}`,
+            transform: "scale(1.2)",
+            color: "#000",
+          },
+        },
+        "&:last-child": {
+          backgroundColor: primaryColor,
+          color: "#fff",
+          "&:hover": {
+            backgroundColor: secondaryColor,
+            transform: "scale(1.2)",
+            color: "#000",
+          },
         },
       },
     },
@@ -54,10 +67,6 @@ const materialTheme = createMuiTheme({
 });
 
 export default class CustomizedDatePicker extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render = () => {
     const {
       label,

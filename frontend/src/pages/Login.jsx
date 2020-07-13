@@ -30,6 +30,7 @@ class Login extends React.Component {
       isShowTermAndCondition: null,
       signupData: signupFields,
       term: TermAnConditions,
+      isforgotDialogOpen: false,
     };
 
     this.state = {...this.initialState};
@@ -85,6 +86,7 @@ class Login extends React.Component {
   }
   // Methods
   login = (username, password) => {
+    // TODO
     this.setState({ loading: true });
     if (username === "" || password === "") {
       this.setState({
@@ -104,6 +106,7 @@ class Login extends React.Component {
   };
 
   signUp = (data) => {
+    // TODO
     data.forEach((el) => {
       if(el.value === '') {
         el.error = true;
