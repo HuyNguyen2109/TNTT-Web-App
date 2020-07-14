@@ -4,3 +4,9 @@ $error: #f44336;
 $success: #4caf50;
 $info: #2196f3;
 $warning: #f9a825;
+$background: #f7f7f7;
+
+:export {
+  primary: $primaryColor;
+  secondary: $secondaryColor;
+}

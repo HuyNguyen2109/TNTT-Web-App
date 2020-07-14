@@ -1,0 +1,16 @@
+@import "../../base.module.scss";
+
+.Dialog {
+  & .paper {
+    border-radius: 15px ;
+  }
+
+  & .title {
+    padding: 10px;
+    text-align: center;
+
+    & .spacer {
+      flex-grow: 1;
+    }
+  }
+}

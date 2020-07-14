@@ -2,10 +2,10 @@ import React from "react";
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme, InputAdornment } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
-import "../../base.module.scss";
-import { primaryColor, secondaryColor } from "../../helpers/constant";
+import variables from '../../base.module.scss';
+import styles from "./DateTimePicker.module.scss";
 
 moment.locale("vi");
 
@@ -13,7 +13,7 @@ const materialTheme = createMuiTheme({
   overrides: {
     MuiPickersToolbar: {
       toolbar: {
-        backgroundColor: primaryColor,
+        backgroundColor: variables.primary,
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
@@ -25,21 +25,21 @@ const materialTheme = createMuiTheme({
         transition: "0.15s ease",
         borderRadius: "7px",
         "&:first-child": {
-          backgroundColor: 'transparent',
-          border: `1px solid ${primaryColor}`,
-          color: primaryColor,
+          backgroundColor: "transparent",
+          border: `1px solid ${variables.primary}`,
+          color: variables.primary,
           "&:hover": {
-            backgroundColor: secondaryColor,
-            border: `1px solid ${secondaryColor}`,
+            backgroundColor: variables.secondary,
+            border: `1px solid ${variables.secondary}`,
             transform: "scale(1.2)",
             color: "#000",
           },
         },
         "&:last-child": {
-          backgroundColor: primaryColor,
+          backgroundColor: variables.primary,
           color: "#fff",
           "&:hover": {
-            backgroundColor: secondaryColor,
+            backgroundColor: variables.secondary,
             transform: "scale(1.2)",
             color: "#000",
           },
@@ -48,15 +48,21 @@ const materialTheme = createMuiTheme({
     },
     MuiPickersDay: {
       daySelected: {
-        backgroundColor: primaryColor,
+        backgroundColor: variables.primary,
         "&:hover": {
-          backgroundColor: secondaryColor,
+          backgroundColor: variables.secondary,
           color: "#000",
         },
       },
       current: {
-        color: primaryColor,
+        color: variables.primary,
+        border: `1px solid ${variables.primary}`
       },
+    },
+    MuiPickersYear:{
+      yearSelected:{
+        color: variables.primary
+      }
     },
     MuiPickersCalendarHeader: {
       transitionContainer: {
@@ -73,6 +79,8 @@ export default class CustomizedDatePicker extends React.Component {
       value,
       handleChangeState,
       customToolbar,
+      isError,
+      icon,
       ...props
     } = this.props;
     return (
@@ -83,12 +91,30 @@ export default class CustomizedDatePicker extends React.Component {
           locale="vi"
         >
           <DatePicker
+            classes={{ root: styles.inputField }}
             value={value}
             onChange={(date) => handleChangeState(date)}
             label={label}
             fullWidth
             variant="dialog"
             inputVariant="standard"
+            margin="normal"
+            size="medium"
+            allowKeyboardControl
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">{icon}</InputAdornment>
+              ),
+              classes: {
+                input: styles.input,
+                underline: isError ? styles.error : styles.underline,
+              },
+            }}
+            InputLabelProps={{
+              classes: {
+                focused: styles.title,
+              },
+            }}
             {...props}
           />
         </MuiPickersUtilsProvider>

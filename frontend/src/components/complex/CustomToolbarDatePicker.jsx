@@ -18,15 +18,16 @@ const CustomToolbar = function (props) {
         disabled
         onClick={handleChangeViewClick("year")}
         variant="h6"
-        label={date.format("dddd")}
+        label={date.format("ddd")}
         selected={openView === "date"}
+        style={{opacity: '0.54'}}
       />
       <ToolbarButton
         onClick={handleChangeViewClick("date")}
         disabled
         variant="h4"
         selected={openView === "date"}
-        label={date.format("MMMM Do")}
+        label={date.format("MMMM, Do")}
       />
     </PickerToolbar>
   );

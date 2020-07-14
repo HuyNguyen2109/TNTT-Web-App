@@ -79,7 +79,7 @@ export const signupFields = [
   },
   {
     label: "Sinh Nhật",
-    value: "",
+    value: null,
     required: true,
     size: {
       colMd: 6,
@@ -92,7 +92,7 @@ export const signupFields = [
   },
   {
     label: "Bổn mạng",
-    value: "",
+    value: null,
     required: true,
     size: {
       colMd: 6,
@@ -105,6 +105,21 @@ export const signupFields = [
   },
 ];
 
+export const signinFields = [
+  {
+    label: 'Tài khoản/Email',
+    type: 'text',
+    key: 'username',
+    isCustomAction: false,
+  },
+  {
+    label: 'Mật khẩu',
+    type: 'password',
+    key: 'password',
+    isCustomAction: true,
+  }
+]
+
 export const TermAnConditions = [
   "Xứ Đoàn là một tổ chức Công Giáo phi lợi nhuận, vì thế:",
   "1. Xin không dùng trang web này vì mục đích lợi nhuận",
@@ -113,6 +128,3 @@ export const TermAnConditions = [
   "4. Vì lí do nào đó, khi các anh/chị không còn phục vụ trong Xứ Đoàn, xin báo Ban Quản trị để xóa tài khoản",
 ];
 
-export const primaryColor = "#00bcd4";
-export const secondaryColor = "#00e5ff";
-// --> Please also change the color in base.module.scss

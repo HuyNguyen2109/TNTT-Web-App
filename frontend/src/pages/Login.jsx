@@ -79,7 +79,7 @@ class Login extends React.Component {
     this.setState(this.initialState);
     let array = [...this.state.signupData];
     array.forEach(el => {
-      el.value = '';
+      el.value = el.type === 'date' ? null : '';
       el.error = false
     })
     this.setState({signupData: array})

@@ -1,7 +1,6 @@
 import React from "react";
-import classNames from 'classnames';
+import classNames from "classnames";
 import {
-  TextField,
   Typography,
   InputAdornment,
   IconButton,
@@ -11,7 +10,7 @@ import {
   Toolbar,
   Link,
 } from "@material-ui/core";
-import { Snackbar, Button } from "../basic";
+import { Snackbar, Button, Input } from "../basic";
 import {
   AccountCircleOutlined,
   VpnKeyOutlined,
@@ -19,8 +18,19 @@ import {
   VisibilityOffOutlined,
 } from "@material-ui/icons";
 import styles from "./LoginSignupForm.module.scss";
+import { signinFields } from "../../helpers/constant";
 
 export default class LoginForm extends React.Component {
+  customRenderIcon = (iconType) => {
+    switch (iconType) {
+      case "username":
+        return <AccountCircleOutlined />;
+      case "password":
+        return <VpnKeyOutlined />;
+      default:
+        return;
+    }
+  };
   // Render
   render = () => {
     const {
@@ -40,86 +50,50 @@ export default class LoginForm extends React.Component {
 
     return (
       <div className={styles.loginForm}>
-        <TextField
-          classes={{ root: styles.inputField }}
-          label="Tài khoản/Email"
-          type="text"
-          fullWidth
-          disabled={loading || anonymousLoading}
-          error={isError}
-          size="medium"
-          margin="normal"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircleOutlined />
-              </InputAdornment>
-            ),
-            classes: {
-              input: styles.input,
-              underline: isError ? styles.error : styles.underline,
-            },
-          }}
-          InputLabelProps={{
-            classes: {
-              focused: styles.title,
-            },
-          }}
-          value={username}
-          onChange={(user) => handleChangeState("username", user)}
-          onFocus={() => handleChangeState("isError", false)}
-        />
-        <TextField
-          classes={{ root: styles.inputField }}
-          label="Mật khẩu"
-          type={isPasswordRevealed ? "text" : "password"}
-          fullWidth
-          disabled={loading || anonymousLoading}
-          error={isError}
-          size="medium"
-          margin="normal"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <VpnKeyOutlined />
-              </InputAdornment>
-            ),
-            endAdornment: (
-              <InputAdornment position="end">
-                <Tooltip
-                  title={isPasswordRevealed ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
-                >
-                  <IconButton
-                    onClick={() => {
-                      handleChangeState(
-                        "isPasswordRevealed",
-                        !isPasswordRevealed
-                      );
-                    }}
+        {signinFields.map((data, idx) => (
+          <Input
+            key={idx}
+            label={data.label}
+            isError={isError}
+            type={
+              data.type === "password" && isPasswordRevealed
+                ? 'text'
+                : data.type
+            }
+            disabled={loading || anonymousLoading}
+            icon={this.customRenderIcon(data.key)}
+            onChange={(val) => handleChangeState(data.key, val)}
+            onFocus={() => {
+              console.log(data.type)
+              handleChangeState("isError", false)
+            }}
+            customAction={
+              data.isCustomAction && (
+                <InputAdornment position="end">
+                  <Tooltip
+                    title={isPasswordRevealed ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
                   >
-                    {!isPasswordRevealed ? (
-                      <VisibilityOffOutlined />
-                    ) : (
-                      <VisibilityOutlined />
-                    )}
-                  </IconButton>
-                </Tooltip>
-              </InputAdornment>
-            ),
-            classes: {
-              input: isPasswordRevealed ? styles.input : styles.password,
-              underline: isError ? styles.error : styles.underline,
-            },
-          }}
-          InputLabelProps={{
-            classes: {
-              focused: styles.title,
-            },
-          }}
-          value={password}
-          onChange={(pass) => handleChangeState("password", pass)}
-          onFocus={() => handleChangeState("isError", false)}
-        />
+                    <IconButton
+                      onClick={() => {
+                        handleChangeState(
+                          "isPasswordRevealed",
+                          !isPasswordRevealed
+                        );
+                      }}
+                    >
+                      {!isPasswordRevealed ? (
+                        <VisibilityOffOutlined />
+                      ) : (
+                        <VisibilityOutlined />
+                      )}
+                    </IconButton>
+                  </Tooltip>
+                </InputAdornment>
+              )
+            }
+            revealPassword={isPasswordRevealed}
+          />
+        ))}
         {isError && (
           <Typography variant="subtitle2" className={styles.errorMessage}>
             {errorMessage}
@@ -173,7 +147,10 @@ export default class LoginForm extends React.Component {
             Đăng ký ngay
           </Link>
         </Typography>
-        <Typography variant="caption" className={classNames(styles.signupLink, styles.displayBlock)}>
+        <Typography
+          variant="caption"
+          className={classNames(styles.signupLink, styles.displayBlock)}
+        >
           <Link
             classes={{ root: styles.link }}
             onClick={() => handleChangeState("isforgotDialogOpen", true)}

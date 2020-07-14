@@ -2,16 +2,18 @@ import React from "react";
 import moment from "moment";
 import {
   Grid,
-  TextField,
   Typography,
-  InputAdornment,
   Checkbox,
   FormControlLabel,
   Toolbar,
   Link,
 } from "@material-ui/core";
-import { Button } from "../basic";
-import { TermAndCondition, DatePicker, CustomToolbarDatePicker } from "../complex";
+import { Button, Input } from "../basic";
+import {
+  TermAndCondition,
+  DatePicker,
+  CustomToolbarDatePicker,
+} from "../complex";
 import {
   TextFieldsOutlined,
   PhoneOutlined,
@@ -66,31 +68,12 @@ export default class SignupForm extends React.Component {
               xs={data.size.colXs}
             >
               {data.type !== "date" ? (
-                <TextField
-                  classes={{ root: styles.inputField }}
+                <Input
                   label={data.label}
                   value={data.value}
-                  fullWidth
-                  error={data.error}
+                  isError={data.error}
                   type={data.type}
-                  size="medium"
-                  margin="normal"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {this.customRenderIcon(data.icon)}
-                      </InputAdornment>
-                    ),
-                    classes: {
-                      input: styles.input,
-                      underline: data.error ? styles.error : styles.underline,
-                    },
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      focused: styles.title,
-                    },
-                  }}
+                  icon={this.customRenderIcon(data.icon)}
                   onChange={(value) =>
                     handleChangeStateArray(
                       "signupData",
@@ -104,33 +87,13 @@ export default class SignupForm extends React.Component {
                     handleChangeStateArray("signupData", "error", false, index);
                   }}
                 />
-              ) : data.label === 'Bổn mạng' ? (
+              ) : data.label === "Bổn mạng" ? (
                 <DatePicker
-                  classes={{ root: styles.inputField }}
                   label={data.label}
-                  margin="normal"
-                  size="medium"
-                  value={
-                    data.value !== ""
-                      ? data.value
-                      : moment().format("YYYY-MM-DD")
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {this.customRenderIcon(data.icon)}
-                      </InputAdornment>
-                    ),
-                    classes: {
-                      input: styles.input,
-                      underline: data.error ? styles.error : styles.underline,
-                    },
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      focused: styles.title,
-                    },
-                  }}
+                  value={data.value}
+                  initialFocusedDate={moment().format("YYYY-MM-DD")}
+                  isError={data.error}
+                  icon={this.customRenderIcon(data.icon)}
                   handleChangeState={(date) =>
                     handleChangeStateArray(
                       "signupData",
@@ -139,36 +102,16 @@ export default class SignupForm extends React.Component {
                       index
                     )
                   }
-                  format='DD/MM'
+                  format="DD/MM"
                   ToolbarComponent={CustomToolbarDatePicker}
                 />
               ) : (
                 <DatePicker
-                  classes={{ root: styles.inputField }}
                   label={data.label}
-                  margin="normal"
-                  size="medium"
-                  value={
-                    data.value !== ""
-                      ? data.value
-                      : moment().format("YYYY-MM-DD")
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {this.customRenderIcon(data.icon)}
-                      </InputAdornment>
-                    ),
-                    classes: {
-                      input: styles.input,
-                      underline: data.error ? styles.error : styles.underline,
-                    },
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      focused: styles.title,
-                    },
-                  }}
+                  value={data.value}
+                  initialFocusedDate={moment().format("YYYY-MM-DD")}
+                  isError={data.error}
+                  icon={this.customRenderIcon(data.icon)}
                   handleChangeState={(date) =>
                     handleChangeStateArray(
                       "signupData",
