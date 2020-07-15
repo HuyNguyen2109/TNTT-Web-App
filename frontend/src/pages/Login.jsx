@@ -30,7 +30,10 @@ class Login extends React.Component {
       isShowTermAndCondition: null,
       signupData: signupFields,
       term: TermAnConditions,
-      isforgotDialogOpen: false,
+      isForgotDialogOpen: false,
+      forgotEmail: '',
+      isForgotError: false,
+      forgotDialogLoading: false,
     };
 
     this.state = {...this.initialState};
@@ -86,7 +89,7 @@ class Login extends React.Component {
   }
   // Methods
   login = (username, password) => {
-    // TODO
+    // TODO: integrate with BE
     this.setState({ loading: true });
     if (username === "" || password === "") {
       this.setState({
@@ -100,13 +103,12 @@ class Login extends React.Component {
     }
   };
 
-  loginWithoutCredential = () => {
-    this.setState({ anonymousLoading: true });
-    console.log(`anonymous-${uuidv4().replace(/-/g, "")}`);
-  };
+  submitForgotPassword = (email) => {
+    //TODO: integrate with BE
+  }
 
   signUp = (data) => {
-    // TODO
+    // TODO: integrate with BE
     data.forEach((el) => {
       if(el.value === '') {
         el.error = true;
@@ -134,6 +136,10 @@ class Login extends React.Component {
       isShowTermAndCondition,
       signupData,
       term,
+      isForgotDialogOpen,
+      isForgotError,
+      forgotEmail,
+      forgotDialogLoading,
     } = this.state;
 
     return (
@@ -200,10 +206,14 @@ class Login extends React.Component {
                   submit={(username, password) =>
                     this.login(username, password)
                   }
-                  submitWithoutCredential={() => this.loginWithoutCredential()}
                   navigateToSignup={(value) =>
                     this.handleChangeState("tabIndex", value)
                   }
+                  isForgotDialogOpen={isForgotDialogOpen}
+                  forgotEmail={forgotEmail}
+                  isForgotError={isForgotError}
+                  forgotDialogLoading={forgotDialogLoading}
+                  submitForgotPassword={(email) => this.submitForgotPassword(email)}
                 />
               </TabPanel>
               <TabPanel value={tabIndex} index={1} dir="left">

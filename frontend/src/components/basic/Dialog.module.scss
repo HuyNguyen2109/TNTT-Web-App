@@ -2,15 +2,46 @@
 
 .Dialog {
   & .paper {
-    border-radius: 15px ;
+    @media (min-width: 450px) {
+      border-radius: 15px;
+    }
   }
 
   & .title {
     padding: 10px;
-    text-align: center;
 
     & .spacer {
       flex-grow: 1;
     }
+
+    & .text {
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    & .icon {
+      display: flex;
+      path {
+        color: $error;
+      }
+    }
+  }
+
+  & .close {
+    transition: 0.2s ease;
+    color: #000;
+
+    &:hover {
+      transform: rotate(90deg);
+      transition-duration: 0.2s;
+
+      @media (pointer: coarse) {
+        transform: unset;
+      }
+    }
+  }
+
+  & .content {
+    margin: 15px 0;
   }
 }

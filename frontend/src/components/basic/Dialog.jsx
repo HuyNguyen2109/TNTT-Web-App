@@ -2,13 +2,13 @@ import React from "react";
 import classNames from "classnames";
 import {
   Dialog,
-  useMediaQuery,
   DialogTitle,
   Toolbar,
   Typography,
   IconButton,
   DialogContent,
   DialogActions,
+  Divider,
 } from "@material-ui/core";
 import styles from "./Dialog.module.scss";
 import { CloseOutlined } from "@material-ui/icons";
@@ -24,35 +24,36 @@ export default class CustomizedDialog extends React.Component {
       action,
       handleClose,
     } = this.props;
-    const fullScreen = useMediaQuery("(min-width: 450px)");
     const cn = classNames(styles.Dialog, className);
 
     return (
       <Dialog
         classes={{ root: cn, paper: styles.paper }}
-        fullScreen={fullScreen}
+        fullScreen={window.innerWidth < 450? true : false}
         open={open}
-        onClose={handleClose}
+        fullWidth
+        maxWidth={'sm'}
       >
         <DialogTitle classes={{ root: styles.title }}>
           <Toolbar>
-            {icon}
-            <div className={styles.spacer} />
-            <Typography variant="h6">{title}</Typography>
+            <div className={styles.icon}>{icon}</div>
+            <Typography variant="h6" className={styles.text}>{title}</Typography>
             <div className={styles.spacer} />
             <IconButton
               size='small'
               aria-label='Close'
-              onClick={handleClose()}
+              onClick={() => handleClose(false)}
               className={styles.close}
             >
               <CloseOutlined fontSize='small' />
             </IconButton>
           </Toolbar>
         </DialogTitle>
-        <DialogContent>
+        <Divider />
+        <DialogContent classes={{root: styles.content}}>
           {content}
         </DialogContent>
+        <Divider />
         <DialogActions>
           {action}
         </DialogActions>

@@ -41,33 +41,12 @@
       }
     }
 
-    & .signinButtonWithoutCredential {
-      border: 1px solid $primaryColor !important;
-      background-color: transparent;
-      color: $primaryColor;
-
-      &:hover {
-        border: 1px solid $secondaryColor !important;
-        background-color: $secondaryColor;
-        color: #000000;
-      }
-    }
-
-    & .or {
-      margin: 0 40px;
-    }
-
     @media (max-width: 500px) {
       display: block;
 
-      & .signinButton,
-      & .signinButtonWithoutCredential {
+      & .signinButton {
         margin: 5px 0;
         width: 100%;
-      }
-
-      & .or {
-        display: none;
       }
     }
   }
@@ -84,5 +63,9 @@
   & .displayBlock {
     display: block;
     margin: 8px 0;
+  }
+
+  & .button {
+    color: white
   }
 }

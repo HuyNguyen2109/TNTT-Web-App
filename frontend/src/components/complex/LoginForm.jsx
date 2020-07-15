@@ -10,15 +10,17 @@ import {
   Toolbar,
   Link,
 } from "@material-ui/core";
-import { Snackbar, Button, Input } from "../basic";
+import { Snackbar, Button, Input, Dialog } from "../basic";
 import {
   AccountCircleOutlined,
   VpnKeyOutlined,
   VisibilityOutlined,
   VisibilityOffOutlined,
+  HelpOutlineOutlined,
+  MailOutlined,
 } from "@material-ui/icons";
 import styles from "./LoginSignupForm.module.scss";
-import { signinFields } from "../../helpers/constant";
+import { signinFields, forgotMessage } from "../../helpers/constant";
 
 export default class LoginForm extends React.Component {
   customRenderIcon = (iconType) => {
@@ -44,8 +46,12 @@ export default class LoginForm extends React.Component {
       anonymousLoading,
       handleChangeState,
       submit,
-      submitWithoutCredential,
       navigateToSignup,
+      isForgotDialogOpen,
+      forgotEmail,
+      isForgotError,
+      forgotDialogLoading,
+      submitForgotPassword,
     } = this.props;
 
     return (
@@ -60,13 +66,12 @@ export default class LoginForm extends React.Component {
                 ? 'text'
                 : data.type
             }
+            value={data.type === "password" ? password : username}
             disabled={loading || anonymousLoading}
             icon={this.customRenderIcon(data.key)}
             onChange={(val) => handleChangeState(data.key, val)}
-            onFocus={() => {
-              console.log(data.type)
-              handleChangeState("isError", false)
-            }}
+            onFocus={() => handleChangeState("isError", false)
+            }
             customAction={
               data.isCustomAction && (
                 <InputAdornment position="end">
@@ -125,18 +130,6 @@ export default class LoginForm extends React.Component {
             disabled={loading || anonymousLoading}
             onClick={() => submit(username, password)}
           />
-          <Typography variant="subtitle2" className={styles.or}>
-            hoặc
-          </Typography>
-          <Button
-            className={styles.signinButtonWithoutCredential}
-            label="Đăng nhập với tư cách khách"
-            variant="contained"
-            size="large"
-            loading={anonymousLoading}
-            disabled={loading || anonymousLoading}
-            onClick={() => submitWithoutCredential()}
-          />
         </Toolbar>
         <Typography variant="caption" className={styles.signupLink}>
           Chưa có tài khoản?
@@ -153,11 +146,48 @@ export default class LoginForm extends React.Component {
         >
           <Link
             classes={{ root: styles.link }}
-            onClick={() => handleChangeState("isforgotDialogOpen", true)}
+            onClick={() => handleChangeState("isForgotDialogOpen", true)}
           >
             Quên mật khẩu?
           </Link>
         </Typography>
+        <Dialog
+          title='Gặp vấn đề với tài khoản?'
+          icon={<HelpOutlineOutlined />}
+          open={isForgotDialogOpen}
+          handleClose={(val) => {
+            handleChangeState('isForgotDialogOpen', val)
+            handleChangeState('forgotEmail', '')
+          }}
+          content={(
+            <React.Fragment>
+              <Typography variant='body1'>{forgotMessage}</Typography>
+              <Input
+                label='Email'
+                type='text'
+                icon={<MailOutlined />}
+                value={forgotEmail}
+                isError={isForgotError}
+                onFocus={() => handleChangeState("isForgotError", false)}
+                onChange={(val) => handleChangeState("forgotEmail", val)}
+              />
+            </React.Fragment>
+          )}
+          action={(
+            <Toolbar>
+              <div style={{flexGlow: '1'}} />
+              <Button
+                style={{backgroundColor: 'transparent'}}
+                label='Xác nhận'
+                variant="contained"
+                size="large"
+                disabled={forgotEmail === '' ? true : false}
+                loading={forgotDialogLoading}
+                onClick={() => submitForgotPassword(forgotEmail)}
+              />
+            </Toolbar>
+          )}
+        />
       </div>
     );
   };

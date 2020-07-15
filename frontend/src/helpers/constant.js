@@ -120,6 +120,8 @@ export const signinFields = [
   }
 ]
 
+export const forgotMessage = 'Bạn quên/không đăng nhập được tài khoản của mình? Nhập email bạn đã đăng kí tài khoản, hệ thống sẽ gửi lại mail xác nhận reset tài khoản cho bạn. Vui lòng theo dõi email để tiến hành lấy lại tài khoản'
+
 export const TermAnConditions = [
   "Xứ Đoàn là một tổ chức Công Giáo phi lợi nhuận, vì thế:",
   "1. Xin không dùng trang web này vì mục đích lợi nhuận",
