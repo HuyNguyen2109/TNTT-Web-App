@@ -11,7 +11,11 @@ export const forgotForm = {
   },
   primaryButtonDisabled: {
     backgroundColor: 'transparent',
-    color: '#f1f1f1',
+    color: 'grey',
     boxShadow: 'none',
+  },
+  errorMessage: {
+    color: 'red',
+    fontStyle: 'italic'
   }
 }

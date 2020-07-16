@@ -63,6 +63,7 @@ export const signupFields = [
     icon: "phone",
     type: "tel",
     error: false,
+    placeholder: 'VD: 038-123-4567'
   },
   {
     label: "Email",
@@ -76,6 +77,7 @@ export const signupFields = [
     icon: "email",
     type: "email",
     error: false,
+    placeholder: 'VD: testmail@someone.net'
   },
   {
     label: "Sinh Nhật",

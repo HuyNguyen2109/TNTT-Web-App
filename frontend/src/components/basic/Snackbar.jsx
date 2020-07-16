@@ -53,6 +53,10 @@ export default class CustomizedSnackbar extends React.Component {
             </Toolbar>
           ),
         }}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
         action={
           <IconButton
             size="small"
@@ -60,7 +64,7 @@ export default class CustomizedSnackbar extends React.Component {
             onClick={() => this.props.onClose()}
             className={styles.close}
           >
-            <CloseOutlined fontSize="medium" />
+            <CloseOutlined fontSize="default" />
           </IconButton>
         }
         transitionDuration={250}

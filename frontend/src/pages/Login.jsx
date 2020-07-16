@@ -1,14 +1,10 @@
 import React from "react";
 import { signupFields, TermAnConditions } from "../helpers/constant";
-import {
-  Grid,
-  Typography,
-  AppBar,
-  Tabs,
-  Tab,
-} from "@material-ui/core";
-import { LockOpenOutlined, PersonAddOutlined } from '@material-ui/icons'
-import { LoginForm, SignupForm, TabPanel } from '../components/complex';
+import { Grid, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
+import { LockOpenOutlined, PersonAddOutlined } from "@material-ui/icons";
+import { LoginForm, SignupForm, TabPanel } from "../components/complex";
+import { Snackbar } from "../components/basic";
+import { validateEmail, removeWhiteSpace } from "../helpers/functions";
 import styles from "./Login.module.scss";
 
 class Login extends React.Component {
@@ -16,26 +12,32 @@ class Login extends React.Component {
     super(props);
 
     this.initialState = {
+      // for Login form
       isPasswordRevealed: false,
       username: "",
       password: "",
       isError: false,
-      errorMessage: "Test error message",
+      errorMessage: "",
       isSaveCredential: false,
       loading: false,
-      anonymousLoading: false,
       tabIndex: 0,
+      // for Signup form
       isAgreeTermAndCondition: false,
       isShowTermAndCondition: null,
       signupData: signupFields,
       term: TermAnConditions,
+      // for forgot dialog
       isForgotDialogOpen: false,
-      forgotEmail: '',
+      forgotEmail: "",
       isForgotError: false,
       forgotDialogLoading: false,
+      //for snackbar
+      isShowSnackbar: false,
+      snackbarType: "",
+      snackbarMessage: "",
     };
 
-    this.state = {...this.initialState};
+    this.state = { ...this.initialState };
   }
 
   // Life cycles
@@ -43,14 +45,22 @@ class Login extends React.Component {
   // Sub methods
   handleChangeState = (state, value) => {
     const result = {};
-    if (typeof value === "object" && value.hasOwnProperty("target") && value.target !== null) {
+    if (
+      typeof value === "object" &&
+      value.hasOwnProperty("target") &&
+      value.target !== null
+    ) {
       value.preventDefault();
-      result[state] = value.target.value;
-    } else if (typeof value === "object" && value.hasOwnProperty("currentTarget") && value.currentTarget !== null) {
+      result[state] = removeWhiteSpace(value.target.value);
+    } else if (
+      typeof value === "object" &&
+      value.hasOwnProperty("currentTarget") &&
+      value.currentTarget !== null
+    ) {
       value.event.preventDefault();
       result[state] = value.currentTarget;
     } else {
-      result[state] = value === 'null'? null : value;
+      result[state] = value === "null" ? null : value;
     }
     this.setState(result);
   };
@@ -62,10 +72,10 @@ class Login extends React.Component {
       array[index][field] = value;
       result[state] = array;
     }
-    if (field === 'error') {
-      array.forEach(el => {
-        el[field] = value
-      })
+    if (field === "error") {
+      array.forEach((el) => {
+        el[field] = value;
+      });
     }
     this.setState(result);
   };
@@ -80,12 +90,12 @@ class Login extends React.Component {
   clearState = () => {
     this.setState(this.initialState);
     let array = [...this.state.signupData];
-    array.forEach(el => {
-      el.value = el.type === 'date' ? null : '';
-      el.error = false
-    })
-    this.setState({signupData: array})
-  }
+    array.forEach((el) => {
+      el.value = el.type === "date" ? null : "";
+      el.error = false;
+    });
+    this.setState({ signupData: array });
+  };
   // Methods
   login = (username, password) => {
     // TODO: integrate with BE
@@ -103,21 +113,47 @@ class Login extends React.Component {
   };
 
   submitForgotPassword = (email) => {
-    //TODO: integrate with BE
-  }
+    //TODO: integrate with BE, this block code below for development UI only
+    this.handleChangeState("forgotDialogLoading", true);
+    if (!validateEmail(email)) {
+      this.setState({
+        isForgotError: true,
+        errorMessage: "Email chưa đúng định dạng!",
+        forgotDialogLoading: false,
+      });
+    } else {
+      console.log(email);
+      setTimeout(() => {
+        this.handleChangeState("isForgotDialogOpen", false);
+        this.handleChangeState("forgotDialogLoading", false);
+        this.handleChangeState("forgotEmail", "");
+        this.setState({
+          isShowSnackbar: true,
+          snackbarType: "success",
+          snackbarMessage: "This is test message without BE integration!",
+        });
+      }, 6000);
+    }
+  };
 
   signUp = (data) => {
     // TODO: integrate with BE
     data.forEach((el) => {
-      if(el.value === '') {
+      if (el.value === "") {
         el.error = true;
         this.setState({
           isError: true,
-          errorMessage: 'Một số trường bị trống, Xin nhập đầy đủ'
-        })
+          errorMessage: "Một số trường bị trống, Xin nhập đầy đủ",
+        });
+      } else if (el.type === "email" && !validateEmail(el.value)) {
+        el.error = true;
+        this.setState({
+          isError: true,
+          errorMessage: "Định dạng email không đúng",
+        });
       }
     });
-    console.log(data)
+    console.log(data);
   };
   //Render
   render = () => {
@@ -129,7 +165,6 @@ class Login extends React.Component {
       errorMessage,
       isSaveCredential,
       loading,
-      anonymousLoading,
       tabIndex,
       isAgreeTermAndCondition,
       isShowTermAndCondition,
@@ -139,6 +174,9 @@ class Login extends React.Component {
       isForgotError,
       forgotEmail,
       forgotDialogLoading,
+      isShowSnackbar,
+      snackbarType,
+      snackbarMessage,
     } = this.state;
 
     return (
@@ -183,56 +221,65 @@ class Login extends React.Component {
                 />
               </Tabs>
             </AppBar>
-            <TabPanel value={tabIndex} index={0} dir="right">
-              <LoginForm
-                isError={isError}
-                isPasswordRevealed={isPasswordRevealed}
-                errorMessage={errorMessage}
-                username={username}
-                password={password}
-                isSaveCredential={isSaveCredential}
-                loading={loading}
-                anonymousLoading={anonymousLoading}
-                handleChangeState={(state, value) =>
-                  this.handleChangeState(state, value)
-                }
-                submit={(username, password) =>
-                  this.login(username, password)
-                }
-                navigateToSignup={(value) =>
-                  this.handleChangeState("tabIndex", value)
-                }
-                isForgotDialogOpen={isForgotDialogOpen}
-                forgotEmail={forgotEmail}
-                isForgotError={isForgotError}
-                forgotDialogLoading={forgotDialogLoading}
-                submitForgotPassword={(email) => this.submitForgotPassword(email)}
-              />
-            </TabPanel>
-            <TabPanel value={tabIndex} index={1} dir="left">
-              <SignupForm
-                signupData={signupData}
-                isAgreeTermAndCondition={isAgreeTermAndCondition}
-                isShowTermAndCondition={isShowTermAndCondition}
-                loading={loading}
-                isError={isError}
-                errorMessage={errorMessage}
-                returnToLogin={(value) =>
-                {
-                  this.handleChangeState("tabIndex", value)
-                  this.clearState()
-                }
-                }
-                handleChangeState={(state, value) => this.handleChangeState(state, value)}
-                handleChangeStateArray={(state, field, value, index) =>
-                  this.handleChangeStateArray(state, field, value, index)
-                }
-                submitForm={() => this.signUp(signupData)}
-                termAndCondition={term}
-              />
-            </TabPanel>
+            <div className={styles.transitionContainer}>
+              <TabPanel value={tabIndex} index={0}>
+                <LoginForm
+                  isError={isError}
+                  isPasswordRevealed={isPasswordRevealed}
+                  errorMessage={errorMessage}
+                  username={username}
+                  password={password}
+                  isSaveCredential={isSaveCredential}
+                  loading={loading}
+                  handleChangeState={(state, value) =>
+                    this.handleChangeState(state, value)
+                  }
+                  submit={(username, password) =>
+                    this.login(username, password)
+                  }
+                  navigateToSignup={(value) =>
+                    this.handleChangeState("tabIndex", value)
+                  }
+                  isForgotDialogOpen={isForgotDialogOpen}
+                  forgotEmail={forgotEmail}
+                  isForgotError={isForgotError}
+                  forgotDialogLoading={forgotDialogLoading}
+                  submitForgotPassword={(email) =>
+                    this.submitForgotPassword(email)
+                  }
+                />
+              </TabPanel>
+              <TabPanel value={tabIndex} index={1}>
+                <SignupForm
+                  signupData={signupData}
+                  isAgreeTermAndCondition={isAgreeTermAndCondition}
+                  isShowTermAndCondition={isShowTermAndCondition}
+                  loading={loading}
+                  isError={isError}
+                  errorMessage={errorMessage}
+                  returnToLogin={(value) => {
+                    this.handleChangeState("tabIndex", value);
+                    this.clearState();
+                  }}
+                  handleChangeState={(state, value) =>
+                    this.handleChangeState(state, value)
+                  }
+                  handleChangeStateArray={(state, field, value, index) =>
+                    this.handleChangeStateArray(state, field, value, index)
+                  }
+                  submitForm={() => this.signUp(signupData)}
+                  termAndCondition={term}
+                />
+              </TabPanel>
+            </div>
           </div>
         </Grid>
+        <Snackbar
+          open={isShowSnackbar}
+          type={snackbarType}
+          message={snackbarMessage}
+          onClose={() => this.handleChangeState("isShowSnackbar", false)}
+        />
       </Grid>
     );
   };

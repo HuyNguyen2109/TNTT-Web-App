@@ -59,10 +59,12 @@
     @media (max-width: 500px) {
       display: block;
 
-      & .signinButton {
+      & .signinButton, & .signinButtonWithoutCredential {
         margin: 5px 0;
         width: 100%;
       }
+
+      
     }
   }
 
@@ -77,6 +79,6 @@
   }
   & .displayBlock {
     display: block;
-    margin: 8px 0;
+    margin: 17px 0;
   }
 }

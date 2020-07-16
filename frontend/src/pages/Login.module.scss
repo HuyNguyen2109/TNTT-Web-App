@@ -9,6 +9,7 @@
     background-color: #ffffff;
     display: flex;
     align-items: center;
+    overflow: hidden;
 
     & .tabContainer {
       margin: 40px;
@@ -34,8 +35,27 @@
         height: 100%;
       }
 
+      & .transitionContainer {
+        @media (min-width: 1024px) {
+          & div[role=tabpanel] {
+            animation: slide-down 5s ease-out;
+          }
+        }
+      }
+
       @media (max-width: 450px) {
         margin: 20px;
+      }
+
+      @keyframes slide-down {
+        0% {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     }
   }

@@ -22,6 +22,7 @@ import {
   LocationOnOutlined,
 } from "@material-ui/icons";
 import styles from "./LoginSignupForm.module.scss";
+import { formatPhoneNumber, removeWhiteSpace } from "../../helpers/functions";
 
 export default class SignupForm extends React.Component {
   customRenderIcon = (iconType) => {
@@ -40,11 +41,6 @@ export default class SignupForm extends React.Component {
         return;
     }
   };
-
-  numberAccept = value => {
-    let isNumber = /^\d+$/;
-    return value.match(isNumber) || ''
-  }
 
   render = () => {
     const {
@@ -83,14 +79,24 @@ export default class SignupForm extends React.Component {
                     handleChangeStateArray(
                       "signupData",
                       "value",
-                      data.type==='tel' ? this.numberAccept(value.target.value) : value.target.value,
+                      data.type === "tel"
+                        ? formatPhoneNumber(
+                            value.target.value
+                              .replace(/[^0-9.]/g, "")
+                              .replace(/(\..*)\./g, "$1")
+                          )
+                        : data.icon === "address"
+                        ? value.target.value
+                        : removeWhiteSpace(value.target.value),
                       index
                     )
                   }
+                  placeholder={data.placeholder && data.placeholder}
                   onFocus={() => {
                     handleChangeState("isError", false);
                     handleChangeStateArray("signupData", "error", false, index);
                   }}
+                  inputProps={data.type === "tel" ? { maxLength: 12 } : {}}
                 />
               ) : data.label === "Bổn mạng" ? (
                 <DatePicker
