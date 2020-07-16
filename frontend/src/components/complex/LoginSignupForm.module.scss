@@ -31,6 +31,21 @@
     display: flex;
     justify-content: center;
 
+    & .signinButtonWithoutCredential {
+      border: 1px solid $primaryColor !important;
+      background-color: transparent;
+      color: $primaryColor;
+      &:hover {
+        border: 1px solid $secondaryColor !important;
+        background-color: $secondaryColor;
+        color: #000000;
+      }
+    }
+
+    & .or {
+      margin: 0 40px;
+    }
+
     & .signinButton {
       background-color: $primaryColor;
       color: #ffffff;
@@ -63,9 +78,5 @@
   & .displayBlock {
     display: block;
     margin: 8px 0;
-  }
-
-  & .button {
-    color: white
   }
 }

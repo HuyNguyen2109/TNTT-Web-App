@@ -41,6 +41,11 @@ export default class SignupForm extends React.Component {
     }
   };
 
+  numberAccept = value => {
+    let isNumber = /^\d+$/;
+    return value.match(isNumber) || ''
+  }
+
   render = () => {
     const {
       signupData,
@@ -78,7 +83,7 @@ export default class SignupForm extends React.Component {
                     handleChangeStateArray(
                       "signupData",
                       "value",
-                      value.target.value,
+                      data.type==='tel' ? this.numberAccept(value.target.value) : value.target.value,
                       index
                     )
                   }

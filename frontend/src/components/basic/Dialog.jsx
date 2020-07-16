@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import styles from "./Dialog.module.scss";
 import { CloseOutlined } from "@material-ui/icons";
+import '../complex/LoginSignupForm.module.scss';
 
 export default class CustomizedDialog extends React.Component {
   render = () => {

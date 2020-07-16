@@ -21,6 +21,7 @@ import {
 } from "@material-ui/icons";
 import styles from "./LoginSignupForm.module.scss";
 import { signinFields, forgotMessage } from "../../helpers/constant";
+import { forgotForm } from "../../helpers/styles";
 
 export default class LoginForm extends React.Component {
   customRenderIcon = (iconType) => {
@@ -153,7 +154,7 @@ export default class LoginForm extends React.Component {
         </Typography>
         <Dialog
           title='Gặp vấn đề với tài khoản?'
-          icon={<HelpOutlineOutlined />}
+          icon={<HelpOutlineOutlined style={forgotForm.icon}/>}
           open={isForgotDialogOpen}
           handleClose={(val) => {
             handleChangeState('isForgotDialogOpen', val)
@@ -177,7 +178,7 @@ export default class LoginForm extends React.Component {
             <Toolbar>
               <div style={{flexGlow: '1'}} />
               <Button
-                style={{backgroundColor: 'transparent'}}
+                style={forgotEmail === '' ? forgotForm.primaryButtonDisabled : forgotForm.primaryButton}
                 label='Xác nhận'
                 variant="contained"
                 size="large"

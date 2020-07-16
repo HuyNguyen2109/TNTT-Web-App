@@ -30,6 +30,10 @@
         box-shadow: none !important;
       }
 
+      & .tabs {
+        height: 100%;
+      }
+
       @media (max-width: 450px) {
         margin: 20px;
       }

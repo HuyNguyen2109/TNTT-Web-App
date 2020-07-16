@@ -9,4 +9,8 @@ $background: #f7f7f7;
 :export {
   primary: $primaryColor;
   secondary: $secondaryColor;
+  error: $error;
+  success: $success;
+  info: $info;
+  warning: $warning;
 }

@@ -1,6 +1,4 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
-import SwipeableViews from "react-swipeable-views";
 import { signupFields, TermAnConditions } from "../helpers/constant";
 import {
   Grid,
@@ -9,6 +7,7 @@ import {
   Tabs,
   Tab,
 } from "@material-ui/core";
+import { LockOpenOutlined, PersonAddOutlined } from '@material-ui/icons'
 import { LoginForm, SignupForm, TabPanel } from '../components/complex';
 import styles from "./Login.module.scss";
 
@@ -172,73 +171,66 @@ class Login extends React.Component {
               >
                 <Tab
                   label="Đăng nhập"
+                  icon={<LockOpenOutlined />}
                   {...this.a11yProps(0)}
                   classes={{ selected: styles.selected }}
                 />
                 <Tab
                   label="Đăng ký"
+                  icon={<PersonAddOutlined />}
                   {...this.a11yProps(1)}
                   classes={{ selected: styles.selected }}
                 />
               </Tabs>
             </AppBar>
-            <SwipeableViews
-              axis="x"
-              index={tabIndex}
-              onChangeIndex={(e, index) =>
-                this.handleChangeState("tabIndex", index)
-              }
-              animateHeight
-            >
-              <TabPanel value={tabIndex} index={0} dir="right">
-                <LoginForm
-                  isError={isError}
-                  isPasswordRevealed={isPasswordRevealed}
-                  errorMessage={errorMessage}
-                  username={username}
-                  password={password}
-                  isSaveCredential={isSaveCredential}
-                  loading={loading}
-                  anonymousLoading={anonymousLoading}
-                  handleChangeState={(state, value) =>
-                    this.handleChangeState(state, value)
-                  }
-                  submit={(username, password) =>
-                    this.login(username, password)
-                  }
-                  navigateToSignup={(value) =>
-                    this.handleChangeState("tabIndex", value)
-                  }
-                  isForgotDialogOpen={isForgotDialogOpen}
-                  forgotEmail={forgotEmail}
-                  isForgotError={isForgotError}
-                  forgotDialogLoading={forgotDialogLoading}
-                  submitForgotPassword={(email) => this.submitForgotPassword(email)}
-                />
-              </TabPanel>
-              <TabPanel value={tabIndex} index={1} dir="left">
-                <SignupForm
-                  signupData={signupData}
-                  isAgreeTermAndCondition={isAgreeTermAndCondition}
-                  isShowTermAndCondition={isShowTermAndCondition}
-                  loading={loading}
-                  isError={isError}
-                  errorMessage={errorMessage}
-                  returnToLogin={(value) =>
-                    {
-                      this.handleChangeState("tabIndex", value)
-                      this.clearState()
-                    }
-                  }
-                  handleChangeState={(state, value) => this.handleChangeState(state, value)}
-                  handleChangeStateArray={(state, field, value, index) =>
-                    this.handleChangeStateArray(state, field, value, index)
-                  }
-                  submitForm={() => this.signUp(signupData)}
-                  termAndCondition={term}
-                />
-              </TabPanel>
-            </SwipeableViews>
+            <TabPanel value={tabIndex} index={0} dir="right">
+              <LoginForm
+                isError={isError}
+                isPasswordRevealed={isPasswordRevealed}
+                errorMessage={errorMessage}
+                username={username}
+                password={password}
+                isSaveCredential={isSaveCredential}
+                loading={loading}
+                anonymousLoading={anonymousLoading}
+                handleChangeState={(state, value) =>
+                  this.handleChangeState(state, value)
+                }
+                submit={(username, password) =>
+                  this.login(username, password)
+                }
+                navigateToSignup={(value) =>
+                  this.handleChangeState("tabIndex", value)
+                }
+                isForgotDialogOpen={isForgotDialogOpen}
+                forgotEmail={forgotEmail}
+                isForgotError={isForgotError}
+                forgotDialogLoading={forgotDialogLoading}
+                submitForgotPassword={(email) => this.submitForgotPassword(email)}
+              />
+            </TabPanel>
+            <TabPanel value={tabIndex} index={1} dir="left">
+              <SignupForm
+                signupData={signupData}
+                isAgreeTermAndCondition={isAgreeTermAndCondition}
+                isShowTermAndCondition={isShowTermAndCondition}
+                loading={loading}
+                isError={isError}
+                errorMessage={errorMessage}
+                returnToLogin={(value) =>
+                {
+                  this.handleChangeState("tabIndex", value)
+                  this.clearState()
+                }
+                }
+                handleChangeState={(state, value) => this.handleChangeState(state, value)}
+                handleChangeStateArray={(state, field, value, index) =>
+                  this.handleChangeStateArray(state, field, value, index)
+                }
+                submitForm={() => this.signUp(signupData)}
+                termAndCondition={term}
+              />
+            </TabPanel>
           </div>
         </Grid>
       </Grid>
