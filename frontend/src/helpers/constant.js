@@ -11,6 +11,7 @@ export const signupFields = [
     icon: "name",
     type: "text",
     error: false,
+    key: 'holyName',
   },
   {
     label: "Họ",
@@ -24,6 +25,7 @@ export const signupFields = [
     icon: "name",
     type: "text",
     error: false,
+    key: 'firstName'
   },
   {
     label: "Tên",
@@ -37,6 +39,7 @@ export const signupFields = [
     icon: "name",
     type: "text",
     error: false,
+    key: 'lastName'
   },
   {
     label: "Địa chỉ",
@@ -50,6 +53,7 @@ export const signupFields = [
     icon: "address",
     type: "text",
     error: false,
+    key: 'address'
   },
   {
     label: "Điện thoại",
@@ -63,7 +67,8 @@ export const signupFields = [
     icon: "phone",
     type: "tel",
     error: false,
-    placeholder: 'VD: 038-123-4567'
+    placeholder: 'VD: 038-123-4567',
+    key: 'phoneNumber'
   },
   {
     label: "Email",
@@ -75,9 +80,10 @@ export const signupFields = [
       colXs: 12,
     },
     icon: "email",
-    type: "email",
+    type: "text",
     error: false,
-    placeholder: 'VD: testmail@someone.net'
+    placeholder: 'VD: testmail@someone.net',
+    key: 'email'
   },
   {
     label: "Sinh Nhật",
@@ -91,6 +97,7 @@ export const signupFields = [
     icon: "date",
     type: "date",
     error: false,
+    key: 'birthday'
   },
   {
     label: "Bổn mạng",
@@ -104,6 +111,7 @@ export const signupFields = [
     icon: "date",
     type: "date",
     error: false,
+    key: 'holyBirthday'
   },
 ];
 
@@ -121,6 +129,8 @@ export const signinFields = [
     isCustomAction: true,
   }
 ]
+
+export const sidebarItems = [];
 
 export const forgotMessage = 'Bạn quên/không đăng nhập được tài khoản của mình? Nhập email bạn đã đăng kí tài khoản, hệ thống sẽ gửi lại mail xác nhận reset tài khoản cho bạn. Vui lòng theo dõi email để tiến hành lấy lại tài khoản'
 

@@ -145,7 +145,7 @@ class Login extends React.Component {
           isError: true,
           errorMessage: "Một số trường bị trống, Xin nhập đầy đủ",
         });
-      } else if (el.type === "email" && !validateEmail(el.value)) {
+      } else if (el.icon === "email" && !validateEmail(el.value)) {
         el.error = true;
         this.setState({
           isError: true,
