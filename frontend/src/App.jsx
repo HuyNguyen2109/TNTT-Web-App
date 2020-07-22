@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Test, Login } from './pages'
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from "history";
-import { Routes } from './pages/Route';
+import { Routes } from './pages';
 
 const browserHistory = createBrowserHistory();
 

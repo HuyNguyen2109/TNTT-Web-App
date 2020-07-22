@@ -1,0 +1,10 @@
+.Drawer {
+  & .paper {
+    background-color: darkslategray;
+    width: 50px;
+
+    & .root {
+      margin: 0 auto;
+    }
+  }
+}

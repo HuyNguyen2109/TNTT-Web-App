@@ -1,0 +1,9 @@
+.main {
+  background-color: grey;
+  height: 100vh;
+  padding-left: 50px;
+
+  & .content {
+    padding: 10px
+  }
+}

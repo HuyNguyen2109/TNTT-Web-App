@@ -32,7 +32,7 @@ export default class SidebarNav extends React.Component {
     return (
       <List
         {...props}
-        className=cn
+        className={cn}
       >
         {pages.map((page) => (
           <ListItem
@@ -46,6 +46,7 @@ export default class SidebarNav extends React.Component {
                 aria-label={page.title}
                 onClick={(e) => setActive(e.currentTarget.innerText)}
                 activeClassName={styles.activeItem}
+                component={CustomRouterLink}
                 className={styles.button}
                 to={page.href}
               >
