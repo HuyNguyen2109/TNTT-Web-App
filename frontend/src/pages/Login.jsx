@@ -109,6 +109,9 @@ class Login extends React.Component {
     } else {
       console.log(`${username}/${password}`);
       console.log(this.state.isSaveCredential);
+      setTimeout(() => {
+        window.location.href = '/dashboard'
+      }, 1000)
     }
   };
 
@@ -181,15 +184,15 @@ class Login extends React.Component {
 
     return (
       <Grid container className={styles.container}>
-        <Grid item xs={false} sm={false} md={6} lg={7}>
-          <img className={styles.img} alt="" />
+        <Grid item xs={false} sm={false} md={false} lg={8} className={styles.imgContainer}>
+          <img className={styles.img} alt="" src="https://source.unsplash.com/random/1920x1080" />
         </Grid>
         <Grid
           item
           xs={12}
           sm={12}
-          md={6}
-          lg={5}
+          md={12}
+          lg={4}
           className={styles.loginContainer}
         >
           <div className={styles.tabContainer}>
