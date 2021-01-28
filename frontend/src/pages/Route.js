@@ -2,11 +2,17 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { RouteWithLayout, MainLayout } from "../components/layout";
 import { Test } from "../components/views";
-import Login from "../pages/Login";
+import Login from "./Login";
+import Home from "./Home";
 
 const Routes = () => {
   return (
     <Switch>
+      <Route 
+        component={Home}
+        exact
+        path="/"
+      />
       <Route
         component={Login}
         path="/login"

@@ -1,0 +1,48 @@
+@import '../base.module.scss';
+
+.container {
+  min-height: 100vh;
+  .imgContainer {
+    position: relative;
+    .img, .cover, .homeNavBar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+    .cover {
+      background-color: rgba($color: #000000, $alpha: 0.8);
+    }
+    .homeNavBar {
+      display: flex;
+      align-items: center;
+      height: 100px;
+      @media (min-width: 1280px) {
+        padding: 0 50px;
+        width: calc(100% - 100px);
+      }
+      img {
+        width: 60px;
+        height: 60px;
+      }
+      .linkList {
+        .signIn, .link {
+          color: #fff;
+          margin: 0 15px;
+        }
+        .signIn {
+          border: 2px solid #fff !important;
+          margin: 0 0 0 15px;
+
+          &:hover {
+            background-color: $primaryColor;
+          }
+        }
+        .link {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
