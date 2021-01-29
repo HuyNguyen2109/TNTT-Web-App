@@ -1,41 +1,25 @@
-import { Container } from '@material-ui/core';
-import React from 'react';
-import { Button } from '../components/basic';
-import styles from './Home.module.scss';
+import {
+  Container,
+  Typography,
+  Hidden,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
+import { List } from "@material-ui/icons";
+import React from "react";
+import classNames from "classnames";
+import { Button } from "../components/basic";
+import { HomePage } from "../helpers/constant";
+import styles from "./Home.module.scss";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    // state 
+    // state
     this.initialState = {
-      links: [
-        {
-          'key': 'home',
-          'name': 'Trang chủ',
-          'url': '#'
-        },
-        {
-          'key': 'intro',
-          'name': 'Giới thiệu',
-          'url': '#'
-        },
-        {
-          'key': 'schedule',
-          'name': 'Lịch học',
-          'url': '#'
-        },
-        {
-          'key': 'team',
-          'name': 'Ban quản trị',
-          'url': '#'
-        },
-        {
-          'key': 'signin',
-          'name': 'Đăng nhập',
-          'url': '#'
-        },
-      ]
-    }
+      isMobileMenuOpen: null,
+    };
 
     this.state = { ...this.initialState };
   }
@@ -46,33 +30,118 @@ class Home extends React.Component {
 
   //Render
   render = () => {
-    const {links} = this.state
+    const { isMobileMenuOpen } = this.state;
 
     return (
-      <div className={styles.container}>
+      <Container className={styles.container} disableGutters maxWidth={false}>
         <div className={styles.imgContainer}>
-          <img className={styles.img} alt="" src="https://source.unsplash.com/random/1920x1080" />
-          <div className={styles.cover}></div>
-          <div className={styles.homeNavBar}>
-            <img alt="TNTT-logo" src="/logo.png"/>
-            <div style={{'flex': 1}}></div>
-            <div className={styles.linkList}>
-              {links.map(link => (
-                <Button
-                  key={link.key} 
-                  className={link.key === 'signin'? styles.signIn : styles.link}
-                  label={link.name}
-                  variant={link.key === 'signin'? "outlined" : "text"}
-                  size="large"
-                  onClick={() => alert('clicked')}
-                />
-              ))}
+          <img
+            className={styles.img}
+            alt=""
+            src="https://source.unsplash.com/random/1920x1080"
+          />
+          <div className={styles.cover}>
+            <div>
+              <Typography
+                align="center"
+                variant="h1"
+                className={classNames(styles.grandTitle)}
+              >
+                {HomePage.grandTitle}
+              </Typography>
+              <Typography
+                align="center"
+                variant="h3"
+                className={classNames(styles.grandTitle)}
+              >
+                {HomePage.subGrandTitle}
+              </Typography>
             </div>
           </div>
+          {/* Nav bar for desktop */}
+          <Hidden lgDown>
+            <div className={styles.homeNavBar}>
+              <img alt="TNTT-logo" src="/logo.png" />
+              <div style={{ flex: 1 }}></div>
+              <div className={styles.linkList}>
+                {HomePage.navLinks.map((link) => (
+                  <Button
+                    key={link.key}
+                    className={
+                      link.key === "signin" ? styles.signIn : styles.link
+                    }
+                    label={link.name}
+                    variant={link.key === "signin" ? "outlined" : "text"}
+                    size="large"
+                    onClick={() => alert("clicked")}
+                  />
+                ))}
+              </div>
+            </div>
+          </Hidden>
+          {/* Nav bar for mobile/tablet */}
+          <Hidden lgUp>
+            <div
+              className={classNames(
+                styles.homeNavBar,
+                styles.homeNavBarForMobile
+              )}
+            >
+              <img alt="TNTT-logo" src="/logo.png" />
+              <div style={{ flex: 1 }}></div>
+              <Button
+                key={HomePage.navLinks[HomePage.navLinks.length - 1].key}
+                className={styles.signIn}
+                label={HomePage.navLinks[HomePage.navLinks.length - 1].name}
+                variant={"outlined"}
+                size="small"
+                onClick={() => alert("clicked")}
+              />
+              <IconButton
+                className={styles.mobileMenu}
+                onClick={(event) =>
+                  this.setState({ isMobileMenuOpen: event.currentTarget })
+                }
+              >
+                <List className={styles.icon} />
+              </IconButton>
+              <Menu
+                anchorEl={isMobileMenuOpen}
+                open={Boolean(isMobileMenuOpen)}
+                onClose={() => this.setState({ isMobileMenuOpen: null })}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                PaperProps={{
+                  style: {
+                    width: "375px",
+                  },
+                }}
+              >
+                {HomePage.navLinks.map(
+                  (link) =>
+                    link.key !== "signin" && (
+                      <MenuItem key={link.key} divider>
+                        {link.name}
+                      </MenuItem>
+                    )
+                )}
+              </Menu>
+            </div>
+          </Hidden>
         </div>
-      </div>
-    )
-  }
+        <div className={styles.introductionContainer}>
+          <div></div>
+        </div>
+      </Container>
+    );
+  };
 }
 
 export default Home;

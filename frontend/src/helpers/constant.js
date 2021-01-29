@@ -148,3 +148,35 @@ export const TermAnConditions = [
   "4. Vì lí do nào đó, khi các anh/chị không còn phục vụ trong Xứ Đoàn, xin báo Ban Quản trị để xóa tài khoản",
 ];
 
+export const HomePage = {
+  'navLinks': [
+    {
+      'key': 'home',
+      'name': 'Trang chủ',
+      'url': '#'
+    },
+    {
+      'key': 'intro',
+      'name': 'Giới thiệu',
+      'url': '#'
+    },
+    {
+      'key': 'schedule',
+      'name': 'Lịch học',
+      'url': '#'
+    },
+    {
+      'key': 'team',
+      'name': 'Ban quản trị',
+      'url': '#'
+    },
+    {
+      'key': 'signin',
+      'name': 'Đăng nhập',
+      'url': '#'
+    },
+  ],
+  'grandTitle': 'This is a long grand title',
+  'subGrandTitle': 'This is a long sub grand title',
+}
+
