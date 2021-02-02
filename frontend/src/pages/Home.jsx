@@ -19,13 +19,33 @@ class Home extends React.Component {
     // state
     this.initialState = {
       isMobileMenuOpen: null,
+      scrollStatus: "top",
     };
 
     this.state = { ...this.initialState };
+    // Initialize the event listener
+    this.scrollEvent = null;
   }
 
   // Life cycle
-
+  componentDidMount = () => {
+    //handle scroll event
+    this.scrollEvent = document.addEventListener("scroll", (e) => {
+      let scrolled = document.scrollingElement.scrollTop;
+      if (scrolled >= HomePage.navHeight) {
+        if (this.state.scrollStatus !== "amir") {
+          this.setState({ scrollStatus: "amitr" });
+        }
+      } else {
+        if (this.state.scrollStatus !== "top") {
+          this.setState({ scrollStatus: "top" });
+        }
+      }
+    });
+  };
+  componentWillUnmount = () => {
+    document.removeEventListener('scroll', this.scrollEvent, false);
+  };
   // Methods
 
   //Render
@@ -60,10 +80,18 @@ class Home extends React.Component {
           </div>
           {/* Nav bar for desktop */}
           <Hidden lgDown>
-            <div className={styles.homeNavBar}>
+            <div
+              className={styles.homeNavBar}
+              style={{
+                height: `${HomePage.navHeight}px`,
+                backgroundColor:
+                  this.state.scrollStatus === "top" ? "transparent" : "#fff",
+                transition: 'background-color 200ms linear'
+              }}
+            >
               <img alt="TNTT-logo" src="/logo.png" />
               <div style={{ flex: 1 }}></div>
-              <div className={styles.linkList}>
+              <div className={this.state.scrollStatus === 'top'? styles.linkList : styles.linkListWithWhiteBG}>
                 {HomePage.navLinks.map((link) => (
                   <Button
                     key={link.key}
@@ -84,8 +112,14 @@ class Home extends React.Component {
             <div
               className={classNames(
                 styles.homeNavBar,
-                styles.homeNavBarForMobile
+                this.state.scrollStatus === 'top' ? styles.homeNavBarForMobile : styles.homeNavBarForMobilewithWhiteBG
               )}
+              style={{
+                height: `${HomePage.navHeight}px`,
+                backgroundColor:
+                  this.state.scrollStatus === "top" ? "transparent" : "#fff",
+                transition: 'background-color 200ms linear'
+              }}
             >
               <img alt="TNTT-logo" src="/logo.png" />
               <div style={{ flex: 1 }}></div>

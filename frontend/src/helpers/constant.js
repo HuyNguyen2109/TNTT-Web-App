@@ -149,6 +149,7 @@ export const TermAnConditions = [
 ];
 
 export const HomePage = {
+  'navHeight': 100,
   'navLinks': [
     {
       'key': 'home',
