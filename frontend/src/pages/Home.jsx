@@ -25,16 +25,19 @@ class Home extends React.Component {
     this.state = { ...this.initialState };
     // Initialize the event listener
     this.scrollEvent = null;
+    // Initialize the ref for scrolling
+    this.intro = React.createRef();
   }
 
   // Life cycle
   componentDidMount = () => {
     //handle scroll event
+    this.setState({ scrollStatus: document.scrollingElement.scrollTop >= HomePage.navHeight ? 'amir' : 'top' })
     this.scrollEvent = document.addEventListener("scroll", (e) => {
       let scrolled = document.scrollingElement.scrollTop;
       if (scrolled >= HomePage.navHeight) {
         if (this.state.scrollStatus !== "amir") {
-          this.setState({ scrollStatus: "amitr" });
+          this.setState({ scrollStatus: "amir" });
         }
       } else {
         if (this.state.scrollStatus !== "top") {
@@ -57,8 +60,6 @@ class Home extends React.Component {
         <div className={styles.imgContainer}>
           <img
             className={styles.img}
-            alt=""
-            src="https://source.unsplash.com/random/1920x1080"
           />
           <div className={styles.cover}>
             <div>
@@ -76,6 +77,13 @@ class Home extends React.Component {
               >
                 {HomePage.subGrandTitle}
               </Typography>
+              <Button
+                className={styles.learnMoreBtn}
+                variant='outlined'
+                label={HomePage.learnMore}
+                size='large'
+                onClick={() => this.intro.current.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              />
             </div>
           </div>
           {/* Nav bar for desktop */}
@@ -123,14 +131,6 @@ class Home extends React.Component {
             >
               <img alt="TNTT-logo" src="/logo.png" />
               <div style={{ flex: 1 }}></div>
-              <Button
-                key={HomePage.navLinks[HomePage.navLinks.length - 1].key}
-                className={styles.signIn}
-                label={HomePage.navLinks[HomePage.navLinks.length - 1].name}
-                variant={"outlined"}
-                size="small"
-                onClick={() => alert("clicked")}
-              />
               <IconButton
                 className={styles.mobileMenu}
                 onClick={(event) =>
@@ -145,12 +145,12 @@ class Home extends React.Component {
                 onClose={() => this.setState({ isMobileMenuOpen: null })}
                 getContentAnchorEl={null}
                 anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
+                  vertical: 'bottom',
+                  horizontal: 'right',
                 }}
                 transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
+                  vertical: 'top',
+                  horizontal: 'right',
                 }}
                 PaperProps={{
                   style: {
@@ -160,18 +160,31 @@ class Home extends React.Component {
               >
                 {HomePage.navLinks.map(
                   (link) =>
-                    link.key !== "signin" && (
-                      <MenuItem key={link.key} divider>
-                        {link.name}
-                      </MenuItem>
-                    )
+                  (
+                    <MenuItem 
+                      key={link.key} 
+                      style={ link.key !== 'signin'?
+                        {color: 'black'}
+                        :
+                        {
+                          backgroundColor: `${styles.primaryColor}`,
+                          color: '#fff'
+                        }
+                      } 
+                      divider>
+                      {link.name}
+                    </MenuItem>
+                  )
                 )}
               </Menu>
             </div>
           </Hidden>
+          <div className={styles.scrollDownForMore1}>
+            <Typography variant="subtitle1">{HomePage.scrollDownForMore}</Typography>
+          </div>
         </div>
-        <div className={styles.introductionContainer}>
-          <div></div>
+        <div className={styles.introductionContainer} ref={this.intro}>
+          <div className={styles.scrollDownForMore2}></div>
         </div>
       </Container>
     );

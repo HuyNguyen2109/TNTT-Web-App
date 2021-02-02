@@ -179,5 +179,7 @@ export const HomePage = {
   ],
   'grandTitle': 'This is a long grand title',
   'subGrandTitle': 'This is a long sub grand title',
+  'learnMore': 'Tìm hiểu thêm về chúng tôi',
+  'scrollDownForMore': 'Cuộn xuống',
 }
 
