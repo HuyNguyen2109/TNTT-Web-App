@@ -1,8 +1,8 @@
-import React from 'react';
-import './App.css';
-import { Router } from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { Routes } from './pages';
+import { Routes } from "./pages";
 
 const browserHistory = createBrowserHistory();
 
@@ -15,5 +15,5 @@ export default class App extends React.Component {
         </Router>
       </div>
     );
-  }
+  };
 }

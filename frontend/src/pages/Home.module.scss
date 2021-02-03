@@ -29,9 +29,10 @@
       justify-content: center;
       .grandTitle {
         color: #fff;
+        position: relative;
         text-transform: uppercase;
         letter-spacing: 3px;
-        animation: fadeInUp 2s;
+        animation: fadeInUp 2s ease-in-out;
         
         @media (max-width: 1280px) {
           zoom: .7
@@ -46,6 +47,7 @@
         border: 2px solid #fff !important;
         font-size: 20px !important;
         margin-top: 40px;
+        animation: fadeInUp 2s ease-in-out;
         &:hover {
           background-color: transparent !important;
         }
@@ -172,11 +174,12 @@
     }
   }
 
-  .introductionContainer {
-    min-height: 100vh;
+  .teamMemberContainer {
+    min-height: 500px;
     display: block;
     position: relative;
-    background-color: $primaryColor;
+    background: linear-gradient($primaryColor, $secondaryColor);
+    padding: 140px 0 140px 0;
 
     .scrollDownForMore2 {
       top: 0;
@@ -186,6 +189,54 @@
       position: absolute;
       height: 100px;
       width: 2px;
+    }
+
+    .teamMemberTitle {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      @media (max-width: 450px) {
+        zoom: .7;
+      }
+    }
+
+    .keyMemberContainer {
+      padding: 0 20px;
+      margin-top: 100px;
+
+      .keyMemberAlphaContainer {
+        @media (max-width: 1024px) {
+          margin-bottom: 100px;
+        };
+
+        .keyMember {
+          width: 250px;
+          margin: 0 auto;
+          &:hover {
+            transform: translateY(40px);
+            .avatar {
+              transform: translateY(-100px)
+            }
+          }
+  
+          .avatar {
+            width: 200px;
+            height: 200px;
+            margin: -50px auto 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+  
+            .avatarImg {
+              width: 180px;
+              height: 180px;
+              background-color: #f2f2f2;
+              pointer-events: none;
+            }
+          }
+        }
+      }
     }
   }
 }

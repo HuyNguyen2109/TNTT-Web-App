@@ -177,9 +177,47 @@ export const HomePage = {
       'url': '#'
     },
   ],
+  'alphaKeyMembers': [
+    {
+      'key': 'leader',
+      'name': 'Xứ Đoàn Trưởng'
+    },
+    {
+      'key': 'sub-internal-leader',
+      'name': 'Phó Nội Vụ'
+    },
+    {
+      'key': 'sub-external-leader',
+      'name': 'Phó Ngoại Vụ'
+    },
+    {
+      'key': 'secretary',
+      'name': 'Thư Kí'
+    },
+    {
+      'key': 'treasurer',
+      'name': 'Thủ Quỹ'
+    },
+    
+  ],
+  'betaKeyMembers': [
+    {
+      'key': 'au-leader',
+      'name': 'Trưởng Ấu'
+    },
+    {
+      'key': 'thieu-leader',
+      'name': 'Trưởng Thiếu'
+    },
+    {
+      'key': 'nghia-leader',
+      'name': 'Trưởng Nghĩa'
+    },
+  ],
   'grandTitle': 'This is a long grand title',
   'subGrandTitle': 'This is a long sub grand title',
   'learnMore': 'Tìm hiểu thêm về chúng tôi',
   'scrollDownForMore': 'Cuộn xuống',
+  'teamMemberTitle': 'Ban Quản trị',
 }
 
