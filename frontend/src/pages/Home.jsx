@@ -7,8 +7,9 @@ import {
   MenuItem,
   Grid,
   Avatar,
+  Link,
 } from "@material-ui/core";
-import { List, Person } from "@material-ui/icons";
+import { List, Person, Facebook, Mail } from "@material-ui/icons";
 import React from "react";
 import classNames from "classnames";
 import { Button, Paper, LoadingPage } from "../components/basic";
@@ -26,26 +27,50 @@ class Home extends React.Component {
       scrolled: 0,
       isTeamMemberOpen: false,
       isDataLoading: true,
+      currentDate: new Date(),
     };
 
     this.state = { ...this.initialState };
     // Initialize the event listener
     this.scrollEvent = null;
     // Initialize the ref for scrolling
-    this.teamMember = React.createRef();
+    this.refList = {
+      home: (this.homePage = React.createRef()),
+      team: (this.teamMember = React.createRef()),
+      contact: (this.contactInfo = React.createRef()),
+    };
   }
 
   // Life cycle
   componentDidMount = () => {
     setTimeout(() => {
-      this.setState({isDataLoading: false})
-    }, 3000)
+      this.setState({ isDataLoading: false });
+    }, 3000);
     //handle scroll event
+    this.setState({
+      scrollStatus:
+        document.scrollingElement.scrollTop >= HomePage.navHeight
+          ? "amir"
+          : "top",
+    });
     this.scrollEvent = document.addEventListener("scroll", this.handleScroll);
   };
+
+  componentDidUpdate = (prevState) => {
+    if (
+      prevState.isDataLoading !== this.state.isDataLoading &&
+      this.state.isDataLoading
+    ) {
+      document.body.style.height = "100vh";
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.height = "auto";
+      document.body.style.overflowY = "auto";
+    }
+  };
+
   componentWillUnmount = () => {
     document.removeEventListener("scroll", this.handleScroll, false);
-    this.teamMember = null;
   };
   // Methods
   handleScroll = () => {
@@ -62,7 +87,7 @@ class Home extends React.Component {
   };
   //Render
   render = () => {
-    const { isMobileMenuOpen, isDataLoading } = this.state;
+    const { isMobileMenuOpen, isDataLoading, currentDate } = this.state;
 
     return (
       <div>
@@ -73,6 +98,7 @@ class Home extends React.Component {
             className={styles.container}
             disableGutters
             maxWidth={false}
+            ref={this.refList.home}
           >
             <div className={styles.imgContainer}>
               <img className={styles.img} alt="" />
@@ -105,9 +131,9 @@ class Home extends React.Component {
                       label={HomePage.learnMore}
                       size="large"
                       onClick={() =>
-                        this.teamMember.current.scrollIntoView({
+                        window.scrollTo({
                           behavior: "smooth",
-                          block: "start",
+                          top: this.refList.team.current.offsetTop,
                         })
                       }
                     />
@@ -145,7 +171,14 @@ class Home extends React.Component {
                         label={link.name}
                         variant={link.key === "signin" ? "outlined" : "text"}
                         size="large"
-                        onClick={() => alert("clicked")}
+                        onClick={() => {
+                          this.refList[link.key]
+                            ? window.scrollTo({
+                                behavior: "smooth",
+                                top: this.refList[link.key].current.offsetTop,
+                              })
+                            : alert("This ref does not exist");
+                        }}
                       />
                     ))}
                   </div>
@@ -210,6 +243,15 @@ class Home extends React.Component {
                               }
                         }
                         divider
+                        onClick={() => {
+                          this.refList[link.key]
+                            ? window.scrollTo({
+                                behavior: "smooth",
+                                top: this.refList[link.key].current.offsetTop,
+                              })
+                            : alert("This ref does not exist");
+                          this.setState({isMobileMenuOpen: null})
+                        }}
                       >
                         {link.name}
                       </MenuItem>
@@ -221,9 +263,10 @@ class Home extends React.Component {
                 <Typography variant="subtitle1">
                   {HomePage.scrollDownForMore}
                 </Typography>
+                <div className={styles.mouse}></div>
               </div>
             </div>
-            <div className={styles.teamMemberContainer} ref={this.teamMember}>
+            <div className={styles.teamMemberContainer} ref={this.refList.team}>
               <div className={styles.scrollDownForMore2}></div>
               <Parallax
                 data={{
@@ -245,7 +288,7 @@ class Home extends React.Component {
                   <Grid
                     item
                     key={mem.key}
-                    md="auto"
+                    sm="auto"
                     xs={12}
                     className={styles.keyMemberAlphaContainer}
                   >
@@ -259,17 +302,23 @@ class Home extends React.Component {
                       <Paper
                         className={styles.keyMember}
                         content={
-                          <Paper
-                            className={styles.avatar}
-                            // TODO: Replace with real avatar in future
-                            content={
-                              <Avatar className={styles.avatarImg}>
-                                <Person
-                                  style={{ fontSize: "100px", color: "#000" }}
-                                />
-                              </Avatar>
-                            }
-                          />
+                          <React.Fragment>
+                            <Paper
+                              className={styles.avatar}
+                              // TODO: Replace with real avatar in future
+                              content={
+                                <Avatar className={styles.avatarImg}>
+                                  <Person
+                                    style={{ fontSize: "100px", color: "#000" }}
+                                  />
+                                </Avatar>
+                              }
+                            />
+                            <Typography variant="h6" className={styles.keyName}>
+                              <p></p>
+                              <strong>{mem.name}</strong>
+                            </Typography>
+                          </React.Fragment>
                         }
                       />
                     </Parallax>
@@ -286,7 +335,7 @@ class Home extends React.Component {
                   <Grid
                     item
                     key={mem.key}
-                    md="auto"
+                    sm="auto"
                     xs={12}
                     className={styles.keyMemberAlphaContainer}
                   >
@@ -301,17 +350,23 @@ class Home extends React.Component {
                       <Paper
                         className={styles.keyMember}
                         content={
-                          <Paper
-                            className={styles.avatar}
-                            // TODO: Replace with real avatar in future
-                            content={
-                              <Avatar className={styles.avatarImg}>
-                                <Person
-                                  style={{ fontSize: "100px", color: "#000" }}
-                                />
-                              </Avatar>
-                            }
-                          />
+                          <React.Fragment>
+                            <Paper
+                              className={styles.avatar}
+                              // TODO: Replace with real avatar in future
+                              content={
+                                <Avatar className={styles.avatarImg}>
+                                  <Person
+                                    style={{ fontSize: "100px", color: "#000" }}
+                                  />
+                                </Avatar>
+                              }
+                            />
+                            <Typography variant="h6" className={styles.keyName}>
+                              <p></p>
+                              <strong>{mem.name}</strong>
+                            </Typography>
+                          </React.Fragment>
                         }
                       />
                     </Parallax>
@@ -319,7 +374,58 @@ class Home extends React.Component {
                 ))}
               </Grid>
             </div>
-            <div className={styles.contactContainer}></div>
+            <div className={styles.contactContainer} ref={this.refList.contact}>
+              <Parallax
+                data={{
+                  "data-bottom-top": "opacity:0;transform:translateX(-100px)",
+                  "data-bottom": "opacity:1;transform:translateX(0px)",
+                }}
+              >
+                <Typography variant="h5" className={styles.copyRight}>
+                  <strong>{currentDate.getFullYear()}</strong>
+                  {`, ${HomePage.orgName}`}
+                </Typography>
+              </Parallax>
+              <div style={{ flex: 1 }}></div>
+              <Parallax
+                data={{
+                  "data-bottom-top": "opacity:0;transform:translateX(50px)",
+                  "data-bottom": "opacity:1;transform:translateX(0px)",
+                }}
+              >
+                <div className={styles.socialLinks}>
+                  <div className={styles.socialLinkContainer}>
+                    <span className={styles.title}>
+                      <Link href={HomePage.facebookLink} target="_blank">
+                        Facebook
+                      </Link>
+                    </span>
+                    <Facebook classes={{ root: styles.icon }} />
+                  </div>
+                  <div className={styles.socialLinkContainer}>
+                    <span className={styles.title}>
+                      <Link
+                        href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${HomePage.gmailLink}`}
+                        target="_blank"
+                      >
+                        Gmail
+                      </Link>
+                    </span>
+                    <Mail classes={{ root: styles.icon }} />
+                  </div>
+                </div>
+              </Parallax>
+              <Parallax
+                data={{
+                  "data-bottom-top": "opacity:0;transform:translateX(100px)",
+                  "data-bottom": "opacity:1;transform:translateX(0px)",
+                }}
+              >
+                <Typography variant="h5" className={classNames(styles.copyRight, styles.contactUs)}>
+                  {HomePage.contactUs}
+                </Typography>
+              </Parallax>
+            </div>
           </Container>
         )}
       </div>
