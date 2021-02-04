@@ -141,7 +141,7 @@ class Home extends React.Component {
                 </div>
               </div>
               {/* Nav bar for desktop */}
-              <Hidden lgDown>
+              <Hidden smDown>
                 <div
                   className={styles.homeNavBar}
                   style={{
@@ -153,7 +153,17 @@ class Home extends React.Component {
                     transition: "background-color 200ms linear",
                   }}
                 >
-                  <img alt="TNTT-logo" src="/logo.png" />
+                  <img
+                    alt="TNTT-logo"
+                    src="/logo.png"
+                    onClick={() => {
+                      window.scrollTo({
+                        behavior: "smooth",
+                        top: this.refList.home.current.offsetTop,
+                      });
+                    }}
+                    style={{ cursor: "pointer" }}
+                  />
                   <div style={{ flex: 1 }}></div>
                   <div
                     className={
@@ -185,7 +195,7 @@ class Home extends React.Component {
                 </div>
               </Hidden>
               {/* Nav bar for mobile/tablet */}
-              <Hidden lgUp>
+              <Hidden mdUp>
                 <div
                   className={classNames(
                     styles.homeNavBar,
@@ -202,7 +212,17 @@ class Home extends React.Component {
                     transition: "background-color 200ms linear",
                   }}
                 >
-                  <img alt="TNTT-logo" src="/logo.png" />
+                  <img
+                    alt="TNTT-logo"
+                    src="/logo.png"
+                    onClick={() => {
+                      window.scrollTo({
+                        behavior: "smooth",
+                        top: this.refList.home.current.offsetTop,
+                      });
+                    }}
+                    style={{ cursor: "pointer" }}
+                  />
                   <div style={{ flex: 1 }}></div>
                   <IconButton
                     className={styles.mobileMenu}
@@ -250,7 +270,7 @@ class Home extends React.Component {
                                 top: this.refList[link.key].current.offsetTop,
                               })
                             : alert("This ref does not exist");
-                          this.setState({isMobileMenuOpen: null})
+                          this.setState({ isMobileMenuOpen: null });
                         }}
                       >
                         {link.name}
@@ -421,7 +441,10 @@ class Home extends React.Component {
                   "data-bottom": "opacity:1;transform:translateX(0px)",
                 }}
               >
-                <Typography variant="h5" className={classNames(styles.copyRight, styles.contactUs)}>
+                <Typography
+                  variant="h5"
+                  className={classNames(styles.copyRight, styles.contactUs)}
+                >
                   {HomePage.contactUs}
                 </Typography>
               </Parallax>
