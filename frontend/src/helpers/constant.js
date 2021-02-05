@@ -182,41 +182,58 @@ export const HomePage = {
       'url': '#'
     },
   ],
+  // TODO: replace avatar with real image get from database in the future
   'alphaKeyMembers': [
     {
       'key': 'leader',
-      'name': 'Xứ Đoàn Trưởng'
+      'name': 'Xứ Đoàn Trưởng',
+      'avatar': '/Image-edited/Huy.png',
+      'fullName': 'Phêrô Nguyễn Nhựt Huy'
     },
     {
       'key': 'sub-internal-leader',
-      'name': 'Phó Nội Vụ'
+      'name': 'Phó Nội Vụ',
+      'avatar': '/Image-edited/Nam.png',
+      'fullName': 'Vincente Lưu Nguyễn Nhật Nam'
     },
     {
       'key': 'sub-external-leader',
-      'name': 'Phó Ngoại Vụ'
+      'name': 'Phó Ngoại Vụ',
+      'avatar': '/Image-edited/Lieu.png',
+      'fullName': 'Maria Trịnh Thu Liễu'
     },
     {
       'key': 'secretary',
-      'name': 'Thư Kí'
+      'name': 'Thư Kí',
+      'avatar': '/Image-edited/Trang.png',
+      'fullName': 'Maria Nguyễn Thùy Trang'
     },
     {
       'key': 'treasurer',
-      'name': 'Thủ Quỹ'
+      'name': 'Thủ Quỹ',
+      'avatar': '/Image-edited/Ngoc.png',
+      'fullName': 'Anna Nguyễn Lê Bảo Ngọc'
     },
     
   ],
   'betaKeyMembers': [
     {
       'key': 'au-leader',
-      'name': 'Trưởng Ấu'
+      'name': 'Trưởng Ấu',
+      'avatar': '/Image-edited/Thu.png',
+      'fullName': 'Maria Phạm Trần Anh Thư'
     },
     {
       'key': 'thieu-leader',
-      'name': 'Trưởng Thiếu'
+      'name': 'Trưởng Thiếu',
+      'avatar': '/Image-edited/Hao.png',
+      'fullName': 'Anna Lưu Nguyễn Hoàn Hảo'
     },
     {
       'key': 'nghia-leader',
-      'name': 'Trưởng Nghĩa'
+      'name': 'Trưởng Nghĩa',
+      'avatar': '/Image-edited/Phuong.png',
+      'fullName': 'Têrêsa Kiều Nguyễn Xuân Phương'
     },
   ],
   'grandTitle': 'This is a long grand title',

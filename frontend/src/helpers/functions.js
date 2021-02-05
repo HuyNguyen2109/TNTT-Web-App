@@ -10,4 +10,13 @@ export const formatPhoneNumber = (value) => {
 
 export const removeWhiteSpace = (value) => {
   return value.replace(' ', '');
-} 
+}
+
+export const formatName = (name) => {
+  const nameExtraction = name.split(" ");
+  nameExtraction[nameExtraction.length -2] = nameExtraction[nameExtraction.length -2].charAt(0) + '.';
+  if (nameExtraction.length > 4) {
+    nameExtraction[2] = nameExtraction[2].charAt(0) + '.';
+  }
+  return nameExtraction.join(" ");
+}

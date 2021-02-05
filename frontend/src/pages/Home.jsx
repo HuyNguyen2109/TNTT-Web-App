@@ -14,6 +14,7 @@ import React from "react";
 import classNames from "classnames";
 import { Button, Paper, LoadingPage } from "../components/basic";
 import { HomePage } from "../helpers/constant";
+import { formatName } from "../helpers/functions";
 import styles from "./Home.module.scss";
 import { Parallax } from "react-skrollr";
 
@@ -36,6 +37,7 @@ class Home extends React.Component {
     // Initialize the ref for scrolling
     this.refList = {
       home: (this.homePage = React.createRef()),
+      schedule: (this.classSchedule = React.createRef()),
       team: (this.teamMember = React.createRef()),
       contact: (this.contactInfo = React.createRef()),
     };
@@ -133,7 +135,9 @@ class Home extends React.Component {
                       onClick={() =>
                         window.scrollTo({
                           behavior: "smooth",
-                          top: this.refList.team.current.offsetTop,
+                          top:
+                            this.refList.schedule.current.offsetTop -
+                            HomePage.navHeight,
                         })
                       }
                     />
@@ -181,13 +185,21 @@ class Home extends React.Component {
                         label={link.name}
                         variant={link.key === "signin" ? "outlined" : "text"}
                         size="large"
+                        href={link.key === "signin" ? "/login" : undefined}
                         onClick={() => {
-                          this.refList[link.key]
-                            ? window.scrollTo({
-                                behavior: "smooth",
-                                top: this.refList[link.key].current.offsetTop,
-                              })
-                            : alert("This ref does not exist");
+                          link.key !== "signin" &&
+                            this.refList[link.key] &&
+                            (link.key === "home"
+                              ? window.scrollTo({
+                                  behavior: "smooth",
+                                  top: this.refList[link.key].current.offsetTop,
+                                })
+                              : window.scrollTo({
+                                  behavior: "smooth",
+                                  top:
+                                    this.refList[link.key].current.offsetTop -
+                                    HomePage.navHeight,
+                                }));
                         }}
                       />
                     ))}
@@ -264,12 +276,22 @@ class Home extends React.Component {
                         }
                         divider
                         onClick={() => {
-                          this.refList[link.key]
-                            ? window.scrollTo({
-                                behavior: "smooth",
-                                top: this.refList[link.key].current.offsetTop,
-                              })
-                            : alert("This ref does not exist");
+                          link.key !== "signin"
+                            ? this.refList[link.key]
+                              ? link.key === "home"
+                                ? window.scrollTo({
+                                    behavior: "smooth",
+                                    top: this.refList[link.key].current
+                                      .offsetTop,
+                                  })
+                                : window.scrollTo({
+                                    behavior: "smooth",
+                                    top:
+                                      this.refList[link.key].current.offsetTop -
+                                      HomePage.navHeight,
+                                  })
+                              : alert("This ref does not exist")
+                            : (window.location.href = "/login");
                           this.setState({ isMobileMenuOpen: null });
                         }}
                       >
@@ -284,6 +306,32 @@ class Home extends React.Component {
                   {HomePage.scrollDownForMore}
                 </Typography>
                 <div className={styles.mouse}></div>
+              </div>
+            </div>
+            <div
+              className={styles.scheduleContainer}
+              ref={this.refList.schedule}
+            >
+              <div className={styles.scrollDownForMore}></div>
+              <div className={styles.scheduleGridContainer}>
+                <Grid container style={{height: '100%'}}>
+                  <Grid item lg={6} xs={12}>
+                  <div 
+                    style={{
+                      height: '100%',
+                      backgroundColor: 'rgba(0,0,0,0.3)'
+                      }}></div>
+                  </Grid>
+                  <Grid item lg={6} xs={12}>
+                    <div 
+                    style={{
+                      height: '100%',
+                      backgroundColor: 'rgba(0,0,0,0.7)'
+                      }}></div>
+                  </Grid>
+                </Grid>
+                <img src="/dayClass.jpg" alt="Day class" className={styles.daylightImg} />
+                <img src="/nightClass.jpg" alt="Night class" className={styles.nightImg} />
               </div>
             </div>
             <div className={styles.teamMemberContainer} ref={this.refList.team}>
@@ -327,7 +375,10 @@ class Home extends React.Component {
                               className={styles.avatar}
                               // TODO: Replace with real avatar in future
                               content={
-                                <Avatar className={styles.avatarImg}>
+                                <Avatar
+                                  className={styles.avatarImg}
+                                  src={mem.avatar}
+                                >
                                   <Person
                                     style={{ fontSize: "100px", color: "#000" }}
                                   />
@@ -335,7 +386,7 @@ class Home extends React.Component {
                               }
                             />
                             <Typography variant="h6" className={styles.keyName}>
-                              <p></p>
+                              <p>{formatName(mem.fullName)}</p>
                               <strong>{mem.name}</strong>
                             </Typography>
                           </React.Fragment>
@@ -375,7 +426,10 @@ class Home extends React.Component {
                               className={styles.avatar}
                               // TODO: Replace with real avatar in future
                               content={
-                                <Avatar className={styles.avatarImg}>
+                                <Avatar
+                                  className={styles.avatarImg}
+                                  src={mem.avatar}
+                                >
                                   <Person
                                     style={{ fontSize: "100px", color: "#000" }}
                                   />
@@ -383,7 +437,7 @@ class Home extends React.Component {
                               }
                             />
                             <Typography variant="h6" className={styles.keyName}>
-                              <p></p>
+                              <p>{formatName(mem.fullName)}</p>
                               <strong>{mem.name}</strong>
                             </Typography>
                           </React.Fragment>
