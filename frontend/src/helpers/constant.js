@@ -245,5 +245,9 @@ export const HomePage = {
   'facebookLink': 'https://www.facebook.com/thieunhicaothai',
   'gmailLink': 'altt.bandaidien@gmail.com',
   'contactUs': 'Liên hệ',
+  'dayClassTitle': 'Lớp sáng',
+  'dayClassDesc': 'desc...',
+  'nightClassTitle': 'Lớp tối',
+  'nightClassDesc': 'desc..............'
 }
 

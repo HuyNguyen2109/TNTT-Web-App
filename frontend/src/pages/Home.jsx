@@ -9,7 +9,14 @@ import {
   Avatar,
   Link,
 } from "@material-ui/core";
-import { List, Person, Facebook, Mail } from "@material-ui/icons";
+import {
+  List,
+  Person,
+  Facebook,
+  Mail,
+  WbSunnyOutlined,
+  Brightness2Outlined,
+} from "@material-ui/icons";
 import React from "react";
 import classNames from "classnames";
 import { Button, Paper, LoadingPage } from "../components/basic";
@@ -154,7 +161,7 @@ class Home extends React.Component {
                       this.state.scrollStatus === "top"
                         ? "transparent"
                         : "#fff",
-                    transition: "background-color 200ms linear",
+                    transition: "background-color 0.25s linear",
                   }}
                 >
                   <img
@@ -314,32 +321,78 @@ class Home extends React.Component {
             >
               <div className={styles.scrollDownForMore}></div>
               <div className={styles.scheduleGridContainer}>
-                <Grid container style={{height: '100%'}}>
-                  <Grid item lg={6} xs={12}>
-                  <div 
-                    style={{
-                      height: '100%',
-                      backgroundColor: 'rgba(0,0,0,0.3)'
-                      }}></div>
+                <Grid container style={{ height: "100%" }}>
+                  <Grid item lg={6} xs={12} className={styles.item}>
+                    <Parallax
+                      data={{
+                        "data-center-top":
+                          "opacity:0;transform:translateX(-500px)",
+                        "data-250-top": "opacity:1;transform:translateX(0px)",
+                      }}
+                    >
+                      <img
+                        src="/dayClass.jpg"
+                        alt="Day class"
+                        className={styles.daylightImg}
+                      />
+                      <div className={styles.dayCover}>
+                        <div className={styles.classContent}>
+                          <WbSunnyOutlined className={styles.sunIcon} />
+                          <Typography variant="h3" align="center">
+                            <strong>{HomePage.dayClassTitle}</strong>
+                          </Typography>
+                          <Typography variant="h5" align="center">
+                            {HomePage.dayClassDesc}
+                          </Typography>
+                        </div>
+                      </div>
+                    </Parallax>
                   </Grid>
-                  <Grid item lg={6} xs={12}>
-                    <div 
-                    style={{
-                      height: '100%',
-                      backgroundColor: 'rgba(0,0,0,0.7)'
-                      }}></div>
+                  <Grid item lg={6} xs={12} className={styles.item}>
+                    <Parallax
+                      data={{
+                        "data-center-top":
+                          "opacity:0;transform:translateX(500px)",
+                        "data-250-top": "opacity:1;transform:translateX(0px)",
+                      }}
+                    >
+                      <img
+                        src="/nightClass.jpg"
+                        alt="Night class"
+                        className={styles.nightImg}
+                      />
+                      <div className={styles.nightCover}>
+                        <div className={styles.classContent}>
+                          <Brightness2Outlined className={styles.moonIcon} />
+                          <Typography
+                            variant="h3"
+                            align="center"
+                            classes={{ root: styles.nightClassTitle }}
+                          >
+                            <strong>{HomePage.nightClassTitle}</strong>
+                          </Typography>
+                          <Typography
+                            variant="h5"
+                            classes={{ root: styles.nightClassTitle }}
+                            align="center"
+                          >
+                            {HomePage.nightClassDesc}
+                          </Typography>
+                        </div>
+                      </div>
+                    </Parallax>
                   </Grid>
                 </Grid>
-                <img src="/dayClass.jpg" alt="Day class" className={styles.daylightImg} />
-                <img src="/nightClass.jpg" alt="Night class" className={styles.nightImg} />
               </div>
             </div>
             <div className={styles.teamMemberContainer} ref={this.refList.team}>
               <div className={styles.scrollDownForMore2}></div>
               <Parallax
                 data={{
-                  "data-bottom-top": "opacity:0;transform:translateX(-500px)",
-                  "data-center": "opacity:1;transform:translateX(0px)",
+                  "data-bottom-top":
+                    "opacity:0;transform:translateX(-500px);pointer-event:none",
+                  "data-center":
+                    "opacity:1;transform:translateX(0px);pointer-event:auto",
                 }}
               >
                 <Typography variant="h3" className={styles.teamMemberTitle}>

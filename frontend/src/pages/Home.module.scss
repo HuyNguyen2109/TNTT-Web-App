@@ -227,49 +227,87 @@
 
     .scheduleGridContainer {
       overflow: hidden;
-      height: 700px;
-      position: relative;
+      height: 600px;
 
-      .daylightImg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-        transition: transform 0.25s ease-in-out,
-                    clip-path 0.5s ease;
-        clip-path: polygon(0 0, 55% 0, 45% 100%, 0% 100%);
+      .item {
+        overflow: hidden;
+        position: relative;
 
-        &:hover {
-          transform: scale(1.2);
-          clip-path: polygon(0 0, 80% 0, 50% 100%, 0% 100%);
-          
-          &~.nightImg {
-            transform: translateX(100%);
+        .dayCover,
+        .nightCover {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 600px;
+          visibility: hidden;
+          opacity: 0;
+          pointer-events: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .classContent {
+            transform: translateY(200px);
+            transition: transform 0.25s linear;
+            .sunIcon, .moonIcon {
+              width: 90px;
+              height: 90px;
+            }
+
+            .moonIcon, .nightClassTitle {
+              color: #fff
+            }
           }
         }
-      }
 
-      .nightImg {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-        transition: transform 0.25s ease-in-out,
-                    clip-path 0.5s ease;
-        clip-path: polygon(55% 0, 100% 0, 100% 100%, 45% 100%);
+        .daylightImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+          transition: transform 0.25s ease-in-out;
 
-        &:hover {
-          transform: scale(1.2);
-          clip-path: polygon(50% 0, 100% 1%, 100% 100%, 20% 100%);
+          &:hover {
+            transform: scale(1.5);
 
-          & + .scheduleGridContainer:hover > .daylightImg {
-            transform: translateX(-100%);
+            & ~ .dayCover {
+              visibility: visible;
+              opacity: 1;
+              transition: visibility 0.25s ease-in-out;
+              background-color: rgba($color: #fff, $alpha: 0.5);
+              .classContent {
+                transform: translateY(0px);
+                .sunIcon {
+                  animation: spin 3s linear infinite;
+                }
+              }
+            }
+          }
+        }
+
+        .nightImg {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+          transition: transform 0.25s ease-in-out;
+
+          &:hover {
+            transform: scale(1.5);
+
+            & ~ .nightCover {
+              visibility: visible;
+              opacity: 1;
+              transition: visibility 0.25s ease-in-out;
+              background-color: rgba($color: #000, $alpha: 0.5);
+              .classContent {
+                transform: translateY(0px);
+                .moonIcon {
+                  animation: spinY 3s linear infinite;
+                }
+              }
+            }
           }
         }
       }
