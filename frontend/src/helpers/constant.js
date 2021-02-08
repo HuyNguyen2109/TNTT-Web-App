@@ -241,6 +241,7 @@ export const HomePage = {
   'learnMore': 'Tìm hiểu thêm về chúng tôi',
   'scrollDownForMore': 'Cuộn xuống',
   'teamMemberTitle': 'Ban Quản trị',
+  'scheduleTitle': 'Lịch học',
   'orgName': 'Xứ Đoàn Annê Lê Thị Thành',
   'facebookLink': 'https://www.facebook.com/thieunhicaothai',
   'gmailLink': 'altt.bandaidien@gmail.com',

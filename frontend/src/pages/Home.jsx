@@ -110,7 +110,7 @@ class Home extends React.Component {
             ref={this.refList.home}
           >
             <div className={styles.imgContainer}>
-              <img className={styles.img} alt="" />
+                <img className={styles.img} alt="" />
               <div className={styles.cover}>
                 <div>
                   <Parallax
@@ -319,7 +319,18 @@ class Home extends React.Component {
               className={styles.scheduleContainer}
               ref={this.refList.schedule}
             >
-              <div className={styles.scrollDownForMore}></div>
+              <div className={styles.scrollDownForMore}>
+                <Parallax
+                data={{
+                  "data-center-top":
+                    "opacity:0;transform:translateX(100px)",
+                  "data-250-top": "opacity:1;transform:translateX(0px)"
+                }}>
+                  <Typography variant="h3" className={styles.scheduleTitle}>
+                    {HomePage.scheduleTitle}
+                  </Typography>
+                </Parallax>
+              </div>
               <div className={styles.scheduleGridContainer}>
                 <Grid container style={{ height: "100%" }}>
                   <Grid item lg={6} xs={12} className={styles.item}>
@@ -357,7 +368,7 @@ class Home extends React.Component {
                       }}
                     >
                       <img
-                        src="/nightClass.jpg"
+                        src="/nightClass.JPG"
                         alt="Night class"
                         className={styles.nightImg}
                       />

@@ -212,7 +212,7 @@
 
   .scheduleContainer {
     overflow: hidden;
-    background-color: #fff;
+    background-color: $primaryColor;
     position: relative;
 
     .scrollDownForMore {
@@ -223,6 +223,16 @@
       bottom: 0;
       right: 20px;
       z-index: 2;
+
+      .scheduleTitle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        border: 2px solid #fff;
+        width: max-content;
+      }
     }
 
     .scheduleGridContainer {
