@@ -155,32 +155,32 @@ export const HomePage = {
     {
       'key': 'home',
       'name': 'Trang chủ',
-      'url': '#'
+      'isActive': false
     },
     {
       'key': 'intro',
       'name': 'Giới thiệu',
-      'url': '#'
+      'isActive': false
     },
     {
       'key': 'schedule',
       'name': 'Lịch học',
-      'url': '#'
+      'isActive': false
     },
     {
       'key': 'team',
       'name': 'Ban quản trị',
-      'url': '#'
+      'isActive': false
     },
     {
       'key': 'contact',
       'name': 'Liên hệ',
-      'url': '#'
+      'isActive': false
     },
     {
       'key': 'signin',
       'name': 'Đăng nhập',
-      'url': '#'
+      'isActive': false
     },
   ],
   // TODO: replace avatar with real image get from database in the future

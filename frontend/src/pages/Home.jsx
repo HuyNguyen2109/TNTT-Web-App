@@ -63,7 +63,9 @@ class Home extends React.Component {
           ? "amir"
           : "top",
     });
-    this.scrollEvent = document.addEventListener("scroll", this.handleScroll);
+    this.scrollEvent = document.addEventListener("scroll", this.handleScroll, {
+      passive: true,
+    });
   };
 
   componentDidUpdate = (prevState) => {
@@ -94,7 +96,41 @@ class Home extends React.Component {
         this.setState({ scrollStatus: "top" });
       }
     }
+
+    switch (true) {
+      case (window.innerHeight + window.scrollY) >= document.body.offsetHeight:
+        return this.setActiveNavItem("contact");
+      case this.refList.schedule.current &&
+        this.isZoneEl(this.refList.schedule.current):
+        return this.setActiveNavItem("schedule");
+      case this.refList.team.current &&
+        this.isZoneEl(this.refList.team.current):
+        return this.setActiveNavItem("team");
+      default:
+        return this.setActiveNavItem("home");
+    }
   };
+
+  setActiveNavItem = (el) => {
+    if (el && document.querySelector("#marker")) {
+      let marker = document.querySelector("#marker");
+      if (el !== "home") {
+        marker.style.left = document.getElementById(el).offsetLeft + "px";
+        marker.style.width = document.getElementById(el).offsetWidth + "px";
+      } else {
+        marker.style.left = "0px";
+        marker.style.width = "0px";
+      }
+    }
+  };
+
+  isZoneEl = (el) => {
+    return (
+      el.getBoundingClientRect().top - HomePage.navHeight < 0 &&
+      el.getBoundingClientRect().bottom - HomePage.navHeight >= 0
+    );
+  };
+
   //Render
   render = () => {
     const { isMobileMenuOpen, isDataLoading, currentDate } = this.state;
@@ -126,7 +162,7 @@ class Home extends React.Component {
                       variant="h1"
                       className={classNames(styles.grandTitle)}
                     >
-                      {HomePage.grandTitle}
+                      {HomePage.orgName}
                     </Typography>
                     <Typography
                       align="center"
@@ -184,6 +220,7 @@ class Home extends React.Component {
                         : styles.linkListWithWhiteBG
                     }
                   >
+                    <div id="marker" className={styles.marker}></div>
                     {HomePage.navLinks.map((link) => (
                       <Button
                         key={link.key}
@@ -207,8 +244,9 @@ class Home extends React.Component {
                                   behavior: "smooth",
                                   top:
                                     this.refList[link.key].current.offsetTop -
-                                    HomePage.navHeight,
+                                    HomePage.navHeight + 1,
                                 }));
+                          this.setActiveNavItem(link.key);
                         }}
                       />
                     ))}

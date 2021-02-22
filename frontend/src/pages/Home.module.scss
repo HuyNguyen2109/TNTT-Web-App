@@ -81,6 +81,7 @@
         height: 60px;
       }
       .linkList {
+        position: relative;
         .signIn,
         .link {
           color: #fff;
@@ -99,6 +100,17 @@
             color: $secondaryColor !important;
             background-color: transparent !important;
           }
+        }
+
+        .marker {
+          position: absolute;
+          width: 0;
+          height: 4px;
+          left: 0;
+          background-color: #fff;
+          bottom: -4px;
+          transition: .5s;
+          border-radius: 4px;
         }
       }
 
@@ -120,6 +132,10 @@
             color: #000;
             border: 2px solid $secondaryColor !important;
           }
+        }
+
+        .marker {
+          background-color: $primaryColor;
         }
       }
     }
@@ -499,10 +515,6 @@
         }
       }
     }
-  }
-
-  .active {
-    transform: scale(1.5);
   }
 }
 
