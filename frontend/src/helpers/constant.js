@@ -149,6 +149,7 @@ export const TermAnConditions = [
 ];
 
 export const HomePage = {
+  'documentTitle': 'Xứ đoàn Anê Lê Thị Thành',
   'navHeight': 100,
   'navLinks': [
     {
@@ -238,14 +239,15 @@ export const HomePage = {
   ],
   'grandTitle': 'This is a long grand title',
   'subGrandTitle': 'This is a long sub grand title',
-  'learnMore': 'Tìm hiểu thêm về chúng tôi',
+  'learnMore': 'Tìm hiểu thêm',
   'scrollDownForMore': 'Cuộn xuống',
   'teamMemberTitle': 'Ban Quản trị',
   'scheduleTitle': 'Lịch học',
-  'orgName': 'Xứ Đoàn Annê Lê Thị Thành',
+  'orgName': 'Xứ Đoàn Anê Lê Thị Thành',
   'facebookLink': 'https://www.facebook.com/thieunhicaothai',
   'gmailLink': 'altt.bandaidien@gmail.com',
   'contactUs': 'Liên hệ',
+  'contactUsSubtitle': 'Luôn cập nhật những thông báo mới nhất, hoặc có bất kì phản hồi nào về Xứ Đoàn',
   'dayClassTitle': 'Lớp sáng',
   'dayClassDesc': 'desc...',
   'nightClassTitle': 'Lớp tối',

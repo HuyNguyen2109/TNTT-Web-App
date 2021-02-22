@@ -21,7 +21,7 @@ import React from "react";
 import classNames from "classnames";
 import { Button, Paper, LoadingPage } from "../components/basic";
 import { HomePage } from "../helpers/constant";
-import { formatName } from "../helpers/functions";
+import { formatName, setDocumentTitle } from "../helpers/functions";
 import styles from "./Home.module.scss";
 import { Parallax } from "react-skrollr";
 
@@ -52,6 +52,7 @@ class Home extends React.Component {
 
   // Life cycle
   componentDidMount = () => {
+    setDocumentTitle(HomePage.documentTitle);
     setTimeout(() => {
       this.setState({ isDataLoading: false });
     }, 3000);
@@ -110,7 +111,7 @@ class Home extends React.Component {
             ref={this.refList.home}
           >
             <div className={styles.imgContainer}>
-                <img className={styles.img} alt="" />
+              <img className={styles.img} alt="" />
               <div className={styles.cover}>
                 <div>
                   <Parallax
@@ -186,6 +187,7 @@ class Home extends React.Component {
                     {HomePage.navLinks.map((link) => (
                       <Button
                         key={link.key}
+                        id={link.key}
                         className={
                           link.key === "signin" ? styles.signIn : styles.link
                         }
@@ -319,21 +321,10 @@ class Home extends React.Component {
               className={styles.scheduleContainer}
               ref={this.refList.schedule}
             >
-              <div className={styles.scrollDownForMore}>
-                <Parallax
-                data={{
-                  "data-center-top":
-                    "opacity:0;transform:translateX(100px)",
-                  "data-250-top": "opacity:1;transform:translateX(0px)"
-                }}>
-                  <Typography variant="h3" className={styles.scheduleTitle}>
-                    {HomePage.scheduleTitle}
-                  </Typography>
-                </Parallax>
-              </div>
+              <div className={styles.scrollDownForMore}></div>
               <div className={styles.scheduleGridContainer}>
                 <Grid container style={{ height: "100%" }}>
-                  <Grid item lg={6} xs={12} className={styles.item}>
+                  <Grid item lg={6} md={12} className={styles.item}>
                     <Parallax
                       data={{
                         "data-center-top":
@@ -359,7 +350,7 @@ class Home extends React.Component {
                       </div>
                     </Parallax>
                   </Grid>
-                  <Grid item lg={6} xs={12} className={styles.item}>
+                  <Grid item lg={6} md={12} className={styles.item}>
                     <Parallax
                       data={{
                         "data-center-top":
@@ -515,57 +506,63 @@ class Home extends React.Component {
             <div className={styles.contactContainer} ref={this.refList.contact}>
               <Parallax
                 data={{
-                  "data-bottom-top": "opacity:0;transform:translateX(-100px)",
+                  "data-bottom-top": "opacity:0;transform:translateX(500px)",
                   "data-bottom": "opacity:1;transform:translateX(0px)",
                 }}
               >
-                <Typography variant="h5" className={styles.copyRight}>
-                  <strong>{currentDate.getFullYear()}</strong>
-                  {`, ${HomePage.orgName}`}
+                <Typography
+                  variant="h3"
+                  className={classNames(styles.copyRight, styles.contactUs)}
+                >
+                  {HomePage.contactUs}
+                </Typography>
+                <Typography
+                  variant="h5"
+                  className={classNames(
+                    styles.copyRight,
+                    styles.contactUsSubtitle
+                  )}
+                >
+                  {HomePage.contactUsSubtitle}
                 </Typography>
               </Parallax>
-              <div style={{ flex: 1 }}></div>
-              <Parallax
-                data={{
-                  "data-bottom-top": "opacity:0;transform:translateX(50px)",
-                  "data-bottom": "opacity:1;transform:translateX(0px)",
-                }}
+              <Grid
+                container
+                alignContent="center"
+                alignItems="center"
+                className={styles.socialLinks}
               >
-                <div className={styles.socialLinks}>
+                <Grid item lg={6} xs={12}>
                   <div className={styles.socialLinkContainer}>
+                    <Facebook classes={{ root: styles.icon }} />
                     <span className={styles.title}>
                       <Link href={HomePage.facebookLink} target="_blank">
-                        Facebook
+                        {HomePage.facebookLink}
                       </Link>
                     </span>
-                    <Facebook classes={{ root: styles.icon }} />
                   </div>
+                </Grid>
+                <Grid item lg={6} xs={12}>
                   <div className={styles.socialLinkContainer}>
+                    <Mail classes={{ root: styles.icon }} />
                     <span className={styles.title}>
                       <Link
                         href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${HomePage.gmailLink}`}
                         target="_blank"
                       >
-                        Gmail
+                        {HomePage.gmailLink}
                       </Link>
                     </span>
-                    <Mail classes={{ root: styles.icon }} />
                   </div>
-                </div>
-              </Parallax>
-              <Parallax
-                data={{
-                  "data-bottom-top": "opacity:0;transform:translateX(100px)",
-                  "data-bottom": "opacity:1;transform:translateX(0px)",
-                }}
+                </Grid>
+              </Grid>
+              <Typography
+                variant="h5"
+                className={classNames(styles.copyRight, styles.orgName)}
               >
-                <Typography
-                  variant="h5"
-                  className={classNames(styles.copyRight, styles.contactUs)}
-                >
-                  {HomePage.contactUs}
-                </Typography>
-              </Parallax>
+                {`${HomePage.orgName} @ `}
+                <strong>{currentDate.getFullYear()}</strong>
+              </Typography>
             </div>
           </Container>
         )}

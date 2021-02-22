@@ -20,3 +20,7 @@ export const formatName = (name) => {
   }
   return nameExtraction.join(" ");
 }
+
+export const setDocumentTitle = (title) => {
+  return document.title = title;
+}
