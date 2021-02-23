@@ -217,6 +217,10 @@ export const HomePage = {
     },
     
   ],
+  'saintIntro': {
+    'name': 'Anê LÊ THỊ THÀNH (Đê) (1781 - 1841)',
+    'bigSentence': 'Con đừng khóc, mẹ mặc áo hoa hồng đấy, mẹ vui lòng chịu khổ vì Chúa Giêsu, sao con lại khóc?'
+  },
   'betaKeyMembers': [
     {
       'key': 'au-leader',
@@ -237,8 +241,7 @@ export const HomePage = {
       'fullName': 'Têrêsa Kiều Nguyễn Xuân Phương'
     },
   ],
-  'grandTitle': 'This is a long grand title',
-  'subGrandTitle': 'This is a long sub grand title',
+  'subGrandTitle': '"Một ngày là Huynh trưởng, cả đời là Huynh trưởng."',
   'learnMore': 'Tìm hiểu thêm',
   'scrollDownForMore': 'Cuộn xuống',
   'teamMemberTitle': 'Ban Quản trị',

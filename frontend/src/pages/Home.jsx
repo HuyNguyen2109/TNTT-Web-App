@@ -16,6 +16,7 @@ import {
   Mail,
   WbSunnyOutlined,
   Brightness2Outlined,
+  FormatQuote,
 } from "@material-ui/icons";
 import React from "react";
 import classNames from "classnames";
@@ -44,6 +45,7 @@ class Home extends React.Component {
     // Initialize the ref for scrolling
     this.refList = {
       home: (this.homePage = React.createRef()),
+      intro: (this.introduction = React.createRef()),
       schedule: (this.classSchedule = React.createRef()),
       team: (this.teamMember = React.createRef()),
       contact: (this.contactInfo = React.createRef()),
@@ -98,8 +100,11 @@ class Home extends React.Component {
     }
 
     switch (true) {
-      case (window.innerHeight + window.scrollY) >= document.body.offsetHeight:
+      case window.innerHeight + window.scrollY >= document.body.offsetHeight:
         return this.setActiveNavItem("contact");
+      case this.refList.intro.current &&
+        this.isZoneEl(this.refList.intro.current):
+        return this.setActiveNavItem("intro");
       case this.refList.schedule.current &&
         this.isZoneEl(this.refList.schedule.current):
         return this.setActiveNavItem("schedule");
@@ -147,7 +152,7 @@ class Home extends React.Component {
             ref={this.refList.home}
           >
             <div className={styles.imgContainer}>
-              <img className={styles.img} alt="" />
+            <img className={styles.img} alt="cover" src="/bg.jpg" />
               <div className={styles.cover}>
                 <div>
                   <Parallax
@@ -167,7 +172,10 @@ class Home extends React.Component {
                     <Typography
                       align="center"
                       variant="h3"
-                      className={classNames(styles.grandTitle)}
+                      className={classNames(
+                        styles.grandTitle,
+                        styles.subGrandTitle
+                      )}
                     >
                       {HomePage.subGrandTitle}
                     </Typography>
@@ -180,8 +188,9 @@ class Home extends React.Component {
                         window.scrollTo({
                           behavior: "smooth",
                           top:
-                            this.refList.schedule.current.offsetTop -
-                            HomePage.navHeight,
+                            this.refList.intro.current.offsetTop -
+                            HomePage.navHeight +
+                            1,
                         })
                       }
                     />
@@ -198,7 +207,7 @@ class Home extends React.Component {
                       this.state.scrollStatus === "top"
                         ? "transparent"
                         : "#fff",
-                    transition: "background-color 0.25s linear",
+                    transition: "background-color 0.5s linear",
                   }}
                 >
                   <img
@@ -244,7 +253,8 @@ class Home extends React.Component {
                                   behavior: "smooth",
                                   top:
                                     this.refList[link.key].current.offsetTop -
-                                    HomePage.navHeight + 1,
+                                    HomePage.navHeight +
+                                    1,
                                 }));
                           this.setActiveNavItem(link.key);
                         }}
@@ -355,11 +365,39 @@ class Home extends React.Component {
                 <div className={styles.mouse}></div>
               </div>
             </div>
+            <div className={styles.introContainer} ref={this.refList.intro}>
+              <div className={styles.inner}>
+                <Grid
+                  container
+                  alignContent="center"
+                  alignItems="center"
+                  className={styles.saintIntro}
+                >
+                  <Grid item xs={12} lg={4}>
+                    <div style={{ overflow: "hidden" }}>
+                      <img
+                        src="./anethanh.jpeg"
+                        alt="anethanh"
+                        className={styles.img}
+                      />
+                    </div>
+                    <Typography variant="subtitle1">{HomePage.saintIntro.name}</Typography>
+                  </Grid>
+                  <Grid item xs={12} lg={8}>
+                    <div>
+                      <FormatQuote classes={{ root: styles.qoute }} />
+                      <Typography variant="h4" className={styles.bigSentence}>
+                        {HomePage.saintIntro.bigSentence}
+                      </Typography>
+                    </div>
+                  </Grid>
+                </Grid>
+              </div>
+            </div>
             <div
               className={styles.scheduleContainer}
               ref={this.refList.schedule}
             >
-              <div className={styles.scrollDownForMore}></div>
               <div className={styles.scheduleGridContainer}>
                 <Grid container style={{ height: "100%" }}>
                   <Grid item lg={6} md={12} className={styles.item}>
