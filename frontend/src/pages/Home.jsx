@@ -152,7 +152,7 @@ class Home extends React.Component {
             ref={this.refList.home}
           >
             <div className={styles.imgContainer}>
-            <img className={styles.img} alt="cover" src="/bg.jpg" />
+              <img className={styles.img} alt="cover" src="/bg.jpg" />
               <div className={styles.cover}>
                 <div>
                   <Parallax
@@ -381,7 +381,9 @@ class Home extends React.Component {
                         className={styles.img}
                       />
                     </div>
-                    <Typography variant="subtitle1">{HomePage.saintIntro.name}</Typography>
+                    <Typography variant="subtitle1">
+                      {HomePage.saintIntro.name}
+                    </Typography>
                   </Grid>
                   <Grid item xs={12} lg={8}>
                     <div>
@@ -399,13 +401,13 @@ class Home extends React.Component {
               ref={this.refList.schedule}
             >
               <div className={styles.scheduleGridContainer}>
-                <Grid container style={{ height: "100%" }}>
-                  <Grid item lg={6} md={12} className={styles.item}>
+                <Grid container style={{ height: "600px" }}>
+                  <Grid item lg={6} xs={12} className={styles.item}>
                     <Parallax
                       data={{
                         "data-center-top":
                           "opacity:0;transform:translateX(-500px)",
-                        "data-250-top": "opacity:1;transform:translateX(0px)",
+                        "data-200-top": "opacity:1;transform:translateX(0px)",
                       }}
                     >
                       <img
@@ -426,12 +428,20 @@ class Home extends React.Component {
                       </div>
                     </Parallax>
                   </Grid>
-                  <Grid item lg={6} md={12} className={styles.item}>
+                  <Grid item lg={6} xs={12} className={styles.item}>
+                    <Typography variant="h1">aa</Typography>
+                  </Grid>
+                </Grid>
+                <Grid container style={{ height: "600px" }}>
+                  <Grid item lg={6} xs={12} className={styles.item}>
+                    <Typography variant="h1">aa</Typography>
+                  </Grid>
+                  <Grid item lg={6} xs={12} className={styles.item}>
                     <Parallax
                       data={{
                         "data-center-top":
                           "opacity:0;transform:translateX(500px)",
-                        "data-250-top": "opacity:1;transform:translateX(0px)",
+                        "data-200-top": "opacity:1;transform:translateX(0px)",
                       }}
                     >
                       <img

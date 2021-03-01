@@ -23,7 +23,6 @@
       height: 100%;
       object-fit: cover;
       object-position: 50% 50%;
-      position: fixed;
     }
     .cover {
       background-color: rgba($color: #000000, $alpha: 0.4);
@@ -310,7 +309,7 @@
 
     .scheduleGridContainer {
       overflow: hidden;
-      height: 600px;
+      height: 1200px;
 
       @media (max-width: 1024px) {
         height: 100%;
