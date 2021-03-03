@@ -8,6 +8,8 @@ import {
   Grid,
   Avatar,
   Link,
+  Tooltip,
+  Toolbar,
 } from "@material-ui/core";
 import {
   List,
@@ -17,14 +19,19 @@ import {
   WbSunnyOutlined,
   Brightness2Outlined,
   FormatQuote,
+  InfoOutlined,
 } from "@material-ui/icons";
 import React from "react";
 import classNames from "classnames";
-import { Button, Paper, LoadingPage } from "../components/basic";
+import { Button, Paper, LoadingPage, Dialog } from "../components/basic";
+import { Parallax } from "react-skrollr";
+// Styles
+import styles from "./Home.module.scss";
+// Helpers
 import { HomePage } from "../helpers/constant";
 import { formatName, setDocumentTitle } from "../helpers/functions";
-import styles from "./Home.module.scss";
-import { Parallax } from "react-skrollr";
+import { bioForm } from "../helpers/styles";
+import { html as htmlApis } from "../helpers/api";
 
 class Home extends React.Component {
   constructor(props) {
@@ -37,6 +44,8 @@ class Home extends React.Component {
       isTeamMemberOpen: false,
       isDataLoading: true,
       currentDate: new Date(),
+      isSaintBioDialog: false,
+      saintExternalHtml: '',
     };
 
     this.state = { ...this.initialState };
@@ -53,6 +62,15 @@ class Home extends React.Component {
   }
 
   // Life cycle
+
+  componentWillMount = () => {
+    htmlApis.getContent()
+      .then(res => {
+        this.setState({saintExternalHtml: res})
+      })
+      .catch(err => console.log(err))
+  }
+
   componentDidMount = () => {
     setDocumentTitle(HomePage.documentTitle);
     setTimeout(() => {
@@ -138,7 +156,7 @@ class Home extends React.Component {
 
   //Render
   render = () => {
-    const { isMobileMenuOpen, isDataLoading, currentDate } = this.state;
+    const { isMobileMenuOpen, isDataLoading, currentDate, isSaintBioDialog } = this.state;
 
     return (
       <div>
@@ -400,6 +418,13 @@ class Home extends React.Component {
                       <Typography variant="h4" className={styles.bigSentence}>
                         {HomePage.saintIntro.bigSentence}
                       </Typography>
+                      <Button
+                        className={styles.bio}
+                        variant="outlined"
+                        label={'Tiểu sử'}
+                        size="large"
+                        onClick={() => this.setState({isSaintBioDialog: true})}
+                      />
                     </div>
                   </Grid>
                 </Grid>
@@ -646,27 +671,30 @@ class Home extends React.Component {
                   alignItems="center"
                   className={styles.socialLinks}
                 >
-                  <Grid item lg={6} xs={12}>
+                  <Grid item xs={6} style={{position: 'relative', height: 'inherit'}}>
                     <div className={styles.socialLinkContainer}>
-                      <Facebook classes={{ root: styles.icon }} />
-                      <span className={styles.title}>
-                        <Link href={HomePage.facebookLink} target="_blank">
-                          {HomePage.facebookLink}
-                        </Link>
-                      </span>
+                      <Tooltip title={HomePage.facebookLink} placement="top">
+                        <IconButton
+                          component="a"
+                          href={HomePage.facebookLink}
+                          target="_blank"
+                        >
+                          <Facebook classes={{ root: styles.icon }} />
+                        </IconButton>
+                      </Tooltip>
                     </div>
                   </Grid>
-                  <Grid item lg={6} xs={12}>
-                    <div className={styles.socialLinkContainer}>
-                      <Mail classes={{ root: styles.icon }} />
-                      <span className={styles.title}>
-                        <Link
+                  <Grid item xs={6} style={{position: 'relative', height: 'inherit'}}>
+                    <div className={styles.socialLinkContainerR}>
+                      <Tooltip title={HomePage.gmailLink} placement="top">
+                        <IconButton
+                          component="a"
                           href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${HomePage.gmailLink}`}
                           target="_blank"
                         >
-                          {HomePage.gmailLink}
-                        </Link>
-                      </span>
+                          <Mail classes={{ root: styles.icon }} />
+                        </IconButton>
+                      </Tooltip>
                     </div>
                   </Grid>
                 </Grid>
@@ -681,6 +709,31 @@ class Home extends React.Component {
             </div>
           </Container>
         )}
+        <Dialog 
+          title={`Tiểu sử ${HomePage.saintIntro.name}`}
+          icon={<InfoOutlined style={bioForm.icon} />}
+          open={isSaintBioDialog}
+          handleClose={(val) => this.setState({isSaintBioDialog: val})}
+          content={
+            <React.Fragment>
+              <div className={styles.bioContainer} style={bioForm.container}>
+                <div className={styles.externalHtml} dangerouslySetInnerHTML={{__html: this.state.saintExternalHtml}}></div>
+              </div>
+            </React.Fragment>
+          }
+          action={
+            <Toolbar>
+              <div style={{ flexGlow: "1" }} />
+              <Button 
+                label="đóng"
+                variant="contained"
+                size="large"
+                style={bioForm.closeButton}
+                onClick={() => this.setState({isSaintBioDialog: false})}
+              />
+            </Toolbar>
+          }
+        />
       </div>
     );
   };

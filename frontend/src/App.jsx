@@ -12,7 +12,11 @@ export default class App extends React.Component {
   render = () => {
     const theme = createMuiTheme({
       typography: {
-        fontFamily: '"Segoe UI Light", san-serif',
+        fontFamily: '"Segoe UI Light","Roboto", san-serif',
+        fontWeightRegular: '500',
+        fontWeightLight: '100',
+        fontWeightMedium: '300',
+        fontWeightBold: '900'
       },
     });
 

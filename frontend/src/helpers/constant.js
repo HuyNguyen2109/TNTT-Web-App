@@ -219,7 +219,7 @@ export const HomePage = {
   ],
   'saintIntro': {
     'name': 'Thánh Anê Lê Thị Thành (1781 - 1841)',
-    'bigSentence': 'Con đừng khóc, mẹ mặc áo hoa hồng đấy, mẹ vui lòng chịu khổ vì Chúa Giêsu, sao con lại khóc?'
+    'bigSentence': 'Con đừng khóc, mẹ mặc áo hoa hồng đấy, mẹ vui lòng chịu khổ vì Chúa Giêsu, sao con lại khóc?',
   },
   'betaKeyMembers': [
     {

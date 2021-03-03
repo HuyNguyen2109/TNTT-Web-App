@@ -5,8 +5,8 @@ export const forgotForm = {
     color: variables.info,
   },
   primaryButton: {
-    backgroundColor: 'transparent',
-    color: variables.info,
+    backgroundColor: variables.primary,
+    color: '#fff',
     boxShadow: 'none',
   },
   primaryButtonDisabled: {
@@ -17,5 +17,18 @@ export const forgotForm = {
   errorMessage: {
     color: 'red',
     fontStyle: 'italic'
+  }
+}
+
+export const bioForm = {
+  icon: {
+    color: variables.info
+  },
+  closeButton: {
+    backgroundColor: variables.primary,
+    color: '#fff',
+  },
+  container: {
+    maxHeight: '800px'
   }
 }
