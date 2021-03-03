@@ -9,6 +9,7 @@
     position: relative;
     display: block;
     min-height: inherit;
+    background-color: #fff;
     .img,
     .cover,
     .homeNavBar {
@@ -23,16 +24,23 @@
       height: 100%;
       object-fit: cover;
       object-position: 50% 50%;
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+      @media (max-width: 1024px) {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%);
+      }
     }
     .cover {
       background-color: rgba($color: #000000, $alpha: 0.4);
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       .grandTitle {
         color: #fff;
+        font-family: "Pacifico", cursive;
         position: relative;
-        text-transform: uppercase;
+        text-transform: capitalize;
         letter-spacing: 3px;
         animation: fadeInUp 2s ease-in-out;
 
@@ -63,6 +71,10 @@
         @media (max-width: 450px) {
           zoom: 0.7;
         }
+      }
+
+      @media (max-width: 1024px) {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%);
       }
     }
     .homeNavBar {
@@ -188,25 +200,27 @@
     .scrollDownForMore1 {
       position: absolute;
       height: 100px;
-      width: 2px;
+      width: 100px;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: $primaryColor;
-      bottom: 0;
-      right: 20px;
+      bottom: 80px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      h6 {
-        position: absolute;
-        color: #fff;
-        right: 13px;
-        width: 300px;
-        text-align: right;
-        animation: pulse 2s infinite;
+      @media (max-width: 450px) {
+        zoom: 0.7;
+        bottom: 5%;
+      }
+
+      @media (max-width: 1024px) {
+        bottom: 6%;
       }
 
       .mouse {
-        position: absolute;
         color: #fff;
-        right: 13px;
-        top: 30px;
         width: 30px;
         height: 60px;
         border-radius: 20px;
@@ -215,8 +229,8 @@
         &::after {
           content: "";
           position: absolute;
-          top: 10px;
-          left: 35%;
+          top: 25px;
+          left: 45%;
           transform: translateX(-50%);
           width: 10px;
           height: 10px;
@@ -232,12 +246,17 @@
     min-height: 600px; //temporary
     background-color: #fff;
     z-index: 2;
+    padding: 100px 0 100px 0;
 
     & .inner {
       margin: auto;
       width: 100%;
-      max-width: 1000px;
+      max-width: 1400px;
       min-height: inherit;
+
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
 
       & .saintIntro {
         height: 600px;
@@ -260,11 +279,13 @@
         }
 
         .bigSentence {
-          font-family: "Times New Roman", Times, serif;
+          font-family: "Pacifico", cursive;
+          font-size: 35px;
           font-style: italic;
           color: $primaryColor;
           text-align: right;
           position: relative;
+          line-height: 2em;
 
           &::before {
             content: "";
@@ -287,6 +308,30 @@
             left: 50%;
             transform: translateX(-50%);
           }
+
+          @media (max-width: 1024px) {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      min-height: unset;
+      height: 100%;
+
+      & .inner {
+        & .saintIntro {
+          height: 100%;
+
+          & .qoute {
+            margin: 20px 0 10px;
+          }
+
+          & .bigSentence {
+            zoom: 0.7;
+            margin: 0 10px;
+          }
         }
       }
     }
@@ -294,7 +339,7 @@
 
   .scheduleContainer {
     overflow: hidden;
-    background-color: $primaryColor;
+    background-color: #fff;
     position: relative;
 
     .scrollDownForMore {
@@ -309,7 +354,9 @@
 
     .scheduleGridContainer {
       overflow: hidden;
-      height: 1200px;
+      margin: 100px auto;
+      width: 100%;
+      max-width: 1400px;
 
       @media (max-width: 1024px) {
         height: 100%;
@@ -320,88 +367,30 @@
         position: relative;
         height: inherit;
 
-        .dayCover,
-        .nightCover {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 600px;
-          visibility: hidden;
-          opacity: 0;
-          pointer-events: none;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          .classContent {
-            transform: translateY(200px);
-            transition: transform 0.25s linear;
-            .sunIcon,
-            .moonIcon {
-              width: 90px;
-              height: 90px;
-            }
-
-            .moonIcon,
-            .nightClassTitle {
-              color: #fff;
-            }
+        .classContent {
+          .sunIcon,
+          .moonIcon {
+            width: 90px;
+            height: 90px;
           }
 
-          @media (max-width: 1024px) {
-            height: 100%;
+          .nightClassTitle {
+            color: #000;
+            font-family: "Pacifico", cursive;
+            margin: 30px 0;
+          }
+
+          .classDesc {
+            line-height: 1.5em;
           }
         }
 
-        .daylightImg {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 50% 50%;
-          transition: transform 0.25s ease-in-out;
-
-          &:hover {
-            transform: scale(1.5);
-
-            & ~ .dayCover {
-              visibility: visible;
-              opacity: 1;
-              transition: visibility 0.25s ease-in-out;
-              background-color: rgba($color: #fff, $alpha: 0.5);
-              .classContent {
-                transform: translateY(0px);
-                .sunIcon {
-                  animation: spin 3s linear infinite;
-                }
-              }
-            }
-          }
-        }
-
+        .daylightImg,
         .nightImg {
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: 50% 50%;
-          transition: transform 0.25s ease-in-out;
-
-          &:hover {
-            transform: scale(1.5);
-
-            & ~ .nightCover {
-              visibility: visible;
-              opacity: 1;
-              transition: visibility 0.25s ease-in-out;
-              background-color: rgba($color: #000, $alpha: 0.5);
-              .classContent {
-                transform: translateY(0px);
-                .moonIcon {
-                  animation: spinY 3s linear infinite;
-                }
-              }
-            }
-          }
         }
       }
     }
@@ -412,7 +401,7 @@
     display: block;
     position: relative;
     background: linear-gradient($primaryColor, $secondaryColor);
-    padding: 40px 0 40px 0;
+    padding: 100px 0 100px 0;
 
     .scrollDownForMore2 {
       top: 0;
@@ -425,8 +414,10 @@
     }
 
     .teamMemberTitle {
+      font-family: "Pacifico", cursive;
+      font-style: italic;
       color: #fff;
-      text-transform: uppercase;
+      text-transform: capitalize;
       letter-spacing: 10px;
       @media (max-width: 450px) {
         zoom: 0.7;
@@ -504,82 +495,85 @@
 
   .contactContainer {
     background-color: #000;
-    min-height: 600px;
-    padding: 0 120px;
+    padding: 10px 0;
     position: relative;
 
-    @media (max-width: 768px) {
-      padding: 0 10px;
-    }
-
-    .copyRight {
-      color: #fff;
+    .inner {
+      max-width: 1400px;
       margin: auto;
-      @media (max-width: 450px) {
-        zoom: 0.7;
+      @media (max-width: 1024px) {
+        width: 100%;
       }
-    }
 
-    .orgName {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background-color: #f6f6f6;
-      padding: 20px;
-      width: calc(100% - 40px);
-      color: $primaryColor;
-    }
-
-    .contactUs {
-      padding: 60px;
-      text-transform: uppercase;
-      letter-spacing: 10px;
-
-      &::after {
-        content: "";
-        border-bottom: 3px solid #fff;
-        margin: 50px auto 0;
-        width: 100px;
-        display: block;
-      }
-    }
-
-    .contactUsSubtitle {
-      max-width: 886px;
-    }
-
-    .socialLinks {
-      margin: 50px auto 0;
-      padding-bottom: 50px;
-      max-width: 800px;
-      .socialLinkContainer {
-        width: fit-content;
+      .copyRight {
+        color: #fff;
         margin: auto;
-
-        .icon,
-        .title > a {
-          color: #fff;
-          font-size: 18px;
-          @media (max-width: 450px) {
-            zoom: 0.7;
-          }
+        @media (max-width: 450px) {
+          zoom: 0.7;
         }
+      }
 
-        .icon,
-        title {
-          transition: 0.15s ease !important;
+      .orgName {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-color: #000;
+        padding: 20px;
+        width: calc(100% - 40px);
+        color: #fff;
+      }
+
+      .contactUs {
+        padding: 60px;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+
+        &::after {
+          content: "";
+          border-bottom: 3px solid #fff;
+          margin: 50px auto 0;
+          width: 100px;
           display: block;
         }
+      }
 
-        .icon {
-          width: 80px;
-          height: 80px;
+      .contactUsSubtitle {
+        max-width: 886px;
+      }
+
+      .socialLinks {
+        margin: 50px auto 0;
+        padding-bottom: 50px;
+        max-width: 800px;
+        .socialLinkContainer {
+          width: fit-content;
           margin: auto;
-        }
 
-        .title {
-          margin-top: 20px;
-          display: block;
+          .icon,
+          .title > a {
+            color: #fff;
+            font-size: 18px;
+            @media (max-width: 450px) {
+              zoom: 0.7;
+            }
+          }
+
+          .icon,
+          title {
+            transition: 0.15s ease !important;
+            display: block;
+          }
+
+          .icon {
+            width: 80px;
+            height: 80px;
+            margin: auto;
+          }
+
+          .title {
+            margin-top: 20px;
+            display: block;
+          }
         }
       }
     }

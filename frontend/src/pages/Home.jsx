@@ -359,9 +359,6 @@ class Home extends React.Component {
                 </div>
               </Hidden>
               <div className={styles.scrollDownForMore1}>
-                <Typography variant="subtitle1">
-                  {HomePage.scrollDownForMore}
-                </Typography>
                 <div className={styles.mouse}></div>
               </div>
             </div>
@@ -374,14 +371,26 @@ class Home extends React.Component {
                   className={styles.saintIntro}
                 >
                   <Grid item xs={12} lg={4}>
-                    <div style={{ overflow: "hidden" }}>
+                    <div
+                      style={{
+                        overflow: "hidden",
+                        width: "333px",
+                        height: "546px",
+                        margin: "auto",
+                      }}
+                    >
                       <img
                         src="./anethanh.jpeg"
                         alt="anethanh"
                         className={styles.img}
                       />
                     </div>
-                    <Typography variant="subtitle1">
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontFamily: '"Pacifico", cursive',
+                      }}
+                    >
                       {HomePage.saintIntro.name}
                     </Typography>
                   </Grid>
@@ -401,13 +410,13 @@ class Home extends React.Component {
               ref={this.refList.schedule}
             >
               <div className={styles.scheduleGridContainer}>
-                <Grid container style={{ height: "600px" }}>
+                <Grid container alignItems="center" alignContent="center">
                   <Grid item lg={6} xs={12} className={styles.item}>
                     <Parallax
                       data={{
-                        "data-center-top":
+                        "data--100-bottom":
                           "opacity:0;transform:translateX(-500px)",
-                        "data-200-top": "opacity:1;transform:translateX(0px)",
+                        "data-center": "opacity:1;transform:translateX(0px)",
                       }}
                     >
                       <img
@@ -415,33 +424,70 @@ class Home extends React.Component {
                         alt="Day class"
                         className={styles.daylightImg}
                       />
-                      <div className={styles.dayCover}>
-                        <div className={styles.classContent}>
-                          <WbSunnyOutlined className={styles.sunIcon} />
-                          <Typography variant="h3" align="center">
-                            <strong>{HomePage.dayClassTitle}</strong>
-                          </Typography>
-                          <Typography variant="h5" align="center">
-                            {HomePage.dayClassDesc}
-                          </Typography>
-                        </div>
-                      </div>
                     </Parallax>
-                  </Grid>
-                  <Grid item lg={6} xs={12} className={styles.item}>
-                    <Typography variant="h1">aa</Typography>
-                  </Grid>
-                </Grid>
-                <Grid container style={{ height: "600px" }}>
-                  <Grid item lg={6} xs={12} className={styles.item}>
-                    <Typography variant="h1">aa</Typography>
                   </Grid>
                   <Grid item lg={6} xs={12} className={styles.item}>
                     <Parallax
                       data={{
-                        "data-center-top":
+                        "data--200-bottom":
                           "opacity:0;transform:translateX(500px)",
-                        "data-200-top": "opacity:1;transform:translateX(0px)",
+                        "data-center": "opacity:1;transform:translateX(0px)",
+                      }}
+                    >
+                      <div className={styles.classContent}>
+                        <WbSunnyOutlined className={styles.sunIcon} />
+                        <Typography
+                          variant="h3"
+                          align="center"
+                          classes={{ root: styles.nightClassTitle }}
+                        >
+                          <strong>{HomePage.dayClassTitle}</strong>
+                        </Typography>
+                        <Typography
+                          variant="h5"
+                          align="right"
+                          className={styles.classDesc}
+                        >
+                          {HomePage.dayClassDesc}
+                        </Typography>
+                      </div>
+                    </Parallax>
+                  </Grid>
+                </Grid>
+                <Grid container alignItems="center" alignContent="center">
+                  <Grid item lg={6} xs={12} className={styles.item}>
+                    <Parallax
+                      data={{
+                        "data--200-bottom":
+                          "opacity:0;transform:translateX(-500px)",
+                        "data-center": "opacity:1;transform:translateX(0px)",
+                      }}
+                    >
+                      <div className={styles.classContent}>
+                        <Brightness2Outlined className={styles.moonIcon} />
+                        <Typography
+                          variant="h3"
+                          align="center"
+                          classes={{ root: styles.nightClassTitle }}
+                        >
+                          <strong>{HomePage.nightClassTitle}</strong>
+                        </Typography>
+                        <Typography
+                          variant="h5"
+                          align="left"
+                          className={styles.classDesc}
+                        >
+                          {HomePage.nightClassDesc}
+                        </Typography>
+                      </div>
+                    </Parallax>
+                  </Grid>
+                  <Grid item lg={6} xs={12} className={styles.item}>
+                    <Parallax
+                      data={{
+                        "data--100-bottom":
+                          "opacity:0;transform:translateX(500px)",
+                        "data-center": "opacity:1;transform:translateX(0px)",
                       }}
                     >
                       <img
@@ -449,25 +495,6 @@ class Home extends React.Component {
                         alt="Night class"
                         className={styles.nightImg}
                       />
-                      <div className={styles.nightCover}>
-                        <div className={styles.classContent}>
-                          <Brightness2Outlined className={styles.moonIcon} />
-                          <Typography
-                            variant="h3"
-                            align="center"
-                            classes={{ root: styles.nightClassTitle }}
-                          >
-                            <strong>{HomePage.nightClassTitle}</strong>
-                          </Typography>
-                          <Typography
-                            variant="h5"
-                            classes={{ root: styles.nightClassTitle }}
-                            align="center"
-                          >
-                            {HomePage.nightClassDesc}
-                          </Typography>
-                        </div>
-                      </div>
                     </Parallax>
                   </Grid>
                 </Grid>
@@ -590,65 +617,67 @@ class Home extends React.Component {
               </Grid>
             </div>
             <div className={styles.contactContainer} ref={this.refList.contact}>
-              <Parallax
-                data={{
-                  "data-bottom-top": "opacity:0;transform:translateX(500px)",
-                  "data-bottom": "opacity:1;transform:translateX(0px)",
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  className={classNames(styles.copyRight, styles.contactUs)}
+              <div className={styles.inner}>
+                <Parallax
+                  data={{
+                    "data-bottom-top": "opacity:0;transform:translateX(500px)",
+                    "data-bottom": "opacity:1;transform:translateX(0px)",
+                  }}
                 >
-                  {HomePage.contactUs}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  className={classNames(
-                    styles.copyRight,
-                    styles.contactUsSubtitle
-                  )}
+                  <Typography
+                    variant="h3"
+                    className={classNames(styles.copyRight, styles.contactUs)}
+                  >
+                    {HomePage.contactUs}
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    className={classNames(
+                      styles.copyRight,
+                      styles.contactUsSubtitle
+                    )}
+                  >
+                    {HomePage.contactUsSubtitle}
+                  </Typography>
+                </Parallax>
+                <Grid
+                  container
+                  alignContent="center"
+                  alignItems="center"
+                  className={styles.socialLinks}
                 >
-                  {HomePage.contactUsSubtitle}
+                  <Grid item lg={6} xs={12}>
+                    <div className={styles.socialLinkContainer}>
+                      <Facebook classes={{ root: styles.icon }} />
+                      <span className={styles.title}>
+                        <Link href={HomePage.facebookLink} target="_blank">
+                          {HomePage.facebookLink}
+                        </Link>
+                      </span>
+                    </div>
+                  </Grid>
+                  <Grid item lg={6} xs={12}>
+                    <div className={styles.socialLinkContainer}>
+                      <Mail classes={{ root: styles.icon }} />
+                      <span className={styles.title}>
+                        <Link
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${HomePage.gmailLink}`}
+                          target="_blank"
+                        >
+                          {HomePage.gmailLink}
+                        </Link>
+                      </span>
+                    </div>
+                  </Grid>
+                </Grid>
+                <Typography
+                  variant="h6"
+                  className={classNames(styles.copyRight, styles.orgName)}
+                >
+                  {`${HomePage.orgName} @ `}
+                  <strong>{currentDate.getFullYear()}</strong>
                 </Typography>
-              </Parallax>
-              <Grid
-                container
-                alignContent="center"
-                alignItems="center"
-                className={styles.socialLinks}
-              >
-                <Grid item lg={6} xs={12}>
-                  <div className={styles.socialLinkContainer}>
-                    <Facebook classes={{ root: styles.icon }} />
-                    <span className={styles.title}>
-                      <Link href={HomePage.facebookLink} target="_blank">
-                        {HomePage.facebookLink}
-                      </Link>
-                    </span>
-                  </div>
-                </Grid>
-                <Grid item lg={6} xs={12}>
-                  <div className={styles.socialLinkContainer}>
-                    <Mail classes={{ root: styles.icon }} />
-                    <span className={styles.title}>
-                      <Link
-                        href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${HomePage.gmailLink}`}
-                        target="_blank"
-                      >
-                        {HomePage.gmailLink}
-                      </Link>
-                    </span>
-                  </div>
-                </Grid>
-              </Grid>
-              <Typography
-                variant="h5"
-                className={classNames(styles.copyRight, styles.orgName)}
-              >
-                {`${HomePage.orgName} @ `}
-                <strong>{currentDate.getFullYear()}</strong>
-              </Typography>
+              </div>
             </div>
           </Container>
         )}

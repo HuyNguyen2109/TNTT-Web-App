@@ -218,7 +218,7 @@ export const HomePage = {
     
   ],
   'saintIntro': {
-    'name': 'Anê LÊ THỊ THÀNH (Đê) (1781 - 1841)',
+    'name': 'Thánh Anê Lê Thị Thành (1781 - 1841)',
     'bigSentence': 'Con đừng khóc, mẹ mặc áo hoa hồng đấy, mẹ vui lòng chịu khổ vì Chúa Giêsu, sao con lại khóc?'
   },
   'betaKeyMembers': [
@@ -252,8 +252,8 @@ export const HomePage = {
   'contactUs': 'Liên hệ',
   'contactUsSubtitle': 'Luôn cập nhật những thông báo mới nhất, hoặc có bất kì phản hồi nào về Xứ Đoàn',
   'dayClassTitle': 'Lớp sáng',
-  'dayClassDesc': 'desc...',
+  'dayClassDesc': 'Các em thiếu nhi sẽ tập trung tại Nhà thờ tham dự Thánh Lễ Chúa Nhật lúc 6h30, sau đó sẽ được hướng dẫn di chuyển vào Nhà Sinh Hoạt Mục Vụ ăn sáng và bắt đầu giờ học giáo lý lúc 8h30, buổi học được kết thúc lúc 9h30.',
   'nightClassTitle': 'Lớp tối',
-  'nightClassDesc': 'desc..............'
+  'nightClassDesc': 'Các em tham dự Thánh Lễ chiều thứ 7, sau đó di chuyển vào Nhà Sinh Hoạt Mục Vụ và bắt đầu giờ học Giáo Lý, kết thúc lúc 20h. Các em vẫn tham dự Thánh Lễ Thiếu Nhi ngày Chúa Nhật và cùng ăn sáng như các bạn khác, sau đó có thể ra về.'
 }
 
