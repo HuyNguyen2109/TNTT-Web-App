@@ -29,6 +29,7 @@ export const bioForm = {
     color: '#fff',
   },
   container: {
-    maxHeight: '800px'
+    maxHeight: '800px',
+    margin: 'auto'
   }
 }

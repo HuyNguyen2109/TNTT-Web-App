@@ -26,6 +26,7 @@
       object-fit: cover;
       object-position: 50% 50%;
       clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+      background-position: 50% 100px;
 
       @media (max-width: 1024px) {
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 90%);
@@ -269,7 +270,8 @@
         box-shadow: 0 10px 25px 5px rgba($color: #000000, $alpha: 0.4);
         .img {
           width: 100%;
-          transition: transform 3s ease;
+          transition: transform 2s ease;
+          border-radius: 15px;
 
           &:hover {
             transform: scale(1.3);
@@ -420,6 +422,24 @@
           .classDesc {
             line-height: 1.5em;
             max-width: 680px;
+            font-weight: 300;
+          }
+
+          @media (max-width: 768px) {
+            .nightClassTitle, .classDesc, .sunIcon,
+            .moonIcon {
+              text-align: center;
+              margin: 0 5px;
+              max-width: 100%;
+            }
+            
+            .nightClassTitle {
+              margin-bottom: 15px;
+            }
+          }
+
+          @media (max-width: 767px) {
+            zoom: .7;
           }
         }
 
@@ -634,16 +654,46 @@
 }
 
 .bioContainer {
+  .bioImage {
+    display: flex;
+    justify-content: center;
+
+    img {
+      border-radius: 15px;
+    }
+  }
+
   .externalHtml {
     @extend .customXScrollBar;
     p {
       line-height: 1.5em;
+      text-align: justify;
   
       strong {
         font-family: "Pacifico", cursive;
         letter-spacing: 3px;
         font-size: 20px;
       }
+    }
+  }
+}
+
+.goToHomeBtn {
+  position: fixed !important;
+  right: 10px;
+  bottom: 10px;
+  background-color: $secondaryColor !important;
+  transition: transform 0.2s ease;
+
+  .goToHomeIcon {
+    color: #fff !important;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: $secondaryColor !important;
+    @media (pointer: coarse) {
+      transform: scale(1);
     }
   }
 }

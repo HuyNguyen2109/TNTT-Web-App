@@ -6,13 +6,19 @@ import { Routes } from "./pages";
 import { ParallaxProvider } from "react-skrollr";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
+import { smoothScrolling } from './helpers/functions'
+
 const browserHistory = createBrowserHistory();
 
 export default class App extends React.Component {
+  componentDidMount = () => {
+    smoothScrolling();
+  }
+
   render = () => {
     const theme = createMuiTheme({
       typography: {
-        fontFamily: '"Segoe UI Light","Roboto", san-serif',
+        fontFamily: '"Roboto", san-serif',
         fontWeightRegular: '500',
         fontWeightLight: '100',
         fontWeightMedium: '300',
@@ -25,9 +31,9 @@ export default class App extends React.Component {
         <MuiThemeProvider theme={theme}>
           <ParallaxProvider
             init={{
+              smoothScrollingDuration: 1000,
               smoothScrolling: true,
-              smoothScrollingDuration: 500,
-              forceHeight: true,
+              forceHeight: false,
             }}
           >
             <Router history={browserHistory}>

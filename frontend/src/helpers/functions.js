@@ -24,3 +24,14 @@ export const formatName = (name) => {
 export const setDocumentTitle = (title) => {
   return document.title = title;
 }
+
+export const smoothScrolling = () => {
+  if(navigator.userAgent.match(/MSIE 10/i) || navigator.userAgent.match(/Trident\/7\./) || navigator.userAgent.match(/Edge\/12\./)) {
+    document.querySelector('body').on("mousewheel", (event) => {
+      event.preventDefault();
+      var wd = event.wheelDelta;
+      var csp = window.pageYOffset;
+      window.scrollTo(0, csp - wd);
+    });
+  }
+}

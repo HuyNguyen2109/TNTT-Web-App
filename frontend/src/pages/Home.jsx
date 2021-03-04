@@ -10,6 +10,8 @@ import {
   Link,
   Tooltip,
   Toolbar,
+  Fab,
+  Zoom,
 } from "@material-ui/core";
 import {
   List,
@@ -20,6 +22,7 @@ import {
   Brightness2Outlined,
   FormatQuote,
   InfoOutlined,
+  ArrowUpward,
 } from "@material-ui/icons";
 import React from "react";
 import classNames from "classnames";
@@ -45,7 +48,7 @@ class Home extends React.Component {
       isDataLoading: true,
       currentDate: new Date(),
       isSaintBioDialog: false,
-      saintExternalHtml: '',
+      saintExternalHtml: "",
     };
 
     this.state = { ...this.initialState };
@@ -63,13 +66,14 @@ class Home extends React.Component {
 
   // Life cycle
 
-  componentWillMount = () => {
-    htmlApis.getContent()
-      .then(res => {
-        this.setState({saintExternalHtml: res})
+  UNSAFE_componentWillMount = () => {
+    htmlApis
+      .getContent()
+      .then((res) => {
+        this.setState({ saintExternalHtml: res });
       })
-      .catch(err => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   componentDidMount = () => {
     setDocumentTitle(HomePage.documentTitle);
@@ -156,10 +160,15 @@ class Home extends React.Component {
 
   //Render
   render = () => {
-    const { isMobileMenuOpen, isDataLoading, currentDate, isSaintBioDialog } = this.state;
+    const {
+      isMobileMenuOpen,
+      isDataLoading,
+      currentDate,
+      isSaintBioDialog,
+    } = this.state;
 
     return (
-      <div>
+      <div style={{ position: "relative" }}>
         {isDataLoading ? (
           <LoadingPage />
         ) : (
@@ -170,7 +179,14 @@ class Home extends React.Component {
             ref={this.refList.home}
           >
             <div className={styles.imgContainer}>
-              <img className={styles.img} alt="cover" src="/bg.jpg" />
+              <Parallax
+                data={{
+                  "data-center": "background-position: 50% 0px",
+                  "data-top-bottom": "background-position: 50% -100px"
+                }}
+              >
+                <img className={styles.img} alt="cover" src="/images/bg.jpg" />
+              </Parallax>
               <div className={styles.cover}>
                 <div>
                   <Parallax
@@ -226,11 +242,12 @@ class Home extends React.Component {
                         ? "transparent"
                         : "#fff",
                     transition: "background-color 0.5s linear",
+                    backgroundAttachment: "fixed",
                   }}
                 >
                   <img
                     alt="TNTT-logo"
-                    src="/logo.png"
+                    src="/images/logo.png"
                     onClick={() => {
                       window.scrollTo({
                         behavior: "smooth",
@@ -301,7 +318,7 @@ class Home extends React.Component {
                 >
                   <img
                     alt="TNTT-logo"
-                    src="/logo.png"
+                    src="/images/logo.png"
                     onClick={() => {
                       window.scrollTo({
                         behavior: "smooth",
@@ -388,7 +405,7 @@ class Home extends React.Component {
                   alignItems="center"
                   className={styles.saintIntro}
                 >
-                  <Grid item xs={12} lg={4}>
+                  <Grid item xs={12} md={4}>
                     <div
                       style={{
                         overflow: "hidden",
@@ -398,7 +415,7 @@ class Home extends React.Component {
                       }}
                     >
                       <img
-                        src="./anethanh.jpeg"
+                        src="./images/anethanh.jpeg"
                         alt="anethanh"
                         className={styles.img}
                       />
@@ -412,7 +429,7 @@ class Home extends React.Component {
                       {HomePage.saintIntro.name}
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} lg={8}>
+                  <Grid item xs={12} md={8}>
                     <div>
                       <FormatQuote classes={{ root: styles.qoute }} />
                       <Typography variant="h4" className={styles.bigSentence}>
@@ -421,9 +438,11 @@ class Home extends React.Component {
                       <Button
                         className={styles.bio}
                         variant="outlined"
-                        label={'Tiểu sử'}
+                        label={"Tiểu sử"}
                         size="large"
-                        onClick={() => this.setState({isSaintBioDialog: true})}
+                        onClick={() =>
+                          this.setState({ isSaintBioDialog: true })
+                        }
                       />
                     </div>
                   </Grid>
@@ -436,22 +455,22 @@ class Home extends React.Component {
             >
               <div className={styles.scheduleGridContainer}>
                 <Grid container alignItems="center" alignContent="center">
-                  <Grid item lg={6} xs={12} className={styles.item}>
+                  <Grid item md={6} xs={12} className={styles.item}>
                     <Parallax
                       data={{
                         "data--100-bottom":
                           "opacity:0;transform:translateX(-500px)",
-                        "data-center": "opacity:1;transform:translateX(0px)",
+                        "data-300-top": "opacity:1;transform:translateX(0px)",
                       }}
                     >
                       <img
-                        src="/dayClass.jpg"
+                        src="/images/dayClass.jpg"
                         alt="Day class"
                         className={styles.daylightImg}
                       />
                     </Parallax>
                   </Grid>
-                  <Grid item lg={6} xs={12} className={styles.item}>
+                  <Grid item md={6} xs={12} className={styles.item}>
                     <Parallax
                       data={{
                         "data--200-bottom":
@@ -479,50 +498,98 @@ class Home extends React.Component {
                     </Parallax>
                   </Grid>
                 </Grid>
-                <Grid container alignItems="center" alignContent="center">
-                  <Grid item lg={6} xs={12} className={styles.item}>
-                    <Parallax
-                      data={{
-                        "data--200-bottom":
-                          "opacity:0;transform:translateX(-500px)",
-                        "data-center": "opacity:1;transform:translateX(0px)",
-                      }}
-                    >
-                      <div className={styles.classContent}>
-                        <Brightness2Outlined className={styles.moonIcon} />
-                        <Typography
-                          variant="h3"
-                          align="center"
-                          classes={{ root: styles.nightClassTitle }}
-                        >
-                          <strong>{HomePage.nightClassTitle}</strong>
-                        </Typography>
-                        <Typography
-                          variant="h5"
-                          align="left"
-                          className={styles.classDesc}
-                        >
-                          {HomePage.nightClassDesc}
-                        </Typography>
-                      </div>
-                    </Parallax>
+                <Hidden mdUp>
+                  <Grid container alignItems="center" alignContent="center">
+                    <Grid item md={6} xs={12} className={styles.item}>
+                      <Parallax
+                        data={{
+                          "data--100-bottom":
+                            "opacity:0;transform:translateX(500px)",
+                          "data-300-top": "opacity:1;transform:translateX(0px)",
+                        }}
+                      >
+                        <img
+                          src="/images/nightClass.JPG"
+                          alt="Night class"
+                          className={styles.nightImg}
+                        />
+                      </Parallax>
+                    </Grid>
+                    <Grid item md={6} xs={12} className={styles.item}>
+                      <Parallax
+                        data={{
+                          "data--200-bottom":
+                            "opacity:0;transform:translateX(-500px)",
+                          "data-center": "opacity:1;transform:translateX(0px)",
+                        }}
+                      >
+                        <div className={styles.classContent}>
+                          <Brightness2Outlined className={styles.moonIcon} />
+                          <Typography
+                            variant="h3"
+                            align="center"
+                            classes={{ root: styles.nightClassTitle }}
+                          >
+                            <strong>{HomePage.nightClassTitle}</strong>
+                          </Typography>
+                          <Typography
+                            variant="h5"
+                            align="left"
+                            className={styles.classDesc}
+                          >
+                            {HomePage.nightClassDesc}
+                          </Typography>
+                        </div>
+                      </Parallax>
+                    </Grid>
                   </Grid>
-                  <Grid item lg={6} xs={12} className={styles.item}>
-                    <Parallax
-                      data={{
-                        "data--100-bottom":
-                          "opacity:0;transform:translateX(500px)",
-                        "data-center": "opacity:1;transform:translateX(0px)",
-                      }}
-                    >
-                      <img
-                        src="/nightClass.JPG"
-                        alt="Night class"
-                        className={styles.nightImg}
-                      />
-                    </Parallax>
+                </Hidden>
+                <Hidden smDown>
+                  <Grid container alignItems="center" alignContent="center">
+                    <Grid item md={6} xs={12} className={styles.item}>
+                      <Parallax
+                        data={{
+                          "data--200-bottom":
+                            "opacity:0;transform:translateX(-500px)",
+                          "data-center": "opacity:1;transform:translateX(0px)",
+                        }}
+                      >
+                        <div className={styles.classContent}>
+                          <Brightness2Outlined className={styles.moonIcon} />
+                          <Typography
+                            variant="h3"
+                            align="center"
+                            classes={{ root: styles.nightClassTitle }}
+                          >
+                            <strong>{HomePage.nightClassTitle}</strong>
+                          </Typography>
+                          <Typography
+                            variant="h5"
+                            align="left"
+                            className={styles.classDesc}
+                          >
+                            {HomePage.nightClassDesc}
+                          </Typography>
+                        </div>
+                      </Parallax>
+                    </Grid>
+                    <Grid item md={6} xs={12} className={styles.item}>
+                      <Parallax
+                        data={{
+                          "data--100-bottom":
+                            "opacity:0;transform:translateX(500px)",
+                          "data-300-top": "opacity:1;transform:translateX(0px)",
+                        }}
+                      >
+                        <img
+                          src="/images/nightClass.JPG"
+                          alt="Night class"
+                          className={styles.nightImg}
+                        />
+                      </Parallax>
+                    </Grid>
                   </Grid>
-                </Grid>
+                </Hidden>
               </div>
             </div>
             <div className={styles.teamMemberContainer} ref={this.refList.team}>
@@ -671,7 +738,11 @@ class Home extends React.Component {
                   alignItems="center"
                   className={styles.socialLinks}
                 >
-                  <Grid item xs={6} style={{position: 'relative', height: 'inherit'}}>
+                  <Grid
+                    item
+                    xs={6}
+                    style={{ position: "relative", height: "inherit" }}
+                  >
                     <div className={styles.socialLinkContainer}>
                       <Tooltip title={HomePage.facebookLink} placement="top">
                         <IconButton
@@ -684,7 +755,11 @@ class Home extends React.Component {
                       </Tooltip>
                     </div>
                   </Grid>
-                  <Grid item xs={6} style={{position: 'relative', height: 'inherit'}}>
+                  <Grid
+                    item
+                    xs={6}
+                    style={{ position: "relative", height: "inherit" }}
+                  >
                     <div className={styles.socialLinkContainerR}>
                       <Tooltip title={HomePage.gmailLink} placement="top">
                         <IconButton
@@ -709,31 +784,70 @@ class Home extends React.Component {
             </div>
           </Container>
         )}
-        <Dialog 
+        <Dialog
           title={`Tiểu sử ${HomePage.saintIntro.name}`}
           icon={<InfoOutlined style={bioForm.icon} />}
           open={isSaintBioDialog}
-          handleClose={(val) => this.setState({isSaintBioDialog: val})}
+          handleClose={(val) => this.setState({ isSaintBioDialog: val })}
           content={
             <React.Fragment>
               <div className={styles.bioContainer} style={bioForm.container}>
-                <div className={styles.externalHtml} dangerouslySetInnerHTML={{__html: this.state.saintExternalHtml}}></div>
+                <Hidden mdUp>
+                  <div className={styles.bioImage}>
+                    <img
+                      src="/images/anethanh.jpeg"
+                      width="200"
+                      alt="Saint-bio"
+                    />
+                  </div>
+                </Hidden>
+                <div
+                  className={styles.externalHtml}
+                  dangerouslySetInnerHTML={{
+                    __html: this.state.saintExternalHtml,
+                  }}
+                ></div>
               </div>
             </React.Fragment>
           }
           action={
             <Toolbar>
               <div style={{ flexGlow: "1" }} />
-              <Button 
+              <Button
                 label="đóng"
                 variant="contained"
                 size="large"
                 style={bioForm.closeButton}
-                onClick={() => this.setState({isSaintBioDialog: false})}
+                onClick={() => this.setState({ isSaintBioDialog: false })}
               />
             </Toolbar>
           }
         />
+
+        <Zoom
+          unmountOnExit
+          in={this.state.scrollStatus === "amir"}
+          timeout={{ enter: 200, exit: 200 }}
+          style={{
+            transitionDelay: `${
+              this.state.scrollStatus === "amir" ? 200 : 0
+            }ms`,
+          }}
+        >
+          <Tooltip title="Lên đầu trang">
+            <Fab
+              className={styles.goToHomeBtn}
+              onClick={() => {
+                window.scrollTo({
+                  behavior: "smooth",
+                  top: this.refList.home.current.offsetTop,
+                });
+              }}
+            >
+              <ArrowUpward className={styles.goToHomeIcon} />
+            </Fab>
+          </Tooltip>
+        </Zoom>
       </div>
     );
   };
