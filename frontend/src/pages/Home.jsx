@@ -182,7 +182,7 @@ class Home extends React.Component {
               <Parallax
                 data={{
                   "data-center": "background-position: 50% 0px",
-                  "data-top-bottom": "background-position: 50% -100px"
+                  "data-top-bottom": "background-position: 50% -100px",
                 }}
               >
                 <img className={styles.img} alt="cover" src="/images/bg.jpg" />
@@ -447,6 +447,51 @@ class Home extends React.Component {
                     </div>
                   </Grid>
                 </Grid>
+              </div>
+              <div className={styles.slogansContainer}>
+                <div className={styles.cover}>
+                  <div className={styles.inner}>
+                    <Grid container className={styles.slogansGridContainer}>
+                      {HomePage.slogans.map((item) => (
+                        <Grid
+                          item
+                          key={item.key}
+                          xs={12}
+                          md={6}
+                          lg={3}
+                          className={styles.slogansGridItem}
+                        >
+                          <div className={styles.border}>
+                            <div
+                              style={{ height: "300px", position: "relative" }}
+                            >
+                              <img
+                                src={item.image}
+                                alt={item.key}
+                                className={styles.sloganImage}
+                              />
+                              <Typography
+                                variant="h5"
+                                className={styles.sloganTitle}
+                              >
+                                {item.title}
+                              </Typography>
+                              <div
+                                dangerouslySetInnerHTML={{ __html: item.desc }}
+                                className={styles.sloganDesc}
+                              ></div>
+                            </div>
+                          </div>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </div>
+                </div>
+                <img
+                  src="/images/bg2.png"
+                  alt="Slogans"
+                  className={styles.img}
+                />
               </div>
             </div>
             <div

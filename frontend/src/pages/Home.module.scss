@@ -256,8 +256,8 @@
       max-width: 1400px;
       min-height: inherit;
 
-      @media(max-width: 1919px) {
-        width: calc(100% - 30px)
+      @media (max-width: 1919px) {
+        width: calc(100% - 30px);
       }
 
       @media (max-width: 1024px) {
@@ -351,6 +351,117 @@
       }
     }
 
+    & .slogansContainer {
+      position: relative;
+      margin: 100px 0;
+      max-height: 600px;
+
+      & .cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000, $alpha: 0.4);
+
+        & .inner {
+          max-width: 1400px;
+          height: inherit;
+
+          & .slogansGridContainer {
+            max-width: inherit;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & .slogansGridItem {
+
+              &:nth-child(1) {
+                &:hover {
+                  .border {
+                    background-color: rgba($color: $error, $alpha: .8);
+                  }
+                }
+              }
+              &:nth-child(2) {
+                &:hover {
+                  .border {
+                    background-color: rgba($color: $success, $alpha: .8);
+                  }
+                }
+              }
+              &:nth-child(3) {
+                &:hover {
+                  .border {
+                    background-color: rgba($color: $info, $alpha: .8);
+                  }
+                }
+              }
+              &:nth-child(4) {
+                &:hover {
+                  .border {
+                    background-color: rgba($color: $warning, $alpha: .8);
+                  }
+                }
+              }
+
+              & .border {
+                border-radius: 15px;
+                border: 2px solid #fff;
+                width: 300px;
+                height: 500px;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: background-color .25s ease;
+
+                & .sloganImage {
+                  width: 70px;
+                  border: 2px solid #fff;
+                  border-radius: 50%;
+                  padding: 10px;
+                  background-color: transparent;
+                }
+
+                & .sloganTitle {
+                  font-family: "Pacifico", cursive;
+                  letter-spacing: 5px;
+                  color: #fff;
+                  font-size: 50px;
+                }
+
+                & .sloganDesc {
+                  margin: 0 5px;
+                  p,
+                  strong {
+                    color: #fff;
+                    font-size: 20px;
+                  }
+
+                  p {
+                    font-weight: 300;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      & .img {
+        width: 100%;
+        max-height: inherit;
+        object-fit: cover;
+        object-position: 50% 50%;
+      }
+
+      @media (max-width: 1024px) {
+        max-height: 100%;
+      }
+    }
+
     @media (max-width: 1024px) {
       min-height: unset;
       height: 100%;
@@ -393,8 +504,8 @@
       width: 100%;
       max-width: 1400px;
 
-      @media(max-width: 1919px) {
-        width: calc(100% - 30px)
+      @media (max-width: 1919px) {
+        width: calc(100% - 30px);
       }
 
       @media (max-width: 1024px) {
@@ -426,20 +537,22 @@
           }
 
           @media (max-width: 768px) {
-            .nightClassTitle, .classDesc, .sunIcon,
+            .nightClassTitle,
+            .classDesc,
+            .sunIcon,
             .moonIcon {
               text-align: center;
               margin: 0 5px;
               max-width: 100%;
             }
-            
+
             .nightClassTitle {
               margin-bottom: 15px;
             }
           }
 
           @media (max-width: 767px) {
-            zoom: .7;
+            zoom: 0.7;
           }
         }
 
@@ -603,7 +716,7 @@
       .contactUsSubtitle {
         max-width: 886px;
         font-weight: 300;
-        
+
         @media (max-width: 450px) {
           margin: 0 5px;
         }
@@ -646,7 +759,7 @@
         }
 
         @media (max-width: 450px) {
-          margin: 0 auto 30px; 
+          margin: 0 auto 30px;
         }
       }
     }
@@ -668,7 +781,7 @@
     p {
       line-height: 1.5em;
       text-align: justify;
-  
+
       strong {
         font-family: "Pacifico", cursive;
         letter-spacing: 3px;

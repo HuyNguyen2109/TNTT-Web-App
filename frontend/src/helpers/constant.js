@@ -221,6 +221,32 @@ export const HomePage = {
     'name': 'Thánh Anê Lê Thị Thành (1781 - 1841)',
     'bigSentence': 'Con đừng khóc, mẹ mặc áo hoa hồng đấy, mẹ vui lòng chịu khổ vì Chúa Giêsu, sao con lại khóc?',
   },
+  'slogans': [
+    {
+      'key': 'pray',
+      'title': 'Cầu Nguyện',
+      'desc': '<p>Thiếu nhi dâng ngày mỗi sáng</br>Làm cho đời sống hóa nên <strong>LỜI CẦU</strong></p>',
+      'image': '/icons/pray.png'
+    },
+    {
+      'key': 'communion',
+      'title': 'Rước Lễ',
+      'desc': '<p>Thiếu nhi <strong>TÔN SÙNG THÁNH THỂ</strong></br>Siêng năng Rước Lễ, Viếng Chúa hằng ngày.</p>',
+      'image': '/icons/communion.png'
+    },
+    {
+      'key': 'sacrifice',
+      'title': 'Hy Sinh',
+      'desc': '<p>Thiếu nhi <strong>HY SINH</strong> chịu khó</br>Luôn nhìn Thánh Giá, gặp khổ vẫn vui.</p>',
+      'image': '/icons/sacrifice.png'
+    },
+    {
+      'key': 'apostle',
+      'title': 'Làm việc Tông Đồ',
+      'desc': '<p>Thiếu nhi nhờ Mẹ cố gắng</br>Quyết làm gương sáng, xứng danh <strong>TÔNG ĐỒ</strong>.<p>',
+      'image': '/icons/apostle.png'
+    }
+  ],
   'betaKeyMembers': [
     {
       'key': 'au-leader',
@@ -241,7 +267,7 @@ export const HomePage = {
       'fullName': 'Têrêsa Kiều Nguyễn Xuân Phương'
     },
   ],
-  'subGrandTitle': '"Một ngày là Huynh trưởng, cả đời là Huynh trưởng."',
+  'subGrandTitle': '"Từng bao người anh dũng tiến lên hy sinh vì tình yêu"',
   'learnMore': 'Tìm hiểu thêm',
   'scrollDownForMore': 'Cuộn xuống',
   'teamMemberTitle': 'Ban Quản trị',
