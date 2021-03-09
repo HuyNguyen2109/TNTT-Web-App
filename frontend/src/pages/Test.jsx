@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Test.module.scss";
-import { Button, Snackbar, Paper } from "../basic";
+import { Button, Snackbar, Paper } from "../components/basic";
 
 class Test extends React.Component {
   constructor(props) {
