@@ -80,6 +80,9 @@
     display: flex;
     align-items: center;
     z-index: 999;
+    background-color: transparent;
+    transition: .2s; 
+
     @media (min-width: 1280px) {
       padding: 0 50px;
       width: calc(100% - 100px);
@@ -152,10 +155,18 @@
     }
   }
 
+  .homeNavBarWhite {
+    @extend .homeNavBar;
+    background-color: #fff;
+    transition: .2s; 
+  }
+
   .homeNavBarForMobile {
     padding: 0 15px;
     width: calc(100% - 30px);
     z-index: 999;
+    background-color: transparent;
+    transition: .2s;
 
     .signIn {
       color: #fff !important;
@@ -182,6 +193,8 @@
 
   .homeNavBarForMobilewithWhiteBG {
     @extend .homeNavBarForMobile;
+    background-color: #fff;
+    transition: .2s;
     .signIn,
     .mobileMenu {
       color: #fff !important;

@@ -73,9 +73,7 @@ export default class IntroComponent extends React.Component {
                   <Grid
                     item
                     key={item.key}
-                    xs={12}
-                    md={6}
-                    lg={3}
+                    xs={3}
                     className={styles.slogansGridItem}
                   >
                     <div className={styles.border}>

@@ -275,6 +275,8 @@ export const HomePage = {
   'orgName': 'Xứ Đoàn Anê Lê Thị Thành',
   'facebookLink': 'https://www.facebook.com/thieunhicaothai',
   'gmailLink': 'altt.bandaidien@gmail.com',
+  'location': '34/17 Vĩnh Thuận, P. Long Bình, Quận 9',
+  'ggMapLocation': 'https://www.google.com/maps/search/nh%C3%A0+th%E1%BB%9D+Cao+Th%C3%A1i/@10.8836591,106.8190476,17z/data=!3m1!4b1',
   'contactUs': 'Liên hệ',
   'contactUsSubtitle': 'Luôn cập nhật những thông báo mới nhất, hoặc có bất kì phản hồi nào về Xứ Đoàn',
   'dayClassTitle': 'Lớp sáng',

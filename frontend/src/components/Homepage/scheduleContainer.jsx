@@ -23,8 +23,8 @@ export default class ScheduleContainer extends React.Component {
             <Grid item md={6} xs={12} className={styles.item}>
               <Parallax
                 data={{
-                  "data--100-bottom": "opacity:0;transform:translateX(-500px)",
-                  "data-300-top": "opacity:1;transform:translateX(0px)",
+                  "data-bottom-top": "opacity:0;transform:translateX(-500px)",
+                  "data-bottom": "opacity:1;transform:translateX(0px)",
                 }}
               >
                 <img
@@ -37,8 +37,8 @@ export default class ScheduleContainer extends React.Component {
             <Grid item md={6} xs={12} className={styles.item}>
               <Parallax
                 data={{
-                  "data--200-bottom": "opacity:0;transform:translateX(500px)",
-                  "data-center": "opacity:1;transform:translateX(0px)",
+                  "data-bottom-top": "opacity:0;transform:translateX(500px)",
+                  "data-bottom": "opacity:1;transform:translateX(0px)",
                 }}
               >
                 <div className={styles.classContent}>
@@ -66,8 +66,8 @@ export default class ScheduleContainer extends React.Component {
               <Grid item md={6} xs={12} className={styles.item}>
                 <Parallax
                   data={{
-                    "data--100-bottom": "opacity:0;transform:translateX(500px)",
-                    "data-300-top": "opacity:1;transform:translateX(0px)",
+                    "data-bottom-top": "opacity:0;transform:translateX(500px)",
+                    "data-bottom": "opacity:1;transform:translateX(0px)",
                   }}
                 >
                   <img
@@ -80,9 +80,9 @@ export default class ScheduleContainer extends React.Component {
               <Grid item md={6} xs={12} className={styles.item}>
                 <Parallax
                   data={{
-                    "data--200-bottom":
+                    "data-bottom-top":
                       "opacity:0;transform:translateX(-500px)",
-                    "data-center": "opacity:1;transform:translateX(0px)",
+                    "data-bottom": "opacity:1;transform:translateX(0px)",
                   }}
                 >
                   <div className={styles.classContent}>
@@ -111,9 +111,9 @@ export default class ScheduleContainer extends React.Component {
               <Grid item md={6} xs={12} className={styles.item}>
                 <Parallax
                   data={{
-                    "data--200-bottom":
+                    "data-bottom-top":
                       "opacity:0;transform:translateX(-500px)",
-                    "data-center": "opacity:1;transform:translateX(0px)",
+                    "data-bottom": "opacity:1;transform:translateX(0px)",
                   }}
                 >
                   <div className={styles.classContent}>
@@ -138,8 +138,8 @@ export default class ScheduleContainer extends React.Component {
               <Grid item md={6} xs={12} className={styles.item}>
                 <Parallax
                   data={{
-                    "data--100-bottom": "opacity:0;transform:translateX(500px)",
-                    "data-300-top": "opacity:1;transform:translateX(0px)",
+                    "data-bottom-top": "opacity:0;transform:translateX(500px)",
+                    "data-bottom": "opacity:1;transform:translateX(0px)",
                   }}
                 >
                   <img

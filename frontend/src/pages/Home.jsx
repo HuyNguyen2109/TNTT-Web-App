@@ -1,38 +1,23 @@
 import {
   Container,
-  Typography,
   Hidden,
-  IconButton,
-  Menu,
-  MenuItem,
-  Grid,
-  Avatar,
-  Link,
   Tooltip,
   Toolbar,
   Fab,
   Zoom,
 } from "@material-ui/core";
 import {
-  List,
-  Person,
-  Facebook,
-  Mail,
-  WbSunnyOutlined,
-  Brightness2Outlined,
-  FormatQuote,
   InfoOutlined,
   ArrowUpward,
 } from "@material-ui/icons";
 import React from "react";
-import classNames from "classnames";
-import { Button, Paper, LoadingPage, Dialog } from "../components/basic";
-import { Parallax } from "react-skrollr";
+import { Button, LoadingPage, Dialog } from "../components/basic";
 // Styles
 import styles from "./Home.module.scss";
+import navStyles from '../components/Homepage/imgContainer.module.scss';
 // Helpers
 import { HomePage } from "../helpers/constant";
-import { formatName, setDocumentTitle } from "../helpers/functions";
+import { setDocumentTitle } from "../helpers/functions";
 import { bioForm } from "../helpers/styles";
 import { html as htmlApis } from "../helpers/api";
 // Child components
@@ -82,13 +67,6 @@ class Home extends React.Component {
     setTimeout(() => {
       this.setState({ isDataLoading: false });
     }, 3000);
-    //handle scroll event
-    this.setState({
-      scrollStatus:
-        document.scrollingElement.scrollTop >= HomePage.navHeight
-          ? "amir"
-          : "top",
-    });
     this.scrollEvent = document.addEventListener("scroll", this.handleScroll, {
       passive: true,
     });
@@ -113,13 +91,20 @@ class Home extends React.Component {
   // Methods
   handleScroll = () => {
     let scrolled = document.scrollingElement.scrollTop;
-    if (scrolled >= HomePage.navHeight) {
-      if (this.state.scrollStatus !== "amir") {
-        this.setState({ scrollStatus: "amir" });
+    if (document.querySelector('#desktop-navbar')) {
+      if (scrolled >= HomePage.navHeight) {
+        document.querySelector('#desktop-navbar').classList.add(navStyles.homeNavBarWhite)
+        document.querySelector('#desktop-navbar-items').classList.add(navStyles.linkListWithWhiteBG)
+      } else {
+        document.querySelector('#desktop-navbar').classList.remove(navStyles.homeNavBarWhite)
+        document.querySelector('#desktop-navbar-items').classList.remove(navStyles.linkListWithWhiteBG)
       }
-    } else {
-      if (this.state.scrollStatus !== "top") {
-        this.setState({ scrollStatus: "top" });
+    }
+    else if (document.querySelector('#mobile-navbar')) {
+      if (scrolled >= HomePage.navHeight) {
+        document.querySelector('#mobile-navbar').classList.add(navStyles.homeNavBarForMobilewithWhiteBG)
+      } else {
+        document.querySelector('#mobile-navbar').classList.remove(navStyles.homeNavBarForMobilewithWhiteBG)
       }
     }
 
@@ -191,7 +176,6 @@ class Home extends React.Component {
             <ImgContainer
               childRef={this.refList.home}
               refsList={this.refList}
-              scrollStatus={this.state.scrollStatus}
               setActiveNavKey={(data) => this.setActiveNavItem(data)}
               outputRef={(keyName) => this.setActiveRef(keyName)}
               generalData={HomePage}
@@ -218,6 +202,8 @@ class Home extends React.Component {
               childRef={this.refList.contact}
               generalData={HomePage}
               currDate={currentDate}
+              setActiveNavKey={(data) => this.setActiveNavItem(data)}
+              outputRef={(keyName) => this.setActiveRef(keyName)}
             />
           </Container>
         )}
@@ -232,7 +218,7 @@ class Home extends React.Component {
                 <Hidden mdUp>
                   <div className={styles.bioImage}>
                     <img
-                      src="/images/anethanh.jpeg"
+                      src="/images/anethanh2.jpg"
                       width="200"
                       alt="Saint-bio"
                     />

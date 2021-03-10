@@ -1,22 +1,21 @@
-import {
-  Typography,
-  IconButton,
-  Grid,
-  Tooltip
-} from "@material-ui/core";
-import {
-  Facebook,
-  Mail,
-} from "@material-ui/icons";
+import { Typography, IconButton, Grid, Tooltip, Hidden } from "@material-ui/core";
+import { ChevronRight, Facebook, LocationOn, Mail } from "@material-ui/icons";
 import React from "react";
 import classNames from "classnames";
 import { Parallax } from "react-skrollr";
 // Styles
 import styles from "./contactContainer.module.scss";
+import { Button } from "../basic";
 
 export default class ContactContainer extends React.Component {
   render = () => {
-    const { generalData, childRef, currDate } = this.props;
+    const {
+      generalData,
+      childRef,
+      currDate,
+      outputRef,
+      setActiveNavKey,
+    } = this.props;
 
     return (
       <div className={styles.contactContainer} ref={childRef}>
@@ -27,66 +26,110 @@ export default class ContactContainer extends React.Component {
               "data-bottom": "opacity:1;transform:translateX(0px)",
             }}
           >
-            <Typography
-              variant="h3"
-              className={classNames(styles.copyRight, styles.contactUs)}
+            <Grid
+              container
+              className={styles.contactGridContainer}
+              alignContent="center"
             >
-              {generalData.contactUs}
-            </Typography>
-            <Typography
-              variant="h5"
-              className={classNames(styles.copyRight, styles.contactUsSubtitle)}
-            >
-              {generalData.contactUsSubtitle}
-            </Typography>
+              <Hidden smDown>
+                <Grid item xs={12} md={6} lg={4}>
+                  <div className={styles.img}>
+                    <img src="/images/logo.png" width="150" height="150" />
+                    <Typography
+                      variant="subtitle1"
+                      className={styles.copyRight}
+                    >
+                      {generalData.subGrandTitle}
+                    </Typography>
+                  </div>
+                </Grid>
+              </Hidden>
+              <Grid item xs={12} md={6} lg={4}>
+                <div className={styles.links}>
+                  <Typography
+                    variant="h5"
+                    className={classNames(styles.copyRight, styles.contactUs)}
+                  >
+                    {"Đường dẫn"}
+                  </Typography>
+                  {generalData.navLinks.map(
+                    (link) =>
+                      link.key !== "signin" && (
+                        <div className={styles.link} key={link.key}>
+                          <span>
+                            <ChevronRight
+                              classes={{ root: styles.copyRight }}
+                            />
+                          </span>
+                          <Button
+                            label={link.name}
+                            variant="text"
+                            size="large"
+                            className={styles.copyRight}
+                            onClick={() => {
+                              outputRef(link.key);
+                              setActiveNavKey(link.key);
+                            }}
+                          />
+                        </div>
+                      )
+                  )}
+                </div>
+              </Grid>
+              <Grid item xs={12} md={6} lg={4}>
+                <div className={styles.contact}>
+                  <Typography
+                    variant="h5"
+                    className={classNames(styles.copyRight, styles.contactUs)}
+                  >
+                    {generalData.contactUs}
+                  </Typography>
+                  <div className={styles.socialLinkContainer}>
+                    <IconButton
+                      component="a"
+                      href={generalData.ggMapLocation}
+                      target="_blank"
+                    >
+                      <LocationOn classes={{ root: styles.icon }} />
+                      <span className={styles.copyRight}>
+                        {generalData.location}
+                      </span>
+                    </IconButton>
+                  </div>
+                  <div className={styles.socialLinkContainer}>
+                    <IconButton
+                      component="a"
+                      href={generalData.facebookLink}
+                      target="_blank"
+                    >
+                      <Facebook classes={{ root: styles.icon }} />
+                      <span className={styles.copyRight}>
+                        {generalData.facebookLink}
+                      </span>
+                    </IconButton>
+                  </div>
+                  <div className={styles.socialLinkContainer}>
+                    <IconButton
+                      component="a"
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${generalData.gmailLink}`}
+                      target="_blank"
+                    >
+                      <Mail classes={{ root: styles.icon }} />
+                      <span className={styles.copyRight}>
+                        {generalData.gmailLink}
+                      </span>
+                    </IconButton>
+                  </div>
+                </div>
+              </Grid>
+            </Grid>
           </Parallax>
-          <Grid
-            container
-            alignContent="center"
-            alignItems="center"
-            className={styles.socialLinks}
-          >
-            <Grid
-              item
-              xs={6}
-              style={{ position: "relative", height: "inherit" }}
-            >
-              <div className={styles.socialLinkContainer}>
-                <Tooltip title={generalData.facebookLink} placement="top">
-                  <IconButton
-                    component="a"
-                    href={generalData.facebookLink}
-                    target="_blank"
-                  >
-                    <Facebook classes={{ root: styles.icon }} />
-                  </IconButton>
-                </Tooltip>
-              </div>
-            </Grid>
-            <Grid
-              item
-              xs={6}
-              style={{ position: "relative", height: "inherit" }}
-            >
-              <div className={styles.socialLinkContainerR}>
-                <Tooltip title={generalData.gmailLink} placement="top">
-                  <IconButton
-                    component="a"
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${generalData.gmailLink}`}
-                    target="_blank"
-                  >
-                    <Mail classes={{ root: styles.icon }} />
-                  </IconButton>
-                </Tooltip>
-              </div>
-            </Grid>
-          </Grid>
           <Typography
             variant="h6"
             className={classNames(styles.copyRight, styles.orgName)}
           >
             {`${generalData.orgName} @ `}
-            <strong>{currDate.getFullYear()}</strong>
+            <strong>{"2016 - " + currDate.getFullYear()}</strong>
           </Typography>
         </div>
       </div>

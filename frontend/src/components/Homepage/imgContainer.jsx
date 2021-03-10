@@ -29,18 +29,11 @@ export default class ImgContainer extends React.Component {
 
   render = () => {
     const { isMobileMenuOpen } = this.state;
-    const { generalData, childRef, refsList, scrollStatus, setActiveNavKey, outputRef } = this.props;
+    const { generalData, childRef, refsList, setActiveNavKey, outputRef } = this.props;
 
     return (
       <div className={styles.imgContainer} ref={childRef}>
-        <Parallax
-          data={{
-            "data-center": "background-position: 50% 0px",
-            "data-top-bottom": "background-position: 50% -100px",
-          }}
-        >
-          <img className={styles.img} alt="cover" src="/images/bg.jpg" />
-        </Parallax>
+        <img className={styles.img} alt="cover" src="/images/bg.jpg" />
         <div className={styles.cover}>
           <div>
             <Parallax
@@ -76,13 +69,10 @@ export default class ImgContainer extends React.Component {
         {/* Nav bar for desktop */}
         <Hidden smDown>
           <div
+            id="desktop-navbar"
             className={styles.homeNavBar}
             style={{
               height: `${generalData.navHeight}px`,
-              backgroundColor:
-                scrollStatus === "top" ? "transparent" : "#fff",
-              transition: "background-color 0.5s linear",
-              backgroundAttachment: "fixed",
             }}
           >
             <img
@@ -93,11 +83,8 @@ export default class ImgContainer extends React.Component {
             />
             <div style={{ flex: 1 }}></div>
             <div
-              className={
-                scrollStatus === "top"
-                  ? styles.linkList
-                  : styles.linkListWithWhiteBG
-              }
+              id="desktop-navbar-items"
+              className={styles.linkList}
             >
               <div id="marker" className={styles.marker}></div>
               {generalData.navLinks.map((link) => (
@@ -127,17 +114,14 @@ export default class ImgContainer extends React.Component {
         {/* Nav bar for mobile/tablet */}
         <Hidden mdUp>
           <div
+            id="mobile-navbar"
+            // homeNavBarForMobilewithWhiteBG
             className={classNames(
               styles.homeNavBar,
-              scrollStatus === "top"
-                ? styles.homeNavBarForMobile
-                : styles.homeNavBarForMobilewithWhiteBG
+              styles.homeNavBarForMobile
             )}
             style={{
               height: `${generalData.navHeight}px`,
-              backgroundColor:
-                scrollStatus === "top" ? "transparent" : "#fff",
-              transition: "background-color 200ms linear",
             }}
           >
             <img
