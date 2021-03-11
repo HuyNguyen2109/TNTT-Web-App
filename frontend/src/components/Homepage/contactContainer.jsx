@@ -44,7 +44,7 @@ export default class ContactContainer extends React.Component {
                   </div>
                 </Grid>
               </Hidden>
-              <Grid item xs={12} md={6} lg={4}>
+              <Grid item xs={12} sm={4} md={6} lg={4}>
                 <div className={styles.links}>
                   <Typography
                     variant="h5"
@@ -76,7 +76,7 @@ export default class ContactContainer extends React.Component {
                   )}
                 </div>
               </Grid>
-              <Grid item xs={12} md={6} lg={4}>
+              <Grid item xs={12} sm={8} md={6} lg={4}>
                 <div className={styles.contact}>
                   <Typography
                     variant="h5"

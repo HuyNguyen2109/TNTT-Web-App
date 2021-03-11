@@ -110,7 +110,7 @@ export default class IntroComponent extends React.Component {
         <div className={styles.timelineContainer}>
           <div className={styles.inner}>
             <Grid container alignContent="center" alignItems="center" style={{width: 'inherit', height: 'inherit'}}>
-              <Grid item xs={12} sm={4} md={3} style={{position: 'relative', height: 'inherit'}}>
+              <Grid item xs={12} sm={4} md={3} className={styles.timelineItemContainer}>
                 <div className={styles.timelineKey}>
                   <div>
                     {generalData.timelines.map(time => (
@@ -127,8 +127,7 @@ export default class IntroComponent extends React.Component {
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={8} md={9} style={{height: 'inherit'}}>
-               
+              <Grid item xs={12} sm={8} md={9} className={styles.timelineItemContainer}>
               </Grid>
             </Grid>
           </div>

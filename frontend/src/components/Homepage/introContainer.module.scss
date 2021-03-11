@@ -117,21 +117,56 @@
     margin: 100px 0 0 0;
     max-height: 600px;
 
-    @media (max-width: 1919px) {
-      height: 600px;
+    @media (max-width: 1530px) {
+      height: 100%;
       & .cover {
         & .inner {
           & .slogansGridContainer {
-            width: 1000px;
+            zoom: 0.7;
           }
         }
         z-index: 2;
       }
+    }
+
+    @media (max-width: 830px) {
+      & .cover {
+        & .inner {
+          & .slogansGridContainer {
+            max-width: unset !important;
+            width: 1400px;
+            overflow-x: auto;
+            overflow-y: hidden !important;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 730px) {
+      height: 430px;
+      max-height: 430px;
 
       & .img {
         transform: scale(2);
         transform-origin: top center;
-        z-index: 1;
+      }
+    }
+
+    @media (max-width: 430px) {
+      height: 430px;
+      max-height: 430px;
+
+      & .cover {
+        & .inner {
+          & .slogansGridContainer {
+            zoom: 1;
+          }
+        }
+      }
+
+      & .img {
+        transform: scale(3);
+        transform-origin: top center;
       }
     }
 
@@ -261,9 +296,10 @@
     background-color: #f2f2f2;
     height: 600px;
     width: 100%;
-    
+    display: block;
+
     @media (max-width: 450px) {
-      height: 100%;
+      height: 800px;
     }
 
     & .inner {
@@ -274,57 +310,82 @@
       @media (min-width: 1280px) {
         max-width: 1400px;
       }
+      
+      @media (max-width: 450px) {
+        .timelineItemContainer {
+          height: 400px !important;
 
-      & .timelineKey {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: -10px;
-        width: 100%;
-        height: 670px;
-        background-image: linear-gradient(180deg, $primaryColor, $secondaryColor);
-        display: flex;
-        justify-content: center;
-        overflow-y: auto;
-        overflow-x: hidden;
+          & .timelineKey {
+            height: 100% !important;
+            zoom: .7;
 
-        & .active {
-          background-color: transparent !important;
-          font-weight: 500;
-          transform: scale(1.1);
-
-          &::after {
-            right: -5px !important;
+            & .active::after, & .time::after {
+              display: none;
+            }
           }
         }
+      }
 
-        & .time {
+      & .timelineItemContainer {
+        width: inherit;
+        height: inherit;
+        position: relative;
+
+        & .timelineKey {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
           width: 100%;
-          color: #fff;
-          margin: 10px 0;
-          font-size: 24px !important;
-          position: relative;
-
-          &:hover {
+          height: 670px;
+          background-image: linear-gradient(
+            180deg,
+            $primaryColor,
+            $secondaryColor
+          );
+          display: flex;
+          justify-content: center;
+          overflow-y: auto;
+          overflow-x: hidden;
+  
+          & .active {
             background-color: transparent !important;
             font-weight: 500;
             transform: scale(1.1);
-
+  
             &::after {
-              right: -5px;
+              right: -5px !important;
             }
           }
-
-          &::after {
-            content: "";
-            width: 30px;
-            height: 30px;
-            background-color: #f2f2f2;
-            border: 5px solid #f2f2f2;
-            border-radius: 50%;
-            right: -45px;
-            position: absolute;
-            transition: 0.2s;
+  
+          & .time {
+            width: 100%;
+            color: #fff;
+            margin: 10px 0;
+            font-size: 24px !important;
+            position: relative;
+  
+            &:hover {
+              background-color: transparent !important;
+              font-weight: 500;
+              transform: scale(1.1);
+  
+              &::after {
+                right: -5px;
+              }
+            }
+  
+            &::after {
+              content: "";
+              width: 30px;
+              height: 30px;
+              background-color: #f2f2f2;
+              border: 5px solid #f2f2f2;
+              border-radius: 50%;
+              right: -45px;
+              position: absolute;
+              transition: 0.2s;
+            }
           }
         }
       }
