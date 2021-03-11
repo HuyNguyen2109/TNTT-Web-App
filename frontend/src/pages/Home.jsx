@@ -214,7 +214,7 @@ class Home extends React.Component {
           handleClose={(val) => this.setState({ isSaintBioDialog: val })}
           content={
             <React.Fragment>
-              <div className={styles.bioContainer} style={bioForm.container}>
+              <div className={styles.bioContainer}>
                 <Hidden mdUp>
                   <div className={styles.bioImage}>
                     <img

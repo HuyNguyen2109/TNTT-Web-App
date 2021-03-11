@@ -1,15 +1,23 @@
 import { Typography, Grid } from "@material-ui/core";
-import { FormatQuote } from "@material-ui/icons";
+import { FormatQuote, StyleRounded } from "@material-ui/icons";
 import React from "react";
 import { Button } from "../basic";
 import { Parallax } from "react-skrollr";
 // Styles
 import styles from "./introContainer.module.scss";
+import classNames from "classnames";
 
 export default class IntroComponent extends React.Component {
 
   setToggle = (bool) => {
     return this.props.toggleDialog(!bool)
+  }
+
+  handleTimelineSelection = (year) => {
+    this.props.generalData.timelines.forEach(tl => {
+      document.querySelector(`#timeline-${tl.year}`).classList.remove(styles.active);
+      document.querySelector(`#timeline-${year}`).classList.add(styles.active);
+    })
   }
 
   render = () => {
@@ -98,6 +106,32 @@ export default class IntroComponent extends React.Component {
             </div>
           </div>
           <img src="/images/bg2.png" alt="Slogans" className={styles.img} />
+        </div>
+        <div className={styles.timelineContainer}>
+          <div className={styles.inner}>
+            <Grid container alignContent="center" alignItems="center" style={{width: 'inherit', height: 'inherit'}}>
+              <Grid item xs={12} sm={4} md={3} style={{position: 'relative', height: 'inherit'}}>
+                <div className={styles.timelineKey}>
+                  <div>
+                    {generalData.timelines.map(time => (
+                      <Button
+                        key={time.year}
+                        id={`timeline-${time.year}`} 
+                        className={time.year === '2016' ? classNames(styles.time, styles.active) : styles.time}
+                        variant="text"
+                        label={time.year}
+                        size="large"
+                        onClick={() => this.handleTimelineSelection(time.year)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={8} md={9} style={{height: 'inherit'}}>
+               
+              </Grid>
+            </Grid>
+          </div>
         </div>
       </div>
     );

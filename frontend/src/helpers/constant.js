@@ -247,6 +247,38 @@ export const HomePage = {
       'image': '/icons/apostle.png'
     }
   ],
+  'timelines': [
+    {
+      'year': '2016',
+      'title': '',
+      'desc': '',
+    },
+    {
+      'year': '2017',
+      'title': '',
+      'desc': '',
+    },
+    {
+      'year': '2018',
+      'title': '',
+      'desc': '',
+    },
+    {
+      'year': '2019',
+      'title': '',
+      'desc': '',
+    },
+    {
+      'year': '2020',
+      'title': '',
+      'desc': '',
+    },
+    {
+      'year': '2021',
+      'title': '',
+      'desc': '',
+    }
+  ],
   'betaKeyMembers': [
     {
       'key': 'au-leader',

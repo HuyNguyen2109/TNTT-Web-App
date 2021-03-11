@@ -27,9 +27,5 @@ export const bioForm = {
   closeButton: {
     backgroundColor: variables.primary,
     color: '#fff',
-  },
-  container: {
-    maxHeight: '800px',
-    margin: 'auto'
   }
 }

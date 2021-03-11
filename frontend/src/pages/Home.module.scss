@@ -18,7 +18,6 @@
   }
 
   .externalHtml {
-    @extend .customXScrollBar;
     p {
       line-height: 1.5em;
       text-align: justify;
