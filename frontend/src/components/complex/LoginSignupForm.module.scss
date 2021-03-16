@@ -28,8 +28,7 @@
   }
 
   & .loginAction {
-    display: flex;
-    justify-content: center;
+    display: block;
 
     & .signinButtonWithoutCredential {
       border: 1px solid $primaryColor !important;
@@ -43,7 +42,10 @@
     }
 
     & .or {
-      margin: 0 40px;
+      width: 100%;
+      display: block;
+      margin: 20px auto;
+      position: relative;
     }
 
     & .signinButton {
@@ -54,6 +56,20 @@
         background-color: $secondaryColor;
         color: #000000;
       }
+    }
+
+    & .tooltip {
+      max-width: 100px;
+      font-size: 20px;
+    }
+
+    & .info {
+      padding: 0;
+      min-width: 0px;
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     @media (max-width: 500px) {

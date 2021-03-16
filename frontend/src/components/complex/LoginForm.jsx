@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   Toolbar,
   Link,
+  Hidden,
 } from "@material-ui/core";
 import { Button, Input, Dialog } from "../basic";
 import {
@@ -20,7 +21,7 @@ import {
   MailOutlined,
 } from "@material-ui/icons";
 import styles from "./LoginSignupForm.module.scss";
-import { signinFields, forgotMessage } from "../../helpers/constant";
+import { signinFields, forgotMessage, loginPage } from "../../helpers/constant";
 import { forgotForm } from "../../helpers/styles";
 
 export default class LoginForm extends React.Component {
@@ -57,100 +58,135 @@ export default class LoginForm extends React.Component {
 
     return (
       <div className={styles.loginForm}>
-        {signinFields.map((data, idx) => (
-          <Input
-            key={idx}
-            label={data.label}
-            isError={isError}
-            type={
-              data.type === "password" && isPasswordRevealed
-                ? "text"
-                : data.type
-            }
-            value={data.type === "password" ? password : username}
-            disabled={loading || anonymousLoading}
-            icon={this.customRenderIcon(data.key)}
-            onChange={(val) => handleChangeState(data.key, val)}
-            onFocus={() => handleChangeState("isError", false)}
-            customAction={
-              data.isCustomAction && (
-                <InputAdornment position="end">
-                  <Tooltip
-                    title={isPasswordRevealed ? "Ẩn mật khẩu" : "Hiện mật khẩu"}
-                  >
-                    <IconButton
-                      onClick={() => {
-                        handleChangeState(
-                          "isPasswordRevealed",
-                          !isPasswordRevealed
-                        );
-                      }}
-                    >
-                      {!isPasswordRevealed ? (
-                        <VisibilityOffOutlined />
-                      ) : (
-                        <VisibilityOutlined />
-                      )}
-                    </IconButton>
-                  </Tooltip>
-                </InputAdornment>
-              )
-            }
-            revealPassword={isPasswordRevealed}
-          />
-        ))}
-        {isError && (
-          <Typography variant="subtitle2" className={styles.errorMessage}>
-            {errorMessage}
-          </Typography>
-        )}
-        <FormControlLabel
-          className={styles.saveCredential}
-          disabled={loading || anonymousLoading}
-          control={
-            <Checkbox
-              value={isSaveCredential}
-              onChange={(e) =>
-                handleChangeState("isSaveCredential", e.target.checked)
+        <div>
+          {signinFields.map((data, idx) => (
+            <Input
+              key={idx}
+              label={data.label}
+              isError={isError}
+              type={
+                data.type === "password" && isPasswordRevealed
+                  ? "text"
+                  : data.type
               }
-              classes={{
-                checked: styles.savedCredential,
-              }}
+              value={data.type === "password" ? password : username}
+              disabled={loading || anonymousLoading}
+              icon={this.customRenderIcon(data.key)}
+              onChange={(val) => handleChangeState(data.key, val)}
+              onFocus={() => handleChangeState("isError", false)}
+              customAction={
+                data.isCustomAction && (
+                  <InputAdornment position="end">
+                    <Tooltip
+                      title={
+                        isPasswordRevealed ? "Ẩn mật khẩu" : "Hiện mật khẩu"
+                      }
+                    >
+                      <IconButton
+                        onClick={() => {
+                          handleChangeState(
+                            "isPasswordRevealed",
+                            !isPasswordRevealed
+                          );
+                        }}
+                      >
+                        {!isPasswordRevealed ? (
+                          <VisibilityOffOutlined />
+                        ) : (
+                          <VisibilityOutlined />
+                        )}
+                      </IconButton>
+                    </Tooltip>
+                  </InputAdornment>
+                )
+              }
+              revealPassword={isPasswordRevealed}
             />
-          }
-          label="Lưu mật khẩu cho lần đăng nhập tiếp theo"
-        />
-        <Toolbar className={styles.loginAction} disableGutters>
-          <Button
-            className={styles.signinButton}
-            label="Đăng nhập"
-            variant="contained"
-            size="large"
-            loading={loading}
+          ))}
+          {isError && (
+            <Typography variant="subtitle2" className={styles.errorMessage}>
+              {errorMessage}
+            </Typography>
+          )}
+          <FormControlLabel
+            className={styles.saveCredential}
             disabled={loading || anonymousLoading}
-            onClick={() => submit(username, password)}
+            control={
+              <Checkbox
+                value={isSaveCredential}
+                onChange={(e) =>
+                  handleChangeState("isSaveCredential", e.target.checked)
+                }
+                classes={{
+                  checked: styles.savedCredential,
+                }}
+              />
+            }
+            label="Lưu mật khẩu cho lần đăng nhập tiếp theo"
           />
-        </Toolbar>
-        <Typography variant="caption" className={styles.signupLink}>
-          Chưa có tài khoản?
-          <Link
-            classes={{ root: styles.link }}
-            onClick={() => navigateToSignup(1)}
+          <Toolbar className={styles.loginAction} disableGutters>
+            <div className={styles.or}>
+              <Button
+                className={styles.signinButton}
+                label="Đăng nhập"
+                variant="contained"
+                size="large"
+                loading={loading}
+                disabled={loading || anonymousLoading}
+                onClick={() => submit(username, password)}
+              />
+            </div>
+            <div className={styles.or}>
+              <Typography variant="caption">Hoặc</Typography>
+            </div>
+            <div className={styles.or}>
+              <Button
+                className={styles.signinButtonWithoutCredential}
+                label="Đăng nhập với tư cách khách"
+                variant="contained"
+                size="large"
+                loading={loading}
+                disabled={loading || anonymousLoading}
+                onClick={() => {
+                  window.location.href = "/dashboard";
+                }}
+              />
+              <Hidden mdDown>
+                <Tooltip
+                  title={loginPage.loginWithoutCreds}
+                  placement="top"
+                  classes={{
+                    tooltipPlacementTop: styles.tooltip,
+                  }}
+                >
+                  <HelpOutlineOutlined classes={{ root: styles.info }} />
+                </Tooltip>
+              </Hidden>
+            </div>
+          </Toolbar>
+          <Typography variant="caption" className={styles.signupLink}>
+            Chưa có tài khoản?
+            <Link
+              classes={{ root: styles.link }}
+              onClick={() => navigateToSignup(1)}
+            >
+              Đăng ký ngay
+            </Link>
+          </Typography>
+          <Typography
+            variant="caption"
+            className={classNames(styles.signupLink, styles.displayBlock)}
           >
-            Đăng ký ngay
-          </Link>
-        </Typography>
-        <Typography
-          variant="caption"
-          className={classNames(styles.signupLink, styles.displayBlock)}
-        >
-          <Link
-            classes={{ root: styles.link }}
-            onClick={() => handleChangeState("isForgotDialogOpen", true)}
-          >
-            Quên mật khẩu?
-          </Link>
-        </Typography>
+            <Link
+              classes={{ root: styles.link }}
+              onClick={() => handleChangeState("isForgotDialogOpen", true)}
+            >
+              Quên mật khẩu?
+            </Link>
+          </Typography>
+        </div>
+
+        {/* Forgot Password Dialog */}
         <Dialog
           title="Gặp vấn đề với tài khoản?"
           icon={<HelpOutlineOutlined style={forgotForm.icon} />}

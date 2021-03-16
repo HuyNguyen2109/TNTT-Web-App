@@ -1,12 +1,23 @@
 import React from "react";
-import { signupFields, TermAnConditions } from "../helpers/constant";
-import { Grid, Typography, AppBar, Tabs, Tab } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  AppBar,
+  Tabs,
+  Tab,
+  Hidden,
+  Avatar,
+  Badge,
+} from "@material-ui/core";
 import { LockOpenOutlined, PersonAddOutlined } from "@material-ui/icons";
+// Custom Components
 import { LoginForm, SignupForm, TabPanel } from "../components/complex";
 import { Snackbar } from "../components/basic";
-import { validateEmail, removeWhiteSpace } from "../helpers/functions";
+// Styles
 import styles from "./Login.module.scss";
-
+// Helpers
+import { validateEmail, removeWhiteSpace } from "../helpers/functions";
+import { signupFields, TermAnConditions, Common } from "../helpers/constant";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -35,12 +46,14 @@ class Login extends React.Component {
       isShowSnackbar: false,
       snackbarType: "",
       snackbarMessage: "",
+      toggleDecorImg: false,
     };
 
     this.state = { ...this.initialState };
   }
 
   // Life cycles
+  componentDidMount = () => {};
 
   // Sub methods
   handleChangeState = (state, value) => {
@@ -110,8 +123,8 @@ class Login extends React.Component {
       console.log(`${username}/${password}`);
       console.log(this.state.isSaveCredential);
       setTimeout(() => {
-        window.location.href = '/dashboard'
-      }, 1000)
+        window.location.href = "/dashboard";
+      }, 1000);
     }
   };
 
@@ -180,13 +193,41 @@ class Login extends React.Component {
       isShowSnackbar,
       snackbarType,
       snackbarMessage,
+      toggleDecorImg,
     } = this.state;
 
     return (
       <Grid container className={styles.container}>
-        <Grid item xs={false} sm={false} md={false} lg={7} className={styles.imgContainer}>
-          <img className={styles.img} alt="" src="https://source.unsplash.com/random/1920x1080" />
-        </Grid>
+        <Hidden mdDown>
+          <Grid item lg={7} className={styles.imgContainer}>
+            <img
+              className={toggleDecorImg ? styles.img : styles.activeBg}
+              alt="login-bg"
+              src="/images/sign-in.png"
+            />
+            <img
+              className={!toggleDecorImg ? styles.img : styles.activeBg}
+              alt="login-bg"
+              src="/images/sign-up2.png"
+            />
+            <img
+              className={toggleDecorImg ? styles.decorateImg : styles.active}
+              alt="login-decor"
+              src="/icons/sign-in.svg"
+              width="400"
+              height="auto"
+              ref={this.decorImg}
+            />
+            <img
+              className={!toggleDecorImg ? styles.decorateImg : styles.active}
+              alt="login-decor"
+              src="/icons/sign-up.svg"
+              width="400"
+              height="auto"
+              ref={this.decorImg}
+            />
+          </Grid>
+        </Hidden>
         <Grid
           item
           xs={12}
@@ -196,16 +237,40 @@ class Login extends React.Component {
           className={styles.loginContainer}
         >
           <div className={styles.tabContainer}>
-            <Typography variant="h4" align="left">
-              Title
-            </Typography>
+            {/* <img
+              className={styles.loginPageLogo}
+              src="/icons/profile.svg"
+              alt="login-page-logo"
+              width="100"
+              height="100"
+            /> */}
+            <Badge
+              overlap="circle"
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right'
+              }}
+              badgeContent={<Avatar src="/images/logo.png" style={{width: '50px', height: '50px'}} />}
+            >
+              <Avatar
+                src="/images/login-logo.png"
+                alt={`${Common.giaolySketchingAltImg}`}
+                classes={{ root: styles.loginImage }}
+              />
+            </Badge>
             <AppBar position="static" color="transparent">
               <Tabs
                 value={tabIndex}
                 variant="fullWidth"
-                onChange={(e, value) =>
-                  this.handleChangeState("tabIndex", value)
-                }
+                onChange={(e, value) => {
+                  this.handleChangeState("tabIndex", value);
+                  if (value === 0) {
+                    this.handleChangeState("toggleDecorImg", false);
+                  }
+                  else {
+                    this.handleChangeState("toggleDecorImg", true);
+                  }
+                }}
                 classes={{
                   indicator: styles.indicator,
                 }}
@@ -240,9 +305,10 @@ class Login extends React.Component {
                   submit={(username, password) =>
                     this.login(username, password)
                   }
-                  navigateToSignup={(value) =>
-                    this.handleChangeState("tabIndex", value)
-                  }
+                  navigateToSignup={(value) => {
+                    this.handleChangeState("tabIndex", value);
+                    this.handleChangeState("toggleDecorImg", !toggleDecorImg);
+                  }}
                   isForgotDialogOpen={isForgotDialogOpen}
                   forgotEmail={forgotEmail}
                   isForgotError={isForgotError}

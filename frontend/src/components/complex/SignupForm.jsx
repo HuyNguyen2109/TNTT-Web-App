@@ -178,25 +178,30 @@ export default class SignupForm extends React.Component {
           }
         />
         <Toolbar className={styles.loginAction} disableGutters>
-          <Button
-            className={styles.signinButtonWithoutCredential}
-            label="Hủy"
-            variant="contained"
-            size="large"
-            loading={loading}
-            disabled={loading}
-            onClick={() => returnToLogin(0)}
-          />
-          <div className={styles.or} />
-          <Button
-            className={styles.signinButton}
-            label="Đăng ký"
-            variant="contained"
-            size="large"
-            loading={loading}
-            disabled={loading || !isAgreeTermAndCondition}
-            onClick={() => submitForm()}
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Button
+                className={styles.signinButtonWithoutCredential}
+                label="Hủy"
+                variant="contained"
+                size="large"
+                loading={loading}
+                disabled={loading}
+                onClick={() => returnToLogin(0)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Button
+                className={styles.signinButton}
+                label="Đăng ký"
+                variant="contained"
+                size="large"
+                loading={loading}
+                disabled={loading || !isAgreeTermAndCondition}
+                onClick={() => submitForm()}
+              />
+            </Grid>
+          </Grid>
         </Toolbar>
         <TermAndCondition
           title="Điều khoản đăng ký"

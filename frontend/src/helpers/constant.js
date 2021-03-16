@@ -1,3 +1,7 @@
+export const loginPage = {
+  'loginWithoutCreds': 'Dành cho người dùng không phải là HT/GLV, xem nhanh thông tin hiện tại của Xứ Đoàn'
+}
+
 export const signupFields = [
   {
     label: "Tên thánh",
@@ -331,5 +335,9 @@ export const HomePage = {
   'dayClassDesc': 'Các em thiếu nhi sẽ tập trung tại Nhà thờ tham dự Thánh Lễ Chúa Nhật lúc 6h30, sau đó sẽ được hướng dẫn di chuyển vào Nhà Sinh Hoạt Mục Vụ ăn sáng và bắt đầu giờ học giáo lý lúc 8h30, buổi học được kết thúc lúc 9h30.',
   'nightClassTitle': 'Lớp tối',
   'nightClassDesc': 'Các em tham dự Thánh Lễ chiều thứ 7, sau đó di chuyển vào Nhà Sinh Hoạt Mục Vụ và bắt đầu giờ học Giáo Lý, kết thúc lúc 20h. Các em vẫn tham dự Thánh Lễ Thiếu Nhi ngày Chúa Nhật và cùng ăn sáng như các bạn khác, sau đó có thể ra về.'
+}
+
+export const Common = {
+  'giaolySketchingAltImg': 'https://giaolysketching.info/',
 }
 
