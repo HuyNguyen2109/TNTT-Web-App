@@ -184,7 +184,7 @@ class Login extends React.Component {
 
     return (
       <Grid container className={styles.container}>
-        <Grid item xs={false} sm={false} md={false} lg={8} className={styles.imgContainer}>
+        <Grid item xs={false} sm={false} md={false} lg={7} className={styles.imgContainer}>
           <img className={styles.img} alt="" src="https://source.unsplash.com/random/1920x1080" />
         </Grid>
         <Grid
@@ -192,7 +192,7 @@ class Login extends React.Component {
           xs={12}
           sm={12}
           md={12}
-          lg={4}
+          lg={5}
           className={styles.loginContainer}
         >
           <div className={styles.tabContainer}>

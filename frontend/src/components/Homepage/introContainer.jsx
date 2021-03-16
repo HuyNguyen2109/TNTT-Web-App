@@ -8,17 +8,18 @@ import styles from "./introContainer.module.scss";
 import classNames from "classnames";
 
 export default class IntroComponent extends React.Component {
-
   setToggle = (bool) => {
-    return this.props.toggleDialog(!bool)
-  }
+    return this.props.toggleDialog(!bool);
+  };
 
   handleTimelineSelection = (year) => {
-    this.props.generalData.timelines.forEach(tl => {
-      document.querySelector(`#timeline-${tl.year}`).classList.remove(styles.active);
+    this.props.generalData.timelines.forEach((tl) => {
+      document
+        .querySelector(`#timeline-${tl.year}`)
+        .classList.remove(styles.active);
       document.querySelector(`#timeline-${year}`).classList.add(styles.active);
-    })
-  }
+    });
+  };
 
   render = () => {
     const { generalData, childRef, dialogFlag } = this.props;
@@ -84,22 +85,29 @@ export default class IntroComponent extends React.Component {
                     xs={3}
                     className={styles.slogansGridItem}
                   >
-                    <div className={styles.border}>
-                      <div style={{ height: "300px", position: "relative" }}>
-                        <img
-                          src={item.image}
-                          alt={item.key}
-                          className={styles.sloganImage}
-                        />
-                        <Typography variant="h5" className={styles.sloganTitle}>
-                          {item.title}
-                        </Typography>
-                        <div
-                          dangerouslySetInnerHTML={{ __html: item.desc }}
-                          className={styles.sloganDesc}
-                        ></div>
+                    <Parallax
+                      data={item['skrollr-data']}
+                    >
+                      <div className={styles.border}>
+                        <div style={{ height: "300px", position: "relative" }}>
+                          <img
+                            src={item.image}
+                            alt={item.key}
+                            className={styles.sloganImage}
+                          />
+                          <Typography
+                            variant="h5"
+                            className={styles.sloganTitle}
+                          >
+                            {item.title}
+                          </Typography>
+                          <div
+                            dangerouslySetInnerHTML={{ __html: item.desc }}
+                            className={styles.sloganDesc}
+                          ></div>
+                        </div>
                       </div>
-                    </div>
+                    </Parallax>
                   </Grid>
                 ))}
               </Grid>
@@ -109,15 +117,30 @@ export default class IntroComponent extends React.Component {
         </div>
         <div className={styles.timelineContainer}>
           <div className={styles.inner}>
-            <Grid container alignContent="center" alignItems="center" style={{width: 'inherit', height: 'inherit'}}>
-              <Grid item xs={12} sm={4} md={3} className={styles.timelineItemContainer}>
+            <Grid
+              container
+              alignContent="center"
+              alignItems="center"
+              style={{ width: "inherit", height: "inherit" }}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={4}
+                md={3}
+                className={styles.timelineItemContainer}
+              >
                 <div className={styles.timelineKey}>
                   <div>
-                    {generalData.timelines.map(time => (
+                    {generalData.timelines.map((time) => (
                       <Button
                         key={time.year}
-                        id={`timeline-${time.year}`} 
-                        className={time.year === '2016' ? classNames(styles.time, styles.active) : styles.time}
+                        id={`timeline-${time.year}`}
+                        className={
+                          time.year === "2016"
+                            ? classNames(styles.time, styles.active)
+                            : styles.time
+                        }
                         variant="text"
                         label={time.year}
                         size="large"
@@ -127,8 +150,13 @@ export default class IntroComponent extends React.Component {
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={8} md={9} className={styles.timelineItemContainer}>
-              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={8}
+                md={9}
+                className={styles.timelineItemContainer}
+              ></Grid>
             </Grid>
           </div>
         </div>

@@ -226,25 +226,41 @@ export const HomePage = {
       'key': 'pray',
       'title': 'Cầu Nguyện',
       'desc': '<p>Thiếu nhi dâng ngày mỗi sáng</br>Làm cho đời sống hóa nên <strong>LỜI CẦU</strong></p>',
-      'image': '/icons/pray.png'
+      'image': '/icons/pray.png',
+      'skrollr-data': {
+        "data-bottom-top": "opacity:0;transform:translateX(-500px)",
+        "data-bottom": "opacity:1;transform:translateX(0px)",
+      },
     },
     {
       'key': 'communion',
       'title': 'Rước Lễ',
       'desc': '<p>Thiếu nhi <strong>TÔN SÙNG THÁNH THỂ</strong></br>Siêng năng Rước Lễ, Viếng Chúa hằng ngày.</p>',
-      'image': '/icons/communion.png'
+      'image': '/icons/communion.png',
+      'skrollr-data': {
+        "data-bottom-top": "opacity:0;transform:translateY(-500px)",
+        "data-bottom": "opacity:1;transform:translateY(0px)",
+      },
     },
     {
       'key': 'sacrifice',
       'title': 'Hy Sinh',
       'desc': '<p>Thiếu nhi <strong>HY SINH</strong> chịu khó</br>Luôn nhìn Thánh Giá, gặp khổ vẫn vui.</p>',
-      'image': '/icons/sacrifice.png'
+      'image': '/icons/sacrifice.png',
+      'skrollr-data': {
+        "data-bottom-top": "opacity:0;transform:translateY(500px)",
+        "data-bottom": "opacity:1;transform:translateY(0px)",
+      },
     },
     {
       'key': 'apostle',
       'title': 'Làm việc Tông Đồ',
       'desc': '<p>Thiếu nhi nhờ Mẹ cố gắng</br>Quyết làm gương sáng, xứng danh <strong>TÔNG ĐỒ</strong>.<p>',
-      'image': '/icons/apostle.png'
+      'image': '/icons/apostle.png',
+      'skrollr-data': {
+        "data-bottom-top": "opacity:0;transform:translateX(500px)",
+        "data-bottom": "opacity:1;transform:translateX(0px)",
+      },
     }
   ],
   'timelines': [

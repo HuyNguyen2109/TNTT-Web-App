@@ -2,15 +2,24 @@
 
 .container {
   min-height: 100vh;
+  background-color: #ffffff;
+  
+  * {
+    font-weight: 300;
+  }
+
   .imgContainer {
     position: relative;
     z-index: 1;
+    clip-path: circle(84.5% at 0 23%);
     .img {
       position: absolute;
       top: 0;
       left: 0;
       height: 100vh;
       width: 100vw;
+      object-fit: cover;
+      object-position: 50% 50%;
     }
   }
 
@@ -24,6 +33,7 @@
     & .tabContainer {
       margin: 40px;
       width: 100%;
+      max-width: 500px;
 
       & .indicator {
         background-color: $primaryColor;
