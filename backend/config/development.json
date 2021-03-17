@@ -1,0 +1,61 @@
+{
+  "applicationPort": "6000",
+  "baseURL": "/backend",
+  "emailConfig": {
+    "username": "JohnasHuy21091996@gmail.com",
+    "password": "Master2109"
+  },
+  "dbConfig": {
+    "protocol": "mongodb+srv",
+    "username": "Admin",
+    "password": "Password",
+    "host": "testdatabase-qp7sm.mongodb.net",
+    "dbType": "test",
+    "option": "retryWrites=true&w=majority",
+    "dbName": "sample_airbnb",
+    "collectionName": "listingsAndReviews"
+  },
+  "dbConfigLocal": {
+    "protocol": "mongodb",
+    "server": "localhost:27017",
+    "username": "TNTT-Admin",
+    "password": "Password",
+    "dbName": "TNTT",
+    "defaultRootPassword": "U2FsdGVkX1/Ecu7r0aEfrfH4V6v05xA+KpSRfxeIQMo="
+  },
+  "dbTargetConfig": {
+    "dbName": "NodeJSWithMongo",
+    "collectionName": "MyCollections"
+  },
+  "logConfig": {
+    "appenders": {
+      "backend": {
+        "type": "console"
+      },
+      "backend-file": {
+        "type": "file",
+        "filename": "log/file.log"
+      }
+    },
+    "categories": {
+      "default": {
+        "appenders": [
+          "backend",
+          "backend-file"
+        ],
+        "level": "ALL"
+      }
+    }
+  },
+  "tumblrConfig": {
+    "consumerKey": "caI4kJzKHNMPcwbEyh8Z2AGzLnV8OGwC5Xbje6Z9w7oCKspcZF",
+    "consumerSecret": "J892pDzVMVjaZ10fi4RelpGnihVlPI0g4MoRkyBz534zjQvw3f",
+    "token": "jMowBnzkFOxVTt3thY36KfNd57nzp8aVRP1ZsKMCkRkd8rr981",
+    "tokenSecret": "9D3xNCguHJJpsvDSlpCinHTZ9mc7hUBWesJeFiKRdSU93PIJ9b",
+    "blogNameForImage": "coverscatholic.tumblr.com",
+    "blogNameForGospel": "frmartinshomiliesandreflections.tumblr.com"
+  },
+  "firebaseConfig": {
+    "databaseURL": "https://tntt-notification.firebaseio.com"
+  }
+}
