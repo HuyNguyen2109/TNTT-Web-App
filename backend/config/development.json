@@ -1,6 +1,6 @@
 {
-  "applicationPort": "6000",
-  "baseURL": "/backend",
+  "applicationPort": "9000",
+  "baseURL": "/api",
   "emailConfig": {
     "username": "JohnasHuy21091996@gmail.com",
     "password": "Master2109"
