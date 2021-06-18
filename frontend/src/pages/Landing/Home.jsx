@@ -14,7 +14,7 @@ import React from "react";
 import { Button, LoadingPage, Dialog } from "components/basic";
 // Styles
 import styles from "pages/Landing/Home.module.scss";
-import navStyles from 'components/Homepage/Image/imgContainer.module.scss';
+import navStyles from 'components/Homepage/GrandImage/imgContainer.module.scss';
 // Helpers
 import { HomePage } from "helpers/constant";
 import { setDocumentTitle } from "helpers/functions";
@@ -218,7 +218,7 @@ class Home extends React.Component {
                 <Hidden mdUp>
                   <div className={styles.bioImage}>
                     <img
-                      src="/images/anethanh2.jpg"
+                      src="public/images/anethanh2.jpg"
                       width="200"
                       alt="Saint-bio"
                     />

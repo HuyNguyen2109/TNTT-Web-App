@@ -28,7 +28,7 @@ export default class ScheduleContainer extends React.Component {
                 }}
               >
                 <img
-                  src="/images/dayClass.jpg"
+                  src="public/images/dayClass.jpg"
                   alt="Day class"
                   className={styles.daylightImg}
                 />
@@ -71,7 +71,7 @@ export default class ScheduleContainer extends React.Component {
                   }}
                 >
                   <img
-                    src="/images/nightClass.JPG"
+                    src="public/images/nightClass.JPG"
                     alt="Night class"
                     className={styles.nightImg}
                   />
@@ -143,7 +143,7 @@ export default class ScheduleContainer extends React.Component {
                   }}
                 >
                   <img
-                    src="/images/nightClass.JPG"
+                    src="public/images/nightClass.JPG"
                     alt="Night class"
                     className={styles.nightImg}
                   />

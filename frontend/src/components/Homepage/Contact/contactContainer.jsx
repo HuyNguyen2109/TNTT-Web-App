@@ -34,7 +34,7 @@ export default class ContactContainer extends React.Component {
               <Hidden smDown>
                 <Grid item xs={12} md={6} lg={4}>
                   <div className={styles.img}>
-                    <img src="/images/logo.png" width="150" height="150" />
+                    <img src="public/images/logo.png" width="150" height="150" />
                     <Typography
                       variant="subtitle1"
                       className={styles.copyRight}

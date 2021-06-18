@@ -12,7 +12,7 @@ import React from "react";
 import { Parallax } from "react-skrollr";
 import classNames from 'classnames';
 // Styles
-import styles from "components/Homepage/Image/imgContainer.module.scss";
+import styles from "components/Homepage/GrandImage/imgContainer.module.scss";
 import { Button } from "components/basic";
 
 export default class ImgContainer extends React.Component {
@@ -33,7 +33,7 @@ export default class ImgContainer extends React.Component {
 
     return (
       <div className={styles.imgContainer} ref={childRef}>
-        <img className={styles.img} alt="cover" src="/images/bg.jpg" />
+        <img className={styles.img} alt="cover" src="public/images/bg.jpg" />
         <div className={styles.cover}>
           <div>
             <Parallax
@@ -77,7 +77,7 @@ export default class ImgContainer extends React.Component {
           >
             <img
               alt="TNTT-logo"
-              src="/images/logo.png"
+              src="public/images/logo.png"
               onClick={() => outputRef('home')}
               style={{ cursor: "pointer" }}
             />
@@ -126,7 +126,7 @@ export default class ImgContainer extends React.Component {
           >
             <img
               alt="TNTT-logo"
-              src="/images/logo.png"
+              src="public/images/logo.png"
               onClick={() => outputRef('home')}
               style={{ cursor: "pointer" }}
             />
