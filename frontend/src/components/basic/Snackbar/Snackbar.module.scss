@@ -1,0 +1,57 @@
+@import "../../../base.module.scss";
+
+.Snackbar {
+  @media (min-width: 600px) {
+    right: 24px !important;
+  }
+}
+
+.content {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-radius: 10px !important;
+
+  & .message {
+    padding: 0 !important;
+    display: inline-flex;
+  }
+
+  & .close {
+    transition: 0.2s ease;
+    color: #000;
+
+    &:hover {
+      transform: rotate(90deg);
+      transition-duration: 0.2s;
+
+      @media (pointer: coarse) {
+        transform: unset;
+      }
+    }
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+.icon {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.info {
+  color: $info;
+}
+
+.error {
+  color: $error;
+}
+
+.success {
+  color: $success;
+}
+
+.warning {
+  color: $warning;
+}

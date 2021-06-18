@@ -1,0 +1,100 @@
+@import "../../../base.module.scss";
+
+.loginForm, .signupForm {
+  & .errorMessage {
+    color: red;
+    font-style: italic;
+    text-align: left;
+    margin: 10px 0;
+  }
+
+  & .saveCredential {
+    display: flex;
+    justify-content: left;
+    margin: 10px 0 10px -10px;
+    text-align: left;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  & .savedCredential {
+    color: $primaryColor !important;
+  }
+
+  & .link {
+    color: $primaryColor;
+    margin: 0 5px;
+    padding: 15px 0;
+  }
+
+  & .loginAction {
+    display: block;
+
+    & .signinButtonWithoutCredential {
+      border: 1px solid $primaryColor !important;
+      background-color: transparent;
+      color: $primaryColor;
+      &:hover {
+        border: 1px solid $secondaryColor !important;
+        background-color: $secondaryColor;
+        color: #000000;
+      }
+    }
+
+    & .or {
+      width: 100%;
+      display: block;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    & .signinButton {
+      background-color: $primaryColor;
+      color: #ffffff;
+
+      &:hover {
+        background-color: $secondaryColor;
+        color: #000000;
+      }
+    }
+
+    & .tooltip {
+      max-width: 100px;
+      font-size: 20px;
+    }
+
+    & .info {
+      padding: 0;
+      min-width: 0px;
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 500px) {
+      display: block;
+
+      & .signinButton, & .signinButtonWithoutCredential {
+        margin: 5px 0;
+        width: 100%;
+      }
+
+      
+    }
+  }
+
+  & .signupLink {
+    font-style: italic;
+
+    & .link {
+      padding-left: 5px;
+      cursor: pointer;
+      color: $primaryColor;
+    }
+  }
+  & .displayBlock {
+    display: block;
+    margin: 17px 0;
+  }
+}

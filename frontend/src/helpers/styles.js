@@ -1,4 +1,4 @@
-import variables from '../base.module.scss'
+import variables from 'base.module.scss'
 
 export const forgotForm = {
   icon: {

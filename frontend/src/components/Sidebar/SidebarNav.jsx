@@ -2,7 +2,7 @@ import React, {forwardRef} from "react";
 import {IconButton, List, ListItem, Tooltip} from '@material-ui/core';
 import {NavLink as RouterLink} from 'react-router-dom';
 import classNames from 'classnames';
-import styles from "../basic/Snackbar.module.scss";
+import styles from "components/basic/Snackbar/Snackbar.module.scss";
 import {DashboardOutlined, DescriptionOutlined, ListOutlined} from "@material-ui/icons";
 
 const CustomRouterLink = forwardRef((props, ref) => (

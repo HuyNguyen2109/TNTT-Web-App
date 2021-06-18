@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { RouteWithLayout, MainLayout } from "../components/layout";
+import { RouteWithLayout, MainLayout } from "../layout";
 import { Test, Login, Home } from "../pages";
 
 const Routes = () => {

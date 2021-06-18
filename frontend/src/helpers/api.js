@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import rawText from '../helpers/info.txt';
+import rawText from 'helpers/info.txt';
 
 export const html = {
   getContent: () => {

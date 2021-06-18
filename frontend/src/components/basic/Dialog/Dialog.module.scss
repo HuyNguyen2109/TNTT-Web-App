@@ -1,0 +1,46 @@
+@import "../../../base.module.scss";
+@import "../../../index.module.scss";
+
+.Dialog {
+  & .paper {
+    @media (min-width: 450px) {
+      border-radius: 15px;
+    }
+  }
+
+  & .title {
+    padding: 10px;
+
+    & .spacer {
+      flex-grow: 1;
+    }
+
+    & .text {
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    & .icon {
+      display: flex;
+    }
+  }
+
+  & .close {
+    transition: 0.2s ease;
+    color: #000;
+
+    &:hover {
+      transform: rotate(90deg);
+      transition-duration: 0.2s;
+
+      @media (pointer: coarse) {
+        transform: unset;
+      }
+    }
+  }
+
+  & .content {
+    margin: 15px 0;
+    @extend .customXScrollBar;
+  }
+}

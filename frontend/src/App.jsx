@@ -1,12 +1,12 @@
 import React from "react";
-import "./App.css";
+import "App.css";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { Routes } from "./pages";
+import { Routes } from "pages";
 import { ParallaxProvider } from "react-skrollr";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-import { smoothScrolling } from "./helpers/functions";
+import { smoothScrolling } from "helpers/functions";
 
 const browserHistory = createBrowserHistory();
 
