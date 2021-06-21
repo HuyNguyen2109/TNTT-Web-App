@@ -13,7 +13,7 @@ export default class LoadingPage extends React.Component {
         <div className={styles.bg}>
           <img
             alt="Loading logo"
-            src="/images/logo.png"
+            src="public/images/logo.png"
             className={styles.loadingImg}
           />
           <div className={styles.loader}>

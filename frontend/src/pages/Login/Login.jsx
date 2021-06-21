@@ -203,17 +203,17 @@ class Login extends React.Component {
             <img
               className={toggleDecorImg ? styles.img : styles.activeBg}
               alt="login-bg"
-              src="/images/sign-in.png"
+              src="public/images/sign-in.png"
             />
             <img
               className={!toggleDecorImg ? styles.img : styles.activeBg}
               alt="login-bg"
-              src="/images/sign-up2.png"
+              src="public/images/sign-up2.png"
             />
             <img
               className={toggleDecorImg ? styles.decorateImg : styles.active}
               alt="login-decor"
-              src="/icons/sign-in.svg"
+              src="public/icons/sign-in.svg"
               width="400"
               height="auto"
               ref={this.decorImg}
@@ -221,7 +221,7 @@ class Login extends React.Component {
             <img
               className={!toggleDecorImg ? styles.decorateImg : styles.active}
               alt="login-decor"
-              src="/icons/sign-up.svg"
+              src="public/icons/sign-up.svg"
               width="400"
               height="auto"
               ref={this.decorImg}
@@ -250,10 +250,10 @@ class Login extends React.Component {
                 vertical: 'bottom',
                 horizontal: 'right'
               }}
-              badgeContent={<Avatar src="/images/logo.png" style={{width: '50px', height: '50px'}} />}
+              badgeContent={<Avatar src="public/images/logo.png" style={{width: '50px', height: '50px'}} />}
             >
               <Avatar
-                src="/images/login-logo.png"
+                src="public/images/login-logo.png"
                 alt={`${Common.giaolySketchingAltImg}`}
                 classes={{ root: styles.loginImage }}
               />

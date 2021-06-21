@@ -43,7 +43,7 @@ export default class IntroComponent extends React.Component {
                 }}
               >
                 <img
-                  src="./images/anethanh.jpeg"
+                  src="public/images/anethanh.jpeg"
                   alt="anethanh"
                   className={styles.img}
                 />
@@ -113,7 +113,7 @@ export default class IntroComponent extends React.Component {
               </Grid>
             </div>
           </div>
-          <img src="/images/bg2.png" alt="Slogans" className={styles.img} />
+          <img src="public/images/bg2.png" alt="Slogans" className={styles.img} />
         </div>
         <div className={styles.timelineContainer}>
           <div className={styles.inner}>

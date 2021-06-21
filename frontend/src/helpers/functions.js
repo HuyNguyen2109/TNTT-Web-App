@@ -35,3 +35,7 @@ export const smoothScrolling = () => {
     });
   }
 }
+
+export const isLogged = () => {
+  return false;
+}

@@ -192,31 +192,31 @@ export const HomePage = {
     {
       'key': 'leader',
       'name': 'Xứ Đoàn Trưởng',
-      'avatar': '/Image-edited/Huy.png',
+      'avatar': 'public/Image-edited/Huy.png',
       'fullName': 'Phêrô Nguyễn Nhựt Huy'
     },
     {
       'key': 'sub-internal-leader',
       'name': 'Phó Nội Vụ',
-      'avatar': '/Image-edited/Nam.png',
+      'avatar': 'public/Image-edited/Nam.png',
       'fullName': 'Vincente Lưu Nguyễn Nhật Nam'
     },
     {
       'key': 'sub-external-leader',
       'name': 'Phó Ngoại Vụ',
-      'avatar': '/Image-edited/Lieu.png',
+      'avatar': 'public/Image-edited/Lieu.png',
       'fullName': 'Maria Trịnh Thu Liễu'
     },
     {
       'key': 'secretary',
       'name': 'Thư Kí',
-      'avatar': '/Image-edited/Trang.png',
+      'avatar': 'public/Image-edited/Trang.png',
       'fullName': 'Maria Nguyễn Thùy Trang'
     },
     {
       'key': 'treasurer',
       'name': 'Thủ Quỹ',
-      'avatar': '/Image-edited/Ngoc.png',
+      'avatar': 'public/Image-edited/Ngoc.png',
       'fullName': 'Anna Nguyễn Lê Bảo Ngọc'
     },
     
@@ -230,7 +230,7 @@ export const HomePage = {
       'key': 'pray',
       'title': 'Cầu Nguyện',
       'desc': '<p>Thiếu nhi dâng ngày mỗi sáng</br>Làm cho đời sống hóa nên <strong>LỜI CẦU</strong></p>',
-      'image': '/icons/pray.png',
+      'image': 'public/icons/pray.png',
       'skrollr-data': {
         "data-bottom-top": "opacity:0;transform:translateX(-500px)",
         "data-bottom": "opacity:1;transform:translateX(0px)",
@@ -240,7 +240,7 @@ export const HomePage = {
       'key': 'communion',
       'title': 'Rước Lễ',
       'desc': '<p>Thiếu nhi <strong>TÔN SÙNG THÁNH THỂ</strong></br>Siêng năng Rước Lễ, Viếng Chúa hằng ngày.</p>',
-      'image': '/icons/communion.png',
+      'image': 'public/icons/communion.png',
       'skrollr-data': {
         "data-bottom-top": "opacity:0;transform:translateY(-500px)",
         "data-bottom": "opacity:1;transform:translateY(0px)",
@@ -250,7 +250,7 @@ export const HomePage = {
       'key': 'sacrifice',
       'title': 'Hy Sinh',
       'desc': '<p>Thiếu nhi <strong>HY SINH</strong> chịu khó</br>Luôn nhìn Thánh Giá, gặp khổ vẫn vui.</p>',
-      'image': '/icons/sacrifice.png',
+      'image': 'public/icons/sacrifice.png',
       'skrollr-data': {
         "data-bottom-top": "opacity:0;transform:translateY(500px)",
         "data-bottom": "opacity:1;transform:translateY(0px)",
@@ -260,7 +260,7 @@ export const HomePage = {
       'key': 'apostle',
       'title': 'Làm việc Tông Đồ',
       'desc': '<p>Thiếu nhi nhờ Mẹ cố gắng</br>Quyết làm gương sáng, xứng danh <strong>TÔNG ĐỒ</strong>.<p>',
-      'image': '/icons/apostle.png',
+      'image': 'public/icons/apostle.png',
       'skrollr-data': {
         "data-bottom-top": "opacity:0;transform:translateX(500px)",
         "data-bottom": "opacity:1;transform:translateX(0px)",
@@ -303,19 +303,19 @@ export const HomePage = {
     {
       'key': 'au-leader',
       'name': 'Trưởng Ấu',
-      'avatar': '/Image-edited/Thu.png',
+      'avatar': 'public/Image-edited/Thu.png',
       'fullName': 'Maria Phạm Trần Anh Thư'
     },
     {
       'key': 'thieu-leader',
       'name': 'Trưởng Thiếu',
-      'avatar': '/Image-edited/Hao.png',
+      'avatar': 'public/Image-edited/Hao.png',
       'fullName': 'Anna Lưu Nguyễn Hoàn Hảo'
     },
     {
       'key': 'nghia-leader',
       'name': 'Trưởng Nghĩa',
-      'avatar': '/Image-edited/Phuong.png',
+      'avatar': 'public/Image-edited/Phuong.png',
       'fullName': 'Têrêsa Kiều Nguyễn Xuân Phương'
     },
   ],

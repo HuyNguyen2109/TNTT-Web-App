@@ -1,10 +1,14 @@
 import React from "react";
-import "App.css";
+import "src/App.scss";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { Routes } from "pages";
 import { ParallaxProvider } from "react-skrollr";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+import { Route, Switch } from "react-router-dom";
+import { RouteWithLayout, MainLayout } from "layout";
+import { Dashboard, Login, Landing } from "pages";
+import { PublicRoute } from "components/Auth";
 
 import { smoothScrolling } from "helpers/functions";
 
@@ -37,7 +41,22 @@ export default class App extends React.Component {
         >
           <MuiThemeProvider theme={theme}>
             <Router history={browserHistory}>
-              <Routes />
+              <Switch>
+                <PublicRoute 
+                  path="/landing"
+                  component={() => <Landing />}
+                />
+                <PublicRoute 
+                  path="/login"
+                  component={() => <Login />}
+                />
+                <RouteWithLayout
+                  component={Dashboard}
+                  exact
+                  layout={MainLayout}
+                  path="/dashboard"
+                />
+              </Switch>
             </Router>
           </MuiThemeProvider>
         </ParallaxProvider>
