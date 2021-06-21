@@ -213,7 +213,7 @@ class Login extends React.Component {
             <img
               className={toggleDecorImg ? styles.decorateImg : styles.active}
               alt="login-decor"
-              src="/icons/sign-in.svg"
+              src="public/icons/sign-in.svg"
               width="400"
               height="auto"
               ref={this.decorImg}
@@ -221,7 +221,7 @@ class Login extends React.Component {
             <img
               className={!toggleDecorImg ? styles.decorateImg : styles.active}
               alt="login-decor"
-              src="/icons/sign-up.svg"
+              src="public/icons/sign-up.svg"
               width="400"
               height="auto"
               ref={this.decorImg}
