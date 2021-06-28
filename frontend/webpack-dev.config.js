@@ -93,6 +93,7 @@ module.exports = function(_env, argv) {
         "helpers": path.resolve(__dirname, "src/helpers"),
         "layout": path.resolve(__dirname, "src/layout"),
         "pages": path.resolve(__dirname, "src/pages"),
+        "store": path.resolve(__dirname, "src/store"),
         "react-dom": "@hot-loader/react-dom",
       }
     },

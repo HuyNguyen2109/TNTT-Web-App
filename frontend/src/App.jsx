@@ -4,8 +4,9 @@ import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { ParallaxProvider } from "react-skrollr";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-
 import { Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+
 import { RouteWithLayout, MainLayout } from "layout";
 import { Dashboard, Login, Landing } from "pages";
 import { PublicRoute } from "components/Auth";
