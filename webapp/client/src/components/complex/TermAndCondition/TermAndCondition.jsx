@@ -1,6 +1,6 @@
 import React from "react";
-import {Popover, Divider, Typography, Fade} from "@material-ui/core";
-import { InfoOutlined } from '@material-ui/icons';
+import {Popover, Divider, Typography, Fade} from "@mui/material";
+import { InfoOutlined } from '@mui/icons-material';
 import { Button } from "components/basic";
 import classNames from "classnames";
 

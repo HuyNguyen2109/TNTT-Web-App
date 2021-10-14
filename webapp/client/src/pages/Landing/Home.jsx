@@ -5,11 +5,11 @@ import {
   Toolbar,
   Fab,
   Zoom,
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   InfoOutlined,
   ArrowUpward,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import React from "react";
 import PropTypes from 'prop-types';
 import { Button, LoadingPage, Dialog } from "components/basic";

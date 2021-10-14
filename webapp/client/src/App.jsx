@@ -4,7 +4,7 @@ import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { ParallaxProvider as SkrollrProvider } from "react-skrollr";
 import { ParallaxProvider } from "react-scroll-parallax";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider, StyledEngineProvider, createTheme, adaptV4Theme } from "@mui/material/styles";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 
@@ -22,7 +22,7 @@ export default class App extends React.Component {
   };
 
   render = () => {
-    const theme = createMuiTheme({
+    const theme = createTheme({
       typography: {
         fontFamily: '"Roboto", san-serif',
         fontWeightRegular: "500",
@@ -36,20 +36,22 @@ export default class App extends React.Component {
       <div className="App">
         <ParallaxProvider scrollAxis="vertical">
           <SkrollrProvider init={{ forceHeight: false }}>
-            <MuiThemeProvider theme={theme}>
-              <Router history={browserHistory}>
-                <Switch>
-                  <PublicRoute path="/landing" component={() => <Landing />} />
-                  <PublicRoute path="/login" component={() => <Login />} />
-                  <RouteWithLayout
-                    component={Dashboard}
-                    exact
-                    layout={MainLayout}
-                    path="/"
-                  />
-                </Switch>
-              </Router>
-            </MuiThemeProvider>
+            <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={theme}>
+                <Router history={browserHistory}>
+                  <Switch>
+                    <PublicRoute path="/landing" component={() => <Landing />} />
+                    <PublicRoute path="/login" component={() => <Login />} />
+                    <RouteWithLayout
+                      component={Dashboard}
+                      exact
+                      layout={MainLayout}
+                      path="/"
+                    />
+                  </Switch>
+                </Router>
+              </ThemeProvider>
+            </StyledEngineProvider>
           </SkrollrProvider>
         </ParallaxProvider>
       </div>

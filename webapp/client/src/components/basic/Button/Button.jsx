@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import classNames from "classnames";
 
 import styles from "components/basic/Button/Button.module.scss";

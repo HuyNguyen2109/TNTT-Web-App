@@ -2,14 +2,14 @@ import React from "react";
 import moment from "moment";
 import MomentUtils from "@date-io/moment";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import { createMuiTheme, InputAdornment } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
+import { createTheme, InputAdornment, adaptV4Theme } from "@mui/material";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material/styles";;
 import variables from 'base.module.scss';
 import styles from "components/complex/DateTimePicker/DateTimePicker.module.scss";
 
 moment.locale("vi");
 
-const materialTheme = createMuiTheme({
+const materialTheme = createTheme(adaptV4Theme({
   overrides: {
     MuiPickersToolbar: {
       toolbar: {
@@ -70,7 +70,7 @@ const materialTheme = createMuiTheme({
       },
     },
   },
-});
+}));
 
 export default class CustomizedDatePicker extends React.Component {
   render = () => {
@@ -84,41 +84,43 @@ export default class CustomizedDatePicker extends React.Component {
       ...props
     } = this.props;
     return (
-      <ThemeProvider theme={materialTheme}>
-        <MuiPickersUtilsProvider
-          libInstance={moment}
-          utils={MomentUtils}
-          locale="vi"
-        >
-          <DatePicker
-            classes={{ root: styles.inputField }}
-            value={value}
-            onChange={(date) => handleChangeState(date)}
-            label={label}
-            fullWidth
-            variant="dialog"
-            inputVariant="standard"
-            margin="normal"
-            size="medium"
-            allowKeyboardControl
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">{icon}</InputAdornment>
-              ),
-              classes: {
-                input: styles.input,
-                underline: isError ? styles.error : styles.underline,
-              },
-            }}
-            InputLabelProps={{
-              classes: {
-                focused: styles.title,
-              },
-            }}
-            {...props}
-          />
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={materialTheme}>
+          <MuiPickersUtilsProvider
+            libInstance={moment}
+            utils={MomentUtils}
+            locale="vi"
+          >
+            <DatePicker
+              classes={{ root: styles.inputField }}
+              value={value}
+              onChange={(date) => handleChangeState(date)}
+              label={label}
+              fullWidth
+              variant="dialog"
+              inputVariant="standard"
+              margin="normal"
+              size="medium"
+              allowKeyboardControl
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">{icon}</InputAdornment>
+                ),
+                classes: {
+                  input: styles.input,
+                  underline: isError ? styles.error : styles.underline,
+                },
+              }}
+              InputLabelProps={{
+                classes: {
+                  focused: styles.title,
+                },
+              }}
+              {...props}
+            />
+          </MuiPickersUtilsProvider>
+        </ThemeProvider>
+      </StyledEngineProvider>
     );
   };
 }

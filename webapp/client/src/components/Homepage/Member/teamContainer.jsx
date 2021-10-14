@@ -2,10 +2,10 @@ import {
   Typography,
   Grid,
   Avatar,
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   Person,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import React from "react";
 import { Paper } from "components/basic";
 import { Parallax } from "react-skrollr";
@@ -37,7 +37,7 @@ export default class TeamContainer extends React.Component {
           container
           className={styles.keyMemberContainer}
           spacing={2}
-          justify="center"
+          justifyContent="center"
         >
           {generalData.alphaKeyMembers.map((mem, i) => (
             <Grid
@@ -83,7 +83,7 @@ export default class TeamContainer extends React.Component {
           container
           className={styles.keyMemberContainer}
           spacing={2}
-          justify="center"
+          justifyContent="center"
         >
           {generalData.betaKeyMembers.map((mem) => (
             <Grid

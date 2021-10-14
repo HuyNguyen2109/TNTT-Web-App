@@ -1,5 +1,5 @@
-import { Typography, Hidden, IconButton, Menu, MenuItem } from "@material-ui/core";
-import { List } from "@material-ui/icons";
+import { Typography, Hidden, IconButton, Menu, MenuItem } from "@mui/material";
+import { List } from "@mui/icons-material";
 import React from "react";
 import { Parallax, ParallaxBanner, withController } from "react-scroll-parallax";
 import classNames from "classnames";
@@ -67,7 +67,7 @@ class ImgContainer extends React.Component {
           </Parallax>
         </div>
         {/* Nav bar for desktop */}
-        <Hidden smDown>
+        <Hidden mdDown>
           <div
             id="desktop-navbar"
             className={styles.homeNavBar}
@@ -124,7 +124,7 @@ class ImgContainer extends React.Component {
             <IconButton
               className={styles.mobileMenu}
               onClick={(event) => this.setState({ isMobileMenuOpen: event.currentTarget })}
-            >
+              size="large">
               <List className={styles.icon} />
             </IconButton>
             <Menu

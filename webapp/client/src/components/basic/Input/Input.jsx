@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   TextField, InputAdornment
-} from '@material-ui/core';
+} from '@mui/material';
 import classNames from 'classnames';
 import styles from 'components/basic/Input/Input.module.scss';
 

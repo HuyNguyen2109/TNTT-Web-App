@@ -9,10 +9,10 @@ import {
   DialogContent,
   DialogActions,
   Divider,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import styles from "components/basic/Dialog/Dialog.module.scss";
-import { CloseOutlined } from "@material-ui/icons";
+import { CloseOutlined } from "@mui/icons-material";
 import 'components/complex/LoginForm/LoginSignupForm.module.scss';
 
 export default class CustomizedDialog extends React.Component {

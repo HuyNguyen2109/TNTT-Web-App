@@ -2,11 +2,11 @@ import {
   Typography,
   Hidden,
   Grid,
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   WbSunnyOutlined,
   Brightness2Outlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import React from "react";
 import { Parallax as SkrollrParallax } from "react-skrollr";
 // Styles
@@ -106,7 +106,7 @@ export default class ScheduleContainer extends React.Component {
               </Grid>
             </Grid>
           </Hidden>
-          <Hidden smDown>
+          <Hidden mdDown>
             <Grid container alignItems="center" alignContent="center">
               <Grid item md={6} xs={12} className={styles.item}>
                 <SkrollrParallax

@@ -10,7 +10,7 @@ import {
   Toolbar,
   Link,
   Hidden,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Button, Input, Dialog } from "components/basic";
 import {
   AccountCircleOutlined,
@@ -19,7 +19,7 @@ import {
   VisibilityOffOutlined,
   HelpOutlineOutlined,
   MailOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import styles from "./LoginSignupForm.module.scss";
 import { signinFields, forgotMessage, loginPage } from "helpers/constant";
 import { forgotForm } from "helpers/styles";
@@ -89,7 +89,7 @@ export default class LoginForm extends React.Component {
                             !isPasswordRevealed
                           );
                         }}
-                      >
+                        size="large">
                         {!isPasswordRevealed ? (
                           <VisibilityOffOutlined />
                         ) : (
@@ -151,7 +151,7 @@ export default class LoginForm extends React.Component {
                   window.location.href = "/dashboard";
                 }}
               />
-              <Hidden mdDown>
+              <Hidden lgDown>
                 <Tooltip
                   title={loginPage.loginWithoutCreds}
                   placement="top"

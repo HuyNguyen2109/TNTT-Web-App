@@ -7,7 +7,7 @@ import {
   FormControlLabel,
   Toolbar,
   Link,
-} from "@material-ui/core";
+} from "@mui/material";
 import { Button, Input } from "components/basic";
 import {
   TermAndCondition,
@@ -20,7 +20,7 @@ import {
   MailOutline,
   CalendarTodayOutlined,
   LocationOnOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import styles from "./LoginSignupForm.module.scss";
 import { formatPhoneNumber, removeWhiteSpace } from "helpers/functions";
 

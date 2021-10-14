@@ -1,5 +1,5 @@
-import { Typography, Grid } from "@material-ui/core";
-import { FormatQuote, StyleRounded } from "@material-ui/icons";
+import { Typography, Grid } from "@mui/material";
+import { FormatQuote, StyleRounded } from "@mui/icons-material";
 import React from "react";
 import { Button } from "components/basic";
 import { Parallax as SkrollrParralax } from "react-skrollr";

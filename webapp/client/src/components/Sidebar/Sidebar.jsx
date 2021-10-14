@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { Divier, Typography, Drawer } from "@material-ui/core";
+import { Divier, Typography, Drawer } from "@mui/material";
 import { SidebarNav } from "./";
 import styles from "./Sidebar.module.scss";
 import { sidebarItems } from "../../helpers/constant";

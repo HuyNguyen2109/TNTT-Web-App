@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "components/basic/PageLoading/LoadingPage.module.scss";
 import classNames from "classnames";
-import { Container } from "@material-ui/core";
+import { Container } from "@mui/material";
 
 export default class LoadingPage extends React.Component {
   render = () => {

@@ -8,8 +8,8 @@ import {
   Hidden,
   Avatar,
   Badge,
-} from "@material-ui/core";
-import { LockOpenOutlined, PersonAddOutlined } from "@material-ui/icons";
+} from "@mui/material";
+import { LockOpenOutlined, PersonAddOutlined } from "@mui/icons-material";
 // Custom Components
 import { LoginForm, SignupForm, TabPanel } from "components/complex";
 import { Snackbar } from "components/basic";
@@ -198,7 +198,7 @@ class Login extends React.Component {
 
     return (
       <Grid container className={styles.container}>
-        <Hidden mdDown>
+        <Hidden lgDown>
           <Grid item lg={7} className={styles.imgContainer}>
             <img
               className={toggleDecorImg ? styles.img : styles.activeBg}
@@ -245,7 +245,7 @@ class Login extends React.Component {
               height="100"
             /> */}
             <Badge
-              overlap="circle"
+              overlap="circular"
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right'

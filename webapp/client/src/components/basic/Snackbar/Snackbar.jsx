@@ -1,12 +1,12 @@
 import React from "react";
-import { Snackbar, IconButton, Typography, Toolbar } from "@material-ui/core";
+import { Snackbar, IconButton, Typography, Toolbar } from "@mui/material";
 import {
   InfoOutlined,
   ReportProblemOutlined,
   ErrorOutlineOutlined,
   CheckOutlined,
   CloseOutlined,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 
 import classNames from "classnames";
 import styles from "components/basic/Snackbar/Snackbar.module.scss";

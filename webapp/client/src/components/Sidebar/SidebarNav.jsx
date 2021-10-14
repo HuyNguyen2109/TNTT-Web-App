@@ -1,9 +1,9 @@
 import React, { forwardRef } from "react";
-import { List, ListItem, Button } from "@material-ui/core";
+import { List, ListItem, Button } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
 import classNames from "classnames";
 import styles from "components/Sidebar/Sidebar.module.scss";
-import { DashboardOutlined, DescriptionOutlined, ListOutlined } from "@material-ui/icons";
+import { DashboardOutlined, DescriptionOutlined, ListOutlined } from "@mui/icons-material";
 
 const CustomRouterLink = forwardRef((props, ref) => (
   <div ref={ref} style={{ flexGrow: 1 }}>

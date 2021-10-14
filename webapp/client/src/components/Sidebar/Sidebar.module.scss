@@ -17,7 +17,7 @@
       & .button {
         display: flex;
         align-items: center;
-        justify-content: baseline;
+        justify-content: left;
         border: 0px !important;
         background-color: transparent;
         width: inherit;
@@ -39,7 +39,8 @@
           justify-content: left;
           font-size: 16px;
           font-weight: 300;
-          transition: font-weight .25s
+          transition: font-weight .25s;
+          color: #000
         }
       };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Box,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export default class TabPanel extends React.Component {
   render = () => {

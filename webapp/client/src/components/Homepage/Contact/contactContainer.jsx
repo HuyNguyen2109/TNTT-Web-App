@@ -1,5 +1,5 @@
-import { Typography, IconButton, Grid, Tooltip, Hidden } from "@material-ui/core";
-import { ChevronRight, Facebook, LocationOn, Mail } from "@material-ui/icons";
+import { Typography, IconButton, Grid, Tooltip, Hidden } from "@mui/material";
+import { ChevronRight, Facebook, LocationOn, Mail } from "@mui/icons-material";
 import React from "react";
 import classNames from "classnames";
 import { Parallax } from "react-skrollr";
@@ -31,7 +31,7 @@ export default class ContactContainer extends React.Component {
               className={styles.contactGridContainer}
               alignContent="center"
             >
-              <Hidden smDown>
+              <Hidden mdDown>
                 <Grid item xs={12} md={6} lg={4}>
                   <div className={styles.img}>
                     <img src="public/images/logo.png" width="150" height="150" />
@@ -89,7 +89,7 @@ export default class ContactContainer extends React.Component {
                       component="a"
                       href={generalData.ggMapLocation}
                       target="_blank"
-                    >
+                      size="large">
                       <LocationOn classes={{ root: styles.icon }} />
                       <span className={styles.copyRight}>
                         {generalData.location}
@@ -101,7 +101,7 @@ export default class ContactContainer extends React.Component {
                       component="a"
                       href={generalData.facebookLink}
                       target="_blank"
-                    >
+                      size="large">
                       <Facebook classes={{ root: styles.icon }} />
                       <span className={styles.copyRight}>
                         {generalData.facebookLink}
@@ -113,7 +113,7 @@ export default class ContactContainer extends React.Component {
                       component="a"
                       href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${generalData.gmailLink}`}
                       target="_blank"
-                    >
+                      size="large">
                       <Mail classes={{ root: styles.icon }} />
                       <span className={styles.copyRight}>
                         {generalData.gmailLink}
