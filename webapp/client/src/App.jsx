@@ -2,9 +2,10 @@ import React from "react";
 import "src/App.scss";
 import { Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { ParallaxProvider } from "react-skrollr";
+import { ParallaxProvider as SkrollrProvider } from "react-skrollr";
+import { ParallaxProvider } from "react-scroll-parallax";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import { RouteWithLayout, MainLayout } from "layout";
@@ -33,33 +34,23 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
-        <ParallaxProvider
-          init={{
-            smoothScrollingDuration: 1000,
-            smoothScrolling: true,
-            forceHeight: false,
-          }}
-        >
-          <MuiThemeProvider theme={theme}>
-            <Router history={browserHistory}>
-              <Switch>
-                <PublicRoute 
-                  path="/landing"
-                  component={() => <Landing />}
-                />
-                <PublicRoute 
-                  path="/login"
-                  component={() => <Login />}
-                />
-                <RouteWithLayout
-                  component={Dashboard}
-                  exact
-                  layout={MainLayout}
-                  path="/dashboard"
-                />
-              </Switch>
-            </Router>
-          </MuiThemeProvider>
+        <ParallaxProvider scrollAxis="vertical">
+          <SkrollrProvider init={{ forceHeight: false }}>
+            <MuiThemeProvider theme={theme}>
+              <Router history={browserHistory}>
+                <Switch>
+                  <PublicRoute path="/landing" component={() => <Landing />} />
+                  <PublicRoute path="/login" component={() => <Login />} />
+                  <RouteWithLayout
+                    component={Dashboard}
+                    exact
+                    layout={MainLayout}
+                    path="/"
+                  />
+                </Switch>
+              </Router>
+            </MuiThemeProvider>
+          </SkrollrProvider>
         </ParallaxProvider>
       </div>
     );

@@ -1,24 +1,15 @@
-import {
-  Typography,
-  Hidden,
-  IconButton,
-  Menu,
-  MenuItem,
-} from "@material-ui/core";
-import {
-  List,
-} from "@material-ui/icons";
+import { Typography, Hidden, IconButton, Menu, MenuItem } from "@material-ui/core";
+import { List } from "@material-ui/icons";
 import React from "react";
-import { Parallax } from "react-skrollr";
-import classNames from 'classnames';
+import { Parallax, ParallaxBanner, withController } from "react-scroll-parallax";
+import classNames from "classnames";
 // Styles
 import styles from "components/Homepage/GrandImage/imgContainer.module.scss";
 import { Button } from "components/basic";
 
-export default class ImgContainer extends React.Component {
-
+class ImgContainer extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = { ...this.initialState };
 
@@ -33,38 +24,47 @@ export default class ImgContainer extends React.Component {
 
     return (
       <div className={styles.imgContainer} ref={childRef}>
-        <img className={styles.img} alt="cover" src="public/images/bg.jpg" />
+        <ParallaxBanner
+          className={styles.img}
+          layers={[
+            {
+              image: 'public/images/bg.jpg',
+              amount: 1,
+              expanded: false
+            }
+          ]}
+          style={{
+            height: '100vh'
+          }}
+        ></ParallaxBanner>
+        {/* <img className={styles.img} alt="cover" src="" /> */}
         <div className={styles.cover}>
-          <div>
-            <Parallax
-              data={{
-                "data-top-bottom": "opacity:0;transform:translateX(500px)",
-                "data-center": "opacity:1;transform:translateX(0px)",
-              }}
+          <Parallax
+            // data={{
+            //   "data-top-bottom": "opacity:0;transform:translateX(500px)",
+            //   "data-center": "opacity:1;transform:translateX(0px)",
+            // }}
+
+            x={[-25, 25]}
+          >
+            <Typography align="center" variant="h1" className={classNames(styles.grandTitle)}>
+              {generalData.orgName}
+            </Typography>
+            <Typography
+              align="center"
+              variant="h3"
+              className={classNames(styles.grandTitle, styles.subGrandTitle)}
             >
-              <Typography
-                align="center"
-                variant="h1"
-                className={classNames(styles.grandTitle)}
-              >
-                {generalData.orgName}
-              </Typography>
-              <Typography
-                align="center"
-                variant="h3"
-                className={classNames(styles.grandTitle, styles.subGrandTitle)}
-              >
-                {generalData.subGrandTitle}
-              </Typography>
-              <Button
-                className={styles.learnMoreBtn}
-                variant="outlined"
-                label={generalData.learnMore}
-                size="large"
-                onClick={() => outputRef('intro')}
-              />
-            </Parallax>
-          </div>
+              {generalData.subGrandTitle}
+            </Typography>
+            <Button
+              className={styles.learnMoreBtn}
+              variant="outlined"
+              label={generalData.learnMore}
+              size="large"
+              onClick={() => outputRef("intro")}
+            />
+          </Parallax>
         </div>
         {/* Nav bar for desktop */}
         <Hidden smDown>
@@ -78,22 +78,17 @@ export default class ImgContainer extends React.Component {
             <img
               alt="TNTT-logo"
               src="public/images/logo.png"
-              onClick={() => outputRef('home')}
+              onClick={() => outputRef("home")}
               style={{ cursor: "pointer" }}
             />
             <div style={{ flex: 1 }}></div>
-            <div
-              id="desktop-navbar-items"
-              className={styles.linkList}
-            >
+            <div id="desktop-navbar-items" className={styles.linkList}>
               <div id="marker" className={styles.marker}></div>
               {generalData.navLinks.map((link) => (
                 <Button
                   key={link.key}
                   id={link.key}
-                  className={
-                    link.key === "signin" ? styles.signIn : styles.link
-                  }
+                  className={link.key === "signin" ? styles.signIn : styles.link}
                   label={link.name}
                   variant={link.key === "signin" ? "outlined" : "text"}
                   size="large"
@@ -101,10 +96,8 @@ export default class ImgContainer extends React.Component {
                   onClick={() => {
                     link.key !== "signin" &&
                       refsList[link.key] &&
-                      (link.key === "home"
-                        ? outputRef('home')
-                        : outputRef(link.key));
-                        setActiveNavKey(link.key);
+                      (link.key === "home" ? outputRef("home") : outputRef(link.key));
+                    setActiveNavKey(link.key);
                   }}
                 />
               ))}
@@ -116,10 +109,7 @@ export default class ImgContainer extends React.Component {
           <div
             id="mobile-navbar"
             // homeNavBarForMobilewithWhiteBG
-            className={classNames(
-              styles.homeNavBar,
-              styles.homeNavBarForMobile
-            )}
+            className={classNames(styles.homeNavBar, styles.homeNavBarForMobile)}
             style={{
               height: `${generalData.navHeight}px`,
             }}
@@ -127,15 +117,13 @@ export default class ImgContainer extends React.Component {
             <img
               alt="TNTT-logo"
               src="public/images/logo.png"
-              onClick={() => outputRef('home')}
+              onClick={() => outputRef("home")}
               style={{ cursor: "pointer" }}
             />
             <div style={{ flex: 1 }}></div>
             <IconButton
               className={styles.mobileMenu}
-              onClick={(event) =>
-                this.setState({ isMobileMenuOpen: event.currentTarget })
-              }
+              onClick={(event) => this.setState({ isMobileMenuOpen: event.currentTarget })}
             >
               <List className={styles.icon} />
             </IconButton>
@@ -174,7 +162,7 @@ export default class ImgContainer extends React.Component {
                     link.key !== "signin"
                       ? refsList[link.key]
                         ? link.key === "home"
-                          ? outputRef('home')
+                          ? outputRef("home")
                           : outputRef(link.key)
                         : alert("This ref does not exist")
                       : (window.location.href = "/login");
@@ -194,3 +182,5 @@ export default class ImgContainer extends React.Component {
     );
   };
 }
+
+export default withController(ImgContainer);

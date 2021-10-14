@@ -2,7 +2,7 @@ import { Typography, Grid } from "@material-ui/core";
 import { FormatQuote, StyleRounded } from "@material-ui/icons";
 import React from "react";
 import { Button } from "components/basic";
-import { Parallax } from "react-skrollr";
+import { Parallax as SkrollrParralax } from "react-skrollr";
 // Styles
 import styles from "components/Homepage/Intro/introContainer.module.scss";
 import classNames from "classnames";
@@ -85,7 +85,7 @@ export default class IntroComponent extends React.Component {
                     xs={3}
                     className={styles.slogansGridItem}
                   >
-                    <Parallax
+                    <SkrollrParralax
                       data={item['skrollr-data']}
                     >
                       <div className={styles.border}>
@@ -107,7 +107,7 @@ export default class IntroComponent extends React.Component {
                           ></div>
                         </div>
                       </div>
-                    </Parallax>
+                    </SkrollrParralax>
                   </Grid>
                 ))}
               </Grid>

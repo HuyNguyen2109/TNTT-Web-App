@@ -3,11 +3,38 @@ import classNames from 'classnames';
 import { Sidebar } from "components/Sidebar";
 import styles from 'layout/Main.module.scss';
 
+const windowEvents = ['load', 'resize'];
+
 export default class MainLayout extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      innerWidth: window.innerWidth,
+    }
+  }
+
+  componentDidMount = () => {
+    windowEvents.forEach(event => {
+      window.addEventListener(event, () => this.handleWindowWidthEvents())
+    })
+  }
+
+  componentWillUnmount = () => {
+    windowEvents.forEach(event => {
+      window.removeEventListener(event, () => this.handleWindowWidthEvents())
+    })
+  }
+
+  handleWindowWidthEvents = () => this.setState({innerWidth: window.innerWidth})
+
   render = () => {
+    const { innerWidth } = this.state;
     const { children, className, openSidebar, setSidebar } = this.props;
-    const cn = classNames(styles.main, className);
-    const isDesktop = window.innerWidth > 450;
+    const isDesktop = innerWidth > 450;
+
+    // Some flags to detect mobile or not
+    const cn = isDesktop ? classNames(styles.main, className) : classNames(styles.mainMobile, className);
     const shouldOpenSidebar = isDesktop ? true : openSidebar;
 
     return (
@@ -16,6 +43,7 @@ export default class MainLayout extends React.Component {
           onClose={() => setSidebar(false)}
           open={shouldOpenSidebar}
           variant={isDesktop ? 'permanent' : 'temporary'}
+          handleChangeState={(state, val) => this.setState({[state]: val})}
         />
         <main className={styles.content}>
           {children}

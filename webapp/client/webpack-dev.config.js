@@ -43,7 +43,14 @@ module.exports = function(_env, argv) {
             {
               loader: "css-loader",
               options: {
-                importLoaders: 2
+                importLoaders: 2,
+                modules: {
+                  mode: isDevelopment ? 'local' : 'global',
+                  auto: true,
+                  exportGlobals: true,
+                  localIdentName: isDevelopment ? "[local]":"[hash:base64:5]",
+                },														
+                sourceMap: isDevelopment
               } 
             },
             {

@@ -137,9 +137,19 @@ export const signinFields = [
 export const sidebarItems = [
   {
     title: 'Chung',
-    href: '/',
+    href: '#',
     icon: 'dashboard'
   },
+  {
+    title: 'Danh sách',
+    href: '#',
+    icon: 'list'
+  },
+  {
+    title: 'Tài liệu',
+    href: '#',
+    icon: 'document'
+  }
 ];
 
 export const forgotMessage = 'Bạn quên/không đăng nhập được tài khoản của mình? Nhập email bạn đã đăng kí tài khoản, hệ thống sẽ gửi lại mail xác nhận reset tài khoản cho bạn. Vui lòng theo dõi email để tiến hành lấy lại tài khoản'

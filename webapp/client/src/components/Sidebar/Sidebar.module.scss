@@ -1,10 +1,67 @@
+@import '../../base.module.scss';
+
 .Drawer {
   & .paper {
-    background-color: darkslategray;
-    width: 50px;
+    background-color: transparent;
+    width: $drawerWidth;
+    height: 100%;
+    padding: $drawerMargin;
 
     & .root {
-      margin: 0 auto;
+      margin: 0 20px;
+    }
+  }
+
+  & .nav {
+    & .item {
+      & .button {
+        display: flex;
+        align-items: center;
+        justify-content: baseline;
+        border: 0px !important;
+        background-color: transparent;
+        width: inherit;
+        padding: 15px 30px;
+        transition: background-color .25s;
+
+        & .icon {
+          color: #000;
+          margin-right: 15px;
+          background-color: #fff;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 0 .25rem .375rem -.0625rem hsla(0,0%,8%,.12),0 .125rem .25rem -.0625rem hsla(0,0%,8%,.07)!important;
+          transition: background-color .25s;
+        }
+
+        & span {
+          text-transform: capitalize;
+          justify-content: left;
+          font-size: 16px;
+          font-weight: 300;
+          transition: font-weight .25s
+        }
+      };
+
+      & .active, & .button:hover {
+        @extend .button;
+
+        background-color: #fff;
+        border-radius: 15px;
+        transition: background-color .25s;
+
+        & .icon {
+          color: #fff;
+          background-color: $primaryColor;
+          box-shadow: none;
+          transition: background-color .25s;
+        }
+
+        & span {
+          font-weight: 900;
+          transition: font-weight .25s
+        }
+      }
     }
   }
 }

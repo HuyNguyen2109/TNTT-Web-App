@@ -29,7 +29,7 @@ class Test extends React.Component {
             this.setState({ open: !open, loading: !loading});
           }}
         />
-        <Snackbar
+        {/* <Snackbar
           open={open}
           message="Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message "
           type="warning"
@@ -40,11 +40,7 @@ class Test extends React.Component {
             vertical: "bottom",
             horizontal: "left",
           }}
-        />
-        <Paper 
-          className={styles.paper}
-          content={'Test'}
-        />
+        /> */}
       </div>
     );
   };

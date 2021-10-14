@@ -8,7 +8,7 @@ import {
   Brightness2Outlined,
 } from "@material-ui/icons";
 import React from "react";
-import { Parallax } from "react-skrollr";
+import { Parallax as SkrollrParallax } from "react-skrollr";
 // Styles
 import styles from "components/Homepage/Schedule/scheduleContainer.module.scss";
 
@@ -21,7 +21,7 @@ export default class ScheduleContainer extends React.Component {
         <div className={styles.scheduleGridContainer}>
           <Grid container alignItems="center" alignContent="center">
             <Grid item md={6} xs={12} className={styles.item}>
-              <Parallax
+              <SkrollrParallax
                 data={{
                   "data-bottom-top": "opacity:0;transform:translateX(-500px)",
                   "data-bottom": "opacity:1;transform:translateX(0px)",
@@ -32,10 +32,10 @@ export default class ScheduleContainer extends React.Component {
                   alt="Day class"
                   className={styles.daylightImg}
                 />
-              </Parallax>
+              </SkrollrParallax>
             </Grid>
             <Grid item md={6} xs={12} className={styles.item}>
-              <Parallax
+              <SkrollrParallax
                 data={{
                   "data-bottom-top": "opacity:0;transform:translateX(500px)",
                   "data-bottom": "opacity:1;transform:translateX(0px)",
@@ -58,13 +58,13 @@ export default class ScheduleContainer extends React.Component {
                     {generalData.dayClassDesc}
                   </Typography>
                 </div>
-              </Parallax>
+              </SkrollrParallax>
             </Grid>
           </Grid>
           <Hidden mdUp>
             <Grid container alignItems="center" alignContent="center">
               <Grid item md={6} xs={12} className={styles.item}>
-                <Parallax
+                <SkrollrParallax
                   data={{
                     "data-bottom-top": "opacity:0;transform:translateX(500px)",
                     "data-bottom": "opacity:1;transform:translateX(0px)",
@@ -75,10 +75,10 @@ export default class ScheduleContainer extends React.Component {
                     alt="Night class"
                     className={styles.nightImg}
                   />
-                </Parallax>
+                </SkrollrParallax>
               </Grid>
               <Grid item md={6} xs={12} className={styles.item}>
-                <Parallax
+                <SkrollrParallax
                   data={{
                     "data-bottom-top":
                       "opacity:0;transform:translateX(-500px)",
@@ -102,14 +102,14 @@ export default class ScheduleContainer extends React.Component {
                       {generalData.nightClassDesc}
                     </Typography>
                   </div>
-                </Parallax>
+                </SkrollrParallax>
               </Grid>
             </Grid>
           </Hidden>
           <Hidden smDown>
             <Grid container alignItems="center" alignContent="center">
               <Grid item md={6} xs={12} className={styles.item}>
-                <Parallax
+                <SkrollrParallax
                   data={{
                     "data-bottom-top":
                       "opacity:0;transform:translateX(-500px)",
@@ -133,10 +133,10 @@ export default class ScheduleContainer extends React.Component {
                       {generalData.nightClassDesc}
                     </Typography>
                   </div>
-                </Parallax>
+                </SkrollrParallax>
               </Grid>
               <Grid item md={6} xs={12} className={styles.item}>
-                <Parallax
+                <SkrollrParallax
                   data={{
                     "data-bottom-top": "opacity:0;transform:translateX(500px)",
                     "data-bottom": "opacity:1;transform:translateX(0px)",
@@ -147,7 +147,7 @@ export default class ScheduleContainer extends React.Component {
                     alt="Night class"
                     className={styles.nightImg}
                   />
-                </Parallax>
+                </SkrollrParallax>
               </Grid>
             </Grid>
           </Hidden>

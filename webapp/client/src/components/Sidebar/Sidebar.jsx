@@ -6,7 +6,13 @@ import styles from "./Sidebar.module.scss";
 import { sidebarItems } from "../../helpers/constant";
 
 export default class Sidebar extends React.Component {
+
+  state = {
+    isFocusable: false,
+  }
+
   render = () => {
+    const { isFocusable } = this.state;
     const {
       open,
       variant,
@@ -24,6 +30,8 @@ export default class Sidebar extends React.Component {
         variant={variant}
         elevation={10}
         open={open}
+        onMouseEnter={() => this.setState({isFocusable: true})}
+        onMouseLeave={() => this.setState({isFocusable: false})}
       >
         <div {...props} className={styles.root}>
           <SidebarNav

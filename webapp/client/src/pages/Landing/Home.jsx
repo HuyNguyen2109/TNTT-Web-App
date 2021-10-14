@@ -11,6 +11,7 @@ import {
   ArrowUpward,
 } from "@material-ui/icons";
 import React from "react";
+import PropTypes from 'prop-types';
 import { Button, LoadingPage, Dialog } from "components/basic";
 // Styles
 import styles from "pages/Landing/Home.module.scss";
@@ -53,14 +54,14 @@ class Home extends React.Component {
 
   // Life cycle
 
-  UNSAFE_componentWillMount = () => {
-    htmlApis
-      .getContent()
-      .then((res) => {
-        this.setState({ saintExternalHtml: res });
-      })
-      .catch((err) => console.log(err));
-  };
+  // UNSAFE_componentWillMount = () => {
+  //   htmlApis
+  //     .getContent()
+  //     .then((res) => {
+  //       this.setState({ saintExternalHtml: res });
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   componentDidMount = () => {
     setDocumentTitle(HomePage.documentTitle);
@@ -70,6 +71,7 @@ class Home extends React.Component {
     this.scrollEvent = document.addEventListener("scroll", this.handleScroll, {
       passive: true,
     });
+    this.context.refresh();
   };
 
   componentDidUpdate = (prevState) => {
@@ -269,6 +271,10 @@ class Home extends React.Component {
       </div>
     );
   };
+
+  static contextTypes = {
+      refresh: PropTypes.func
+  }
 }
 
 export default Home;
