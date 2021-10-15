@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
-import { Divier, Typography, Drawer } from "@mui/material";
+import { Divier, Typography, Drawer, Avatar, Divider } from "@mui/material";
 import { SidebarNav } from "./";
 import styles from "./Sidebar.module.scss";
-import { sidebarItems } from "../../helpers/constant";
+import { sidebarItems, HomePage } from "../../helpers/constant";
 
 export default class Sidebar extends React.Component {
 
@@ -33,6 +33,11 @@ export default class Sidebar extends React.Component {
         onMouseEnter={() => this.setState({isFocusable: true})}
         onMouseLeave={() => this.setState({isFocusable: false})}
       >
+        <div className={styles.titleBlock}>
+          <Avatar alt="TNTT-logo" src="/public/images/logo.png" className={styles.avatar} />
+          <Typography variant="h5" textAlign="center" className={styles.grandTitle} >{HomePage.documentTitle}</Typography>
+        </div>
+
         <div {...props} className={styles.root}>
           <SidebarNav
             className={styles.nav}

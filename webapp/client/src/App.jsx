@@ -24,11 +24,7 @@ export default class App extends React.Component {
   render = () => {
     const theme = createTheme({
       typography: {
-        fontFamily: '"Roboto", san-serif',
-        fontWeightRegular: "500",
-        fontWeightLight: "100",
-        fontWeightMedium: "300",
-        fontWeightBold: "900",
+        fontFamily: '"SVN-Poppins", san-serif',
       },
     });
 
