@@ -11,6 +11,7 @@ export default class MainLayout extends React.Component {
 
     this.state = {
       innerWidth: window.innerWidth,
+      isSidebarFocusable: false,
     }
   }
 
@@ -29,7 +30,7 @@ export default class MainLayout extends React.Component {
   handleWindowWidthEvents = () => this.setState({innerWidth: window.innerWidth})
 
   render = () => {
-    const { innerWidth } = this.state;
+    const { innerWidth, isSidebarFocusable } = this.state;
     const { children, className, openSidebar, setSidebar } = this.props;
     const isDesktop = innerWidth > 450;
 
@@ -45,8 +46,10 @@ export default class MainLayout extends React.Component {
           variant={isDesktop ? 'permanent' : 'temporary'}
           handleChangeState={(state, val) => this.setState({[state]: val})}
         />
-        <main className={styles.content}>
-          {children}
+        <main className={isDesktop && isSidebarFocusable ? styles.zoomedOutContent : styles.content}>
+          <div className={styles.inner}>
+            {children}
+          </div>
         </main>
       </div>
     )

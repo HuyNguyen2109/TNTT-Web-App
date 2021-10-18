@@ -1,15 +1,15 @@
 import React, { forwardRef } from "react";
-import { List, ListItem, Button } from "@mui/material";
+import { List, ListItem, Button, Typography } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
 import classNames from "classnames";
 import styles from "components/Sidebar/Sidebar.module.scss";
-import { DashboardOutlined, DescriptionOutlined, ListOutlined } from "@mui/icons-material";
-
-const CustomRouterLink = forwardRef((props, ref) => (
-  <div ref={ref} style={{ flexGrow: 1 }}>
-    <RouterLink {...props} />
-  </div>
-));
+import {
+  DashboardOutlined,
+  DescriptionOutlined,
+  ListOutlined,
+  LoginOutlined,
+  PersonAddAlt1Outlined,
+} from "@mui/icons-material";
 
 export default class SidebarNav extends React.Component {
   // Methods
@@ -21,15 +21,13 @@ export default class SidebarNav extends React.Component {
         return <DescriptionOutlined classes={{ root: styles.icon }} />;
       case "list":
         return <ListOutlined classes={{ root: styles.icon }} />;
-      // case "login":
-      //   return <LoginOutlined classes={{root: styles.icon}} />;
       default:
         return null;
     }
   };
   // Render
   render = () => {
-    const { pages, className, setActive, isExpandable, ...props } = this.props;
+    const { pages, className, isExpandable, ...props } = this.props;
     const cn = classNames(styles.List, className);
 
     return (
@@ -39,7 +37,6 @@ export default class SidebarNav extends React.Component {
             <Button
               size="medium"
               aria-label={page.title}
-              onClick={(e) => setActive(e.currentTarget.innerText)}
               // component={CustomRouterLink}
               className={styles.button}
               to={page.href}
@@ -49,6 +46,35 @@ export default class SidebarNav extends React.Component {
             </Button>
           </ListItem>
         ))}
+        <div className={styles.accountBlock}>
+          <Typography variant="h6" textAlign="left" className={styles.accountPage}>
+            Tài khoản
+          </Typography>
+            <div>
+              <Button
+                size="medium"
+                aria-label="Signin"
+                component="a"
+                className={styles.button}
+                href="/login"
+              >
+                <LoginOutlined classes={{ root: styles.icon }} />
+                <span>{"Đăng nhập"}</span>
+              </Button>
+            </div>
+            <div>
+              <Button
+                size="medium"
+                aria-label="Signin"
+                component="a"
+                className={styles.button}
+                href="/login?signup=true"
+              >
+                <PersonAddAlt1Outlined classes={{ root: styles.icon }} />
+                <span>{"Đăng ký"}</span>
+              </Button>
+            </div>
+        </div>
       </List>
     );
   };

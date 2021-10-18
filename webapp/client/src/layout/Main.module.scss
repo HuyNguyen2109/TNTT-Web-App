@@ -6,7 +6,31 @@
 
   & .content {
     padding: 10px;
+    position: relative;
     height: calc(100vh - 20px);
+    background-color: transparent !important;
+    transition: all .25s;
+
+    & .inner {
+      position: relative;
+      height: 100%;
+      transition: all .25s;
+      background-color: #f7f7f7 !important;
+    }
+  }
+
+  & .zoomedOutContent {
+    @extend .content;
+    background-color: rgba($color: #000, $alpha: .6) !important;
+    transition: all .25s;
+
+    & .inner {
+      transform: scale(.7) translate3d(0,0,-10px);
+      box-shadow: 0 20px 27px 0 rgba(0,0,0, 0.05);
+      border-radius: 20px;
+      z-index: -1;
+      transition: all .25s;
+    }
   }
 }
 

@@ -1,25 +1,14 @@
 import React from "react";
 import classNames from "classnames";
-import { Divier, Typography, Drawer, Avatar, Divider } from "@mui/material";
-import { SidebarNav } from "./";
-import styles from "./Sidebar.module.scss";
-import { sidebarItems, HomePage } from "../../helpers/constant";
+import { Typography, Drawer, Avatar } from "@mui/material";
+import { SidebarNav } from "components/Sidebar";
+import { Button } from "components/basic";
+import styles from "components/Sidebar/Sidebar.module.scss";
+import { sidebarItems, HomePage } from "helpers/constant";
 
 export default class Sidebar extends React.Component {
-
-  state = {
-    isFocusable: false,
-  }
-
   render = () => {
-    const { isFocusable } = this.state;
-    const {
-      open,
-      variant,
-      handleChangeState,
-      className,
-      ...props
-    } = this.props;
+    const { open, variant, handleChangeState, className, isFocusable, ...props } = this.props;
     const cn = classNames(styles.Drawer, className);
 
     return (
@@ -30,19 +19,32 @@ export default class Sidebar extends React.Component {
         variant={variant}
         elevation={10}
         open={open}
-        onMouseEnter={() => this.setState({isFocusable: true})}
-        onMouseLeave={() => this.setState({isFocusable: false})}
+        onMouseEnter={() => handleChangeState('isSidebarFocusable', true)}
+        onMouseLeave={() => handleChangeState('isSidebarFocusable', false)}
       >
         <div className={styles.titleBlock}>
           <Avatar alt="TNTT-logo" src="/public/images/logo.png" className={styles.avatar} />
-          <Typography variant="h5" textAlign="center" className={styles.grandTitle} >{HomePage.documentTitle}</Typography>
+          <Typography variant="h5" textAlign="center" className={styles.grandTitle}>
+            {HomePage.documentTitle}
+          </Typography>
         </div>
 
         <div {...props} className={styles.root}>
           <SidebarNav
             className={styles.nav}
             pages={sidebarItems}
-            onSetActive={(val) => handleChangeState("active", val)}
+            // onSetActive={(val) => handleChangeState("active", val)}
+          />
+        </div>
+        <div className={styles.footerBlock}>
+          <Button
+            label={'Góp ý'}
+            variant="text"
+            size="large"
+            className={styles.feedBack}
+            onClick={() => {
+              // TODO: Handle action for Feedback
+            }}
           />
         </div>
       </Drawer>

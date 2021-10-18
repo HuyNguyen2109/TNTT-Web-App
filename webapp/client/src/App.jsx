@@ -37,7 +37,7 @@ export default class App extends React.Component {
                 <Router history={browserHistory}>
                   <Switch>
                     <PublicRoute path="/landing" component={() => <Landing />} />
-                    <PublicRoute path="/login" component={() => <Login />} />
+                    <PublicRoute path="/login" component={(props) => <Login {...props} />} />
                     <RouteWithLayout
                       component={Dashboard}
                       exact

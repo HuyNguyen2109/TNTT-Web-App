@@ -1,6 +1,8 @@
 @import '../../base.module.scss';
 
 .Drawer {
+  position: relative;
+
   & .paper {
     background-color: transparent;
     width: $drawerWidth;
@@ -9,6 +11,7 @@
     display: flex;
     align-items: center;
     margin-top: 40px;
+    border-right: none;
 
     & .root {
       margin: 0 40px;
@@ -88,6 +91,37 @@
           transition: font-weight .25s
         }
       }
+    }
+
+    & .accountBlock {
+      @extend .item;
+      margin-top: 10px;
+
+      & > div {
+        padding: 8px 0;
+      }
+
+      & .accountPage {
+        padding: 15px 30px;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  & .footerBlock {
+    position: absolute;
+    left: 0;
+    bottom: 60px;
+    width: calc(100% - 85px);
+    margin: 0 40px;
+
+    & .feedBack {
+      background-color: $primaryColor;
+      color: #fff;
+      width: 100%;
+      font-size: 16px !important;
     }
   }
 }

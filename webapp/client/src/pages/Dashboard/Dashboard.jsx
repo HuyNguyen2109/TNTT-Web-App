@@ -3,7 +3,7 @@ import React from "react";
 import styles from "pages/Dashboard/Test.module.scss";
 import { Button, Snackbar, Paper } from "components/basic";
 
-class Test extends React.Component {
+class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -46,4 +46,4 @@ class Test extends React.Component {
   };
 }
 
-export default Test;
+export default Dashboard;

@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  Typography,
-  AppBar,
-  Tabs,
-  Tab,
-  Hidden,
-  Avatar,
-  Badge,
-} from "@mui/material";
+import { Grid, Typography, AppBar, Tabs, Tab, Hidden, Avatar, Badge } from "@mui/material";
 import { LockOpenOutlined, PersonAddOutlined } from "@mui/icons-material";
 // Custom Components
 import { LoginForm, SignupForm, TabPanel } from "components/complex";
@@ -53,16 +44,18 @@ class Login extends React.Component {
   }
 
   // Life cycles
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    const isSignup = new URLSearchParams(this.props.location.search).get("signup") || false;
+    if (isSignup) {
+      this.handleChangeState("tabIndex", 1);
+      this.handleChangeState("toggleDecorImg", !this.state.toggleDecorImg);
+    }
+  };
 
   // Sub methods
   handleChangeState = (state, value) => {
     const result = {};
-    if (
-      typeof value === "object" &&
-      value.hasOwnProperty("target") &&
-      value.target !== null
-    ) {
+    if (typeof value === "object" && value.hasOwnProperty("target") && value.target !== null) {
       value.preventDefault();
       result[state] = removeWhiteSpace(value.target.value);
     } else if (
@@ -228,14 +221,7 @@ class Login extends React.Component {
             />
           </Grid>
         </Hidden>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={5}
-          className={styles.loginContainer}
-        >
+        <Grid item xs={12} sm={12} md={12} lg={5} className={styles.loginContainer}>
           <div className={styles.tabContainer}>
             {/* <img
               className={styles.loginPageLogo}
@@ -247,10 +233,12 @@ class Login extends React.Component {
             <Badge
               overlap="circular"
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right'
+                vertical: "bottom",
+                horizontal: "right",
               }}
-              badgeContent={<Avatar src="public/images/logo.png" style={{width: '50px', height: '50px'}} />}
+              badgeContent={
+                <Avatar src="public/images/logo.png" style={{ width: "50px", height: "50px" }} />
+              }
             >
               <Avatar
                 src="public/images/login-logo.png"
@@ -266,8 +254,7 @@ class Login extends React.Component {
                   this.handleChangeState("tabIndex", value);
                   if (value === 0) {
                     this.handleChangeState("toggleDecorImg", false);
-                  }
-                  else {
+                  } else {
                     this.handleChangeState("toggleDecorImg", true);
                   }
                 }}
@@ -299,12 +286,8 @@ class Login extends React.Component {
                   password={password}
                   isSaveCredential={isSaveCredential}
                   loading={loading}
-                  handleChangeState={(state, value) =>
-                    this.handleChangeState(state, value)
-                  }
-                  submit={(username, password) =>
-                    this.login(username, password)
-                  }
+                  handleChangeState={(state, value) => this.handleChangeState(state, value)}
+                  submit={(username, password) => this.login(username, password)}
                   navigateToSignup={(value) => {
                     this.handleChangeState("tabIndex", value);
                     this.handleChangeState("toggleDecorImg", !toggleDecorImg);
@@ -313,9 +296,7 @@ class Login extends React.Component {
                   forgotEmail={forgotEmail}
                   isForgotError={isForgotError}
                   forgotDialogLoading={forgotDialogLoading}
-                  submitForgotPassword={(email) =>
-                    this.submitForgotPassword(email)
-                  }
+                  submitForgotPassword={(email) => this.submitForgotPassword(email)}
                 />
               </TabPanel>
               <TabPanel value={tabIndex} index={1}>
@@ -330,9 +311,7 @@ class Login extends React.Component {
                     this.handleChangeState("tabIndex", value);
                     this.clearState();
                   }}
-                  handleChangeState={(state, value) =>
-                    this.handleChangeState(state, value)
-                  }
+                  handleChangeState={(state, value) => this.handleChangeState(state, value)}
                   handleChangeStateArray={(state, field, value, index) =>
                     this.handleChangeStateArray(state, field, value, index)
                   }
