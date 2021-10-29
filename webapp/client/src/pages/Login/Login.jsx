@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, Typography, AppBar, Tabs, Tab, Hidden, Avatar, Badge } from "@mui/material";
-import { LockOpenOutlined, PersonAddOutlined } from "@mui/icons-material";
+import { Grid, Typography, AppBar, Tabs, Tab, Hidden, Avatar, Badge, Button } from "@mui/material";
+import { ChevronLeftOutlined, LockOpenOutlined, PersonAddOutlined } from "@mui/icons-material";
 // Custom Components
 import { LoginForm, SignupForm, TabPanel } from "components/complex";
 import { Snackbar } from "components/basic";
@@ -8,7 +8,7 @@ import { Snackbar } from "components/basic";
 import styles from "pages/Login/Login.module.scss";
 // Helpers
 import { validateEmail, removeWhiteSpace } from "helpers/functions";
-import { signupFields, TermAnConditions, Common } from "helpers/constant";
+import { signupFields, TermAnConditions, Common, HomePage } from "helpers/constant";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -223,13 +223,10 @@ class Login extends React.Component {
         </Hidden>
         <Grid item xs={12} sm={12} md={12} lg={5} className={styles.loginContainer}>
           <div className={styles.tabContainer}>
-            {/* <img
-              className={styles.loginPageLogo}
-              src="/icons/profile.svg"
-              alt="login-page-logo"
-              width="100"
-              height="100"
-            /> */}
+            <Button component="a" href="/" className={styles.backButton}>
+              <ChevronLeftOutlined classes={{root: styles.icon}} />
+              <span>Trở về trang chủ</span>
+            </Button>
             <Badge
               overlap="circular"
               anchorOrigin={{
@@ -246,6 +243,9 @@ class Login extends React.Component {
                 classes={{ root: styles.loginImage }}
               />
             </Badge>
+            <Typography variant="h3" textAlign="center" className={styles.pageTitle}>
+              {'Xứ đoàn'} <br/> {Common.orgName}
+            </Typography>
             <AppBar position="static" color="transparent">
               <Tabs
                 value={tabIndex}

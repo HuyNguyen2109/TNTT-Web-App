@@ -11,7 +11,7 @@ export default class Input extends React.Component {
     const cn = classNames(styles.inputField, className);
 
     return (
-      <TextField 
+      <TextField
         classes={{root: cn}}
         fullWidth
         size='medium'

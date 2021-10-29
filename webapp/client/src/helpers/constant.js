@@ -349,5 +349,6 @@ export const HomePage = {
 
 export const Common = {
   'giaolySketchingAltImg': 'https://giaolysketching.info/',
+  'orgName': 'Anê Lê Thị Thành'
 }
 

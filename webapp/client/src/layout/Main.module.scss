@@ -10,12 +10,20 @@
     height: calc(100vh - 20px);
     background-color: transparent !important;
     transition: all .25s;
+    display: block;
 
     & .inner {
       position: relative;
       height: 100%;
       transition: all .25s;
       background-color: #f7f7f7 !important;
+      display: block;
+
+      & .childrenContent {
+        padding-top: 65px;
+        height: calc(100% - 65px);
+        overflow-y: auto;
+      }
     }
   }
 
@@ -30,6 +38,7 @@
       border-radius: 20px;
       z-index: -1;
       transition: all .25s;
+      width: 100%
     }
   }
 }

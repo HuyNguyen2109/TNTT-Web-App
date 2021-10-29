@@ -45,7 +45,6 @@ export default class LoginForm extends React.Component {
       password,
       isSaveCredential,
       loading,
-      anonymousLoading,
       handleChangeState,
       submit,
       navigateToSignup,
@@ -61,6 +60,7 @@ export default class LoginForm extends React.Component {
         <div>
           {signinFields.map((data, idx) => (
             <Input
+              autoComplete="new-password"
               key={idx}
               label={data.label}
               isError={isError}
@@ -70,7 +70,7 @@ export default class LoginForm extends React.Component {
                   : data.type
               }
               value={data.type === "password" ? password : username}
-              disabled={loading || anonymousLoading}
+              disabled={loading}
               icon={this.customRenderIcon(data.key)}
               onChange={(val) => handleChangeState(data.key, val)}
               onFocus={() => handleChangeState("isError", false)}
@@ -110,7 +110,7 @@ export default class LoginForm extends React.Component {
           )}
           <FormControlLabel
             className={styles.saveCredential}
-            disabled={loading || anonymousLoading}
+            disabled={loading}
             control={
               <Checkbox
                 value={isSaveCredential}
@@ -132,36 +132,9 @@ export default class LoginForm extends React.Component {
                 variant="contained"
                 size="large"
                 loading={loading}
-                disabled={loading || anonymousLoading}
+                disabled={loading}
                 onClick={() => submit(username, password)}
               />
-            </div>
-            <div className={styles.or}>
-              <Typography variant="caption">Hoặc</Typography>
-            </div>
-            <div className={styles.or}>
-              <Button
-                className={styles.signinButtonWithoutCredential}
-                label="Đăng nhập với tư cách khách"
-                variant="contained"
-                size="large"
-                loading={loading}
-                disabled={loading || anonymousLoading}
-                onClick={() => {
-                  window.location.href = "/dashboard";
-                }}
-              />
-              <Hidden lgDown>
-                <Tooltip
-                  title={loginPage.loginWithoutCreds}
-                  placement="top"
-                  classes={{
-                    tooltipPlacementTop: styles.tooltip,
-                  }}
-                >
-                  <HelpOutlineOutlined classes={{ root: styles.info }} />
-                </Tooltip>
-              </Hidden>
             </div>
           </Toolbar>
           <Typography variant="caption" className={styles.signupLink}>

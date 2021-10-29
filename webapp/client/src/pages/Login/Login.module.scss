@@ -62,6 +62,8 @@
       margin: 40px;
       width: 100%;
       max-width: 100%;
+      position: relative;
+
       @media (min-width: 1281px) {
         max-width: 500px;
       }
@@ -85,10 +87,35 @@
         }
       }
 
+      & .backButton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+
+        & .icon {
+          color: #000;
+        }
+
+        span {
+          text-transform: none;
+          color: #000;
+          font-size: 20px;
+          font-size: 500;
+          text-decoration: underline;
+        }
+      }
+
       & .loginImage {
         width: 150px;
         height: 150px;
-        margin: auto;
+        margin: 60px auto 0 auto;
+      }
+
+      & .pageTitle {
+        font-weight: 500;
+        margin: 20px 0;
       }
 
       & .indicator {
