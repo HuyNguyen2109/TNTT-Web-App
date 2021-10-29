@@ -1,4 +1,5 @@
 @import '../../base.module.scss';
+@import '../../index.module.scss';
 
 .Drawer {
   position: relative;
@@ -36,6 +37,8 @@
   }
 
   & .nav {
+    @extend .customXScrollBar;
+    
     & .item {
       & .button {
         display: flex;
@@ -73,7 +76,7 @@
 
       & .active, & .button:hover {
         @extend .button;
-
+        transform: scale(1.1);
         background-color: #fff;
         border-radius: 15px;
         transition: all .25s;
@@ -125,6 +128,14 @@
     }
   }
 
+  @media (max-width: 1366px) {
+    & .nav {
+      height: calc(100vh - 360px);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+
   @media (max-width: 1024px) {
     & .paper {
       background-color: #fff;
@@ -138,9 +149,7 @@
     }
 
     & .nav {
-      height: 420px;
-      overflow-y: auto;
-      overflow-x: hidden;
+      height: calc(100vh - 330px);
     }
   }
 }

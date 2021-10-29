@@ -9,8 +9,24 @@ import { Box } from "@mui/system";
 import { CloseOutlined } from "@mui/icons-material";
 
 export default class Sidebar extends React.Component {
+
+  componentDidMount = () => {
+    let activatePage = sidebarItems.filter(item => item.href === this.props.currentLocation)[0].title
+    this.props.setHeaderTitle(activatePage)
+  }
+
   render = () => {
-    const { open, variant, handleChangeState, className, isFocusable, ...props } = this.props;
+    const {
+      open,
+      variant,
+      handleChangeState,
+      className,
+      isFocusable,
+      currentLocation,
+      history,
+      setHeaderTitle,
+      ...props
+    } = this.props;
     const cn = classNames(styles.Drawer, className);
 
     return (
@@ -47,7 +63,9 @@ export default class Sidebar extends React.Component {
           <SidebarNav
             className={styles.nav}
             pages={sidebarItems}
-            // onSetActive={(val) => handleChangeState("active", val)}
+            currentLocation={currentLocation}
+            history={history}
+            setHeaderTitle={(val) => setHeaderTitle(val)}
           />
         </div>
         <div className={styles.footerBlock}>
@@ -58,6 +76,7 @@ export default class Sidebar extends React.Component {
             className={styles.feedBack}
             onClick={() => {
               // TODO: Handle action for Feedback
+              history.push('/not-found')
             }}
           />
         </div>

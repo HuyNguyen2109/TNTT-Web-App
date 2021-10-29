@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import styles from "pages/Dashboard/Dashboard.module.scss";
+import styles from "pages/List/List.module.scss";
 import { Button, Snackbar, Paper } from "components/basic";
 import { withRouter } from 'react-router-dom'
 import { Typography } from "@mui/material";
 
-class Dashboard extends React.Component {
+class List extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,8 +15,8 @@ class Dashboard extends React.Component {
     };
   }
 
-  componentDidMount = () => console.log('Dashboard component mounted');
-  componentWillUnmount = () => console.log('Dashboard component unmounted');
+  componentDidMount = () => console.log('List component mounted');
+  componentWillUnmount = () => console.log('List component unmounted');
 
   render = () => {
     const { open, loading } = this.state;
@@ -34,10 +34,10 @@ class Dashboard extends React.Component {
             this.setState({ open: !open, loading: !loading });
           }}
         /> */}
-        <Typography variant="h6">Dashboard Page</Typography>
+        <Typography variant="h6">Lists Page</Typography>
       </div>
     );
   };
 }
 
-export default withRouter(Dashboard);
+export default withRouter(List);

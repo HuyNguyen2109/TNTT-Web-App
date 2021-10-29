@@ -11,7 +11,7 @@ export default class Header extends React.Component {
   }
 
   render = () => {
-    const { isDesktop, openSidebarHandler, ...props } = this.props;
+    const { isDesktop, openSidebarHandler, title, ...props } = this.props;
 
     return (
       <React.Fragment>
@@ -22,7 +22,7 @@ export default class Header extends React.Component {
                   <Menu />
                 </IconButton>
               </Box>
-              <Typography variant="h4">Test</Typography>
+              <Typography variant="h5">{title}</Typography>
               <Box
                 sx={{ position: "absolute", right: "24px", display: "flex", alignItems: "center" }}
               >
@@ -30,7 +30,7 @@ export default class Header extends React.Component {
 
                 {/* TODO: This block will be availabled when implement login function */}
                 <Box sx={{ display: { xs: "none", md: "initial" }, paddingLeft: '10px' }}>
-                  <Typography variant="h6">{"Huy"}</Typography>
+                  <Typography variant="subtitle1">{"Huy"}</Typography>
                 </Box>
               </Box>
             </Toolbar>

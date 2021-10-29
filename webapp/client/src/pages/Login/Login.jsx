@@ -45,6 +45,7 @@ class Login extends React.Component {
 
   // Life cycles
   componentDidMount = () => {
+    console.log(this.props)
     const isSignup = new URLSearchParams(this.props.location.search).get("signup") || false;
     if (isSignup) {
       this.handleChangeState("tabIndex", 1);

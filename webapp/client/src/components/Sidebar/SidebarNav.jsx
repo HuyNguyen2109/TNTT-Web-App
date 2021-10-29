@@ -27,7 +27,7 @@ export default class SidebarNav extends React.Component {
   };
   // Render
   render = () => {
-    const { pages, className, isExpandable, ...props } = this.props;
+    const { pages, className, isExpandable, currentLocation, history, setHeaderTitle, ...props } = this.props;
     const cn = classNames(styles.List, className);
 
     return (
@@ -37,9 +37,12 @@ export default class SidebarNav extends React.Component {
             <Button
               size="medium"
               aria-label={page.title}
-              // component={CustomRouterLink}
-              className={styles.button}
-              to={page.href}
+              className={currentLocation === page.href ? classNames(styles.button, styles.active) : styles.button}
+              // href={page.href}
+              onClick={() => {
+                history.push(page.href)
+                setHeaderTitle(page.title)
+              }}
             >
               {this.customRenderIcon(page.icon)}
               <span>{page.title}</span>

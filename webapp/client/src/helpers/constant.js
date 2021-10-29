@@ -136,18 +136,18 @@ export const signinFields = [
 
 export const sidebarItems = [
   {
-    title: 'Chung',
-    href: '#',
+    title: 'Bảng điều khiển',
+    href: '/dashboard',
     icon: 'dashboard'
   },
   {
     title: 'Danh sách',
-    href: '#',
+    href: '/list',
     icon: 'list'
   },
   {
     title: 'Tài liệu',
-    href: '#',
+    href: '/document',
     icon: 'document'
   }
 ];
@@ -156,7 +156,7 @@ export const forgotMessage = 'Bạn quên/không đăng nhập được tài kho
 
 export const TermAnConditions = [
   "Xứ Đoàn là một tổ chức Công Giáo phi lợi nhuận, vì thế:",
-  "1. Xin không dùng trang web này vì mục đích lợi nhuận",
+  "1. Mục đích trang này được lập ra dùng để quản lí nhân sự, các hoạt động và cũng như tài chính nội bộ của Xứ Đoàn. Xin không dùng trang web này vì mục đích lợi nhuận",
   "2. Các anh/chị là thành viên Xứ Đoàn khi được cấp tài khoản vui lòng không chia sẻ thông tin",
   "3. Khi tài khoản không truy cập được, vui lòng báo cho Ban Quản trị để được giải quyết",
   "4. Vì lí do nào đó, khi các anh/chị không còn phục vụ trong Xứ Đoàn, xin báo Ban Quản trị để xóa tài khoản",

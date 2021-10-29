@@ -96,14 +96,24 @@
 
         & .icon {
           color: #000;
+          transform: translateX(0px);
+          transition: all .25s;
         }
 
         span {
           text-transform: none;
           color: #000;
           font-size: 20px;
-          font-size: 500;
-          text-decoration: underline;
+          font-weight: 500;
+        }
+
+        &:hover {
+          background-color: transparent;
+          
+          & .icon {
+            transform: translateX(-5px);
+            transition: all .25s;
+          }
         }
       }
 

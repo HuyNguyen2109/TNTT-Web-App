@@ -1,4 +1,5 @@
 @import '../base.module.scss';
+@import '../index.module.scss';
 
 .main {
   height: 100vh;
@@ -6,7 +7,6 @@
 
   & .content {
     padding: 10px;
-    position: relative;
     height: calc(100vh - 20px);
     background-color: transparent !important;
     transition: all .25s;
@@ -18,11 +18,14 @@
       transition: all .25s;
       background-color: #f7f7f7 !important;
       display: block;
+      height: calc(100% - 65px);
 
       & .childrenContent {
-        padding-top: 65px;
-        height: calc(100% - 65px);
+        margin-top: 65px;
+        height: 100%;
         overflow-y: auto;
+
+        @extend .customXScrollBar
       }
     }
   }
