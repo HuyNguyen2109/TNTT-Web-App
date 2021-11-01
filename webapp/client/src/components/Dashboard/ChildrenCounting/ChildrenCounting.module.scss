@@ -1,0 +1,29 @@
+@import '../../../base.module.scss';
+
+.itemContainer {
+  position: relative;
+  width: 100%;
+
+  h6 {
+    line-height: 2em;
+    letter-spacing: 1px;
+  }
+
+  .value {
+    font-weight: bold;
+  }
+
+  .iconContainer {
+    position: absolute;
+    padding: 10px;
+    background-color: $primaryColor;
+    border-radius: 5px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    .icon {
+      color: #fff;
+    }
+  }
+}

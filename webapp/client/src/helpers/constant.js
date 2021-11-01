@@ -136,7 +136,7 @@ export const signinFields = [
 
 export const sidebarItems = [
   {
-    title: 'Bảng điều khiển',
+    title: 'Thông tin chung',
     href: '/dashboard',
     icon: 'dashboard'
   },

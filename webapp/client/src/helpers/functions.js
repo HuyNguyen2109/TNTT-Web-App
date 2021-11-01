@@ -36,6 +36,16 @@ export const smoothScrolling = () => {
   }
 }
 
+export const convertMillionToString = (number) => {
+  switch(true) {
+    case number >= 1000 && number < 1000000:
+      return `${number/1000} ngàn`;
+    case number >= 1000000 && number < 1000000000:
+      return `${number/1000000} triệu`;
+    default: return number;
+  }
+}
+
 export const isLogged = () => {
   return false;
 }
