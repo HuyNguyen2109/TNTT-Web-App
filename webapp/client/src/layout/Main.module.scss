@@ -18,12 +18,13 @@
       transition: all .25s;
       background-color: #f7f7f7 !important;
       display: block;
-      height: calc(100% - 65px);
+      height: calc(100% - 85px);
 
       & .childrenContent {
         margin-top: 65px;
         height: 100%;
         overflow-y: auto;
+        padding: 15px;
 
         @extend .customXScrollBar
       }

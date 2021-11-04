@@ -22,7 +22,9 @@ export default class Header extends React.Component {
                   <Menu />
                 </IconButton>
               </Box>
-              <Typography variant="h5">{title}</Typography>
+              <Box sx={{ display: { xs: "none", sm: "initial" } }}>
+                <Typography variant="h5">{title}</Typography>
+              </Box>
               <Box
                 sx={{ position: "absolute", right: "24px", display: "flex", alignItems: "center" }}
               >

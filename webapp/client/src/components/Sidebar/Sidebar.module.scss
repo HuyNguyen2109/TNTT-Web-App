@@ -93,6 +93,10 @@
           font-weight: 900;
           transition: font-weight .25s
         }
+
+        @media (max-width: 1366px) {
+          transform: scale(1);
+        }
       }
     }
 
