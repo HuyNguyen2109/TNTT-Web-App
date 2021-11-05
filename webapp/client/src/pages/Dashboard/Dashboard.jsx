@@ -9,6 +9,7 @@ import {
   ChildrenCounting,
   SaintInfo,
   VNSaintsInfo,
+  Members,
 } from "components/Dashboard";
 import { withRouter } from "react-router-dom";
 import { Grid, Typography } from "@mui/material";
@@ -29,11 +30,13 @@ class Dashboard extends React.Component {
     console.log("Dashboard component mounted");
     this.setState({ loading: true });
     setTimeout(() => {
-      return Promise.all([
-        dashboardAPIs.getFunds(),
-        dashboardAPIs.getMembersInfo(),
-      ])
-      .then(([res1, res2]) => this.setState({ data: res1, loading: false }, () => console.log(res2)));
+      return Promise.all([dashboardAPIs.getFunds(), dashboardAPIs.getMembersInfo()]).then(
+        ([fundInfo, membersInfo]) =>
+          this.setState(
+            { data: { ...this.state.data, fundInfo, membersInfo }, loading: false },
+            () => console.log(this.state.data)
+          )
+      );
     }, 3000);
   };
   componentWillUnmount = () => console.log("Dashboard component unmounted");
@@ -44,22 +47,22 @@ class Dashboard extends React.Component {
     return (
       <div id="content" className={styles.root}>
         {loading && <LoadingPage className={styles.dashboardLoading} />}
-        
+
         {!loading && data && (
           <React.Fragment>
             {/* General information about funds, HRs */}
             <Grid container spacing={3} className={styles.gridContainer}>
               <Grid item xs={12} sm={6} xl={3}>
-                <GeneralFund generalFund={data.generalFund} />
+                <GeneralFund generalFund={data.fundInfo.generalFund} />
               </Grid>
               <Grid item xs={12} sm={6} xl={3}>
-                <OrganizationFund organizationFund={data.organizationFund} />
+                <OrganizationFund organizationFund={data.fundInfo.organizationFund} />
               </Grid>
               <Grid item xs={12} sm={6} xl={3}>
-                <MembersCounting membersCounting={data.membersCounting} />
+                <MembersCounting membersCounting={data.fundInfo.membersCounting} />
               </Grid>
               <Grid item xs={12} sm={6} xl={3}>
-                <ChildrenCounting childrenCounting={data.childrenCounting} />
+                <ChildrenCounting childrenCounting={data.fundInfo.childrenCounting} />
               </Grid>
             </Grid>
 
@@ -70,6 +73,13 @@ class Dashboard extends React.Component {
               </Grid>
               <Grid item xs={12} md={6} xl={7}>
                 <VNSaintsInfo />
+              </Grid>
+            </Grid>
+
+            {/* Members and so on */}
+            <Grid container spacing={3} className={styles.gridContainer}>
+              <Grid item xs={12} md={12} lg={8}>
+                <Members members={data.membersInfo} />
               </Grid>
             </Grid>
           </React.Fragment>

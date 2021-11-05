@@ -34,6 +34,7 @@ export default class Input extends React.Component {
             focused: styles.title,
           },
         }}
+        variant="standard"
         {...props}
       />
     )

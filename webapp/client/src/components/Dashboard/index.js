@@ -5,3 +5,4 @@ export { default as MembersCounting } from 'components/Dashboard/MembersCounting
 export { default as ChildrenCounting } from 'components/Dashboard/ChildrenCounting/ChildrenCounting';
 export { default as SaintInfo } from 'components/Dashboard/SaintInfo/SaintInfo';
 export { default as VNSaintsInfo } from 'components/Dashboard/VNSaintsInfo/VNSaintInfo';
+export { default as Members } from 'components/Dashboard/Members/Members';

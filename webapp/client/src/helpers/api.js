@@ -46,12 +46,19 @@ export const dashboard = {
     // TODO: Call API to get all members data for dashboard, below is sample data to create UI
     let responses = [];
     for (let i = 0; i < 100; i++) {
+      let holyName = faker.name.title();
       let firstName = faker.name.firstName();
       let lastName = faker.name.lastName();
       responses.push({
         id: uuidv4(),
+        avatar: faker.image.avatar(),
+        holyName: holyName,
         firstName: firstName,
         lastName: lastName,
+        birthday: {
+          dateOfBirth: faker.date.between('01-01-1990', '31-12-1999'),
+          holyDateOfBirth: faker.date.between('01-01-1990', '31-12-1999')
+        },
         phone: faker.phone.phoneNumber("(###) ###-####"),
         email: faker.internet.email(firstName, lastName),
         address: {

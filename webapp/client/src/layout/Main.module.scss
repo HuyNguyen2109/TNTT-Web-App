@@ -25,6 +25,7 @@
         height: 100%;
         overflow-y: auto;
         padding: 15px;
+        transition: all .25s;
 
         @extend .customXScrollBar
       }
@@ -42,7 +43,13 @@
       border-radius: 20px;
       z-index: -1;
       transition: all .25s;
-      width: 100%
+      width: 100%;
+      
+      & .childrenContent {
+        overflow: hidden;
+        height: calc(100% - 35px);
+        transition: all .25s
+      }
     }
   }
 }

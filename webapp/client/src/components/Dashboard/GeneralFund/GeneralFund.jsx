@@ -11,7 +11,6 @@ export default class GeneralFund extends React.Component {
 
   render = () => {
     const { generalFund } = this.props;
-    console.log(generalFund)
 
     return (
       <Paper
