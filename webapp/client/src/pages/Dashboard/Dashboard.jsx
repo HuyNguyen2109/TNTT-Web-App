@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
 
         {!loading && data && (
           <React.Fragment>
-            {/* General information about funds, HRs */}
+            {/* General information */}
             <Grid container spacing={3} className={styles.gridContainer}>
               <Grid item xs={12} sm={6} xl={3}>
                 <GeneralFund generalFund={data.fundInfo.generalFund} />
@@ -67,18 +67,18 @@ class Dashboard extends React.Component {
             </Grid>
 
             {/* General information about Saints */}
-            <Grid container spacing={3} className={styles.gridContainer}>
+            {/* <Grid container spacing={3} className={styles.gridContainer}>
               <Grid item xs={12} md={6} xl={5}>
                 <SaintInfo />
               </Grid>
               <Grid item xs={12} md={6} xl={7}>
                 <VNSaintsInfo />
               </Grid>
-            </Grid>
+            </Grid> */}
 
             {/* Members and so on */}
             <Grid container spacing={3} className={styles.gridContainer}>
-              <Grid item xs={12} md={12} lg={8}>
+              <Grid item xs={12}>
                 <Members members={data.membersInfo} />
               </Grid>
             </Grid>

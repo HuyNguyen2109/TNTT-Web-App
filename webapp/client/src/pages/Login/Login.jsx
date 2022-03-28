@@ -117,7 +117,7 @@ class Login extends React.Component {
       console.log(`${username}/${password}`);
       console.log(this.state.isSaveCredential);
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        window.location.href = "/children";
       }, 1000);
     }
   };

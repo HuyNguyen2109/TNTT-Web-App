@@ -136,19 +136,19 @@ export const signinFields = [
 
 export const sidebarItems = [
   {
-    title: 'Thông tin chung',
-    href: '/dashboard',
+    title: 'Thiếu Nhi',
+    href: '/children',
     icon: 'dashboard'
   },
   {
-    title: 'Danh sách',
-    href: '/list',
+    title: 'GLV',
+    href: '/members',
     icon: 'list'
   },
   {
-    title: 'Tài liệu',
-    href: '/document',
-    icon: 'document'
+    title: 'Qũy',
+    href: '/funds',
+    icon: 'fund'
   }
 ];
 

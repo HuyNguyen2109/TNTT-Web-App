@@ -13,7 +13,7 @@ module.exports = function(_env, argv) {
   const isDevelopment = !isProduction;
   
   return {
-    // mode: 'development',
+    mode: argv.mode,
     target: 'web',
     entry: path.resolve(__dirname, 'src/index.js'),
     output: {
@@ -170,10 +170,8 @@ module.exports = function(_env, argv) {
       host: 'localhost',
       port: port,
       historyApiFallback: true,
-      overlay: isDevelopment && true,
       compress: true,
-      hot: argv.hot,
-      open: argv.open
+      open: false,
     }
   }
 }; 

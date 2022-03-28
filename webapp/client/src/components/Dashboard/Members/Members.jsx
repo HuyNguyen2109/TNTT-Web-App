@@ -37,11 +37,11 @@ export default class Members extends React.Component {
             <Toolbar disableGutters sx={{ display: { xs: "block", sm: "flex" } }}>
               <div>
                 <Typography variant="h6" textAlign="left" className={styles.title}>
-                  Danh sách GLV
+                  Danh sách Thiếu Nhi
                 </Typography>
                 <Typography variant="subtitle1" textAlign="left" className={styles.subTitle}>
                   {" "}
-                  Tổng hợp các thông tin chung về các anh/chị GLV đang sinh hoạt trong Xứ Đoàn
+                  Tổng hợp các thông tin chung về Thiếu Nhi
                 </Typography>
               </div>
               <Box
@@ -58,7 +58,7 @@ export default class Members extends React.Component {
               />
             </Toolbar>
             <TableContainer classes={{root: styles.table}}>
-              <Table stickyHeader sx={{ minWidth: 600 }} >
+              <Table stickyHeader sx={{ minWidth: 1100 }} >
                 <TableHead>
                   <TableRow>
                     <TableCell></TableCell>
@@ -67,6 +67,7 @@ export default class Members extends React.Component {
                     <TableCell>Số ĐT</TableCell>
                     <TableCell>Email</TableCell>
                     <TableCell>Địa chỉ</TableCell>
+                    <TableCell>Giáo khu</TableCell>
                     <TableCell>Lớp</TableCell>
                   </TableRow>
                 </TableHead>
@@ -88,7 +89,8 @@ export default class Members extends React.Component {
                       <TableCell>{mem.phone}</TableCell>
                       <TableCell>{mem.email}</TableCell>
                       <TableCell>{mem.address.street + ' ' + mem.address.city}</TableCell>
-                      <TableCell>{'Test'}</TableCell>
+                      <TableCell>{mem.area}</TableCell>
+                      <TableCell>{mem.class.title}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

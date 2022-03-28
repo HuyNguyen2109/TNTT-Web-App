@@ -5,6 +5,85 @@ import { v4 as uuidv4 } from 'uuid'
 
 import rawText from "helpers/info.txt";
 
+const classes = [
+  {
+    'id': uuidv4(),
+    'title': 'Chiên con',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Khai Tâm 1A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Khai Tâm 1B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Khai Tâm 2A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Khai Tâm 2B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Rước Lễ 1A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Rước Lễ 1B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Thêm Sức 1A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Thêm Sức 1B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Thêm Sức 2A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Thêm Sức 2B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Bao Đồng 1',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Bao Đồng 2A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Bao Đồng 2B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Bao Đồng 3A',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Bao Đồng 3B',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Bao Đồng 4',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Vào Đời 1',
+  },
+  {
+    'id': uuidv4(),
+    'title': 'Vào Đời 2',
+  },
+]
+
 export const html = {
   getContent: () => {
     return fetch(rawText)
@@ -45,13 +124,13 @@ export const dashboard = {
   getMembersInfo: () => {
     // TODO: Call API to get all members data for dashboard, below is sample data to create UI
     let responses = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 650; i++) {
       let holyName = faker.name.title();
       let firstName = faker.name.firstName();
       let lastName = faker.name.lastName();
       responses.push({
         id: uuidv4(),
-        avatar: faker.image.avatar(),
+        avatar: faker.internet.avatar(),
         holyName: holyName,
         firstName: firstName,
         lastName: lastName,
@@ -65,6 +144,8 @@ export const dashboard = {
           street: faker.address.streetAddress(),
           city: faker.address.city(),
         },
+        area: Math.floor(Math.random()*4) + 1,
+        class: classes[Math.floor(Math.random()*classes.length)]
       });
     }
 
@@ -72,4 +153,11 @@ export const dashboard = {
       return responses;
     });
   },
+
+  // TODO: Call API to get classes;
+  getClasses: () => {
+    return Promise.resolve().then(() => {
+      return classes;
+    })
+  }
 };

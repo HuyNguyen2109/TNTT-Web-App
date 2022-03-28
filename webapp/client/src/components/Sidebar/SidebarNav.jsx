@@ -4,9 +4,9 @@ import { NavLink as RouterLink } from "react-router-dom";
 import classNames from "classnames";
 import styles from "components/Sidebar/Sidebar.module.scss";
 import {
-  DashboardOutlined,
-  DescriptionOutlined,
-  ListOutlined,
+  ChildCare,
+  People,
+  AttachMoney,
   LoginOutlined,
   PersonAddAlt1Outlined,
 } from "@mui/icons-material";
@@ -16,11 +16,11 @@ export default class SidebarNav extends React.Component {
   customRenderIcon = (iconType) => {
     switch (iconType) {
       case "dashboard":
-        return <DashboardOutlined classes={{ root: styles.icon }} />;
-      case "document":
-        return <DescriptionOutlined classes={{ root: styles.icon }} />;
+        return <ChildCare classes={{ root: styles.icon }} />;
       case "list":
-        return <ListOutlined classes={{ root: styles.icon }} />;
+        return <People classes={{ root: styles.icon }} />;
+      case "fund":
+        return <AttachMoney classes={{ root: styles.icon }} />;
       default:
         return null;
     }

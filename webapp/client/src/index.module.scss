@@ -32,3 +32,18 @@ code {
     background: transparent;
   }
 }
+
+.customYScrollBar {
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent linear-gradient($primaryColor, $secondaryColor) 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

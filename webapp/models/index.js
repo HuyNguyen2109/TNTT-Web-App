@@ -46,16 +46,16 @@ const clientConnect = () => {
       return Class.create([{
         'ID': "",
         'Value': 'Chung',
-        'path': '/dashboard/all',
+        'path': '/children/all',
       }, {
         'ID': 'CC',
         'Value': 'Chiên Con',
-        'path': '/dashboard/CC',
+        'path': '/children/CC',
         'group': 'Ấu'
       }, {
         'ID': 'BD1A',
         'Value': 'Bao Đồng 1A',
-        'path': '/dashboard/BD1A',
+        'path': '/children/BD1A',
         'group': 'Thiếu'
       }])
     })

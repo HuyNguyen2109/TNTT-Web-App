@@ -36,28 +36,35 @@ export default class App extends React.Component {
               <ThemeProvider theme={theme}>
                 <Router history={browserHistory}>
                   <Switch>
+                    
                     <RouteWithLayout
                       component={Dashboard}
                       exact
                       layout={MainLayout}
-                      path="/dashboard"
+                      path="/children"
                     />
                     <RouteWithLayout
                       component={List}
                       exact
                       layout={MainLayout}
-                      path="/list"
+                      path="/members"
                     />
                     <PublicRoute path="/landing" component={() => <Landing />} />
                     <PublicRoute path="/login" component={(props) => <Login {...props} />} />
-                    <PublicRoute path="/not-found" component={(props) => <NotFound {...props} />} />
-                    <Redirect from="/" to="/dashboard" />
+                    <Redirect exact from="/" to="/children" />
+                    <PublicRoute path="*" component={(props) => <NotFound {...props} />} />
                   </Switch>
                 </Router>
               </ThemeProvider>
             </StyledEngineProvider>
           </SkrollrProvider>
         </ParallaxProvider>
+        <div className="footer">
+          <div />
+          <div>
+            <h5>{`Xứ Đoàn Anne Lê Thị Thành @ ${new Date().getFullYear()}`}</h5>
+          </div>
+        </div>
       </div>
     );
   };
