@@ -9,7 +9,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import { RouteWithLayout, MainLayout } from "layout";
-import { Dashboard, Login, Landing, List, NotFound } from "pages";
+import { Dashboard, Login, Landing, List, NotFound, Children } from "pages";
 import { PublicRoute } from "components/Auth";
 
 import { smoothScrolling } from "helpers/functions";
@@ -36,9 +36,14 @@ export default class App extends React.Component {
               <ThemeProvider theme={theme}>
                 <Router history={browserHistory}>
                   <Switch>
-                    
                     <RouteWithLayout
                       component={Dashboard}
+                      exact
+                      layout={MainLayout}
+                      path="/dashboard"
+                    />
+                    <RouteWithLayout
+                      component={Children}
                       exact
                       layout={MainLayout}
                       path="/children"
@@ -51,7 +56,7 @@ export default class App extends React.Component {
                     />
                     <PublicRoute path="/landing" component={() => <Landing />} />
                     <PublicRoute path="/login" component={(props) => <Login {...props} />} />
-                    <Redirect exact from="/" to="/children" />
+                    <Redirect exact from="/" to="/dashboard" />
                     <PublicRoute path="*" component={(props) => <NotFound {...props} />} />
                   </Switch>
                 </Router>

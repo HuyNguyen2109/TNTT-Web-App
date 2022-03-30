@@ -136,9 +136,14 @@ export const signinFields = [
 
 export const sidebarItems = [
   {
+    title: 'Thông tin chung',
+    href: '/dashboard',
+    icon: 'dashboard'
+  },
+  {
     title: 'Thiếu Nhi',
     href: '/children',
-    icon: 'dashboard'
+    icon: 'children'
   },
   {
     title: 'GLV',

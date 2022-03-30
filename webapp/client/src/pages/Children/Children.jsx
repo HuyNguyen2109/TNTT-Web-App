@@ -3,16 +3,13 @@ import React from "react";
 import styles from "pages/Dashboard/Dashboard.module.scss";
 import { Button, Snackbar, Paper, LoadingPage } from "components/basic";
 import {
-  GeneralFund,
-  OrganizationFund,
-  MembersCounting,
-  ChildrenCounting,
+  Members,
 } from "components/Dashboard";
 import { withRouter } from "react-router-dom";
 import { Grid, Typography } from "@mui/material";
 import { dashboard as dashboardAPIs } from "helpers/api";
 
-class Dashboard extends React.Component {
+class Children extends React.Component {
   constructor(props) {
     super(props);
 
@@ -47,22 +44,6 @@ class Dashboard extends React.Component {
 
         {!loading && data && (
           <React.Fragment>
-            {/* General information */}
-            <Grid container spacing={3} className={styles.gridContainer}>
-              <Grid item xs={12} sm={6} xl={3}>
-                <GeneralFund generalFund={data.fundInfo.generalFund} />
-              </Grid>
-              <Grid item xs={12} sm={6} xl={3}>
-                <OrganizationFund organizationFund={data.fundInfo.organizationFund} />
-              </Grid>
-              <Grid item xs={12} sm={6} xl={3}>
-                <MembersCounting membersCounting={data.fundInfo.membersCounting} />
-              </Grid>
-              <Grid item xs={12} sm={6} xl={3}>
-                <ChildrenCounting childrenCounting={data.fundInfo.childrenCounting} />
-              </Grid>
-            </Grid>
-
             {/* General information about Saints */}
             {/* <Grid container spacing={3} className={styles.gridContainer}>
               <Grid item xs={12} md={6} xl={5}>
@@ -72,6 +53,13 @@ class Dashboard extends React.Component {
                 <VNSaintsInfo />
               </Grid>
             </Grid> */}
+
+            {/* Members and so on */}
+            <Grid container spacing={3} className={styles.gridContainer}>
+              <Grid item xs={12}>
+                <Members members={data.membersInfo} />
+              </Grid>
+            </Grid>
           </React.Fragment>
         )}
       </div>
@@ -79,4 +67,4 @@ class Dashboard extends React.Component {
   };
 }
 
-export default withRouter(Dashboard);
+export default withRouter(Children);

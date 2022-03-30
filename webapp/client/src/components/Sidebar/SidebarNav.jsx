@@ -9,6 +9,7 @@ import {
   AttachMoney,
   LoginOutlined,
   PersonAddAlt1Outlined,
+  Dashboard,
 } from "@mui/icons-material";
 
 export default class SidebarNav extends React.Component {
@@ -16,6 +17,8 @@ export default class SidebarNav extends React.Component {
   customRenderIcon = (iconType) => {
     switch (iconType) {
       case "dashboard":
+        return <Dashboard classes={{ root: styles.icon }} />;
+      case "children":
         return <ChildCare classes={{ root: styles.icon }} />;
       case "list":
         return <People classes={{ root: styles.icon }} />;

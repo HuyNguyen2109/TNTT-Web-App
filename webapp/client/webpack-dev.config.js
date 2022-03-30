@@ -66,16 +66,9 @@ module.exports = function(_env, argv) {
           use: ['raw-loader'] 
         },
         {
-          test: /\.(jpe?g|gif|png|svg)$/i,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 8192,
-                name: "static/media/[name].[hash:8].[ext]"
-              }
-            }
-          ]
+          test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+          exclude: /node_modules/,
+          use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
         },
         {
           test: /\.svg$/,
