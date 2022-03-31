@@ -23,6 +23,11 @@
       color: #fff;
       text-align: right;
     }
+
+    @media (max-width: 450px) {
+      grid-template-columns: 1fr;
+      align-items: unset;
+    }
   }
 }
 

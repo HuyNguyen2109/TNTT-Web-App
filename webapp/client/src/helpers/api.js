@@ -130,7 +130,7 @@ export const dashboard = {
       let lastName = faker.name.lastName();
       responses.push({
         id: uuidv4(),
-        avatar: faker.internet.avatar(),
+        avatar: null,
         holyName: holyName,
         firstName: firstName,
         lastName: lastName,

@@ -2,6 +2,7 @@
 @import "../../../index.module.scss";
 
 .memberContainer {
+  height: calc(100vh - 190px);
 
   & .searchBar {
     width: 250px;
@@ -15,7 +16,34 @@
   & .table {
     @extend .customXScrollBar;
     @extend .customYScrollBar;
-    max-height: 600px;
+    height: calc(100% - 64px);
     overflow-y: auto;
+    
+
+    @media (max-width: 450px) {
+      height: calc(100% - 121px);
+    }
+
+    & .customRow {
+      transition: .2s all;
+      
+      &:hover {
+        background-color: #f2f2f2;
+        transition: .2s all;
+      }
+    }
+  }
+
+  & .advanceSearch {
+    background-color: $primaryColor;
+    color: #fff;
+    width: 200px;
+    margin: 0 0 0 20px;
+    font-size: 16px !important;
+
+    @media (max-width: 450px) {
+      width: 100%;
+      margin: 20px 0 0 0;
+    }
   }
 }

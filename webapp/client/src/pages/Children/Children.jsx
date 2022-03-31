@@ -55,11 +55,7 @@ class Children extends React.Component {
             </Grid> */}
 
             {/* Members and so on */}
-            <Grid container spacing={3} className={styles.gridContainer}>
-              <Grid item xs={12}>
-                <Members members={data.membersInfo} />
-              </Grid>
-            </Grid>
+            <Members members={data.membersInfo} />
           </React.Fragment>
         )}
       </div>

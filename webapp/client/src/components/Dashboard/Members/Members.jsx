@@ -12,7 +12,7 @@ import {
   Avatar,
 } from "@mui/material";
 
-import { Paper, Input } from "components/basic";
+import { Paper, Input, Button } from "components/basic";
 import styles from "components/Dashboard/Members/Members.module.scss";
 import { SearchOutlined } from "@mui/icons-material";
 import { Box } from "@mui/system";
@@ -35,18 +35,6 @@ export default class Members extends React.Component {
         content={
           <div className={styles.memberContainer}>
             <Toolbar disableGutters sx={{ display: { xs: "block", sm: "flex" } }}>
-              <div>
-                <Typography variant="h6" textAlign="left" className={styles.title}>
-                  Danh sách Thiếu Nhi
-                </Typography>
-                <Typography variant="subtitle1" textAlign="left" className={styles.subTitle}>
-                  {" "}
-                  Tổng hợp các thông tin chung về Thiếu Nhi
-                </Typography>
-              </div>
-              <Box
-                sx={{ flexGrow: "1", minWidth: "50px", display: { xs: "none", sm: "initial" } }}
-              ></Box>
               <Input
                 className={styles.searchBar}
                 autoComplete="new-password"
@@ -54,8 +42,22 @@ export default class Members extends React.Component {
                 type={"text"}
                 value={searchValue}
                 icon={<SearchOutlined />}
+                placeholder="Nhập để tìm kiếm..."
                 onChange={(data) => this.setState({ searchValue: data.target.value })}
               />
+              <Button
+                label={"Tìm kiếm nâng cao"}
+                variant="text"
+                size="large"
+                className={styles.advanceSearch}
+                onClick={() => {
+                  // TODO: Handle action for Feedback
+                  console.log('advance search')
+                }}
+              />
+              <Box
+                sx={{ flexGrow: "1", minWidth: "50px", display: { xs: "none", sm: "initial" } }}
+              ></Box>
             </Toolbar>
             <TableContainer classes={{root: styles.table}}>
               <Table stickyHeader sx={{ minWidth: 1100 }} >
@@ -76,6 +78,7 @@ export default class Members extends React.Component {
                     <TableRow
                       key={mem.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                      className={styles.customRow}
                     >
                       <TableCell>
                         <Avatar
