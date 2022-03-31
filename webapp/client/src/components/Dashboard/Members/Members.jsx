@@ -28,7 +28,6 @@ export default class Members extends React.Component {
 
   render = () => {
     const { members } = this.props;
-    const { searchValue } = this.state;
 
     return (
       <Paper
@@ -40,10 +39,9 @@ export default class Members extends React.Component {
                 autoComplete="new-password"
                 label={""}
                 type={"text"}
-                value={searchValue}
                 icon={<SearchOutlined />}
                 placeholder="Nhập để tìm kiếm..."
-                onChange={(data) => this.setState({ searchValue: data.target.value })}
+                onChange={(data) => this.setState({ searchValue: data.target.value }, () => console.log(data.target.value))}
               />
               <Button
                 label={"Tìm kiếm nâng cao"}
@@ -70,7 +68,7 @@ export default class Members extends React.Component {
                     <TableCell>Email</TableCell>
                     <TableCell>Địa chỉ</TableCell>
                     <TableCell>Giáo khu</TableCell>
-                    <TableCell>Lớp</TableCell>
+                    <TableCell>Lớp</TableCell>p
                   </TableRow>
                 </TableHead>
                 <TableBody>

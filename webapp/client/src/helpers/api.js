@@ -124,7 +124,7 @@ export const dashboard = {
   getMembersInfo: () => {
     // TODO: Call API to get all members data for dashboard, below is sample data to create UI
     let responses = [];
-    for (let i = 0; i < 650; i++) {
+    for (let i = 0; i < 10; i++) {
       let holyName = faker.name.title();
       let firstName = faker.name.firstName();
       let lastName = faker.name.lastName();
