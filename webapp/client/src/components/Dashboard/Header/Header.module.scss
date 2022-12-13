@@ -1,0 +1,16 @@
+@import "../../../base.module.scss";
+
+.headerContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: 100%;
+  background-color: #f7f7f7;
+  margin-top: -65px;
+
+  @media (max-width: $mobileBreakpoints) {
+    z-index: 1;
+  }
+}

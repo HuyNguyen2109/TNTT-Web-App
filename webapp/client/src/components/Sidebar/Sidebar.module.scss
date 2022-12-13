@@ -1,0 +1,159 @@
+@import '../../base.module.scss';
+@import '../../index.module.scss';
+
+.Drawer {
+  position: relative;
+
+  & .paper {
+    background-color: transparent;
+    width: $drawerWidth;
+    height: 100%;
+    padding: $drawerMargin;
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    border-right: none;
+
+    & .root {
+      margin: 0 40px;
+      width: calc(100% - 20px);
+    }
+    
+    & .titleBlock {
+      display: contents;
+
+      & .avatar {
+        width: 100px;
+        height: 100px;
+      }
+
+      & .grandTitle {
+        margin: 20px 10px 0 10px;
+        width: 100%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid gray;
+      }
+    }
+  }
+
+  & .nav {
+    @extend .customXScrollBar;
+    
+    & .item {
+      & .button {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        border: 0px !important;
+        background-color: transparent;
+        width: inherit;
+        padding: 15px 30px;
+        transition: all .25s;
+
+        & .icon {
+          color: #000;
+          margin-right: 15px;
+          background-color: #fff;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 0 .25rem .375rem -.0625rem hsla(0,0%,8%,.12),0 .125rem .25rem -.0625rem hsla(0,0%,8%,.07)!important;
+          transition: all .25s;
+        }
+
+        & span {
+          text-transform: capitalize;
+          justify-content: left;
+          font-size: 16px;
+          transition: all .25s;
+          color: #000
+        }
+
+        &:hover {
+          transform: scale(1.1);
+          transition: all .25s
+        }
+      };
+
+      & .active, & .button:hover {
+        @extend .button;
+        transform: scale(1.1);
+        background-color: #fff;
+        border-radius: 15px;
+        transition: all .25s;
+        box-shadow: 0 20px 27px 0 rgba(0,0,0, 0.05);
+
+        & .icon {
+          color: #fff;
+          background-color: $primaryColor;
+          box-shadow: none;
+          transition: all .25s;
+        }
+
+        & span {
+          font-weight: 900;
+          transition: font-weight .25s
+        }
+
+        @media (max-width: 1366px) {
+          transform: scale(1);
+        }
+      }
+    }
+
+    & .accountBlock {
+      @extend .item;
+      margin-top: 10px;
+
+      & > div {
+        padding: 8px 0;
+      }
+
+      & .accountPage {
+        padding: 15px 30px;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  & .footerBlock {
+    position: absolute;
+    left: 0;
+    bottom: 80px;
+    width: calc(100% - 85px);
+    margin: 0 40px;
+
+    & .feedBack {
+      background-color: $primaryColor;
+      color: #fff;
+      width: 100%;
+      font-size: 16px !important;
+    }
+  }
+
+  @media (max-width: 1366px) {
+    & .nav {
+      height: calc(100vh - 360px);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    & .paper {
+      background-color: #fff;
+      z-index: 2;
+    }
+  }
+
+  @media (max-width: 450px) {
+    & .paper {
+      width: 95%;
+    }
+
+    & .nav {
+      height: calc(100vh - 330px);
+    }
+  }
+}

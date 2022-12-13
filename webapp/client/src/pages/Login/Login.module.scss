@@ -1,0 +1,175 @@
+@import "../../base.module.scss";
+@import "../../index.module.scss";
+
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  
+  * {
+    font-weight: 300;
+  }
+
+  .imgContainer {
+    position: relative;
+    z-index: 1;
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      object-fit: cover;
+      object-position: 0% 50%;
+      z-index: 2;
+      clip-path: circle(80% at 0 23%);
+      transition: .2s;
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    .decorateImg {
+      position: absolute;
+      bottom: 20px;
+      right: 20%;
+      z-index: 3;
+      transition: .2s;
+      opacity: 0;
+      transform: translateX(100px);
+    }
+
+    .active {
+      @extend .decorateImg;
+      opacity: 1;
+      transform: translateX(0px);
+      transition: .2s;
+    }
+
+    .activeBg {
+      @extend .img;
+      opacity: 1;
+      transform: translateX(0px);
+      transition: .2s;
+    }
+  }
+
+  .loginContainer {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 2;
+
+    & .tabContainer {
+      margin: 40px;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+
+      @media (min-width: 1281px) {
+        max-width: 500px;
+      }
+
+      @media (max-width: 1280px) and (min-width: 1280px)  {
+        max-height: 706px;
+        overflow-y: auto;
+        margin: 20px;
+        &::-webkit-scrollbar {
+          height: 20px;
+          width: 6px;
+        }
+      
+        &::-webkit-scrollbar-thumb {
+          background: transparent linear-gradient($primaryColor, $secondaryColor) 0% 0% no-repeat padding-box;
+          border-radius: 10px;
+        }
+      
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+      }
+
+      & .backButton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+
+        & .icon {
+          color: #000;
+          transform: translateX(0px);
+          transition: all .25s;
+        }
+
+        span {
+          text-transform: none;
+          color: #000;
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        &:hover {
+          background-color: transparent;
+          
+          & .icon {
+            transform: translateX(-5px);
+            transition: all .25s;
+          }
+        }
+      }
+
+      & .loginImage {
+        width: 150px;
+        height: 150px;
+        margin: 60px auto 0 auto;
+      }
+
+      & .pageTitle {
+        font-weight: 500;
+        margin: 20px 0;
+      }
+
+      & .indicator {
+        background-color: $primaryColor;
+      }
+
+      & .selected {
+        color: $primaryColor;
+      }
+
+      & h4 {
+        margin-bottom: 30px;
+      }
+
+      & header {
+        box-shadow: none !important;
+      }
+
+      & .tabs {
+        height: 100%;
+      }
+
+      & .transitionContainer {
+        @media (min-width: 1024px) {
+          & div[role=tabpanel] {
+            animation: slide-down 5s ease-out;
+          }
+        }
+      }
+
+      @media (max-width: 450px) {
+        margin: 20px;
+      }
+
+      @keyframes slide-down {
+        0% {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}

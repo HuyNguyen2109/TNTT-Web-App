@@ -1,0 +1,81 @@
+@import "../../base.module.scss";
+
+.backdropImg {
+  background: url('public/images/bg.jpg');
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+
+  .backdrop {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .7;
+    z-index: 2;
+  }
+
+  .modal {
+    max-width: 750px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+
+    & .inner {
+      display: block;
+
+      & .text {
+        padding: 0 40px;
+        margin-top: 40px;
+      }
+
+      & .backButton {
+        margin: 40px auto 0 auto;
+        width: 250px;
+        border-radius: 10px;
+        border: 1px solid $primaryColor;
+
+        & .icon {
+          color: #000;
+          transform: translateX(0px);
+          transition: all .25s;
+        }
+
+        span {
+          text-transform: none;
+          color: #000;
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        &:hover {
+          background-color: transparent;
+          
+          & .icon {
+            transform: translateX(-5px);
+            transition: all .25s;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 450px) {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 0px;
+    }
+  }
+}

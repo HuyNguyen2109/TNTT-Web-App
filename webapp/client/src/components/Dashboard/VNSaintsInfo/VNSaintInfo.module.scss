@@ -1,0 +1,83 @@
+@import "../../../base.module.scss";
+@import "../../../index.module.scss";
+
+.vnSaintContainer {
+  background: url('public/images/CacThanhTuDaoVietNam.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 325.58px;
+  position: relative;
+  border-radius: 15px;
+
+  & .vnSaintInner {
+    background: linear-gradient(125deg, rgba(0,0,0,0.3), rgba(0,0,0,1));
+    width: 100%;
+    height: 100% !important;
+    opacity: .8;
+    border-radius: 15px;
+    
+    & .vnSaintContent {
+      padding: 20px;
+      height: calc(100% - 40px);
+      position: relative;
+
+      & h6 {
+        color: #fff
+      }
+
+      & .title {
+        font-weight: bold;
+        letter-spacing: 0.2em;
+        font-size: 1.5rem;
+      }
+
+      & .subTitle {
+        margin-top: 35px;
+        line-height: 2;
+        max-height: calc(100% - 115px);
+        overflow-y: auto;
+        @extend .customXScrollBar;
+
+        &::-webkit-scrollbar-thumb {
+          background: transparent linear-gradient(#fff, #fff) 0% 0% no-repeat padding-box !important;
+          border-radius: 10px;
+        }
+
+        @media (max-width: 450px) {
+          max-height: calc(100% - 153px);
+        }
+      }
+
+      & .readMore {
+        position: absolute;
+        left: 20px;
+        bottom: 10px;
+
+        & span {
+          text-transform: none;
+          color: #fff;
+          font-size: .9rem;
+          font-weight: 500;
+        }
+  
+        & .icon {
+          color: #fff;
+          transform: translateX(0px);
+          transition: all .2s;
+          padding-left: 5px;
+        }
+
+        &:hover {
+          background-color: transparent;
+  
+          & .icon {
+            transform: translateX(5px);
+            transition: all .2s;
+          }
+        }
+      }
+    }
+  }
+}
