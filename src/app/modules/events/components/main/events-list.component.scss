@@ -1,16 +1,4 @@
-.page-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.loading-center {
-  display: flex;
-  justify-content: center;
-  padding: 4rem 0;
-}
-
+/* Remove left/right/top borders so the toolbar sits flush at the top of the page content area */
 ::ng-deep .page-toolbar {
   border-radius: 0 !important;
   border-left: none !important;

@@ -1,26 +1,11 @@
-.sidebar {
-  width: 240px;
-  min-width: 240px;
-  height: 100vh;
-  background: var(--surface-card);
-  border-right: 1px solid var(--surface-border);
-  display: flex;
-  flex-direction: column;
+:host {
+  display: block;
+  height: 100%;
+}
 
-  &__logo {
-    padding: 1.25rem 1rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-bottom: 1px solid var(--surface-border);
-  }
-
-  &__org {
-    color: var(--primary-color);
-  }
-
-  &__menu {
-    flex: 1;
-    border: none;
-    background: transparent;
-  }
+::ng-deep .sidebar-menu {
+  flex: 1;
+  overflow-y: auto;
+  border: none !important;
+  background: transparent !important;
 }

@@ -1,12 +1,11 @@
-<p-toolbar styleClass="topbar">
+<p-toolbar class="topbar-bar">
   <ng-template pTemplate="end">
-    <div class="topbar__user">
+    <div class="flex items-center gap-3">
       <p-avatar
         [label]="userInitial()"
         shape="circle"
-        styleClass="topbar__avatar"
       />
-      <span class="topbar__name">{{ auth.currentUser()?.displayName }}</span>
+      <span class="text-sm text-[var(--p-text-color)]">{{ auth.currentUser()?.displayName }}</span>
       <p-button
         icon="pi pi-sign-out"
         [text]="true"

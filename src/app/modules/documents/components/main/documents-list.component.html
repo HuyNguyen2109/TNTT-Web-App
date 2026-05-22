@@ -1,6 +1,6 @@
 <p-toolbar styleClass="page-toolbar">
   <ng-template pTemplate="start">
-    <h2 class="page-title">{{ 'DOCUMENTS.TITLE' | translate }}</h2>
+    <h2 class="m-0 text-xl font-semibold">{{ 'DOCUMENTS.TITLE' | translate }}</h2>
   </ng-template>
   <ng-template pTemplate="end">
     <p-iconfield>
@@ -22,7 +22,7 @@
 </p-toolbar>
 
 @if (service.loading()) {
-  <div class="loading-center"><p-progressSpinner /></div>
+  <div class="flex justify-center py-16"><p-progressSpinner /></div>
 } @else {
   <p-table
     #tableRef

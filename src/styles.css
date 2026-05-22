@@ -1,0 +1,23 @@
+/* All @import rules must come first */
+@import "tailwindcss";
+@import "primeicons/primeicons.css";
+
+/*
+ * Explicitly scan src/app for Angular templates and component class names.
+ * Path is relative to postcss.config.mjs `base` (= src/).
+ */
+@source "./app";
+
+/*
+ * Layer order: Tailwind base → PrimeNG components → Tailwind utilities.
+ * This ensures Tailwind utilities always win over component defaults,
+ * while PrimeNG component styles win over Tailwind's base reset.
+ */
+@layer tailwind-base, primeng, tailwind-utilities;
+
+body {
+  margin: 0;
+  font-family: var(--p-font-family, system-ui, sans-serif);
+  background-color: var(--p-surface-50, #f8f9fa);
+  color: var(--p-text-color, #495057);
+}
