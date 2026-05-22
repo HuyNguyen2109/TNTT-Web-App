@@ -1,1 +1,4 @@
-/* Shell layout is now handled by Tailwind utility classes in the template. */
+:host {
+  display: block;
+  height: 100%;
+}

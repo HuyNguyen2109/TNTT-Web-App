@@ -15,6 +15,18 @@
  */
 @layer tailwind-base, primeng, tailwind-utilities;
 
+/* Custom elements default to display:inline; reset root/shell so flex layouts work */
+app-root,
+app-shell {
+  display: block;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: var(--p-font-family, system-ui, sans-serif);
