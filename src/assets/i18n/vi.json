@@ -1,0 +1,88 @@
+{
+  "NAV": {
+    "DASHBOARD": "Thông tin chung",
+    "CHILDREN": "Thiếu Nhi",
+    "MEMBERS": "Giáo Lý Viên",
+    "FUNDS": "Quỹ",
+    "CLASSES": "Lớp",
+    "EVENTS": "Sự kiện",
+    "DOCUMENTS": "Tài liệu",
+    "LOGOUT": "Đăng xuất"
+  },
+  "COMMON": {
+    "SAVE": "Lưu",
+    "CANCEL": "Hủy",
+    "DELETE": "Xóa",
+    "EDIT": "Chỉnh sửa",
+    "ADD": "Thêm mới",
+    "SEARCH": "Tìm kiếm",
+    "LOADING": "Đang tải…",
+    "CONFIRM_DELETE": "Bạn có chắc muốn xóa?",
+    "YES": "Có",
+    "NO": "Không",
+    "SUCCESS": "Thành công",
+    "ERROR": "Lỗi",
+    "NOT_FOUND": "Không tìm thấy"
+  },
+  "DASHBOARD": {
+    "TITLE": "Thông tin chung",
+    "GENERAL_FUND": "Quỹ Thiếu Nhi",
+    "ORG_FUND": "Quỹ Xứ Đoàn",
+    "MEMBER_COUNT": "Số lượng GLV",
+    "CHILDREN_COUNT": "Số lượng Thiếu Nhi"
+  },
+  "CHILDREN": {
+    "TITLE": "Thiếu Nhi",
+    "FULL_NAME": "Họ và tên",
+    "HOLY_NAME": "Tên thánh",
+    "BIRTHDAY": "Sinh nhật",
+    "CLASS": "Lớp",
+    "ADD_NEW": "Thêm Thiếu Nhi",
+    "EDIT": "Chỉnh sửa thông tin",
+    "DELETE_SUCCESS": "Đã xóa Thiếu Nhi thành công",
+    "SAVE_SUCCESS": "Lưu thông tin thành công"
+  },
+  "MEMBERS": {
+    "TITLE": "Giáo Lý Viên",
+    "FULL_NAME": "Họ và tên",
+    "HOLY_NAME": "Tên thánh",
+    "PHONE": "Điện thoại",
+    "EMAIL": "Email",
+    "ADDRESS": "Địa chỉ",
+    "ADD_NEW": "Thêm GLV",
+    "DELETE_SUCCESS": "Đã xóa GLV thành công",
+    "SAVE_SUCCESS": "Lưu thông tin thành công"
+  },
+  "FUNDS": {
+    "TITLE": "Quỹ",
+    "CHILDREN_FUND": "Quỹ Thiếu Nhi",
+    "INTERNAL_FUND": "Quỹ Xứ Đoàn",
+    "AMOUNT": "Số tiền",
+    "DATE": "Ngày",
+    "NOTE": "Ghi chú",
+    "INCOME": "Thu",
+    "EXPENSE": "Chi",
+    "BALANCE": "Số dư"
+  },
+  "CLASSES": {
+    "TITLE": "Lớp",
+    "CLASS_NAME": "Tên lớp",
+    "TEACHER": "Giáo Lý Viên",
+    "STUDENT_COUNT": "Số Thiếu Nhi"
+  },
+  "EVENTS": {
+    "TITLE": "Sự kiện",
+    "EVENT_NAME": "Tên sự kiện",
+    "DATE": "Ngày",
+    "DESCRIPTION": "Mô tả"
+  },
+  "DOCUMENTS": {
+    "TITLE": "Tài liệu",
+    "DOC_NAME": "Tên tài liệu",
+    "UPLOAD": "Tải lên",
+    "DOWNLOAD": "Tải xuống"
+  },
+  "AUTH": {
+    "LOGGING_IN": "Đang xác thực, vui lòng chờ…"
+  }
+}

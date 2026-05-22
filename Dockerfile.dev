@@ -1,0 +1,8 @@
+FROM node:22-alpine
+ENV NODE_ENV=dev
+ENV VCAP_APP_PORT=3000
+COPY server server/
+COPY package*.json ./
+RUN cd server && npm ci --omit=dev
+EXPOSE 3000
+CMD [ "node", "server/app.js"]

@@ -1,0 +1,21 @@
+{
+  "port": 3000,
+  "session": {
+    "secret": "CHANGE_ME_to_a_long_random_string",
+    "maxAgeHours": 8
+  },
+  "oidc": {
+    "issuerUrl": "https://auth.example.com/application/o/<slug>/",
+    "clientId": "YOUR_CLIENT_ID",
+    "clientSecret": "YOUR_CLIENT_SECRET",
+    "callbackUrl": "http://localhost:3000/auth/callback",
+    "postLogoutRedirectUrl": "http://localhost:3000"
+  },
+  "backend": {
+    "url": "http://localhost:4000"
+  },
+  "cors": {
+    "origin": false
+  },
+  "staticDir": "public/www"
+}

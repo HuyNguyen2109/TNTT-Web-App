@@ -1,2 +1,54 @@
-/frontend/node_modules
-/backend/node_modules
+# Angular
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/node_modules
+/.angular/cache
+.sass-cache/
+/coverage
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/connect.lock
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# BFF
+server/node_modules/
+
+# Config files containing secrets — copy config.example.json and fill in values
+server/config/config.local.json
+server/config/config.dev.json
+server/config/config.qa.json
+server/config/config.production.json
+
+# Build artefacts
+*.js.map
+server/public/www/
+
