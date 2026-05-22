@@ -1,7 +1,5 @@
-<nav class="w-60 min-w-[240px] h-full flex flex-col bg-[var(--p-content-background)] border-r border-[var(--p-content-border-color)]">
-  <div class="flex items-center gap-2 px-4 py-5 text-lg font-bold border-b border-[var(--p-content-border-color)]">
-    <span class="pi pi-star-fill text-[var(--p-primary-color)]"></span>
-    <span class="text-[var(--p-primary-color)]">Xứ Đoàn</span>
-  </div>
-  <p-panelMenu [model]="menuItems" class="sidebar-menu" />
-</nav>
+<div class="sidebar-header">
+  <span class="pi pi-star-fill"></span>
+  <span>Xứ Đoàn</span>
+</div>
+<p-panelMenu [model]="menuItems" class="sidebar-menu" />
