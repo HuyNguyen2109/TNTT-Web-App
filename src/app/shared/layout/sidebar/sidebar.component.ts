@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { TranslateModule } from '@ngx-translate/core';
 import { MenuItem } from 'primeng/api';
@@ -7,15 +6,8 @@ import { MenuItem } from 'primeng/api';
 @Component({
   standalone: true,
   selector: 'app-sidebar',
-  imports: [RouterLink, PanelMenuModule, TranslateModule],
-  template: `
-    <nav class="sidebar">
-      <div class="sidebar__logo">
-        <span class="sidebar__org">Xứ Đoàn</span>
-      </div>
-      <p-panelMenu [model]="menuItems" styleClass="sidebar__menu" />
-    </nav>
-  `,
+  imports: [PanelMenuModule, TranslateModule],
+  templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {

@@ -1,0 +1,69 @@
+<p-toolbar styleClass="page-toolbar">
+  <ng-template pTemplate="start">
+    <h2 class="page-title">{{ 'CHILDREN.TITLE' | translate }}</h2>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <p-iconfield>
+      <p-inputicon styleClass="pi pi-search" />
+      <input
+        pInputText
+        type="text"
+        [placeholder]="'COMMON.SEARCH' | translate"
+        (input)="onSearch($event)"
+      />
+    </p-iconfield>
+    <p-button
+      icon="pi pi-plus"
+      [label]="'CHILDREN.ADD_NEW' | translate"
+      severity="success"
+      styleClass="ml-2"
+    />
+  </ng-template>
+</p-toolbar>
+
+@if (service.loading()) {
+  <div class="loading-center"><p-progressSpinner /></div>
+} @else {
+  <p-table
+    #tableRef
+    [value]="service.children()"
+    [paginator]="true"
+    [rows]="20"
+    [rowsPerPageOptions]="[10, 20, 50]"
+    styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
+    [globalFilterFields]="['holyName','firstName','lastName']"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="holyName">
+          {{ 'CHILDREN.HOLY_NAME' | translate }}
+          <p-sortIcon field="holyName" />
+        </th>
+        <th pSortableColumn="lastName">
+          {{ 'CHILDREN.FULL_NAME' | translate }}
+          <p-sortIcon field="lastName" />
+        </th>
+        <th>{{ 'CHILDREN.BIRTHDAY' | translate }}</th>
+        <th>{{ 'CHILDREN.CLASS' | translate }}</th>
+        <th style="width: 6rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-child>
+      <tr>
+        <td>{{ child.holyName }}</td>
+        <td>{{ child.firstName }} {{ child.lastName }}</td>
+        <td>{{ child.birthday }}</td>
+        <td>{{ child.classID }}</td>
+        <td>
+          <p-button icon="pi pi-pencil" [text]="true" severity="info" />
+          <p-button icon="pi pi-trash" [text]="true" severity="danger" />
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="5" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+}

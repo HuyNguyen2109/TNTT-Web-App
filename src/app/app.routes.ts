@@ -21,38 +21,38 @@ export const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
         path: 'dashboard',
-        loadComponent: () =>
-          import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        loadChildren: () =>
+          import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
         path: 'children',
         loadChildren: () =>
-          import('./features/children/children.routes').then(m => m.CHILDREN_ROUTES),
+          import('./modules/children/children.module').then(m => m.ChildrenModule),
       },
       {
         path: 'members',
         loadChildren: () =>
-          import('./features/members/members.routes').then(m => m.MEMBERS_ROUTES),
+          import('./modules/members/members.module').then(m => m.MembersModule),
       },
       {
         path: 'funds',
         loadChildren: () =>
-          import('./features/funds/funds.routes').then(m => m.FUNDS_ROUTES),
+          import('./modules/funds/funds.module').then(m => m.FundsModule),
       },
       {
         path: 'classes',
         loadChildren: () =>
-          import('./features/classes/classes.routes').then(m => m.CLASSES_ROUTES),
+          import('./modules/classes/classes.module').then(m => m.ClassesModule),
       },
       {
         path: 'events',
         loadChildren: () =>
-          import('./features/events/events.routes').then(m => m.EVENTS_ROUTES),
+          import('./modules/events/events.module').then(m => m.EventsModule),
       },
       {
         path: 'documents',
         loadChildren: () =>
-          import('./features/documents/documents.routes').then(m => m.DOCUMENTS_ROUTES),
+          import('./modules/documents/documents.module').then(m => m.DocumentsModule),
       },
     ],
   },

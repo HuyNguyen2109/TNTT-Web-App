@@ -1,5 +1,6 @@
 {
   "port": 3000,
+  "bypassAuth": false,
   "session": {
     "secret": "CHANGE_ME_to_a_long_random_string",
     "maxAgeHours": 8

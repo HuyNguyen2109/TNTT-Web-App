@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 /**
  * Shown briefly at /callback while BFF session is being established.
@@ -8,11 +9,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   standalone: true,
   selector: 'app-auth-callback',
-  template: `
-    <div style="display:flex;align-items:center;justify-content:center;height:100vh;">
-      <p>Đang xác thực, vui lòng chờ…</p>
-    </div>
-  `,
+  templateUrl: './auth-callback.component.html',
+  imports: [TranslateModule],
 })
 export class AuthCallbackComponent implements OnInit {
   ngOnInit(): void {

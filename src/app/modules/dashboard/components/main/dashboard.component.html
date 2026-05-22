@@ -1,0 +1,57 @@
+@if (loading()) {
+  <div class="dashboard__loading">
+    <p-progressSpinner />
+  </div>
+} @else {
+  <div class="dashboard__grid">
+
+    <p-card styleClass="stat-card stat-card--blue">
+      <div class="stat-card__body">
+        <div class="stat-card__icon-wrap stat-card__icon-wrap--blue">
+          <span class="pi pi-wallet"></span>
+        </div>
+        <div class="stat-card__info">
+          <div class="stat-card__value">{{ stats()?.generalFund | number }}</div>
+          <div class="stat-card__label">{{ 'DASHBOARD.GENERAL_FUND' | translate }}</div>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card styleClass="stat-card stat-card--green">
+      <div class="stat-card__body">
+        <div class="stat-card__icon-wrap stat-card__icon-wrap--green">
+          <span class="pi pi-building"></span>
+        </div>
+        <div class="stat-card__info">
+          <div class="stat-card__value">{{ stats()?.orgFund | number }}</div>
+          <div class="stat-card__label">{{ 'DASHBOARD.ORG_FUND' | translate }}</div>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card styleClass="stat-card stat-card--orange">
+      <div class="stat-card__body">
+        <div class="stat-card__icon-wrap stat-card__icon-wrap--orange">
+          <span class="pi pi-id-card"></span>
+        </div>
+        <div class="stat-card__info">
+          <div class="stat-card__value">{{ stats()?.memberCount }}</div>
+          <div class="stat-card__label">{{ 'DASHBOARD.MEMBER_COUNT' | translate }}</div>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card styleClass="stat-card stat-card--purple">
+      <div class="stat-card__body">
+        <div class="stat-card__icon-wrap stat-card__icon-wrap--purple">
+          <span class="pi pi-users"></span>
+        </div>
+        <div class="stat-card__info">
+          <div class="stat-card__value">{{ stats()?.childrenCount }}</div>
+          <div class="stat-card__label">{{ 'DASHBOARD.CHILDREN_COUNT' | translate }}</div>
+        </div>
+      </div>
+    </p-card>
+
+  </div>
+}

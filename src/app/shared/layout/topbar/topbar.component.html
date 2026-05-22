@@ -1,0 +1,19 @@
+<p-toolbar styleClass="topbar">
+  <ng-template pTemplate="end">
+    <div class="topbar__user">
+      <p-avatar
+        [label]="userInitial()"
+        shape="circle"
+        styleClass="topbar__avatar"
+      />
+      <span class="topbar__name">{{ auth.currentUser()?.displayName }}</span>
+      <p-button
+        icon="pi pi-sign-out"
+        [text]="true"
+        severity="secondary"
+        [pTooltip]="'NAV.LOGOUT' | translate"
+        (onClick)="auth.logout()"
+      />
+    </div>
+  </ng-template>
+</p-toolbar>

@@ -9,18 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   standalone: true,
   selector: 'app-shell',
   imports: [RouterOutlet, SidebarComponent, TopbarComponent, ToastModule],
-  template: `
-    <p-toast />
-    <div class="shell">
-      <app-sidebar />
-      <div class="shell__content">
-        <app-topbar />
-        <main class="shell__main">
-          <router-outlet />
-        </main>
-      </div>
-    </div>
-  `,
+  templateUrl: './shell.component.html',
   styleUrl: './shell.component.scss',
 })
 export class ShellComponent {

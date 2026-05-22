@@ -13,6 +13,11 @@ const appRouter = require('./routes/appRoute');
 
 const app = express();
 const PORT = config.port || 3000;
+const BYPASS_AUTH = process.env.BYPASS_AUTH === 'true' || !!config.bypassAuth;
+
+if (BYPASS_AUTH) {
+  console.warn('[BFF] ⚠️  AUTH BYPASS ENABLED — do not use in production');
+}
 
 // ── Security ──────────────────────────────────────────────────────────────────
 app.use(helmet({
@@ -48,45 +53,59 @@ app.use(session({
   },
 }));
 
-// ── Passport ──────────────────────────────────────────────────────────────────
-app.use(passport.initialize());
-app.use(passport.session());
-require('./config/passport')(passport);
+// ── Passport (skipped when bypassAuth is true) ────────────────────────────────
+if (!BYPASS_AUTH) {
+  app.use(passport.initialize());
+  app.use(passport.session());
+  require('./config/passport')(passport);
+}
 
 // ── Auth guard (inlined) ──────────────────────────────────────────────────────
-const ensureAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) return next();
-  res.status(401).json({ message: 'Unauthenticated' });
-};
+const ensureAuthenticated = BYPASS_AUTH
+  ? (_req, _res, next) => next()
+  : (req, res, next) => {
+      if (req.isAuthenticated()) return next();
+      res.status(401).json({ message: 'Unauthenticated' });
+    };
 
-// ── Auth routes (public — no ensureAuthenticated) ─────────────────────────────
-app.get('/auth/login', passport.authenticate('openidconnect'));
+// ── Auth routes ───────────────────────────────────────────────────────────────
+if (BYPASS_AUTH) {
+  // When IdP is unavailable: stub all auth endpoints so Angular keeps working.
+  app.get('/auth/login',    (_req, res) => res.redirect('/'));
+  app.get('/auth/callback', (_req, res) => res.redirect('/'));
+  app.get('/auth/logout',   (_req, res) => res.redirect('/'));
+  app.get('/auth/user',     (_req, res) => res.json({
+    user: { id: 'bypass', displayName: 'Dev User (bypass)', email: 'dev@local' },
+  }));
+} else {
+  app.get('/auth/login', passport.authenticate('openidconnect'));
 
-app.get(
-  '/auth/callback',
-  passport.authenticate('openidconnect', { failureRedirect: '/auth/login' }),
-  (req, res) => res.redirect('/'),
-);
+  app.get(
+    '/auth/callback',
+    passport.authenticate('openidconnect', { failureRedirect: '/auth/login' }),
+    (req, res) => res.redirect('/'),
+  );
 
-app.get('/auth/logout', (req, res, next) => {
-  const idToken = req.session?.idToken;
+  app.get('/auth/logout', (req, res, next) => {
+    const idToken = req.session?.idToken;
 
-  req.logout((err) => {
-    if (err) return next(err);
-    req.session.destroy(() => {
-      const issuer = config.oidc.issuerUrl.replace(/\/$/, '');
-      const postLogoutUri = encodeURIComponent(config.oidc.postLogoutRedirectUrl || '/');
-      let endSessionUrl = `${issuer}/end-session/?post_logout_redirect_uri=${postLogoutUri}`;
-      if (idToken) endSessionUrl += `&id_token_hint=${encodeURIComponent(idToken)}`;
-      res.redirect(endSessionUrl);
+    req.logout((err) => {
+      if (err) return next(err);
+      req.session.destroy(() => {
+        const issuer = config.oidc.issuerUrl.replace(/\/$/, '');
+        const postLogoutUri = encodeURIComponent(config.oidc.postLogoutRedirectUrl || '/');
+        let endSessionUrl = `${issuer}/end-session/?post_logout_redirect_uri=${postLogoutUri}`;
+        if (idToken) endSessionUrl += `&id_token_hint=${encodeURIComponent(idToken)}`;
+        res.redirect(endSessionUrl);
+      });
     });
   });
-});
 
-app.get('/auth/user', (req, res) => {
-  if (req.isAuthenticated()) return res.json({ user: req.user });
-  res.status(401).json({ message: 'Unauthenticated' });
-});
+  app.get('/auth/user', (req, res) => {
+    if (req.isAuthenticated()) return res.json({ user: req.user });
+    res.status(401).json({ message: 'Unauthenticated' });
+  });
+}
 
 // ── API proxy (protected) ─────────────────────────────────────────────────────
 app.use(

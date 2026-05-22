@@ -22,7 +22,8 @@
     "NO": "Không",
     "SUCCESS": "Thành công",
     "ERROR": "Lỗi",
-    "NOT_FOUND": "Không tìm thấy"
+    "NOT_FOUND": "Không tìm thấy",
+    "NO_DATA": "Không có dữ liệu"
   },
   "DASHBOARD": {
     "TITLE": "Thông tin chung",
@@ -62,24 +63,30 @@
     "NOTE": "Ghi chú",
     "INCOME": "Thu",
     "EXPENSE": "Chi",
-    "BALANCE": "Số dư"
+    "BALANCE": "Số dư",
+    "ADD_ENTRY": "Thêm giao dịch"
   },
   "CLASSES": {
     "TITLE": "Lớp",
     "CLASS_NAME": "Tên lớp",
     "TEACHER": "Giáo Lý Viên",
-    "STUDENT_COUNT": "Số Thiếu Nhi"
+    "STUDENT_COUNT": "Số Thiếu Nhi",
+    "ADD_NEW": "Thêm lớp"
   },
   "EVENTS": {
     "TITLE": "Sự kiện",
+    "NAME": "Tên sự kiện",
     "EVENT_NAME": "Tên sự kiện",
     "DATE": "Ngày",
-    "DESCRIPTION": "Mô tả"
+    "DESCRIPTION": "Mô tả",
+    "ADD_NEW": "Thêm sự kiện"
   },
   "DOCUMENTS": {
     "TITLE": "Tài liệu",
+    "NAME": "Tên tài liệu",
     "DOC_NAME": "Tên tài liệu",
     "UPLOAD": "Tải lên",
+    "UPLOAD_DATE": "Ngày tải lên",
     "DOWNLOAD": "Tải xuống"
   },
   "AUTH": {
