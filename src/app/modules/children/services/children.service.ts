@@ -5,16 +5,19 @@ import { Child } from '../models/child.model';
 
 @Injectable({ providedIn: 'root' })
 export class ChildrenService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-  children = signal<Child[]>([]);
-  loading  = signal(false);
+  private readonly _children = signal<Child[]>([]);
+  readonly children = this._children.asReadonly();
+
+  private readonly _loading = signal(false);
+  readonly loading = this._loading.asReadonly();
 
   getAll(page = 1): Observable<Child[]> {
-    this.loading.set(true);
+    this._loading.set(true);
     return this.http.get<Child[]>(`/api/children/all/${page}`).pipe(
-      tap(data  => { this.children.set(data); this.loading.set(false); }),
-      catchError(err => { this.loading.set(false); throw err; }),
+      tap(data  => { this._children.set(data); this._loading.set(false); }),
+      catchError(err => { this._loading.set(false); throw err; }),
     );
   }
 

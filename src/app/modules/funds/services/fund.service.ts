@@ -5,24 +5,29 @@ import { FundEntry, FundSummary } from '../models/fund-entry.model';
 
 @Injectable({ providedIn: 'root' })
 export class FundService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-  childrenFund = signal<FundEntry[]>([]);
-  internalFund = signal<FundEntry[]>([]);
-  loading      = signal(false);
+  private readonly _childrenFund = signal<FundEntry[]>([]);
+  readonly childrenFund = this._childrenFund.asReadonly();
+
+  private readonly _internalFund = signal<FundEntry[]>([]);
+  readonly internalFund = this._internalFund.asReadonly();
+
+  private readonly _loading = signal(false);
+  readonly loading = this._loading.asReadonly();
 
   getAll(): Observable<FundSummary> {
-    this.loading.set(true);
+    this._loading.set(true);
     return forkJoin({
       childrenFund: this.http.get<FundEntry[]>('/api/childrenFund'),
       internalFund: this.http.get<FundEntry[]>('/api/internalFund'),
     }).pipe(
       tap(({ childrenFund, internalFund }) => {
-        this.childrenFund.set(childrenFund);
-        this.internalFund.set(internalFund);
-        this.loading.set(false);
+        this._childrenFund.set(childrenFund);
+        this._internalFund.set(internalFund);
+        this._loading.set(false);
       }),
-      catchError(err => { this.loading.set(false); throw err; }),
+      catchError(err => { this._loading.set(false); throw err; }),
     );
   }
 }

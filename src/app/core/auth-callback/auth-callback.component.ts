@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 /**
@@ -12,8 +12,4 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './auth-callback.component.html',
   imports: [TranslateModule],
 })
-export class AuthCallbackComponent implements OnInit {
-  ngOnInit(): void {
-    // BFF handles the redirect to '/' — nothing to do here.
-  }
-}
+export class AuthCallbackComponent {}

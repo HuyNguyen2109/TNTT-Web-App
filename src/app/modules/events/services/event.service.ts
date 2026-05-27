@@ -5,16 +5,19 @@ import { EventModel } from '../models/event.model';
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-  events  = signal<EventModel[]>([]);
-  loading = signal(false);
+  private readonly _events = signal<EventModel[]>([]);
+  readonly events = this._events.asReadonly();
+
+  private readonly _loading = signal(false);
+  readonly loading = this._loading.asReadonly();
 
   getAll(): Observable<EventModel[]> {
-    this.loading.set(true);
+    this._loading.set(true);
     return this.http.get<EventModel[]>('/api/event/all').pipe(
-      tap(data  => { this.events.set(data); this.loading.set(false); }),
-      catchError(err => { this.loading.set(false); throw err; }),
+      tap(data  => { this._events.set(data); this._loading.set(false); }),
+      catchError(err => { this._loading.set(false); throw err; }),
     );
   }
 }

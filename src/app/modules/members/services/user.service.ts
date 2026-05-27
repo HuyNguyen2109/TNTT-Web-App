@@ -5,16 +5,19 @@ import { Member } from '../models/member.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-  members = signal<Member[]>([]);
-  loading  = signal(false);
+  private readonly _members = signal<Member[]>([]);
+  readonly members = this._members.asReadonly();
+
+  private readonly _loading = signal(false);
+  readonly loading = this._loading.asReadonly();
 
   getAll(): Observable<Member[]> {
-    this.loading.set(true);
+    this._loading.set(true);
     return this.http.get<Member[]>('/api/user/all').pipe(
-      tap(data  => { this.members.set(data); this.loading.set(false); }),
-      catchError(err => { this.loading.set(false); throw err; }),
+      tap(data  => { this._members.set(data); this._loading.set(false); }),
+      catchError(err => { this._loading.set(false); throw err; }),
     );
   }
 

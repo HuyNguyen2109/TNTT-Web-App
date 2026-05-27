@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
@@ -14,10 +14,10 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './topbar.component.scss',
 })
 export class TopbarComponent {
-  auth = inject(AuthService);
+  protected readonly auth = inject(AuthService);
 
-  userInitial(): string {
+  protected readonly userInitial = computed(() => {
     const name = this.auth.currentUser()?.displayName ?? '';
     return name.charAt(0).toUpperCase() || 'U';
-  }
+  });
 }

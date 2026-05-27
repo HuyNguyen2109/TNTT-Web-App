@@ -1,4 +1,4 @@
-@if (loading()) {
+@if (dashboardService.loading()) {
   <div class="flex items-center justify-center h-[60vh]">
     <p-progressSpinner />
   </div>
@@ -11,7 +11,7 @@
           <span class="pi pi-wallet"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ stats()?.generalFund | number }}</div>
+          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.generalFund | number }}</div>
           <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.GENERAL_FUND' | translate }}</div>
         </div>
       </div>
@@ -23,7 +23,7 @@
           <span class="pi pi-building"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ stats()?.orgFund | number }}</div>
+          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.orgFund | number }}</div>
           <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.ORG_FUND' | translate }}</div>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <span class="pi pi-id-card"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ stats()?.memberCount }}</div>
+          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.memberCount }}</div>
           <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.MEMBER_COUNT' | translate }}</div>
         </div>
       </div>
@@ -47,7 +47,7 @@
           <span class="pi pi-users"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ stats()?.childrenCount }}</div>
+          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.childrenCount }}</div>
           <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.CHILDREN_COUNT' | translate }}</div>
         </div>
       </div>

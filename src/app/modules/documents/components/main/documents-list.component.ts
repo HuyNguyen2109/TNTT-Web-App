@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Table } from 'primeng/table';
-import { MessageService } from 'primeng/api';
 import { DocumentService } from '../../services/document.service';
 
 @Component({
@@ -8,14 +8,14 @@ import { DocumentService } from '../../services/document.service';
   selector: 'app-documents-list',
   templateUrl: './documents-list.component.html',
   styleUrl: './documents-list.component.scss',
-  providers: [MessageService],
 })
 export class DocumentsListComponent implements OnInit {
   @ViewChild('tableRef') tableRef!: Table;
-  service = inject(DocumentService);
+  protected readonly service = inject(DocumentService);
+  private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    this.service.getAll().subscribe();
+    this.service.getAll().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   onSearch(event: Event): void {

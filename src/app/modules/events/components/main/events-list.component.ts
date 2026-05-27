@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Table } from 'primeng/table';
-import { MessageService } from 'primeng/api';
 import { EventService } from '../../services/event.service';
 
 @Component({
@@ -8,14 +8,14 @@ import { EventService } from '../../services/event.service';
   selector: 'app-events-list',
   templateUrl: './events-list.component.html',
   styleUrl: './events-list.component.scss',
-  providers: [MessageService],
 })
 export class EventsListComponent implements OnInit {
   @ViewChild('tableRef') tableRef!: Table;
-  service = inject(EventService);
+  protected readonly service = inject(EventService);
+  private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    this.service.getAll().subscribe();
+    this.service.getAll().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   onSearch(event: Event): void {
