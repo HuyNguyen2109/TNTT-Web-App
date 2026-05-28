@@ -3,24 +3,95 @@
   height: 100%;
 }
 
+/* ===================================================
+ * Global SAKAI CSS token aliases
+ * Maps PrimeNG v18 tokens to SAKAI variable names
+ * =================================================== */
+:root {
+  --surface-ground: var(--p-surface-100);
+  --surface-card: var(--p-content-background);
+  --surface-overlay: var(--p-overlay-popover-background);
+  --surface-hover: var(--p-content-hover-background);
+  --surface-border: var(--p-content-border-color);
+  --text-color: var(--p-text-color);
+  --text-color-secondary: var(--p-text-muted-color);
+  --primary-color: var(--p-primary-color);
+  --content-border-radius: var(--p-content-border-radius);
+  --layout-section-transition-duration: 0.2s;
+  --element-transition-duration: var(--p-transition-duration);
+}
+
+/* ===================================================
+ * Layout wrapper — full viewport, position context
+ * =================================================== */
 .layout-wrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ===================================================
+ * Main container — pushed right by sidebar in static mode
+ * =================================================== */
+.layout-main-container {
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  overflow: hidden;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 6rem 2rem 2rem 2rem;
+  transition: margin-left var(--layout-section-transition-duration);
 }
 
 .layout-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-width: 0;
+  flex: 1 1 auto;
 }
 
-.layout-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1.5rem;
-  background-color: var(--p-surface-50, #f8f9fa);
+/* Static mode: sidebar visible → push content right */
+.layout-wrapper.layout-static .layout-main-container {
+  margin-left: 22rem;
+}
+
+/* Static mode collapsed: sidebar hidden → no margin */
+.layout-wrapper.layout-static.layout-static-inactive .layout-main-container {
+  margin-left: 0;
+  padding-left: 2rem;
+}
+
+/* Overlay mode: sidebar slides over content, no margin shift */
+.layout-wrapper.layout-overlay .layout-main-container {
+  margin-left: 0;
+  padding-left: 2rem;
+}
+
+/* Mobile (≤991px): always no margin */
+@media screen and (max-width: 991px) {
+  .layout-wrapper .layout-main-container {
+    margin-left: 0 !important;
+    padding-left: 2rem;
+  }
+}
+
+/* ===================================================
+ * Mobile overlay mask
+ * =================================================== */
+.layout-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  width: 100%;
+  height: 100%;
+  background-color: var(--p-mask-background, rgba(0, 0, 0, 0.4));
+  cursor: pointer;
+}
+
+.layout-wrapper.layout-mobile-active .layout-mask,
+.layout-wrapper.layout-overlay-active .layout-mask {
+  display: block;
+}
+
+/* On desktop static mode, never show the mask */
+@media screen and (min-width: 992px) {
+  .layout-wrapper.layout-static .layout-mask {
+    display: none !important;
+  }
 }

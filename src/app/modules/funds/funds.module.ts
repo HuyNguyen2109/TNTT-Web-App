@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { ToolbarModule } from 'primeng/toolbar';
 import { TabsModule } from 'primeng/tabs';
 
 import { FundsRoutingModule } from './funds-routing.module';
@@ -19,7 +18,6 @@ import { FundsListComponent } from './components/main/funds-list.component';
     TableModule,
     ButtonModule,
     ProgressSpinnerModule,
-    ToolbarModule,
     TabsModule,
   ],
 })

@@ -1,5 +1,18 @@
-<div class="sidebar-header">
-  <span class="pi pi-star-fill"></span>
-  <span>Xứ Đoàn</span>
+<div class="layout-sidebar">
+  <nav class="layout-menu">
+    @for (item of navItems; track item.routerLink) {
+      <li class="layout-menuitem">
+        <a
+          [routerLink]="item.routerLink"
+          routerLinkActive="active-route"
+          [routerLinkActiveOptions]="{ exact: false }"
+          pRipple
+          class="layout-menuitem-link"
+        >
+          <i [class]="item.icon + ' layout-menuitem-icon'"></i>
+          <span class="layout-menuitem-text">{{ item.label }}</span>
+        </a>
+      </li>
+    }
+  </nav>
 </div>
-<p-panelMenu [model]="menuItems" class="sidebar-menu" />

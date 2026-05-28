@@ -5,7 +5,6 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { ToolbarModule } from 'primeng/toolbar';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 
@@ -22,7 +21,6 @@ import { DocumentsListComponent } from './components/main/documents-list.compone
     ButtonModule,
     InputTextModule,
     ProgressSpinnerModule,
-    ToolbarModule,
     IconFieldModule,
     InputIconModule,
   ],

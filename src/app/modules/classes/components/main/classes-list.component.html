@@ -1,62 +1,61 @@
-<p-toolbar class="page-toolbar">
-  <ng-template pTemplate="start">
-    <h2 class="m-0 text-xl font-semibold">{{ 'CLASSES.TITLE' | translate }}</h2>
-  </ng-template>
-  <ng-template pTemplate="end">
-    <p-iconfield>
-      <p-inputicon class="pi pi-search" />
-      <input
-        pInputText
-        type="text"
-        [placeholder]="'COMMON.SEARCH' | translate"
-        (input)="onSearch($event)"
+<div class="page-container">
+  <div class="page-header">
+    <h2 class="page-title">{{ 'CLASSES.TITLE' | translate }}</h2>
+    <div class="page-actions">
+      <p-iconfield>
+        <p-inputicon class="pi pi-search" />
+        <input
+          pInputText
+          type="text"
+          [placeholder]="'COMMON.SEARCH' | translate"
+          (input)="onSearch($event)"
+        />
+      </p-iconfield>
+      <p-button
+        icon="pi pi-plus"
+        [label]="'CLASSES.ADD_NEW' | translate"
+        severity="success"
       />
-    </p-iconfield>
-    <p-button
-      icon="pi pi-plus"
-      [label]="'CLASSES.ADD_NEW' | translate"
-      severity="success"
-      class="ml-2"
-    />
-  </ng-template>
-</p-toolbar>
+    </div>
+  </div>
 
-@if (service.loading()) {
-  <div class="flex justify-center py-16"><p-progressSpinner /></div>
-} @else {
-  <p-table
-    #tableRef
-    [value]="service.classes()"
-    [paginator]="true"
-    [rows]="20"
-    [rowsPerPageOptions]="[10, 20, 50]"
-    styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
-    [globalFilterFields]="['className','teacherUsername']"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="className">
-          {{ 'CLASSES.CLASS_NAME' | translate }}
-          <p-sortIcon field="className" />
-        </th>
-        <th>{{ 'CLASSES.TEACHER' | translate }}</th>
-        <th style="width: 6rem"></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-cls>
-      <tr>
-        <td>{{ cls.className }}</td>
-        <td>{{ cls.teacherUsername }}</td>
-        <td>
-          <p-button icon="pi pi-pencil" [text]="true" severity="info" />
-          <p-button icon="pi pi-trash" [text]="true" severity="danger" />
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="3" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
-}
+  @if (service.loading()) {
+    <div class="flex justify-center py-16"><p-progressSpinner /></div>
+  } @else {
+    <p-table
+      #tableRef
+      [value]="service.classes()"
+      [paginator]="true"
+      [rows]="20"
+      [rowsPerPageOptions]="[10, 20, 50]"
+      styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
+      [globalFilterFields]="['className','teacherUsername']"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="className">
+            {{ 'CLASSES.CLASS_NAME' | translate }}
+            <p-sortIcon field="className" />
+          </th>
+          <th>{{ 'CLASSES.TEACHER' | translate }}</th>
+          <th style="width: 6rem"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-cls>
+        <tr>
+          <td>{{ cls.className }}</td>
+          <td>{{ cls.teacherUsername }}</td>
+          <td>
+            <p-button icon="pi pi-pencil" [text]="true" severity="info" />
+            <p-button icon="pi pi-trash" [text]="true" severity="danger" />
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="3" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  }
+</div>

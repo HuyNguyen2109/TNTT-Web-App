@@ -2,11 +2,119 @@
   display: block;
 }
 
-::ng-deep .topbar-bar {
-  border-bottom: 1px solid var(--p-content-border-color) !important;
-  border-radius: 0 !important;
-  padding: 0.5rem 1.25rem !important;
-  border-left: none !important;
-  border-right: none !important;
-  border-top: none !important;
+.layout-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background-color: var(--surface-overlay, var(--p-overlay-popover-background));
+  border-bottom: 1px solid var(--surface-border, var(--p-content-border-color));
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02),
+              0px 0px 2px rgba(0, 0, 0, 0.05),
+              0px 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Left container: 20rem wide to align with sidebar */
+.layout-topbar-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 20rem;
+}
+
+/* App logo link */
+.layout-topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-color, var(--p-text-color));
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  i {
+    font-size: 1.5rem;
+    color: var(--primary-color, var(--p-primary-color));
+  }
+}
+
+/* Generic action button (hamburger, logout, etc.) */
+.layout-topbar-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-color, var(--p-text-color));
+  cursor: pointer;
+  transition: background-color var(--element-transition-duration, var(--p-transition-duration));
+  font-size: 1rem;
+
+  &:hover {
+    background-color: var(--surface-hover, var(--p-content-hover-background));
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color, var(--p-primary-color));
+  }
+}
+
+/* Hamburger/menu toggle */
+.layout-menu-button {
+  margin-right: 0.25rem;
+}
+
+/* Right actions group */
+.layout-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.layout-topbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.layout-topbar-menu-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* User name — hide on small screens */
+.layout-topbar-username {
+  font-size: 0.875rem;
+  color: var(--text-color, var(--p-text-color));
+  white-space: nowrap;
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+
+/* Logout button: auto-width (not fixed circle) */
+.layout-topbar-menu-content button.layout-topbar-action {
+  width: auto;
+  padding: 0 0.75rem;
+  border-radius: var(--content-border-radius, 6px);
+
+  i { font-size: 1rem; }
+
+  span {
+    font-size: 0.875rem;
+    @media screen and (max-width: 768px) { display: none; }
+  }
 }

@@ -1,18 +1,44 @@
-<p-toolbar class="topbar-bar">
-  <ng-template pTemplate="end">
-    <div class="flex items-center gap-3">
-      <p-avatar
-        [label]="userInitial()"
-        shape="circle"
-      />
-      <span class="text-sm text-[var(--p-text-color)]">{{ auth.currentUser()?.displayName }}</span>
-      <p-button
-        icon="pi pi-sign-out"
-        [text]="true"
-        severity="secondary"
-        [pTooltip]="'NAV.LOGOUT' | translate"
-        (onClick)="auth.logout()"
-      />
+<div class="layout-topbar">
+  <!-- Left: hamburger + logo -->
+  <div class="layout-topbar-logo-container">
+    <button
+      type="button"
+      class="layout-menu-button layout-topbar-action"
+      (click)="layoutService.onMenuToggle()"
+      pRipple
+    >
+      <i class="pi pi-bars"></i>
+    </button>
+    <a class="layout-topbar-logo" routerLink="/">
+      <i class="pi pi-star-fill"></i>
+      <span>Xứ Đoàn</span>
+    </a>
+  </div>
+
+  <!-- Right: user actions -->
+  <div class="layout-topbar-actions">
+    <div class="layout-topbar-menu">
+      <div class="layout-topbar-menu-content">
+        <p-avatar
+          [label]="userInitial()"
+          shape="circle"
+          class="layout-topbar-action"
+          [pTooltip]="auth.currentUser()?.displayName ?? ''"
+          tooltipPosition="bottom"
+        />
+        <span class="layout-topbar-username">{{ auth.currentUser()?.displayName }}</span>
+        <button
+          type="button"
+          class="layout-topbar-action"
+          (click)="auth.logout()"
+          pRipple
+          [pTooltip]="'NAV.LOGOUT' | translate"
+          tooltipPosition="bottom"
+        >
+          <i class="pi pi-sign-out"></i>
+          <span>{{ 'NAV.LOGOUT' | translate }}</span>
+        </button>
+      </div>
     </div>
-  </ng-template>
-</p-toolbar>
+  </div>
+</div>

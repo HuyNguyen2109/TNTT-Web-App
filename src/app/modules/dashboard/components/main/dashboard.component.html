@@ -1,54 +1,54 @@
 @if (dashboardService.loading()) {
-  <div class="flex items-center justify-center h-[60vh]">
+  <div class="flex items-center justify-center" style="height: 60vh;">
     <p-progressSpinner />
   </div>
 } @else {
-  <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
+  <div class="stat-card-grid">
 
     <p-card>
-      <div class="flex items-center gap-5 py-2">
-        <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-blue-100 text-blue-700">
+      <div class="stat-card-inner">
+        <div class="stat-card-icon bg-blue-100 text-blue-700">
           <span class="pi pi-wallet"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.generalFund | number }}</div>
-          <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.GENERAL_FUND' | translate }}</div>
+          <div class="stat-card-value">{{ dashboardService.stats()?.generalFund | number }}</div>
+          <div class="stat-card-label">{{ 'DASHBOARD.GENERAL_FUND' | translate }}</div>
         </div>
       </div>
     </p-card>
 
     <p-card>
-      <div class="flex items-center gap-5 py-2">
-        <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-green-100 text-green-700">
+      <div class="stat-card-inner">
+        <div class="stat-card-icon bg-green-100 text-green-700">
           <span class="pi pi-building"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.orgFund | number }}</div>
-          <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.ORG_FUND' | translate }}</div>
+          <div class="stat-card-value">{{ dashboardService.stats()?.orgFund | number }}</div>
+          <div class="stat-card-label">{{ 'DASHBOARD.ORG_FUND' | translate }}</div>
         </div>
       </div>
     </p-card>
 
     <p-card>
-      <div class="flex items-center gap-5 py-2">
-        <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-orange-100 text-orange-700">
+      <div class="stat-card-inner">
+        <div class="stat-card-icon bg-orange-100 text-orange-700">
           <span class="pi pi-id-card"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.memberCount }}</div>
-          <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.MEMBER_COUNT' | translate }}</div>
+          <div class="stat-card-value">{{ dashboardService.stats()?.memberCount }}</div>
+          <div class="stat-card-label">{{ 'DASHBOARD.MEMBER_COUNT' | translate }}</div>
         </div>
       </div>
     </p-card>
 
     <p-card>
-      <div class="flex items-center gap-5 py-2">
-        <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-purple-100 text-purple-700">
+      <div class="stat-card-inner">
+        <div class="stat-card-icon bg-purple-100 text-purple-700">
           <span class="pi pi-users"></span>
         </div>
         <div>
-          <div class="text-3xl font-bold leading-none text-[var(--p-text-color)]">{{ dashboardService.stats()?.childrenCount }}</div>
-          <div class="text-sm mt-1.5 text-[var(--p-text-color-secondary)]">{{ 'DASHBOARD.CHILDREN_COUNT' | translate }}</div>
+          <div class="stat-card-value">{{ dashboardService.stats()?.childrenCount }}</div>
+          <div class="stat-card-label">{{ 'DASHBOARD.CHILDREN_COUNT' | translate }}</div>
         </div>
       </div>
     </p-card>
