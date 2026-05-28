@@ -73,9 +73,12 @@
 /* Hamburger/menu toggle */
 .layout-menu-button {
   margin-right: 0.25rem;
+  overflow: visible;
 
   i {
     display: inline-block;
+    position: relative;
+    z-index: 1;
     font-size: 1.25rem;
     line-height: 1;
     color: var(--text-color, var(--p-text-color, #334155));
