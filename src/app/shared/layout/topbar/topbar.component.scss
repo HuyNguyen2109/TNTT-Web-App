@@ -73,6 +73,14 @@
 /* Hamburger/menu toggle */
 .layout-menu-button {
   margin-right: 0.25rem;
+
+  i {
+    display: inline-block;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--text-color, var(--p-text-color, #334155));
+    pointer-events: none;
+  }
 }
 
 /* Right actions group */

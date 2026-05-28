@@ -38,6 +38,11 @@
   transform: translateX(0);
 }
 
+/* Static mode collapsed (desktop): slide sidebar off-screen */
+:host-context(.layout-static-inactive) .layout-sidebar {
+  transform: translateX(calc(-100% - 2rem));
+}
+
 /* Overlay mode: hidden by default on desktop too */
 :host-context(.layout-overlay) .layout-sidebar {
   left: 0;
