@@ -1,4 +1,12 @@
 <p-toolbar class="topbar-bar">
+  <ng-template pTemplate="start">
+    <p-button
+      icon="pi pi-bars"
+      [text]="true"
+      severity="secondary"
+      (onClick)="layout.onMenuToggle()"
+    />
+  </ng-template>
   <ng-template pTemplate="end">
     <div class="flex items-center gap-3">
       <p-avatar

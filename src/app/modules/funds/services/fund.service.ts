@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, tap, catchError } from 'rxjs';
+import { Observable, forkJoin, tap, catchError, of } from 'rxjs';
 import { FundEntry, FundSummary } from '../models/fund-entry.model';
 
 @Injectable({ providedIn: 'root' })
@@ -14,8 +14,8 @@ export class FundService {
   getAll(): Observable<FundSummary> {
     this.loading.set(true);
     return forkJoin({
-      childrenFund: this.http.get<FundEntry[]>('/api/childrenFund'),
-      internalFund: this.http.get<FundEntry[]>('/api/internalFund'),
+      childrenFund: this.http.get<FundEntry[]>('/api/childrenFund').pipe(catchError(() => of([]))),
+      internalFund: this.http.get<FundEntry[]>('/api/internalFund').pipe(catchError(() => of([]))),
     }).pipe(
       tap(({ childrenFund, internalFund }) => {
         this.childrenFund.set(childrenFund);

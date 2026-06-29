@@ -1,12 +1,15 @@
 @if (loading()) {
-  <div class="flex items-center justify-center h-[60vh]">
-    <p-progressSpinner />
+  <div class="grid grid-cols-4 gap-6 mb-6">
+    @for (_ of [1,2,3,4]; track _) {
+      <p-card><p-skeleton width="100%" height="6rem" /></p-card>
+    }
   </div>
+  <p-skeleton width="100%" height="20rem" />
 } @else {
-  <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-6">
-
-    <p-card>
-      <div class="flex items-center gap-5 py-2">
+  <div class="grid grid-cols-4 gap-6 mb-6">
+    <!-- Stat cards with trend indicators -->
+    <p-card [style]="{ 'border-radius': '12px' }">
+      <div class="flex items-center gap-4 py-1">
         <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-blue-100 text-blue-700">
           <span class="pi pi-wallet"></span>
         </div>
@@ -17,8 +20,8 @@
       </div>
     </p-card>
 
-    <p-card>
-      <div class="flex items-center gap-5 py-2">
+    <p-card [style]="{ 'border-radius': '12px' }">
+      <div class="flex items-center gap-4 py-1">
         <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-green-100 text-green-700">
           <span class="pi pi-building"></span>
         </div>
@@ -29,8 +32,8 @@
       </div>
     </p-card>
 
-    <p-card>
-      <div class="flex items-center gap-5 py-2">
+    <p-card [style]="{ 'border-radius': '12px' }">
+      <div class="flex items-center gap-4 py-1">
         <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-orange-100 text-orange-700">
           <span class="pi pi-id-card"></span>
         </div>
@@ -41,8 +44,8 @@
       </div>
     </p-card>
 
-    <p-card>
-      <div class="flex items-center gap-5 py-2">
+    <p-card [style]="{ 'border-radius': '12px' }">
+      <div class="flex items-center gap-4 py-1">
         <div class="w-14 h-14 rounded-xl flex items-center justify-center text-2xl shrink-0 bg-purple-100 text-purple-700">
           <span class="pi pi-users"></span>
         </div>
@@ -54,4 +57,31 @@
     </p-card>
 
   </div>
+
+  <!-- Recent Activity section -->
+  <p-card header="Hoạt động gần đây" [style]="{ 'border-radius': '12px' }">
+    <div class="flex flex-col gap-3">
+      <div class="flex items-center gap-3 py-2 border-b border-[var(--p-content-border-color)]">
+        <span class="pi pi-user-plus text-green-500 text-lg"></span>
+        <div class="flex-1">
+          <div class="text-sm font-medium">Đăng ký GLV mới</div>
+          <div class="text-xs text-[var(--p-text-muted-color)]">Hôm nay, 09:30</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 py-2 border-b border-[var(--p-content-border-color)]">
+        <span class="pi pi-dollar text-blue-500 text-lg"></span>
+        <div class="flex-1">
+          <div class="text-sm font-medium">Cập nhật Quỹ Thiếu Nhi</div>
+          <div class="text-xs text-[var(--p-text-muted-color)]">Hôm qua, 14:15</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 py-2">
+        <span class="pi pi-calendar-plus text-orange-500 text-lg"></span>
+        <div class="flex-1">
+          <div class="text-sm font-medium">Sự kiện mới được tạo</div>
+          <div class="text-xs text-[var(--p-text-muted-color)]">2 ngày trước</div>
+        </div>
+      </div>
+    </div>
+  </p-card>
 }

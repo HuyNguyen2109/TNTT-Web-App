@@ -22,7 +22,13 @@
 </p-toolbar>
 
 @if (service.loading()) {
-  <div class="flex justify-center py-16"><p-progressSpinner /></div>
+  <div class="p-4">
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" />
+  </div>
 } @else {
   <p-table
     #tableRef
@@ -32,6 +38,7 @@
     [rowsPerPageOptions]="[10, 20, 50]"
     styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
     [globalFilterFields]="['holyName','firstName','lastName']"
+    [rowHover]="true"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -45,6 +52,7 @@
         </th>
         <th>{{ 'CHILDREN.BIRTHDAY' | translate }}</th>
         <th>{{ 'CHILDREN.CLASS' | translate }}</th>
+        <th>{{ 'COMMON.STATUS' | translate }}</th>
         <th style="width: 6rem"></th>
       </tr>
     </ng-template>
@@ -54,16 +62,19 @@
         <td>{{ child.firstName }} {{ child.lastName }}</td>
         <td>{{ child.birthday }}</td>
         <td>{{ child.classID }}</td>
+        <td><p-tag [value]="child.active ? 'Hoạt động' : 'Tạm ngưng'" [severity]="child.active ? 'success' : 'danger'" /></td>
         <td>
           <p-button icon="pi pi-pencil" [text]="true" severity="info" />
-          <p-button icon="pi pi-trash" [text]="true" severity="danger" />
+          <p-button icon="pi pi-trash" [text]="true" severity="danger" (click)="confirmDelete($event, child, 'holyName')" />
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="5" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
+        <td colspan="6" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
       </tr>
     </ng-template>
   </p-table>
 }
+<p-confirmpopup />
+<p-toast />

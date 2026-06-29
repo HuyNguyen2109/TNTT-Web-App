@@ -1,0 +1,71 @@
+- generic [ref=e4]:
+  - toolbar [ref=e6]:
+    - button "" [ref=e9] [cursor=pointer]:
+      - generic [ref=e10]: 
+    - generic [ref=e12]:
+      - generic [ref=e14]: D
+      - generic [ref=e15]: Dev User (bypass)
+      - button "" [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: 
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - generic [ref=e22]: Xứ Đoàn
+    - generic [ref=e23]:
+      - button "Thông tin chung" [ref=e25]:
+        - link " Thông tin chung" [ref=e27] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e28]: 
+          - generic [ref=e29]: Thông tin chung
+      - button "Thiếu Nhi" [ref=e31]:
+        - link " Thiếu Nhi" [ref=e33] [cursor=pointer]:
+          - /url: /children
+          - generic [ref=e34]: 
+          - generic [ref=e35]: Thiếu Nhi
+      - button "Giáo Lý Viên" [ref=e37]:
+        - link " Giáo Lý Viên" [ref=e39] [cursor=pointer]:
+          - /url: /members
+          - generic [ref=e40]: 
+          - generic [ref=e41]: Giáo Lý Viên
+      - generic [ref=e42]:
+        - button "Quỹ" [expanded] [active] [ref=e43]:
+          - link " Quỹ" [ref=e45] [cursor=pointer]:
+            - /url: /funds
+            - generic [ref=e46]: 
+            - generic [ref=e47]: Quỹ
+        - region "Quỹ":
+          - generic:
+            - generic:
+              - list:
+                - tree
+      - button "Lớp" [ref=e49]:
+        - link " Lớp" [ref=e51] [cursor=pointer]:
+          - /url: /classes
+          - generic [ref=e52]: 
+          - generic [ref=e53]: Lớp
+      - button "Sự kiện" [ref=e55]:
+        - link " Sự kiện" [ref=e57] [cursor=pointer]:
+          - /url: /events
+          - generic [ref=e58]: 
+          - generic [ref=e59]: Sự kiện
+      - button "Tài liệu" [ref=e61]:
+        - link " Tài liệu" [ref=e63] [cursor=pointer]:
+          - /url: /documents
+          - generic [ref=e64]: 
+          - generic [ref=e65]: Tài liệu
+  - generic [ref=e66]:
+    - generic [ref=e219]:
+      - toolbar [ref=e220]:
+        - heading "Quỹ" [level=2] [ref=e222]
+        - button " Thêm giao dịch" [ref=e225] [cursor=pointer]:
+          - generic [ref=e226]: 
+          - generic [ref=e227]: Thêm giao dịch
+      - generic [ref=e228]:
+        - generic [ref=e229]:
+          - tablist [ref=e231]:
+            - tab "Quỹ Thiếu Nhi" [ref=e232] [cursor=pointer]
+            - tab "Quỹ Xứ Đoàn" [ref=e233] [cursor=pointer]
+          - button "Next" [ref=e234] [cursor=pointer]:
+            - img [ref=e235]
+        - text:                    
+    - generic [ref=e127]: Xứ Đoàn TNTT © 2026

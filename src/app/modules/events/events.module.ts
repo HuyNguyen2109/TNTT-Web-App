@@ -8,6 +8,11 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToolbarModule } from 'primeng/toolbar';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { ToastModule } from 'primeng/toast';
+import { TagModule } from 'primeng/tag';
+import { SkeletonModule } from 'primeng/skeleton';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { EventsRoutingModule } from './events-routing.module';
 import { EventsListComponent } from './components/main/events-list.component';
@@ -25,6 +30,11 @@ import { EventsListComponent } from './components/main/events-list.component';
     ToolbarModule,
     IconFieldModule,
     InputIconModule,
+    ToastModule,
+    TagModule,
+    SkeletonModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule,
   ],
 })
 export class EventsModule {}

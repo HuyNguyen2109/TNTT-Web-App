@@ -12,7 +12,13 @@
 </p-toolbar>
 
 @if (service.loading()) {
-  <div class="flex justify-center py-16"><p-progressSpinner /></div>
+  <div class="p-4">
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" styleClass="mb-2" />
+    <p-skeleton width="100%" height="3rem" />
+  </div>
 } @else {
   <p-tabs>
     <p-tablist>
@@ -27,9 +33,11 @@
           [paginator]="true"
           [rows]="20"
           styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
+          [rowHover]="true"
         >
           <ng-template pTemplate="header">
             <tr>
+              <th>{{ 'FUNDS.TYPE' | translate }}</th>
               <th>{{ 'FUNDS.DATE' | translate }}</th>
               <th>{{ 'FUNDS.AMOUNT' | translate }}</th>
               <th>{{ 'FUNDS.NOTE' | translate }}</th>
@@ -38,18 +46,19 @@
           </ng-template>
           <ng-template pTemplate="body" let-entry>
             <tr>
+              <td><p-tag [value]="entry.type === 'income' ? ('FUNDS.INCOME' | translate) : ('FUNDS.EXPENSE' | translate)" [severity]="entry.type === 'income' ? 'success' : 'warn'" /></td>
               <td>{{ entry.date }}</td>
               <td>{{ entry.amount | number }}</td>
               <td>{{ entry.note }}</td>
               <td>
                 <p-button icon="pi pi-pencil" [text]="true" severity="info" />
-                <p-button icon="pi pi-trash" [text]="true" severity="danger" />
+                <p-button icon="pi pi-trash" [text]="true" severity="danger" (click)="confirmDelete($event, entry, 'note')" />
               </td>
             </tr>
           </ng-template>
           <ng-template pTemplate="emptymessage">
             <tr>
-              <td colspan="4" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
+              <td colspan="5" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
             </tr>
           </ng-template>
         </p-table>
@@ -61,9 +70,11 @@
           [paginator]="true"
           [rows]="20"
           styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm"
+          [rowHover]="true"
         >
           <ng-template pTemplate="header">
             <tr>
+              <th>{{ 'FUNDS.TYPE' | translate }}</th>
               <th>{{ 'FUNDS.DATE' | translate }}</th>
               <th>{{ 'FUNDS.AMOUNT' | translate }}</th>
               <th>{{ 'FUNDS.NOTE' | translate }}</th>
@@ -72,18 +83,19 @@
           </ng-template>
           <ng-template pTemplate="body" let-entry>
             <tr>
+              <td><p-tag [value]="entry.type === 'income' ? ('FUNDS.INCOME' | translate) : ('FUNDS.EXPENSE' | translate)" [severity]="entry.type === 'income' ? 'success' : 'warn'" /></td>
               <td>{{ entry.date }}</td>
               <td>{{ entry.amount | number }}</td>
               <td>{{ entry.note }}</td>
               <td>
                 <p-button icon="pi pi-pencil" [text]="true" severity="info" />
-                <p-button icon="pi pi-trash" [text]="true" severity="danger" />
+                <p-button icon="pi pi-trash" [text]="true" severity="danger" (click)="confirmDelete($event, entry, 'note')" />
               </td>
             </tr>
           </ng-template>
           <ng-template pTemplate="emptymessage">
             <tr>
-              <td colspan="4" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
+              <td colspan="5" class="text-center">{{ 'COMMON.NO_DATA' | translate }}</td>
             </tr>
           </ng-template>
         </p-table>
@@ -92,3 +104,5 @@
     </p-tabpanels>
   </p-tabs>
 }
+<p-confirmpopup />
+<p-toast />

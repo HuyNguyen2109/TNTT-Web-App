@@ -14,6 +14,9 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class AuthCallbackComponent implements OnInit {
   ngOnInit(): void {
-    // BFF handles the redirect to '/' — nothing to do here.
+    // Fallback: redirect to home if BFF doesn't redirect within 10s
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 10000);
   }
 }

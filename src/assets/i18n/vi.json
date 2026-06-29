@@ -23,7 +23,8 @@
     "SUCCESS": "Thành công",
     "ERROR": "Lỗi",
     "NOT_FOUND": "Không tìm thấy",
-    "NO_DATA": "Không có dữ liệu"
+    "NO_DATA": "Không có dữ liệu",
+    "STATUS": "Trạng thái"
   },
   "DASHBOARD": {
     "TITLE": "Thông tin chung",
@@ -61,6 +62,7 @@
     "AMOUNT": "Số tiền",
     "DATE": "Ngày",
     "NOTE": "Ghi chú",
+    "TYPE": "Loại",
     "INCOME": "Thu",
     "EXPENSE": "Chi",
     "BALANCE": "Số dư",

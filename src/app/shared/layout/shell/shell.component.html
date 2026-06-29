@@ -1,10 +1,14 @@
 <p-toast />
-<div class="layout-wrapper">
-  <app-sidebar />
-  <div class="layout-main">
-    <app-topbar />
-    <main class="layout-content">
-      <router-outlet />
-    </main>
+<div class="layout-wrapper" [ngClass]="layout.containerClass()">
+  <app-topbar />
+  <div class="layout-body">
+    <app-sidebar />
+    <div class="layout-mask" (click)="layout.onMenuToggle()"></div>
+    <div class="layout-main-container">
+      <div class="layout-main">
+        <router-outlet />
+      </div>
+      <app-footer />
+    </div>
   </div>
 </div>

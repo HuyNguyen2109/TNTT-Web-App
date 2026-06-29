@@ -8,6 +8,11 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToolbarModule } from 'primeng/toolbar';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { ToastModule } from 'primeng/toast';
+import { TagModule } from 'primeng/tag';
+import { SkeletonModule } from 'primeng/skeleton';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { MembersRoutingModule } from './members-routing.module';
 import { MembersListComponent } from './components/main/members-list.component';
@@ -25,6 +30,11 @@ import { MembersListComponent } from './components/main/members-list.component';
     ToolbarModule,
     IconFieldModule,
     InputIconModule,
+    ToastModule,
+    TagModule,
+    SkeletonModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule,
   ],
 })
 export class MembersModule {}

@@ -1,4 +1,5 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, catchError, of } from 'rxjs';
 import { DashboardStats } from '../../models/dashboard-stats.model';
@@ -11,9 +12,17 @@ import { DashboardStats } from '../../models/dashboard-stats.model';
 })
 export class DashboardComponent implements OnInit {
   private http = inject(HttpClient);
+  private destroyRef = inject(DestroyRef);
 
   loading = signal(true);
   stats = signal<DashboardStats | null>(null);
+
+  private sumFund(data: unknown): number {
+    if (!data) return 0;
+    if (Array.isArray(data)) return data.reduce((sum, e) => sum + (e.amount ?? 0), 0);
+    if (typeof data === 'object' && 'total' in (data as any)) return (data as any).total;
+    return 0;
+  }
 
   ngOnInit(): void {
     forkJoin({
@@ -21,10 +30,10 @@ export class DashboardComponent implements OnInit {
       internalFund: this.http.get<any>('/api/internalFund').pipe(catchError(() => of(null))),
       members:      this.http.get<any[]>('/api/user/all').pipe(catchError(() => of([]))),
       children:     this.http.get<any>('/api/children/count').pipe(catchError(() => of(null))),
-    }).subscribe(({ childrenFund, internalFund, members, children }) => {
+    }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(({ childrenFund, internalFund, members, children }) => {
       this.stats.set({
-        generalFund:   childrenFund?.total  ?? 0,
-        orgFund:       internalFund?.total  ?? 0,
+        generalFund:   this.sumFund(childrenFund),
+        orgFund:       this.sumFund(internalFund),
         memberCount:   Array.isArray(members) ? members.length : 0,
         childrenCount: children?.count      ?? 0,
       });

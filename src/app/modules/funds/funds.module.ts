@@ -6,6 +6,11 @@ import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToolbarModule } from 'primeng/toolbar';
 import { TabsModule } from 'primeng/tabs';
+import { ToastModule } from 'primeng/toast';
+import { TagModule } from 'primeng/tag';
+import { SkeletonModule } from 'primeng/skeleton';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 import { FundsRoutingModule } from './funds-routing.module';
 import { FundsListComponent } from './components/main/funds-list.component';
@@ -21,6 +26,11 @@ import { FundsListComponent } from './components/main/funds-list.component';
     ProgressSpinnerModule,
     ToolbarModule,
     TabsModule,
+    ToastModule,
+    TagModule,
+    SkeletonModule,
+    ConfirmPopupModule,
+    ConfirmDialogModule,
   ],
 })
 export class FundsModule {}

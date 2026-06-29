@@ -1,0 +1,91 @@
+- generic [ref=e4]:
+  - toolbar [ref=e6]:
+    - button "" [ref=e9] [cursor=pointer]:
+      - generic [ref=e10]: 
+    - generic [ref=e12]:
+      - generic [ref=e14]: D
+      - generic [ref=e15]: Dev User (bypass)
+      - button "" [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: 
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - generic [ref=e22]: Xứ Đoàn
+    - generic [ref=e23]:
+      - button "NAV.DASHBOARD" [ref=e25]:
+        - link " NAV.DASHBOARD" [ref=e27] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e28]: 
+          - generic [ref=e29]: NAV.DASHBOARD
+      - button "NAV.CHILDREN" [ref=e31]:
+        - link " NAV.CHILDREN" [ref=e33] [cursor=pointer]:
+          - /url: /children
+          - generic [ref=e34]: 
+          - generic [ref=e35]: NAV.CHILDREN
+      - button "NAV.MEMBERS" [ref=e37]:
+        - link " NAV.MEMBERS" [ref=e39] [cursor=pointer]:
+          - /url: /members
+          - generic [ref=e40]: 
+          - generic [ref=e41]: NAV.MEMBERS
+      - button "NAV.FUNDS" [ref=e43]:
+        - link " NAV.FUNDS" [ref=e45] [cursor=pointer]:
+          - /url: /funds
+          - generic [ref=e46]: 
+          - generic [ref=e47]: NAV.FUNDS
+      - button "NAV.CLASSES" [ref=e49]:
+        - link " NAV.CLASSES" [ref=e51] [cursor=pointer]:
+          - /url: /classes
+          - generic [ref=e52]: 
+          - generic [ref=e53]: NAV.CLASSES
+      - button "NAV.EVENTS" [ref=e55]:
+        - link " NAV.EVENTS" [ref=e57] [cursor=pointer]:
+          - /url: /events
+          - generic [ref=e58]: 
+          - generic [ref=e59]: NAV.EVENTS
+      - button "NAV.DOCUMENTS" [ref=e61]:
+        - link " NAV.DOCUMENTS" [ref=e63] [cursor=pointer]:
+          - /url: /documents
+          - generic [ref=e64]: 
+          - generic [ref=e65]: NAV.DOCUMENTS
+  - generic [ref=e66]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e73]:
+          - generic [ref=e75]: 
+          - generic [ref=e76]:
+            - generic [ref=e77]: "0"
+            - generic [ref=e78]: Quỹ Thiếu Nhi
+        - generic [ref=e82]:
+          - generic [ref=e84]: 
+          - generic [ref=e85]:
+            - generic [ref=e86]: "0"
+            - generic [ref=e87]: Quỹ Xứ Đoàn
+        - generic [ref=e91]:
+          - generic [ref=e93]: 
+          - generic [ref=e94]:
+            - generic [ref=e95]: "2"
+            - generic [ref=e96]: Số lượng GLV
+        - generic [ref=e100]:
+          - generic [ref=e102]: 
+          - generic [ref=e103]:
+            - generic [ref=e104]: "42"
+            - generic [ref=e105]: Số lượng Thiếu Nhi
+      - generic [ref=e107]:
+        - generic [ref=e108]: Hoạt động gần đây
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e112]: 
+            - generic [ref=e113]:
+              - generic [ref=e114]: Đăng ký GLV mới
+              - generic [ref=e115]: Hôm nay, 09:30
+          - generic [ref=e116]:
+            - generic [ref=e117]: 
+            - generic [ref=e118]:
+              - generic [ref=e119]: Cập nhật Quỹ Thiếu Nhi
+              - generic [ref=e120]: Hôm qua, 14:15
+          - generic [ref=e121]:
+            - generic [ref=e122]: 
+            - generic [ref=e123]:
+              - generic [ref=e124]: Sự kiện mới được tạo
+              - generic [ref=e125]: 2 ngày trước
+    - generic [ref=e127]: Xứ Đoàn TNTT © 2026

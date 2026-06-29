@@ -5,6 +5,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { TooltipModule } from 'primeng/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../../core/services/auth.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
   standalone: true,
@@ -15,6 +16,7 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class TopbarComponent {
   auth = inject(AuthService);
+  layout = inject(LayoutService);
 
   userInitial(): string {
     const name = this.auth.currentUser()?.displayName ?? '';

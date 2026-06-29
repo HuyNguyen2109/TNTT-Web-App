@@ -27,8 +27,13 @@ app.use(helmet({
       scriptSrc: ["'self'", "'unsafe-inline'"],   // Angular needs inline scripts
       styleSrc:  ["'self'", "'unsafe-inline'"],
       imgSrc:    ["'self'", 'data:'],
+      upgradeInsecureRequests: null,               // Disable — server is HTTP-only
+      scriptSrcAttr: null,                         // Disable — allows onclick etc.
     },
   },
+  strictTransportSecurity: false,                  // Disable — no HTTPS
+  crossOriginOpenerPolicy: false,                  // Disable — HTTP-only dev env
+  crossOriginResourcePolicy: false,
 }));
 
 app.use(cors({
@@ -67,6 +72,45 @@ const ensureAuthenticated = BYPASS_AUTH
       if (req.isAuthenticated()) return next();
       res.status(401).json({ message: 'Unauthenticated' });
     };
+
+// ── Stub API (when bypassAuth is enabled and no backend is running) ───────────
+if (BYPASS_AUTH) {
+  app.use('/api', (req, res, next) => {
+    if (req.method === 'OPTIONS') return next();
+    console.warn(`[stub] ${req.method} ${req.path}`);
+    next();
+  });
+
+  // Fund entries (used by both dashboard and funds list pages)
+  app.get('/api/childrenFund', (_req, res) => res.json([
+    { date: '2026-06-15', amount: 5000000, note: 'Đóng góp đầu năm', type: 'income' },
+    { date: '2026-06-20', amount: 2000000, note: 'Mua sách giáo lý', type: 'expense' },
+    { date: '2026-06-25', amount: 3000000, note: 'Ủng hộ', type: 'income' },
+    { date: '2026-06-28', amount: 1500000, note: 'Văn phòng phẩm', type: 'expense' },
+    { date: '2026-06-29', amount: 1000000, note: 'Quỹ học bổng', type: 'income' },
+  ]));
+  app.get('/api/internalFund', (_req, res) => res.json([
+    { date: '2026-06-10', amount: 3000000, note: 'Thu quỹ tháng 6', type: 'income' },
+    { date: '2026-06-18', amount: 1500000, note: 'Chi phí sinh hoạt', type: 'expense' },
+    { date: '2026-06-22', amount: 2000000, note: 'Đóng góp từ thiện', type: 'income' },
+    { date: '2026-06-27', amount: 1000000, note: 'Sửa chữa CSVC', type: 'expense' },
+    { date: '2026-06-29', amount: 1500000, note: 'Đóng góp', type: 'income' },
+  ]));
+  app.get('/api/user/all',      (_req, res) => res.json([
+    { holyName: 'Gioan Baotixita', firstName: 'Nguyễn', lastName: 'Văn A', phone: '0901234567', email: 'vana@example.com' },
+    { holyName: 'Maria',           firstName: 'Trần',   lastName: 'Thị B', phone: '0901234568', email: 'thib@example.com' },
+  ]));
+  app.get('/api/children/count', (_req, res) => res.json({ count: 42 }));
+  app.get('/api/children/all/:page', (_req, res) => res.json([
+    { holyName: 'Phêrô', firstName: 'Lê', lastName: 'Văn C', birthday: '2015-03-15', classID: 'Lớp 1A', active: true },
+    { holyName: 'Anna',   firstName: 'Phạm', lastName: 'Thị D', birthday: '2016-07-22', classID: 'Lớp 2B', active: true },
+    { holyName: 'Phaolô', firstName: 'Đỗ', lastName: 'Văn E', birthday: '2014-11-08', classID: 'Lớp 3C', active: false },
+  ]));
+  app.get('/api/class/all',        (_req, res) => res.json([]));
+  app.get('/api/event/all',        (_req, res) => res.json([]));
+  app.get('/api/document/all',     (_req, res) => res.json([]));
+  // Funds detail (stubbed above as summary totals)
+}
 
 // ── Auth routes ───────────────────────────────────────────────────────────────
 if (BYPASS_AUTH) {

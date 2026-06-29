@@ -1,0 +1,132 @@
+- generic [ref=e4]:
+  - toolbar [ref=e6]:
+    - button "" [ref=e9] [cursor=pointer]:
+      - generic [ref=e10]: 
+    - generic [ref=e12]:
+      - generic [ref=e14]: D
+      - generic [ref=e15]: Dev User (bypass)
+      - button "" [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: 
+  - generic [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e21]: 
+      - generic [ref=e22]: Xứ Đoàn
+    - generic [ref=e23]:
+      - button "Thông tin chung" [ref=e25]:
+        - link " Thông tin chung" [ref=e27] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=e28]: 
+          - generic [ref=e29]: Thông tin chung
+      - generic [ref=e30]:
+        - button "Thiếu Nhi" [expanded] [active] [ref=e31]:
+          - link " Thiếu Nhi" [ref=e33] [cursor=pointer]:
+            - /url: /children
+            - generic [ref=e34]: 
+            - generic [ref=e35]: Thiếu Nhi
+        - region "Thiếu Nhi":
+          - generic:
+            - generic:
+              - list:
+                - tree
+      - button "Giáo Lý Viên" [ref=e37]:
+        - link " Giáo Lý Viên" [ref=e39] [cursor=pointer]:
+          - /url: /members
+          - generic [ref=e40]: 
+          - generic [ref=e41]: Giáo Lý Viên
+      - button "Quỹ" [ref=e43]:
+        - link " Quỹ" [ref=e45] [cursor=pointer]:
+          - /url: /funds
+          - generic [ref=e46]: 
+          - generic [ref=e47]: Quỹ
+      - button "Lớp" [ref=e49]:
+        - link " Lớp" [ref=e51] [cursor=pointer]:
+          - /url: /classes
+          - generic [ref=e52]: 
+          - generic [ref=e53]: Lớp
+      - button "Sự kiện" [ref=e55]:
+        - link " Sự kiện" [ref=e57] [cursor=pointer]:
+          - /url: /events
+          - generic [ref=e58]: 
+          - generic [ref=e59]: Sự kiện
+      - button "Tài liệu" [ref=e61]:
+        - link " Tài liệu" [ref=e63] [cursor=pointer]:
+          - /url: /documents
+          - generic [ref=e64]: 
+          - generic [ref=e65]: Tài liệu
+  - generic [ref=e66]:
+    - generic [ref=e128]:
+      - toolbar [ref=e129]:
+        - heading "Thiếu Nhi" [level=2] [ref=e131]
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - generic [ref=e134]: 
+            - textbox "Tìm kiếm" [ref=e135]
+          - button " Thêm Thiếu Nhi" [ref=e137] [cursor=pointer]:
+            - generic [ref=e138]: 
+            - generic [ref=e139]: Thêm Thiếu Nhi
+      - generic [ref=e140]:
+        - table [ref=e142]:
+          - rowgroup [ref=e143]:
+            - row "Tên thánh Họ và tên Sinh nhật Lớp Trạng thái" [ref=e144]:
+              - columnheader "Tên thánh" [ref=e145] [cursor=pointer]:
+                - text: Tên thánh
+                - img [ref=e147]
+              - columnheader "Họ và tên" [ref=e153] [cursor=pointer]:
+                - text: Họ và tên
+                - img [ref=e155]
+              - columnheader "Sinh nhật" [ref=e161]
+              - columnheader "Lớp" [ref=e162]
+              - columnheader "Trạng thái" [ref=e163]
+              - columnheader [ref=e164]
+          - rowgroup [ref=e165]:
+            - row "Phêrô Lê Văn C 2015-03-15 Lớp 1A Hoạt động  " [ref=e166]:
+              - cell "Phêrô" [ref=e167]
+              - cell "Lê Văn C" [ref=e168]
+              - cell "2015-03-15" [ref=e169]
+              - cell "Lớp 1A" [ref=e170]
+              - cell "Hoạt động" [ref=e171]:
+                - generic [ref=e173]: Hoạt động
+              - cell " " [ref=e174]:
+                - button "" [ref=e176] [cursor=pointer]:
+                  - generic [ref=e177]: 
+                - button "" [ref=e179] [cursor=pointer]:
+                  - generic [ref=e180]: 
+            - row "Anna Phạm Thị D 2016-07-22 Lớp 2B Hoạt động  " [ref=e181]:
+              - cell "Anna" [ref=e182]
+              - cell "Phạm Thị D" [ref=e183]
+              - cell "2016-07-22" [ref=e184]
+              - cell "Lớp 2B" [ref=e185]
+              - cell "Hoạt động" [ref=e186]:
+                - generic [ref=e188]: Hoạt động
+              - cell " " [ref=e189]:
+                - button "" [ref=e191] [cursor=pointer]:
+                  - generic [ref=e192]: 
+                - button "" [ref=e194] [cursor=pointer]:
+                  - generic [ref=e195]: 
+            - row "Phaolô Đỗ Văn E 2014-11-08 Lớp 3C Tạm ngưng  " [ref=e196]:
+              - cell "Phaolô" [ref=e197]
+              - cell "Đỗ Văn E" [ref=e198]
+              - cell "2014-11-08" [ref=e199]
+              - cell "Lớp 3C" [ref=e200]
+              - cell "Tạm ngưng" [ref=e201]:
+                - generic [ref=e203]: Tạm ngưng
+              - cell " " [ref=e204]:
+                - button "" [ref=e206] [cursor=pointer]:
+                  - generic [ref=e207]: 
+                - button "" [ref=e209] [cursor=pointer]:
+                  - generic [ref=e210]: 
+        - generic [ref=e211]:
+          - button "First Page":
+            - img
+          - button "Previous Page" [disabled]:
+            - img
+          - button "1" [ref=e213] [cursor=pointer]
+          - button "Next Page" [disabled]:
+            - img
+          - button "Last Page" [disabled]:
+            - img
+          - generic [ref=e214] [cursor=pointer]:
+            - combobox "Rows per page" [ref=e215]: "20"
+            - button "dropdown trigger" [ref=e216]:
+              - img [ref=e217]
+    - generic [ref=e127]: Xứ Đoàn TNTT © 2026

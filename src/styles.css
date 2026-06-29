@@ -33,3 +33,55 @@ body {
   background-color: var(--p-surface-50, #f8f9fa);
   color: var(--p-text-color, #495057);
 }
+
+html {
+  font-size: 14px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Card abstraction */
+.card {
+  background: var(--p-content-background);
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Surface color abstractions */
+:root {
+  --surface-ground: var(--p-surface-100);
+  --surface-card: var(--p-content-background);
+  --surface-border: var(--p-content-border-color);
+  --text-color-secondary: var(--p-text-muted-color);
+  --layout-section-transition-duration: 0.2s;
+}
+
+/* Shared page toolbar styling — removes left/right/top borders so the toolbar sits flush */
+.page-toolbar {
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  margin-bottom: 1rem;
+}
+
+/* Footer styling */
+.layout-footer {
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+  color: var(--p-text-muted-color);
+  border-top: 1px solid var(--p-content-border-color);
+  text-align: center;
+  flex-shrink: 0;
+}
